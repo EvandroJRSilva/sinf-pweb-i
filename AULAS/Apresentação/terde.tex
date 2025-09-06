@@ -1,0 +1,69 @@
+\documentclass{beamer}
+
+\usetheme{Antibes}
+
+% Title
+\title{Title}
+% Subtitle
+\subtitle{}
+% Author of the presentation
+\author{Author}
+% date of the presentation
+\date{}
+
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsfonts, amssymb, amsmath}
+\usepackage{listings} 
+\usepackage{verbatim}
+\usepackage[document]{ragged2e}
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+\usepackage{csquotes}
+\usepackage{multicol}
+\usepackage{url}
+\usepackage[sfdefault, lf]{FiraSans}
+\usepackage[table]{xcolor}
+\usepackage{tabularray}
+
+
+\NewTblrTableCommand \foo{\SetCell{bg=green!60,fg=white}}
+\NewTblrTableCommand \bar{\SetCell{bg=red!80,fg=white}}
+
+\begin{document}
+    
+\begin{frame}{Calendar}
+    \centering
+    \begin{tblr}{c c c}
+        \foo AULA & \SetCell{bg=blue!50,fg=white} FERIADO & \bar AVALIAÇÃO
+    \end{tblr}
+    
+    \begin{columns}
+        \begin{column}{0.3\textwidth}
+            \begin{table}
+                \centering
+                \textbf{SETEMBRO}\\ \vspace{0.15cm}
+                \begin{tblr}{Q[c,m] Q[c,m] Q[c,m] Q[c,m] Q[c,m]}
+                    \hline
+                    \textbf{S} & \textbf{T} & \textbf{Q} & \textbf{Q} & \textbf{S} \\
+                    \hline
+                    01 & 02 & 03 & 04 & \foo\textbf{\underline{05}}\\
+                    08 & 09 & \foo10 & 11 & \foo12\\
+                    15 & 16 & \foo17 & 18 & \foo19\\
+                    22 & 23 & \foo24 & 25 & \bar26\\
+                    29 & 30   &    &    &   \\
+                    \hline
+                \end{tblr}
+            \end{table}
+        \end{column}
+        
+        \begin{column}{0.7\textwidth}
+            \begin{itemize}
+                \justifying
+                \item Apresentação da disciplina
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+    
+\end{document}
