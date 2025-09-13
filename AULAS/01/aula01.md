@@ -8,11 +8,11 @@ Ao fim da década de 50, em resposta ao lançamento do [Sputnik 1](https://en.wi
 
 A seguir, a primeira mensagem enviada:
 
-![A primeira mensagem](../imagens/arpanet-first-message.png)
+![A primeira mensagem](./imagens/arpanet-first-message.png)
 
 ARPANET em 1972:
 
-![ARPANET 72](../imagens/arpanet-1972-map.png)
+![ARPANET 72](./imagens/arpanet-1972-map.png)
 
 A ARPANET era uma rede fechada, mas à medida em que o tempo ia passando, outras redes foram surgindo, tanto nos EUA quanto em outros países. O desafio agora era: como interligar essas redes?
 
@@ -34,11 +34,11 @@ A Internet é uma **rede de redes**, ou seja, a interligação de praticamente t
 
 Em sua expressão "máxima" a Internet pode ser vista como nessa imagem a seguir:
 
-![Cabos submarinos](../imagens/submarine-cables.png)
+![Cabos submarinos](./imagens/submarine-cables.png)
 
 Já a Web é melhor entendida como na seguinte imagem:
 
-![Web](../imagens/World-Wide-Web-visualization-example-6_W640.jpg)
+![Web](./imagens/World-Wide-Web-visualization-example-6_W640.jpg)
 
 ## Como a Web funciona
 
@@ -59,7 +59,7 @@ A seguir, uma passagem breve sobre `DNS`, `HTTP` e `URL`.
 
 O *Domain Name System* é especificado no [RFC 1034](https://www.rfc-editor.org/info/rfc1034) e [RFC 1035](https://www.rfc-editor.org/info/rfc1035), que juntos formam o [STD 13](https://www.rfc-editor.org/info/std13). É um protocolo da Camada de Aplicação que funciona como um banco de dados distribuídos que armazena os endereços `IP` associados a `URLs`.
 
-![DNS](../imagens/dns.png)
+![DNS](./imagens/dns.png)
 
 ### HTTP
 
@@ -67,7 +67,7 @@ O *Hypertext Transfer Protocol* é definido nos RFCs [1945](https://www.rfc-edit
 
 O protocolo é executado em dois programas: um cliente e um servidor. A troca de mensagens entre os dois programas é feita através de mensagens HTTP (*Request* e *Response*).
 
-![Exemplo HTTP](../imagens/http_exemplo.png)
+![Exemplo HTTP](./imagens/http_exemplo.png)
 
 Uma de suas características mais marcantes são os `Códigos de Status` das respostas. A seguir, alguns:
 
