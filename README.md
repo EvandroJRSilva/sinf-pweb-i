@@ -7,9 +7,12 @@ Organização do respositório (sofrerá atualizações constantes):
 ```
 PROGRAMAÇÃO_WEB_I
 ├─ AULAS/
-|  ├─ Apresentação/
 |  ├─ 01/
-|  └─ 02/
+|  ├─ 02/
+|  ├─ 03/
+|  |  └─ exercícios/
+|  ├─ 04/
+|  └─ Apresentação/
 ├─ Documentos/
 ├─ .gitignore
 └─ README.md
