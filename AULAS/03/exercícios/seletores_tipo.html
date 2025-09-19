@@ -4,7 +4,7 @@
     <title>Exercícios Seletores de Tipo</title>
     <meta charset="UTF-8">
     <style>
-        /* ATÉ A QUESTÃO 10 */
+        /* TODAS AS 15 */
         
         body {
             font-family: sans-serif;
@@ -40,6 +40,31 @@
         img {
             border: 2px solid black;
         }
+
+        table {
+            background-color: gold;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        blockquote {
+            font-style: italic;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+        }
+
+        form {
+            width: 400px;
+            /*max-width: 400px;*/
+            border: solid 2px;
+        }
     </style>
 </head>
 <img>
@@ -60,5 +85,36 @@
     <p>A imagem a seguir é alguma coisa:</p>
 
     <img src="../imagens/tabela_sem_css.png">
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Coluna 1</th>
+                <th>Coluna 2</th>
+            </tr>
+            <tr>
+                <td>Alguma coisa</td>
+                <td>Outra coisa</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>Item 1.</li>
+        <li>Item 2.</li>
+        <li>Item 3.</li>
+    </ul>
+
+    <blockquote>
+        Isso é uma citação.
+    </blockquote>
+
+    <form>
+        <label>O botão aí do lado --></label>
+        <button>Clique aqui!</button>
+        <label><-- O botão aí do lado</label>
+        <br>
+        <input placeholder="<-- Clique no botão do lado">
+    </form>
 </body>
 </html>
