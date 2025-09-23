@@ -15,6 +15,7 @@ PROGRAMAÇÃO_WEB_I
 |  └─ Apresentação/
 ├─ Documentos/
 ├─ .gitignore
+├─ exercícios_av1
 └─ README.md
 ```
 
