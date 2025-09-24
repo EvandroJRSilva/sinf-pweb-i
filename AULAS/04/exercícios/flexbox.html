@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>FLEX BOX</title>
+
+        <style>
+            /* QUESTÃO 6 */
+            
+            .coluna {
+                flex-basis: 70%;
+            }
+
+            .container-flex {
+                display: flex;
+                flex-flow: row nowrap;
+            }
+
+            p {
+                border: 1px solid;
+                margin-left: 10px;
+                background-color: #0a0d9e;
+                opacity: 75%;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-flex">
+            <p class="coluna">
+                Nada aqui dentro
+            </p>
+            <p>Aqui também não.
+                Aqui também não.
+                Aqui também não.
+                Aqui também não.
+                Aqui também não.
+            </p>
+        </div>
+    </body>
+</html>

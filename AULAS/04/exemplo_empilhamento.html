@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            section,
+            article {
+            opacity: 0.85;
+            position: relative;
+            }
+            #container1 {
+            z-index: 5;
+            }
+            #container2 {
+            z-index: 2;
+            }
+            #container3 {
+            z-index: 4;
+            position: absolute;
+            top: 40px;
+            left: 180px;
+            }
+            #container4 {
+            z-index: 6;
+            }
+            #container5 {
+            z-index: 1;
+            }
+            #container6 {
+            z-index: 3;
+            position: absolute;
+            top: 20px;
+            left: 180px;
+            }
+        </style>
+    </head>
+    <body>
+        <article id="container1">
+        <h1>Article element #1</h1>
+            <code>
+                position: relative;<br />
+                z-index: 5;
+            </code>
+        </article>
+
+        <article id="container2">
+            <h1>Article Element #2</h1>
+            <code>
+                position: relative;<br />
+                z-index: 2;
+            </code>
+        </article>
+
+        <article id="container3">
+            <section id="container4">
+                <h1>Section Element #4</h1>
+                <code>
+                position: relative;<br />
+                z-index: 6;
+                </code>
+            </section>
+
+            <h1>Article Element #3</h1>
+            <code>
+                position: absolute;<br />
+                z-index: 4;
+            </code>
+
+            <section id="container5">
+                <h1>Section Element #5</h1>
+                <code>
+                position: relative;<br />
+                z-index: 1;
+                </code>
+            </section>
+
+            <section id="container6">
+                <h1>Section Element #6</h1>
+                <code>
+                position: absolute;<br />
+                z-index: 3;
+                </code>
+            </section>
+        </article>
+    </body>
+</html>
