@@ -12,12 +12,15 @@ PROGRAMAÇÃO_WEB_I
 |  ├─ 03/
 |  |  └─ exercícios/
 |  ├─ 04/
+|  |  └─ exercícios/
 |  ├─ 05
-|  |  ├─ aula05_.md
-|  |  └─ aula05.md
+|  |  ├─ aula05_legado.md
+|  |  ├─ aula05.md
+|  |  └─ exercícios/
 |  └─ Apresentação/
 ├─ Documentos/
 ├─ .gitignore
+├─ exercícios_av1_2chmd.md
 ├─ exercícios_av1
 └─ README.md
 ```
