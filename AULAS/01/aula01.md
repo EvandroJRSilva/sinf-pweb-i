@@ -1,5 +1,32 @@
 # Aula 01
 
+Sumário
+
+- [Aula 01](#aula-01)
+  - [Breve história da Internet e da Web](#breve-história-da-internet-e-da-web)
+    - [Diferença entre Internet e Web](#diferença-entre-internet-e-web)
+  - [Como a Web funciona](#como-a-web-funciona)
+    - [DNS](#dns)
+    - [HTTP](#http)
+    - [URL](#url)
+  - [HTML](#html)
+    - [Estrutura de um documento HTML](#estrutura-de-um-documento-html)
+      - [`<!DOCTYPE html>`](#doctype-html)
+      - [Atributos](#atributos)
+      - [Codificação de caracteres](#codificação-de-caracteres)
+      - [Tags básicas principais](#tags-básicas-principais)
+        - [Elementos básicos](#elementos-básicos)
+        - [Metadados](#metadados)
+        - [Raiz de seccionamento](#raiz-de-seccionamento)
+        - [Separação de conteúdo](#separação-de-conteúdo)
+        - [Conteúdo textual](#conteúdo-textual)
+        - [Semânticas textuais inline](#semânticas-textuais-inline)
+        - [Imagem e multimídia](#imagem-e-multimídia)
+        - [Conteúdo tabulado](#conteúdo-tabulado)
+      - [Atributos](#atributos-1)
+  - [Exercícios](#exercícios)
+
+
 ## Breve história da Internet e da Web
 
 Antes de 1960 as redes de comunicação consistiam basicamente em **telégrafo** e **telefone**. Porém, a quantidade de computadores estava crescendo, e em locais distantes uns dos outros. Naturalmente surgiu por interligar essas máquinas.

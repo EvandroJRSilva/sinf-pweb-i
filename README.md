@@ -16,7 +16,7 @@ PROGRAMAÇÃO_WEB_I
 |  ├─ 05
 |  |  ├─ aula05_legado.md
 |  |  ├─ aula05.md
-|  |  └─ exercícios/
+|  |  └─ exercícios-2/
 |  └─ Apresentação/
 ├─ Documentos/
 ├─ .gitignore

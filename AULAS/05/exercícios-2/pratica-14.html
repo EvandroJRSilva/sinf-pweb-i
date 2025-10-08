@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>    
+    <body>
+        <h2>Exercícios básicos - 14</h2>
+        
+        <div>
+            <label for="entrada">Insira uma nota: </label>
+            <input onchange="aprova()" id="entrada" placeholder="0.0 <= nota <= 10.0"></input>
+        </div>
+        <br><label id="resposta" for="entrada"></label>
+        
+
+        <script>
+            /*
+            // Resolução simples
+            const nota = prompt("Insira uma nota: ");
+            if (nota >= 7){
+                alert("APROVADO!");
+                console.log("APROVADO!")
+            } else{
+                alert("REPROVADO!");
+                console.log("REPROVADO!")
+            }*/
+            
+            
+            //Resolvendo a questão com formulário
+            function aprova(){
+                let nota = parseFloat(document.getElementById("entrada").value);
+                const saida = document.getElementById("resposta");
+
+                console.log(nota);
+                
+                if (nota >= 7){
+                    saida.innerHTML = "APROVADO!"
+                    console.log("APROVADO!");
+                } else{
+                    saida.innerHTML = "REPROVADO!"
+                    console.log("REPROVADO!");
+                }
+            }
+        </script>
+    </body>
+</html>
