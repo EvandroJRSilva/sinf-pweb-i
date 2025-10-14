@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>    
+    <body>
+        <script>
+            function ask(questao, sim, nao, nome){
+                if (confirm(questao)) sim(nome)
+                else nao(nome);
+            }
+
+            function sim(nome){alert(`${nome}, você confirmou!`);}
+            function nao(nome){alert(`${nome}, você negou.`);}
+
+            ask("Você quer?", sim, nao, "Mateus");
+        </script>
+    </body>
+</html>

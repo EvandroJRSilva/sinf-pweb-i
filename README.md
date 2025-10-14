@@ -13,19 +13,18 @@ PROGRAMAÇÃO_WEB_I
 |  |  └─ exercícios/
 |  ├─ 04/
 |  |  └─ exercícios/
-|  ├─ 05
-|  |  ├─ aula05_legado.md
-|  |  ├─ aula05.md
+|  ├─ 05/
+|  |  ├─ exercícios-1/
 |  |  └─ exercícios-2/
+|  ├─ 06/
 |  └─ Apresentação/
 ├─ Documentos/
-├─ .gitignore
-├─ exercícios_av1_2chmd.md
-├─ exercícios_av1
-└─ README.md
+└─ Projeto/
+   └─ src/
 ```
 
 `aula05.md`  será o arquivo principal, o qual será ajustado a partir da `aula05_.md` e outros materiais.
 
 - **AULAS**: diretório para todos os arquivos referentes às aulas.
 - **Documentos**: diretório para os documentos referentes à disciplina, como o Plano de Ensino.
+- **Projeto**: projeto para ser usado como exemplo para os trabalhos.

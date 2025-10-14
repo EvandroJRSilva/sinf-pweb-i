@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Document</title>
+    </head>
+    <body>
+        <input type="button" value="Change this document." />
+        <h2>Cabeçalho</h2>
+        <p>Parágrafo</p>
+
+        <script>
+            document.querySelector("input").addEventListener("click", () => {
+                // document.getElementByTagName("h2") retorna um NodeList de elementos <h2>
+                // no documento, e o primeito tem o índice 0
+                const header = document.getElementsByTagName("h2").item(0);
+
+                // O primeiro filho do cabeçalho é um nó de texto
+                header.firstChild.data = "Um documento dinâmico";
+                // Agora o cabeçalho é "Um documento dinâmico"
+
+                // Acessando o primeiro parágrafo
+                const para = document.getElementsByTagName("p").item(0);
+                para.firstChild.data = "Este é o primeiro parágrafo.";
+
+                // Criando um novo texto para um segundo parágrafo
+                const newText = document.createTextNode("Este é o segundo parágrafo.");
+
+                // Criando um novo elemento para ser o segundo parágrafo
+                const newElement = document.createElement("p");
+
+                // Inserindo o texto no parágrafo
+                newElement.appendChild(newText);
+
+                // Colocando o parágrado ao fim do documento ao anexá-lo ao body,
+                // que é o pai do parágrafo "para"
+                para.parentNode.appendChild(newElement);
+            });
+        </script>
+    </body>
+</html>
