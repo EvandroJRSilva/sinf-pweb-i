@@ -33,8 +33,15 @@
                 document.body.style.backgroundColor = randomColor();
             }
 
+            function bgChangeAll(e){
+                let corAleatoria = randomColor();
+                e.target.style.backgroundColor = corAleatoria;
+                document.body.style.backgroundColor = corAleatoria;
+            }
+
             btn.addEventListener("click", btnBgChange);
-            //btn.addEventListener("click", bgChange);
+            btn.addEventListener("click", bgChange);
+            //btn.addEventListener("click", bgChangeAll);
         </script>
     </body>
 </html>
