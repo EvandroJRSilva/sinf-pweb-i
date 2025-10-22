@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Jovens Dinâmicos</title>
+        <style>
+            ul { display: none; }
+        </style>
+    </head>
+
+    <body>
+        <h1 id="first-header">Bem vindo ao HTML Estilo Jovem Dinâmico</h1>
+
+        <p><a id="clickable-link" href="#">Estilos dinâmicos são o elemento chave do DHTML.</a></p>
+
+        <ul id="unordered-list">
+            <li>Mude a cor, tamanho, e fonte do texto.</li>
+            <li>Exiba e oculte o texto.</li>
+            <li>E mais, mais, muito mais.</li>
+        </ul>
+
+        <p>A gente apenas começamos!</p>
+
+        <script>
+            function showMe() {
+                document.getElementById("first-header").style.color = "#990000";
+                document.getElementById("unordered-list").style.display = "block";
+            }
+
+            document.getElementById("clickable-link").addEventListener("click", function (event) {
+                event.preventDefault();
+                showMe();
+            });
+        </script>
+    </body>
+</html>

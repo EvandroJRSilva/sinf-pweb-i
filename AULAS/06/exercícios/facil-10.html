@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Prática DOM</title>
+        <style>
+            div{
+                border: solid 1px black;
+                width: 100px;
+            }
+        </style>
+    </head>
+        <!-- Adicione elementos aqui conforme a questão -->
+        <div id="quadrado">Quadrado</div>
+
+        <script>
+            const quadrado = document.getElementById("quadrado");
+
+            quadrado.addEventListener("mouseover", function(event){
+                event.target.style.background = "red";
+            })
+        </script>
+    </body>
+</html>

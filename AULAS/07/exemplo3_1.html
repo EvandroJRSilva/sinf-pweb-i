@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Eventos</title>
+        <style>
+            button{ 
+                margin: 10px;
+                font-size: 22pt;
+            }
+        </style>
+    </head>
+    <body>
+        <button>Mudar a cor</button>
+
+        <script>
+            const btn = document.querySelector("button");
+
+            function random(number) {
+                return Math.floor(Math.random() * (number + 1));
+            }
+
+            function randomColor(){
+                return `rgb(${random(255)} ${random(255)} ${random(255)})`;
+            }
+
+            function btnBgChange(e){
+                e.target.style.backgroundColor = randomColor();
+            }
+
+            function bgChange(){
+                document.body.style.backgroundColor = randomColor();
+            }
+
+            btn.addEventListener("click", btnBgChange);
+            //btn.addEventListener("click", bgChange);
+        </script>
+    </body>
+</html>

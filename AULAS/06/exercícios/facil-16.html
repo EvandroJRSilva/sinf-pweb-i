@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Prática DOM</title>
+    </head>
+        <!-- Adicione elementos aqui conforme a questão -->
+        <input id="texto" type="text">
+
+        <script>
+            const campo = document.getElementById("texto");
+
+            campo.addEventListener("keydown", function(event){
+                alert(event.key);
+            })
+        </script>
+    </body>
+</html>

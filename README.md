@@ -17,13 +17,12 @@ PROGRAMAÇÃO_WEB_I
 |  |  ├─ exercícios-1/
 |  |  └─ exercícios-2/
 |  ├─ 06/
+|  ├─ 07/
 |  └─ Apresentação/
 ├─ Documentos/
 └─ Projeto/
    └─ src/
 ```
-
-`aula05.md`  será o arquivo principal, o qual será ajustado a partir da `aula05_.md` e outros materiais.
 
 - **AULAS**: diretório para todos os arquivos referentes às aulas.
 - **Documentos**: diretório para os documentos referentes à disciplina, como o Plano de Ensino.

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Prática DOM</title>
+        <style>
+            .inativa{
+                border: 1px dashed black;
+                background-color: gainsboro;            
+            }
+            
+            .ativa{
+                border: 2px solid pink;
+                background-color: aquamarine;
+            }
+        </style>
+    </head>
+        <!-- Adicione elementos aqui conforme a questão -->
+        <p id="para" class="inativa">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat, voluptatum quaerat. Enim, facere voluptatibus animi aliquam incidunt quae ex, minus maiores ratione vitae nesciunt laboriosam necessitatibus vero modi placeat. Voluptatum?
+        </p>
+
+        <script>
+            const par = document.getElementById("para");
+
+            par.addEventListener("mouseover", ()=>{
+                par.classList.add("ativa");
+            });
+        </script>
+    </body>
+</html>

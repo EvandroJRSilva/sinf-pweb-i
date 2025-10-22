@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DHTML</title>
+        <style>
+            a { background-color: #eee; }
+            a:hover { background: #ff0; }
+            #toggle-me { background: #cfc; 
+                display: none; 
+                margin: 30px 0; 
+                padding: 1em; }
+        </style>
+    </head>
+    <body>
+        <h1>DHTML</h1>
+            
+        <h2><a id="showhide" href="#">Exibir parágrafo</a></h2>
+            
+        <p id="toggle-me">Este é um parágrafo que só é exibido sob demanda.</p>
+            
+        <p>O restante do documento continua normal.</p>
+            
+        <script>
+            function changeDisplayState(displayElement, textElement) {
+                if (displayElement.style.display === "none" || displayElement.style.display === "") {
+                    displayElement.style.display = "block";
+                    textElement.innerHTML = "Ocultar o parágrafo";
+                } else {
+                    displayElement.style.display = "none";
+                    textElement.innerHTML = "Exibir o parágrafo";
+                }
+            }
+            
+            let displayElement = document.getElementById("toggle-me");
+            let textElement = document.getElementById("showhide");
+            textElement.addEventListener("click", function (event) {
+                event.preventDefault();
+                changeDisplayState(displayElement, textElement);
+            });
+        </script>
+    </body>
+</html>

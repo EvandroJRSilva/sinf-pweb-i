@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Prática DOM</title>
+    </head>
+        <!-- Adicione elementos aqui conforme a questão -->
+        <ul>
+            <li class="lista">Item 1.</li>
+            <li class="lista">Item 2.</li>
+            <li class="lista">Item 3.</li>
+            <li class="lista">Item 4.</li>
+        </ul>
+        <button id="botao">Clique para modificar.</button>
+
+        <script>
+            const itens = document.querySelectorAll(".lista");
+            const botao = document.getElementById("botao");
+            
+            botao.addEventListener("click", () => {
+                for (item of itens){
+                console.log(item);
+                    item.firstChild.textContent += " - Modificado";
+                }
+            })
+        </script>
+    </body>
+</html>
