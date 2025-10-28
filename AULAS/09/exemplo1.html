@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Exemplo 1</title>
+        <style>
+            input:invalid {
+                border: 2px dashed red;
+            }
+
+            input:invalid:required {
+                background-image: linear-gradient(to right, pink, lightgreen);
+            }
+
+            input:valid {
+                border: 2px solid black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <label for="escolha">Você prefere banana ou maçã?</label>
+            <input id="escolha" name="eu_gosto" required/>
+            <button>Enviar</button>
+        </form>
+    </body>
+</html>

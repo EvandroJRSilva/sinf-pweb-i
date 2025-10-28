@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Exemplo 4</title>
+        <style>
+            form {
+                font: 1em sans-serif;
+                max-width: 320px;
+            }
+
+            p > label {
+                display: block;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="number"],
+            textarea,
+            fieldset {
+                width: 100%;
+                border: 1px solid #333333;
+                box-sizing: border-box;
+            }
+
+            input:invalid {
+                box-shadow: 0 0 5px 1px red;
+            }
+
+            input:focus:invalid {
+                box-shadow: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <p>Preencha todos os campos obrigatórios (*)</p>
+            <fieldset>
+                <legend>Você tem carteira de motorista? *</legend>
+                <input type="radio" required name="motorista" id="r1" value="yes"/>
+                <label for="r1">Sim</label>
+                <input type="radio" required name="motorista" id="r2" value="no"/>
+                <label for="r2">Não</label>
+            </fieldset>
+            <p>
+                <label for="n1">Qual a sua idade?</label>
+                <input type="number" min="12" max="120" step="1" id="n1" name="idade"/>
+            </p>
+            <p>
+                <label for="t1">Qual é a sua fruta preferida? *</label>
+                <input type="text" id="t1" name="fruta" list="l1" required
+                    pattern="[Bb]anana|[Mm]açã|[Cc]ereja|[Mm]orango|[Ll]imão|[Ll]aranja|[Ss]iriguela"/>
+                <datalist id="l1">
+                    <option>Banana</option>
+                    <option>Maçã</option>
+                    <option>Cereja</option>
+                    <option>Morango</option>
+                    <option>Limão</option>
+                    <option>Laranja</option>
+                    <option>Siriguela</option>
+                </datalist>
+            </p>
+            <p>
+                <label for="t2">Qual é o seu e-mail?</label>
+                <input type="email" id="t2" name="email"/>
+            </p>
+            <p>
+                <label for="t3">Escreva um pequeno comentário</label>
+                <textarea id="t3" name="msg" maxlength="140" rows="5"></textarea>
+            </p>
+            <p>
+                <button>Enviar</button>
+            </p>
+        </form>
+    </body>
+</html>

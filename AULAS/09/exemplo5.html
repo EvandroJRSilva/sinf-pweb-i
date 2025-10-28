@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Exemplo 5</title>
+        <style>
+            form {
+                font: 1em sans-serif;
+                max-width: 320px;
+            }
+
+            p > label {
+                display: block;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="number"],
+            textarea,
+            fieldset {
+                width: 100%;
+                border: 1px solid #333333;
+                box-sizing: border-box;
+            }
+
+            input:invalid {
+                box-shadow: 0 0 5px 1px red;
+            }
+
+            input:focus:invalid {
+                box-shadow: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <label for="mail">
+                Insira seu endereço de e-mail
+            </label>
+            <input type="email" id="mail" name="mail" />
+            <button>Enviar</button>
+        </form>
+
+        <script>
+            const email = document.getElementById("mail");
+
+            email.addEventListener("input", (event) => {
+                if (email.validity.typeMismatch){
+                    email.setCustomValidity("Burro! Nem sabe escrever o próprio e-mail!");
+                } else{
+                    email.setCustomValidity("");
+                }
+            });
+        </script>
+    </body>
+</html>

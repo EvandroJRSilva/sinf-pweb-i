@@ -18,6 +18,8 @@ PROGRAMAÇÃO_WEB_I
 |  |  └─ exercícios-2/
 |  ├─ 06/
 |  ├─ 07/
+|  ├─ 08/
+|  ├─ 09/
 |  └─ Apresentação/
 ├─ Documentos/
 └─ Projeto/
