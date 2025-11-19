@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <button id="mostrar">Mostrar o conteúdo do cookie</button>
+        <button id="apagar">Apagar</button>
+        <div>
+            <code id="valor-do-cookie"></code>
+        </div>
+
+        <script>
+            const showBtn = document.getElementById("mostrar");
+            const clearBtn = document.getElementById("apagar");
+            const output = document.getElementById("valor-do-cookie");
+
+            document.cookie = "teste1=Olá; Secure";
+            document.cookie = "teste2=Mundo; Secure";
+
+            showBtn.addEventListener("click", () => {
+                const cookieValue = document.cookie
+                    .split("; ")
+                    .find((row) => row.startsWith("teste2="))
+                    ?.split("=")[1];
+                output.textContent = `> ${cookieValue}`;
+            });
+            
+            clearBtn.addEventListener("click", () => {
+                output.textContent = "";
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <button id="checar">Checar se um cookie existe</button>
+        <button id="apagar">Apagar</button>
+        <div>
+            <code id="saida"></code>
+        </div>
+
+        <script>
+            const checkBtn = document.getElementById("checar");
+            const clearBtn = document.getElementById("apagar");
+            const saida = document.getElementById("saida");
+
+            document.cookie = "leitor=1; Secure";
+
+            checkBtn.addEventListener("click", () => {
+                if (
+                    document.cookie.split(";").some((item) => item.trim().startsWith("leitor="))
+                ) {
+                    saida.textContent = '> O cookie "leitor" existe';
+                } else {
+                    saida.textContent = '> O cookie "leitor" não existe';
+                }
+            });
+            
+            clearBtn.addEventListener("click", () => {
+                saida.textContent = "";
+            });
+        </script>
+    </body>
+</html>

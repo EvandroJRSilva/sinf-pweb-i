@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <button id="mostrar">Mostrar cookies</button>
+        <button id="apagar">Apagar</button>
+        <div>
+            <code id="valor-do-cookie"></code>
+        </div>
+
+        <script>
+            const showBtn = document.getElementById("mostrar");
+            const clearBtn = document.getElementById("apagar");
+            const output = document.getElementById("valor-do-cookie");
+
+            document.cookie = "nome=Fulano; Secure";
+            document.cookie = "comida_favorita=feijoada; Secure";
+
+            showBtn.addEventListener("click", () => {
+                output.textContent = `> ${document.cookie}`;
+            });
+            
+            clearBtn.addEventListener("click", () => {
+                output.textContent = "";
+            });
+        </script>
+    </body>
+</html>

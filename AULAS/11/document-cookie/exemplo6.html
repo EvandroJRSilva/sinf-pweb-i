@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <button id="checar">Checar se um cookie tem um determinado valor</button>
+        <button id="apagar">Apagar</button>
+        <div>
+            <code id="saida"></code>
+        </div>
+
+        <script>
+            const checkBtn = document.getElementById("checar");
+            const clearBtn = document.getElementById("apagar");
+            const saida = document.getElementById("saida");
+
+            checkBtn.addEventListener("click", () => {
+                if (document.cookie.split(";").some((item) => item.includes("leitor=1"))) {
+                     saida.textContent = '> O cookie "leitor" tem o valor "1"';
+                }
+            });
+            
+            clearBtn.addEventListener("click", () => {
+                saida.textContent = "";
+            });
+        </script>
+    </body>
+</html>
