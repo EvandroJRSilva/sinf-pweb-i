@@ -13,7 +13,7 @@
     <button onclick="mudarTema('dark')">Escuro</button>
 
     <script>
-        // TODO: implemente a função para trocar o tema e salvar em localStorage
+        // Função para trocar o tema e salvar em localStorage
         function mudarTema(tema) {
             // salvar tema
             localStorage.setItem("tema", tema)
@@ -21,7 +21,7 @@
             document.body.className = tema;
         }
 
-        // TODO: ao carregar a página, aplicar o tema salvo 
+        // Ao carregar a página, aplicar o tema salvo 
         document.addEventListener('DOMContentLoaded', function(){
             const temaSalvo = localStorage.getItem("tema") || 'light';
             document.body.className = temaSalvo;
