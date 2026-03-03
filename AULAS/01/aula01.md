@@ -3,69 +3,419 @@
 Sumário
 
 - [Aula 01](#aula-01)
-  - [Breve história da Internet e da Web](#breve-história-da-internet-e-da-web)
-    - [Diferença entre Internet e Web](#diferença-entre-internet-e-web)
+  - [O que é a Internet?](#o-que-é-a-internet)
+    - [Conceitos básicos e terminologia](#conceitos-básicos-e-terminologia)
+    - [Autoridades da Internet](#autoridades-da-internet)
+  - [História das Redes de Computadores e da Internet](#história-das-redes-de-computadores-e-da-internet)
+    - [1961 - 1972: Desenvolvimento da Comutação de Pacotes](#1961---1972-desenvolvimento-da-comutação-de-pacotes)
+    - [1972 - 1980: Redes proprietárias e interligação de redes](#1972---1980-redes-proprietárias-e-interligação-de-redes)
+    - [1980 - 1990: Proliferação de redes](#1980---1990-proliferação-de-redes)
+    - [Década de 1990: A explosão da Internet](#década-de-1990-a-explosão-da-internet)
+    - [Século XXI](#século-xxi)
+  - [Tecnologia de Redes Locais a Globais](#tecnologia-de-redes-locais-a-globais)
+    - [Nanoredes](#nanoredes)
+    - [*Near-field communication* - NFC](#near-field-communication---nfc)
+    - [*Body Area Network* - BAN](#body-area-network---ban)
+    - [*Personal Area Network* - PAN](#personal-area-network---pan)
+    - [*Local Area Network* - LAN](#local-area-network---lan)
+      - [Tipos de LAN](#tipos-de-lan)
+    - [*Campus Area Network* - CAN](#campus-area-network---can)
+    - [*Metropolitan Area Network* - MAN](#metropolitan-area-network---man)
+      - [IXes ou IXPs - *Internet exchange points*](#ixes-ou-ixps---internet-exchange-points)
+    - [*Wide Area Network* - WAN](#wide-area-network---wan)
+    - [Redes interligadas](#redes-interligadas)
+  - [O Modelo de referência TCP/IP](#o-modelo-de-referência-tcpip)
+    - [Camada Física](#camada-física)
+    - [Camada de Enlace](#camada-de-enlace)
+    - [Camada de Rede](#camada-de-rede)
+    - [Camada de Transporte](#camada-de-transporte)
+    - [Camada de Aplicação](#camada-de-aplicação)
+    - [Comunicação entre dois hosts através da Interet](#comunicação-entre-dois-hosts-através-da-interet)
   - [Como a Web funciona](#como-a-web-funciona)
     - [DNS](#dns)
     - [HTTP](#http)
     - [URL](#url)
-  - [HTML](#html)
-    - [Estrutura de um documento HTML](#estrutura-de-um-documento-html)
-      - [`<!DOCTYPE html>`](#doctype-html)
-      - [Atributos](#atributos)
-      - [Codificação de caracteres](#codificação-de-caracteres)
-      - [Tags básicas principais](#tags-básicas-principais)
-        - [Elementos básicos](#elementos-básicos)
-        - [Metadados](#metadados)
-        - [Raiz de seccionamento](#raiz-de-seccionamento)
-        - [Separação de conteúdo](#separação-de-conteúdo)
-        - [Conteúdo textual](#conteúdo-textual)
-        - [Semânticas textuais inline](#semânticas-textuais-inline)
-        - [Imagem e multimídia](#imagem-e-multimídia)
-        - [Conteúdo tabulado](#conteúdo-tabulado)
-      - [Atributos](#atributos-1)
-  - [Exercícios](#exercícios)
+  - [Programação para a Web I](#programação-para-a-web-i)
 
+<style>
+  .container-flex {
+  display: flex; /* Makes the child elements sit side by side */
+  flex-wrap: wrap; /* Allows items to wrap to a new line when no more space */
+  gap: 20px; /* Adds space between elements (modern alternative to margins) */
+}
 
-## Breve história da Internet e da Web
+  .item {
+    min-width: 100px;
+    max-width: 1500px;
 
-Antes de 1960 as redes de comunicação consistiam basicamente em **telégrafo** e **telefone**. Porém, a quantidade de computadores estava crescendo, e em locais distantes uns dos outros. Naturalmente surgiu por interligar essas máquinas.
+    min-height: 100px;
+    max-height: 150px;
+  }
+  
+  .figura{
+   /* flex: 1;*/
+    flex-basis: 50%;
+  }
 
-Ao fim da década de 50, em resposta ao lançamento do [Sputnik 1](https://en.wikipedia.org/wiki/Sputnik_1) os EUA criaram a **ARPA** (*Advanced Research Projects Agency*), órgão do Departamento de Defesa. Na década de 60 foi iniciado o projeto **ARPANET** (*Advanced Research Projects Agency Network*) para a comunicação entre os computadores.
+  .texto{
+    /*flex: 1;*/
+    flex-basis: 40%;
+  }
 
-A seguir, a primeira mensagem enviada:
+  /*.container-flex > div {
+  flex: 1 1 100px; /* Makes each element take an equal amount of available space */
+}
+</style>
 
-![A primeira mensagem](./imagens/arpanet-first-message.png)
+## O que é a Internet?
 
-ARPANET em 1972:
+Antes de entender o que é a Internet, é interessante entender o que é uma **rede de computadores**, a qual consiste em um grupo de cmoputadores, ou outros dispositivos, os quais estão conectados uns aos outros. A partir disso, podemos conceituar a Internet como uma rede de bilhões de dispositivos, os quais estão espalhados por todo o mundo. Esses dispositivos podem ser servidores, PCs, videogames, celulares, tablets, relógios, veı́culos, eletrodomésticos, etc.
 
-![ARPANET 72](./imagens/arpanet-1972-map.png)
+De forma superficial a Internet funciona ao conectar diferentes dispositivos através do uso de protocolos padronizados. O núcleo da Internet consiste em uma rede global de **roteadores**, os quais são responsáveis por direcionar o tráfego de dados entre diferentes dispositivos e sistemas. Para serem enviados pela rede, os dados são "quebrados" em pacotes pequenos unidades chamadas de **pacote**. Ao receber um pacote um roteador examina seus metadados e então o encaminha para o próximo roteador no caminho, e isso ocorre até que os dados cheguem ao destino.
 
-A ARPANET era uma rede fechada, mas à medida em que o tempo ia passando, outras redes foram surgindo, tanto nos EUA quanto em outros países. O desafio agora era: como interligar essas redes?
+O conteúdo a seguir aprofunda vários desses conceitos, para permitir que possamos entender melhor, e de forma básica, as redes de computadores, inclusive a Internet, e como tudo funciona.
 
-Durante o restante da década de 70 e toda a década de 80, protocolos de rede, como o TCP e o IP, foram sendo melhorados enquanto outros foram surgindo, ao mesmo tempo em que acontecia a evolução própria dos computadores e da infraestrutura (a "rede" em si).
+### Conceitos básicos e terminologia
 
-Na década de 90, no CERN (*European Center for Nuclear Physics*) o Físico e Cientista da Computação [Tim Berners-Lee](https://pt.wikipedia.org/wiki/Tim_Berners-Lee) apresentou o **World Wide Web** (WWW), basicamente, a "Internet" como a gente conhece hoje.
+- **Pacote**: uma pequena unidade de dados, a qual é transmitida pela internet.
+- **Comutador** (**roteador**/**switch**): um dispositivo que direciona os pacotes de dados entre diferentes redes.
+- **Endereço IP**: um identificador único assinalado a cada dispositivo em uma rede, usado para rotear dados para o destino correto.
+- **Gateway**: o dispositivo que faz a conexão entre duas ou mais redes e oferece a conversão necessária, tanto em termos de hardware quanto de software.
+- **Hospedeiro**/**Host**: dispositivo conectado a uma rede.
+- **ISPs**: *Internet Service Providers* - Provedores de Serviços de Internet.
+- **PDU**: *Protocol Data Unit* - Unidade de Dados do Protocolo. Basicamente o nome dado à unidade de dados manipulada por um protocolo.
+- **Protocolos**: programas que definem como a informação é trocada entre os dispositivos, e garantem que os dados são transmitidos de forma confiável e segura.
 
-O WWW, de forma resumida, consiste em um sistema de documentos interligados e executados na Internet. Esses documentos podem ser imagens, vídeos, sons, hipertextos, etc. A partir disso, passamos a ter os **Navegadores**, programas que permitem o acesso e envio desses documentos.
+### Autoridades da Internet
+
+O funcionamento correto da Internet depende de todos os envolvidos operarem obedecendo **padrões internacionais**, os quais são criados por algumas **autoridades**:
+
+- **ISO** (*International Organization for Standardization*)
+- **IEEE** (*Institute of Electrical and Eletronics Engineers*)
+  - O *Instituto de Engenheiros Elétricos e Eletrônicos* é a maior organização profissional do mundo. Possui grupos de trabalho que desenvolvem padrões nas áreas de engenharia elétrica e informática.
+- **IETF** (*Internet Engineering Task Force*)
+  - A *Força Tarefa de Engenharia da Internet* é estruturada em grupos que tratam questões relacionadas à Internet.
+  - Uma nova ideia deve ser apresentada formalmente em uma **RFC** (*Request For Comments* - Requisição de Comentários). Após validada, a ideia pode ganhar o status de padrão.
+- **IEN** (*Internet Experiment Notes*): [lista dos primeiros documentos da Internet](https://www.potaroo.net/ietf/html/ienindex.html).
+
+Além dos protocolos, o funcionamento correto da Internet depende de todos os envolvidos operarem obedecendo **padrões internacionais**, os quais são criados por algumas **autoridades**:
+
+- **ICANN** (*Internet Corporation for Assigned Names and Numbers*)
+- **IANA** (*Internet Assigned Numbers Authority*)
+
+Relação entre ICANN, IETF e IANA:
+
+- ICANN supervisiona o gerenciamento de nomes de domı́nio (DNS), endereços IP e parâmetros de protocolos.
+- IETF foca em desenvolver padrões técnicos e protocolos para a Internet.
+- IANA, sob a ICANN, é a responsável de fato pela coordenação e atribuição de endereços de IP, gerenciamento da zona raiz do DNS e atribuição dos parâmetros de protocolos.
+
+## História das Redes de Computadores e da Internet
+
+### 1961 - 1972: Desenvolvimento da Comutação de Pacotes
+
+Antes de 1960 as redes de comunicação consistiam basicamente em telégrafo e telefone, e sua respectiva comutação de circuito. Porém, a quantidade de computadores estava crescendo, e em locais distantes uns dos outros. Naturalmente surgiu o interesse pela comutação de pacotes.
+
+Ao redor do mundo, 3 grupos de pesquisa começam a inventar a comutação de pacotes (sem nenhum conhecer o outro):
+
+- Primeiro trabalho: Tese [Leonard Kleinrock](https://en.wikipedia.org/wiki/Leonard_Kleinrock), aluno de graduação do MIT, em 1961.
+- Em 1964, [Paul Baran](https://en.wikipedia.org/wiki/Paul_Baran), *Rand Institute*, começou a investigar a utilização de comutação de pacotes na transmissão segura de voz pelas redes militares.
+- Ao mesmo tempo, [Donald Davies](https://en.wikipedia.org/wiki/Donald_Davies) e Roger Scantlebury desenvolviam suas ideias no *National Physical Laboratory* (NPL), na Inglaterra.
+
+Na década de 60, [J. C. R. Licklider](https://en.wikipedia.org/wiki/J._C._R._Licklider) e [Larry Roberts](https://en.wikipedia.org/wiki/Larry_Roberts_(computer_scientist)), ambos colegas de Kleinrock, lideraram o programa de Ciência da Computação na **ARPA** (*Advanced Research Projects Agency* - Agência de Projetos de Pesquisa Avançada), órgão do Departamento de Defesa dos Estados Unidos.
+
+Em 1967, em uma reunião da Associação para Maquinaria da Computação ([ACM](https://www.acm.org/) - *Association for Computing Machinery*), a ARPA apresentou suas ideias para a **Rede da Agência de Projetos de Pesquisa Avançados** ([ARPANET](https://en.wikipedia.org/wiki/ARPANET) - *ARPA NETwork*). A ideia era que cada computador (não necessariamente do mesmo fabricante) seria ligado a um computador especializado, chamado de **Processador de Mensagens de Interface** (IMP - *Interface Message Processor*). Os IMPs seriam ligados uns aos outros.
+
+Em 1 de Maio de 1969, foi instalado o primeiro roteador de pacotes na UCLA (Universidade da Califórnia em Los Angeles) sob a supervisão de Kleinrock. Pouco tempo depois foram instalados três roteadores de pacotes adicionais no *Stanford Research Institute* (SRI), na Universidade da Califórnia em Santa Bárbara e na Universidade de Utah.
+
+<figure style="text-align: center;">
+  <img src="./imagens/arpanet-first-message.png" alt="Foto de um cartão contendo a primeira mensagem enviada por uma rede de computadores">
+  <figcaption>Registro da primeira mensagem enviada através da ARPANET (fonte: <a href="https://www.lk.cs.ucla.edu/internet_first_words.html">UCLA</a>)</figcaption>
+</figure>
+
+<figure style="text-align: center;">
+  <img src="./imagens/arpanet-1972-map.png" alt="Mapa dos Estados Unidos mostrando as conexões da ARPANET existentes entre cidades em 1972">
+  <figcaption>ARPANET em 1972</figcaption>
+</figure>
+
+### 1972 - 1980: Redes proprietárias e interligação de redes
+
+Além da ARPANET (que era uma rede fechada) outras redes foram surgindo:
+
+- **ALOHA**net (no Havaí), utilizando microondas.
+- Redes de pacote por satélite ([RFC 829](https://www.rfc-editor.org/info/rfc829)), e por rádio, da DARPA.
+- [Telenet](https://en.wikipedia.org/wiki/Telenet), rede comercial de comutação de pacotes da [BBN](https://en.wikipedia.org/wiki/RTX_BBN_Technologies).
+- [CYCLADES](https://en.wikipedia.org/wiki/CYCLADES), na França.
+- SNA da IBM.
+
+<div style="display: flex; gap: 10px;">
+  <figure style="max-width: 100px;">
+    <img src="./imagens/dr-vint-cerf.jpg">
+    <figurecaption>Vint Cerf</figurecaption>
+  </figure>
+  <figure style="max-width: 100px;">
+    <img src="./imagens/bob-kahn.jpg">
+    <figurecaption>Robert Kahn</figurecaption>
+  </figure>
+  <p><a href="https://en.wikipedia.org/wiki/Vint_Cerf">Vint Cerf</a> e <a href="https://en.wikipedia.org/wiki/Robert_Kahn_(computer_scientist)">Robert Kahn</a> sob o patrocı́nio da DARPA (<i>Defense Advanced Research Projects Agency</i> - Agência de de Projetos de Pesquisa Avançada de Defesa), foram pioneiros na interconexão de redes, ou redes de redes. O termo cunhado naquele tempo: <i>internetting</i>. Eles tiveram a ideia de um dispositivo chamado <b><i>gateway</i></b> para atuar como o hardware intermediário na transferência de dados de uma rede para outra.</p>
+</div>
+
+Os princı́pios de arquitetura da *internetting* foram incorporadas ao TCP (*Transmission Control Protocol*). [RFC 761](https://datatracker.ietf.org/doc/html/rfc761), primeiro RFC do TCP.
+
+### 1980 - 1990: Proliferação de redes
+
+Ao fim da década de 70, cerca de 200 máquinas estavam conectadas à ARPANET. Ao fim da década de 80 a rede alcançou a marca de 100 mil! Muito esforço foi feito para interligar universidades, e em 01 Janeiro de 1983 o TCP/IP foi oficialmente adotado como o novo padrão de protocolo das máquinas na rede ARPANET. O **DNS** (*Domain Name System*) foi desenvolvido nesse perı́odo também.
+
+Na França a Rede Minitel teve bastante sucesso e incentivo governamental.
+
+### Década de 1990: A explosão da Internet
+
+A ARPANET deixou de existir, mas tivemos o surgimento da ***World Wide Web*** (WWW), criada no CERN (*European Center for Nuclear Physics*) pelo Físico e Cientista da Computação [Tim Berners-Lee](https://pt.wikipedia.org/wiki/Tim_Berners-Lee) entre 1989 e 1991. O WWW, de forma resumida, consiste em um sistema de documentos interligados e executados na Internet. Esses documentos podem ser imagens, vídeos, sons, hipertextos, etc. A partir disso, passamos a ter os **Navegadores**, programas que permitem o acesso e envio desses documentos.
+
+<figure style="text-align: center;">
+  <img src="./imagens/World-Wide-Web-visualization-example-6_W640.jpg" alt="Um gráfico mostrando as conexões entre sites e outros recursos da Internet">
+  <figcaption>A Web</figcaption>
+</figure>
+
+A partir de 1996: guerra entre os navegadores Netscape e Internet Explorer ([TecMundo: Guerra dos Navegadores](https://www.youtube.com/watch?v=3yTDZTKwj-o)). Além disso, milhares de novas empresas foram surgindo, propondo os mais diversos serviços pela Web. Os principais: correio eletrônico (e-mail), serviço de mensagem instantânea e compartilhamento *peer-to-peer* (**P2P**).
+
+Em 2002 estourou a [Bolha da Internet](https://pt.wikipedia.org/wiki/Bolha_da_Internet).
 
 Vídeos do TecMundo sobre a história da Internet: 
 
 - [Parte 1](https://www.youtube.com/watch?v=pKxWPo73pX0). 
 - [Parte 2](https://www.youtube.com/watch?v=k_inQhpKprg).
-- [Guerra dos Navegadores](https://www.youtube.com/watch?v=3yTDZTKwj-o).
 
-### Diferença entre Internet e Web
+### Século XXI
 
-A Internet é uma **rede de redes**, ou seja, a interligação de praticamente todas as redes de computadores do mundo. Já a Web consiste nos serviços prestados e consumidos na rede.
+Estamos sendo testemunhas vivas de todas as evoluções e revoluções. Qual(is) foi(ram) a(s) mais impactante(s)?
 
-Em sua expressão "máxima" a Internet pode ser vista como nessa imagem a seguir:
+## Tecnologia de Redes Locais a Globais
 
-![Cabos submarinos](./imagens/submarine-cables.png)
+As redes podem variar de pequenas e pessoais a grandes e globais, e são denominadas de acordo com sua abrangência geográfica e escala: **Nanoredes**, **NFC**, **BAN**, **PAN**, **LAN**, **CAN**, **MAN**, **WAN**.
 
-Já a Web é melhor entendida como na seguinte imagem:
+### Nanoredes
 
-![Web](./imagens/World-Wide-Web-visualization-example-6_W640.jpg)
+Consiste em um conjunto de nanomáquinas capazes de se comunicar. Aplicações possı́veis: biologia, meio-ambiente, tecnologia militar e industrial e bens de consumo. 
+
+Prática recomendada do IEEE para *framework* de comunicação em nanoescala e molecular: [1906.1-2015](https://ieeexplore.ieee.org/document/7378262).
+
+<figure style="text-align: center;">
+  <img src="./imagens/nanonet.png">
+  <figcaption>Nanomáquinas em rede para aplicação de medicamento</figcaption>
+</figure>
+
+### *Near-field communication* - NFC
+
+Consiste em um conjunto de tecnologias de comunicação sem fio em curta distância: 10 cm ou menos. Tem suas raı́zes na tecnologia [RFID](https://en.wikipedia.org/wiki/Radio-frequency_identification).
+
+Aplicações:
+
+- Pagamento por aproximação, cartão fı́sico ou virtual.
+- Recarregamento de celular sem fio.
+- Automatização de outros tipos de conexão (ex.: ativar, emparelhar e desativar o Bluetooth).
+- Permite dispositivos eletrônicos serem utilizados como documentos de identidade.
+- Permite dispositivos eletrônicos ter configurações alteradas. Por exemplo, todas as pessoas que entram em uma sala de cinema têm seus celulares configurados no modo silencioso/vibratório automaticamente.
+
+### *Body Area Network* - BAN
+
+Rede formada por dispositivos computacionais vestı́veis. Geralmente são sensores sem fio, e pode ser referida também como **WBAN** (*Wireless BAN*), **BSN** (*Body Sensor Network*) ou **MBAN** (*Medical BAN*). Exemplos:
+
+- Implante subcutâneo.
+- Comprimido/pı́lula.
+- Smartwatches, pulseiras, etc.
+- Dispositivos que podem ser carregados: na mão, bolso, sacola, etc.
+
+[IEEE 802.15](https://grouper.ieee.org/groups/802/15/) - *Working Grupo for Wireless Specialty Networks*.
+
+### *Personal Area Network* - PAN
+
+<div style="display:flex;">
+  <figure style="width:150px;">
+    <img src="./imagens/bluetooth-logo.png">
+  </figure>
+  <p>Rede entre dispositivos computacionais dentro do alcance de uma pessoa. Por exemplo, todos os seus dispositivos em um quarto/sala: celular, fones, notebook, relógio, teclado, mouse, etc. A principal rede sem fio de curta é o <b>Bluetooth</b>.</p>
+</div>
+
+### *Local Area Network* - LAN
+
+É uma rede particular que opera dentro e próximo de um único prédio: casa, escritório, fábrica, etc. As antigas e saudosas ***LAN Houses*** têm esse nome justamente por causa da rede entre seus computadores.
+
+Quase sempre, cada computador se comunica com um dispositivo chamado **ponto de acesso** (AP - *Access Point*), **roteador sem fio** ou **estação-base**.
+
+O padrão para LANs sem fio é o IEEE 802.11. [Artigo na Wikipedia](https://en.wikipedia.org/wiki/IEEE_802.11). [Working Group da IEEE](https://www.ieee802.org/11/).
+
+<figure style="text-align: center;">
+  <img src="./imagens/figura05.png">
+</figure>
+
+<figure style="text-align: center;">
+  <img src="./imagens/figura06.png">
+</figure>
+
+<figure style="text-align: center;">
+  <img src="./imagens/figura07.png">
+</figure>
+
+#### Tipos de LAN
+
+**HAN** (*Home Area Network*), consiste em uma rede doméstica, ou seja, a conectividade de todos os dispositivos em uma residência.
+
+Em um ambiente corporativo, pode ser interessante separar uma LAN em subredes, ou seja, uma LAN para cada setor. Então, terı́amos várias LANs virtuais (**VLANs** - *Virtual LANs*).
+
+Em uma LAN onde os dispositivos se comunicam apenas sem fio pode ser referida como **WLAN** (*Wireless LAN*).
+
+<div style="display:flex">
+  <figure>
+    <img src="./imagens/Fibre_Channel_Storage_Area_Network.png">
+  </figure>
+  <p>Nos centros de processamento de dados há vários computadores dedicados ao armazenamento de informações. A rede local entre os servidores para acessar os dados armazenados é chamada de <b>SAN</b> (<i>Storage Area Network</i>).</p>
+</div>
+
+### *Campus Area Network* - CAN
+
+Pode ser também *Corporate Area Network*. Consiste em um conjunto de LANs que estão próximas fisicamente. Exemplo da UFPI em Teresina (CT, CCHL, CCS, CCN, CCE, CCA):
+
+<figure style="text-align: center;">
+  <img src="./imagens/rnp-ufpi.png">
+</figure>
+
+### *Metropolitan Area Network* - MAN
+
+É a interconexão de várias LANs presentes em uma região metropolitana.
+
+CANs e MANs podem ser consideradas “**backbones** (espinhas dorsais) locais” de redes de computadores, uma vez que consistem em infraestrutura considerável, permitindo a conexão de milhares a milhões de dispositivos.
+
+<figure style="text-align: center;">
+  <img src="./imagens/rnp-teresina.png">
+  <figcaption><a href="https://viaipe.rnp.br/?&estado=PI&periodo=1d&aglomerado=0#@-5.066321981043081,-42.80170440673828,13z">MAN</a> da <a href="https://www.rnp.br/">RNP</a> (Rede Nacional de Ensino e Pesquisa) em Teresina: <a href="https://www.redepoti.rnp.br/">Rede Poti</a>.</figcaption>
+</figure>
+
+<figure style="text-align: center;">
+  <img src="./imagens/rede_poti.jpg">
+  <figcaption>Outro mapa da Rede Poti.</figcaption>
+</figure>
+
+<figure style="text-align: center;">
+  <img src="./imagens/rnp-picos.png">
+  <figcaption>MAN da RNP em Picos.</figcaption>
+</figure>
+
+#### IXes ou IXPs - *Internet exchange points*
+
+Em Português: **Ponto de Troca de Tráfego** (PTT.
+
+São os locais fı́sicos onde **Sistemas Autônomos** (SAs), ou seja, as redes de ISPs, provedoras de conteúdo, instituições acadêmicas, etc., podem se conectar umas às outras.
+
+No Brasil, temos o [CGI.br](https://cgi.br/) (**Comitê Gestor da Internet**), uma agência governamental, que mantém o sistema de IX chamado [IX.br](https://ix.br/), operando a partir da organização sem fins lucrativos [NIC.br](https://nic.br/) (**Núcleo de Informação e Coordenação do Ponto**). Os *datacenters* onde os equipamentos do IX.br são instalados e operados pelo NIC.br são chamados de **PIX** (Ponto de Interconexão).
+
+- [Mapa de SAs e PTTs](https://mapadeas.ceptro.br/).
+- [Lista de todos os IX do mundo](https://en.wikipedia.org/wiki/List_of_Internet_exchange_points_by_size).
+
+Atualmente existem [39 IX](https://ix.br/localidades/atuais) no Brasil. Dados de 02/03/2026:
+
+- Média de tráfego diário total: [49,02 Tbps](https://ix.br/agregado/), sendo **São Paulo**, **Fortaleza** e **Rio de Janeiro** os três maiores. São Paulo costuma ser o maior do mundo, tanto em tráfego quanto em número de participantes.
+- [IX de São Paulo](https://ix.br/trafego/agregado/sp):
+  - Média de tráfego: 19,27 Tbps
+  - Pico de tráfego: 30,51 Tbps
+  - Participantes: 2647
+- [IX de Fortaleza](https://ix.br/trafego/agregado/ce):
+  - Média de tráfego: 4,4 Tbps
+  - Pico de tráfego: 6,8 Tbps
+  - Participantes: 911
+- [IX do Rio de Janeiro](https://ix.br/trafego/agregado/rj) - *outlier* (houve algum problema na medição)
+  - Média de tráfego: 20,72 Tbps
+  - Pico de tráfego: 6,33 Pbps
+  - Participantes: 755
+- [IX de Teresina](https://ix.br/trafego/agregado/the)
+  - Média de tráfego: 13,64 Gbps
+  - Pico de tráfego: 30,88 Gbps
+  - Participantes: 59
+
+### *Wide Area Network* - WAN
+
+Abrange uma grande área geográfica, de Estados a Continentes. Pode atender a uma organização privada ou pode ser uma oferta de serviço comercial.
+
+<figure style="text-align: center;">
+  <img src="./imagens/rnp-piaui.png">
+  <figcaption><a href="https://viaipe.rnp.br/?&estado=PI&periodo=1d#@-6.282538526926375,-41.231689453125,7z">WAN</a> da RNP no Piauí.</figcaption>
+</figure>
+
+<figure style="text-align: center;">
+  <img src="./imagens/Rede-Ipe-2025.png">
+  <figcaption><a href="https://www.rnp.br/sistema-rnp/infraestrutura-para-pesquisa/evolucao-da-rede-ipe/">WAN</a> da RNP no Brasil (<a href="https://redeipe.rnp.br/home">Rede Ipê</a>).</figcaption>
+</figure>
+
+### Redes interligadas
+
+Uma rede é formada pela combinação de uma sub-rede e seus hosts. Redes diferentes possuem hardwares e softwares diferentes, muitas vezes incompatíveis. Uma rede interligada consiste na interconexão de um conjunto de redes distintas e operadas independentemente. Pode ter qualquer tamanho: duas ou mais LANs/MANs/WANs, etc.
+
+<figure style="text-align: center;">
+  <img src="./imagens/submarine-cables.png" alt="Mapa Mundi mostrando o caminho aproximado dos cabos de comunicação submarinos">
+  <figcaption>Internet: a expressão máxima das redes interligadas (fonte: <a href="https://www.submarinecablemap.com/">submarinecablemap</a>)</figcaption>
+</figure>
+
+## O Modelo de referência TCP/IP
+
+<figure style="text-align: center;">
+  <img src="./imagens/tcp-ip.png">
+  <figcaption>Camadas do TCP/IP</figcaption>
+</figure>
+
+### Camada Física
+
+Não é "parte oficial" do modelo, porém é presente no mundo real. É onde são definidas as interfaces elétrica, de sincronização e outras, pelas quais os bits são enviados como sinais pelos canais (cabos e ondas eletromagnéticas que se propagam pelo ar).
+
+É aqui que temos também a **modulação digital** (conversão de sinais analógicos em digitais, e vice-versa) e **multiplexação** (transmissão de vários sinais no mesmo meio ao mesmo tempo, sem que interfiram uns nos outros).
+
+### Camada de Enlace
+
+É responsável por mover pacotes entre dois hosts de um mesmo enlace. A transmissão e recepção de pacotes pode ser controlada através de um *driver* da placa de rede, um firmware ou chipsets especializados.
+
+Os pacotes recebidos passam pelo processo de **enquadramento**, e os quadros são transmitidos para a camada fı́sica.
+
+O TCP/IP inclui especificações sobre a tradução de métodos de endereçamento usados pelo IP (*Internet Protocol*) para endereços de camada de rede, como o MAC (*Media Access Control*).
+
+<figure style="text-align: center;">
+  <img src="./imagens/endereco.jpeg">
+</figure>
+
+### Camada de Rede
+
+É a camada responsável pelo envio de datagramas (PDU da camada de rede) de uma rede para outra rede (roteamento) através dos endereços IP.
+
+Os datagramas (ou pacotes) de uma mesma mensagem podem trafegar independentemente (comutação de pacotes). Caso seja necessário, as camadas superiores reorganizam os pacotes.
+
+<figure style="text-align: center;">
+  <img src="./imagens/comutação_gemini.png">
+  <figcaption>Diferença entre Comutação de Circuitos e Comutação de Pacotes.</figcaption>
+</figure>
+
+Dois protocolos principais: **IP** (v4 e v6) e **ICMP** (*Internet Control Message Protocol*), um protocolo de suporte para mensagens de erro ou operacionais.
+
+### Camada de Transporte
+
+Estabelece canais de comunicação fim-a-fim, utilizados para a troca de dados entre aplicações.
+
+Principais protocolos: **TCP** (*Transmission Control Protocol*), **UDP** (*User Datagram Protocol*) e mais recentemente **QUIC**, que é basicamente HTTP/3 sobre UDP.
+
+### Camada de Aplicação
+
+É a camada que contém todos os protocolos de nı́vel mais alto, no sentido de ser mais próximo do usuário. Exemplos de protocolos: HTTP, DNS, FTP, SMTP, etc.
+
+<figure style="text-align: center;">
+  <img src="./imagens/protocolos-tcp-ip.png">
+  <figcaption>Alguns dos principais protocolos do TCP/IP</figcaption>
+</figure>
+
+<figure style="text-align: center;">
+  <img src="./imagens/8-popular-network-protocols.gif">
+</figure>
+
+### Comunicação entre dois hosts através da Interet
+
+<figure style="text-align: center;">
+  <img src="./imagens/Encapsulamento.png">
+</figure>
 
 ## Como a Web funciona
 
@@ -86,7 +436,9 @@ A seguir, uma passagem breve sobre `DNS`, `HTTP` e `URL`.
 
 O *Domain Name System* é especificado no [RFC 1034](https://www.rfc-editor.org/info/rfc1034) e [RFC 1035](https://www.rfc-editor.org/info/rfc1035), que juntos formam o [STD 13](https://www.rfc-editor.org/info/std13). É um protocolo da Camada de Aplicação que funciona como um banco de dados distribuídos que armazena os endereços `IP` associados a `URLs`.
 
-![DNS](./imagens/dns.png)
+<figure style="text-align: center;">
+  <img src="./imagens/dns.png">
+</figure>
 
 ### HTTP
 
@@ -94,7 +446,9 @@ O *Hypertext Transfer Protocol* é definido nos RFCs [1945](https://www.rfc-edit
 
 O protocolo é executado em dois programas: um cliente e um servidor. A troca de mensagens entre os dois programas é feita através de mensagens HTTP (*Request* e *Response*).
 
-![Exemplo HTTP](./imagens/http_exemplo.png)
+<figure style="text-align: center;">
+  <img src="./imagens/http_exemplo.png">
+</figure>
 
 Uma de suas características mais marcantes são os `Códigos de Status` das respostas. A seguir, alguns:
 
@@ -124,170 +478,10 @@ Dois exemplos reais:
 - <span style="color:red;">https</span>://<span style="color:blue;">www.youtube.com</span>/<span style="color:#8000FF;">watch</span>?<span style="color:#FF8000;">v=pKxWPo73pX0</span>
 - <span style="color:red;">https</span>://<span style="color:blue;">developer.mozilla.org</span>/pt-BR/docs/Web/<span style="color:#8000FF;">HTML</span>#<span style="color:#088A85;">t%C3%B3picos_avan%C3%A7ados</span>
 
-## HTML
+## Programação para a Web I
 
-Excelente site para tutorial e referência (HTML, CSS e JavaScript): [MDN](https://developer.mozilla.org/pt-BR/). [Página de tutoriais do HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML).
+Agora que tivemos uma densa revisão sobre a Internet, é hora de vermos maiores detalhes sobre a disicplina.
 
-O [*HyperText Markup Language*](https://html.spec.whatwg.org/), é uma **linguagem de marcação** utilizada na construção de páginas na Web. 
+Nosso foco será sobre o desenvolvimento *frontend*, ou seja, a parte dos aplicativos/sistemas web mais próximos do usuário. Por isso veremos as seguintes tecnologias: HTML, CSS e JavaScript.
 
-É a linguagem *essencial* da web. Isso significa que existem outras linguagens e elementos que são utilizados na construção das páginas web. O [W3C](https://www.w3.org/) (*World Wide Web Consortium*) é a principal organização de padronização da web. Consiste em um consórcio de (atualmente) 460 membros, desde empresas a órgãos governamentais e independentes. Alguns padrões da W3C: 
-
-- CSS;
-- SVG;
-- PNG;
-- XML;
-- DOM;
-- OWL.
-
-Uma **linguagem de marcação** é um sistema de codificação de texto que consiste em um conjunto de símbolos inseridos em um documento de texto para controlar sua estrutura, formatação, ou o relacionamento entre suas partes.
-
-Em outras palavras é um conjunto de regras que 'governa' qual informação marcada pode ser incluída em um documento e como ela será combinada com o conteúdo do documento, de forma a facilitar o uso por humanos e máquinas.
-
-As marcações do HTML são conhecidas como **tags**.
-
-### Estrutura de um documento HTML
-
-```html
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Título</title>
-    </head>
-    <body>
-        <h1>Cabeçalho</h1>
-        <p>Este é um exemplo <a href=“exemplo.html”>simples</a>.</p>
-        <!– isto é um comentário –>
-    </body>
-</html>
-```
-
-Ou seja, o documento consiste em uma **árvore** de elementos e texto. Cada elemento é denotado por uma tag de abertura e sua tag correspondente de fechamento.
-
-#### `<!DOCTYPE html>`
-
-Não é um elemento HTML, mas uma instrução para que o navegador saiba a versão da linguagem de marcação que está sendo utilizada.
-
-O HTML5 requer um elemento `<DOCTYPE>` para garantir que a página seja renderizada pelo navegador de maneira correta.
-
-#### Atributos
-
-Elementos podem ter atributos, os quais controlam como eles irão funcionar. Consistem em pares `nome=valor` dentro da tag de abertura. O valor pode ser escrito sem aspas caso não tenha espaço vazio, ou os caracteres `<`, `>`, `‘`, `’`, `“`, `”` e `=`.
-
-Se tiver, o valor terá de ser escrito entre aspas duplas, `nome=“valor”` ou aspas simples também, `nome=‘valor’`.
-
-No exemplo tivemos o elemento de hiperlink `<a>` com seu atributo *href*.
-
-#### Codificação de caracteres
-
-Quando um browser vai renderizar uma página HTML, ele uitliza a condificação de caracteres definida explicitamente na página, ou a codificação padrão do idioma do navegador do usuário.
-
-O UTF-8 é uma codificação desejável para se deixar explícita na página HTML. Para isso, basta utilizar o elemento `<meta>` e seu atributo *charset*.
-
-#### Tags básicas principais
-
-Para uma lista completa de tags (elementos HTML) clique [aqui](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements).
-
-##### Elementos básicos
-
-- `<html>`: ou *root element*, representa a raiz de um documento HTML. Todos os outros elementos devem ser descendentes desse elemento.
-
-##### Metadados
-
-- `<head>`: providencia informações gerais (metadados) sobre o documento, incluindo seu título e links para scripts e folhas de estilos.
-- `<meta>`: define qualquer informação de metadados que não podem ser definidos por outros elementos HTML.
-- `<style>`: contém informações de estilo para um documento ou uma parte do documento.
-- `<title>`: define o título do documento, mostrado na barra de título de um navegador ou na aba da página.
-
-##### Raiz de seccionamento
-
-- `<body>`: representa o conteúdo de um documento HTML.
-
-##### Separação de conteúdo
-
-- `<h1>` - `<h6>`: representam seis níveis de título de seção, onde `<h1>` é o mais alto e `<h6>` o mais baixo.
-
-##### Conteúdo textual
-
-- `<div>`: é um container genérico para conteúdo de fluxo, que de certa forma não representa nada. Ele pode ser utilizado para agrupar elementos para fins de estilos (usando **class** ou **id**), ou porque eles compartilham valores de atributos, como **lang**. Ele deve ser utilizado somente quando não tiver outro elemento de semântica
-- `<figure>`: representa conteúdo autocontido, potencialmente com uma legenda opcional, que é especificada usando o `<figcaption>` elemento. A figura, sua legenda e seu conteúdo são referenciados como uma única unidade.
-- `<ol>`: representa uma lista de itens ordenados, geralmente a partir de números.
-- `<p>`: representa um parágrafo. Em mídias visuais, parágrafos são representados como blocos indentados de texto com a primeira letra avançada e separados por linhas em branco. Já em HTML, parágrafos são usados para agrupar conteúdos relacionados de qualquer tipo, como imagens e campos de um formulário.
-- `<ul>`: representa uma lista de itens sem ordem rígida, isto é, uma coleção de itens que não trazem uma ordenação numérica e as suas posições, nessa lista, são irrelevantes.
-
-##### Semânticas textuais inline
-
-- `<a>`: ou elemento âncora, cria uma hiperligação nas páginas web, arquivos, endereços de emails, ligações na mesma página ou endereços na URL.
-- `<b>`, `<em>` e `<strong>`: destaca um texto em **negrito**. Tarefa: pesquisar a diferença entre eles.
-- `<i>`: destaca um texto em *itálico*.
-- `<br>`: produz uma quebra de linha em um texto.
-- `<code>`: apresenta seu conteúdo estilizado de maneira a indicar que o texto é um pequeno fragmento de código. Por padrão, o conteúdo é exibido utilizando uma fonte monoespaçada.
-- `<span>`: um conteiner genérico em linha para conteúdo fraseado , que não representa nada por natureza. Deve ser usado somente quando nenhum outro elemento semântico for apropriado.
-- `<u>`: deixa um texto sublinhado.
-
-##### Imagem e multimídia
-
-- `<img>`: representa a inserção de imagem no documento, sendo implementado também pelo HTML5 para uma melhor experiência com os elementos `<figure>` e `<figcaption>`.
-- `<video>`: é utilizado para incorporar conteúdo de vídeo em um documento HTML.
-
-##### Conteúdo tabulado
-
-- `<table>`: representa dados em duas dimensões ou mais.
-
-#### Atributos
-
-[Lista de atributos globais](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Global_attributes), ou seja, que podem ser usados em todos os elementos.
-
-[Lista de atributos e seus respectivos elementos](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Attributes).
-
-## Exercícios
-
-1. Crie um arquivo chamado index.html contendo a estrutura mínima de um documento HTML:
-   - A declaração `<!DOCTYPE html>.`
-   - As tags `<html>`, `<head>` e `<body>`.
-   - No `<head>`, coloque um `<title>` com o texto: Minha Primeira Página Web.
-   - No `<body>`, escreva um parágrafo com seu nome e curso.
-
-2. Na mesma página, adicione:
-   - Um título principal `<h1>` com o nome da disciplina: Programação para a Web 1.
-   - Dois subtítulos `<h2>` com os textos: Introdução à Web e Fundamentos de HTML.
-   - Um subtítulo `<h3>` chamado Primeiros Testes.
-
-3. Adicione dois parágrafos `<p>` no corpo da página:
-    - O primeiro com um resumo da disciplina.
-    - O segundo com uma curiosidade pessoal (ex.: “Meu primeiro contato com a Internet foi…”).
-
-4. Adicione três links à sua página usando a tag `<a>`:
-    - Um link para o site da UFPI.
-    - Um link para o [MDN Web Docs](https://developer.mozilla.org/pt-BR/).
-    - Um link para o [W3Schools](https://www.w3schools.com/) configurado para abrir em uma nova aba (`target="_blank"`).
-
-5. Adicione uma imagem usando `<img>`:
-   - Escolha uma imagem da Internet ou local.
-   - Inclua os atributos `src`, `alt` e `title`.
-   - Ajuste a largura da imagem (`width="200px"` por exemplo).
-
-6. Crie:
-    - Um `<div>` com fundo colorido (usando atributo `style`).
-    - Dentro do `<div>`, adicione um `<p>` com texto qualquer.
-    - Adicione também um `<span>` dentro do parágrafo, destacando uma palavra em outra cor.
-    - Compare a diferença entre elementos de **bloco** (`div`, `p`) e **inline** (`span`).
-
-7. Atribua:
-   - `id="principal"` ao `<h1>` da página.
-   - `class="subtitulo"` aos `<h2>`.
-   - Passe o mouse sobre os títulos e veja o atributo `title` exibido como dica.
-
-8. Monte uma página HTML que contenha:
-   - Um título `<h1>` com seu nome.
-   - Um parágrafo com uma breve biografia.
-   - Um link para um vídeo ou artigo que você goste.
-   - Uma imagem que represente um hobby ou interesse pessoal.
-   - Um uso de `<span>` para destacar uma palavra importante.
-
-9. Crie uma mini “página de apresentação pessoal” contendo:
-    - Um título com seu nome e curso.
-    - Uma foto (pode ser avatar ou ícone).
-    - Uma lista de três hobbies ou interesses.
-    - Um link para um site que você visita frequentemente.
-    - Pelo menos um uso de `id` e um de `class` nos elementos.
+Em seguida nos aprofundaremos no *frontend* ao estudarmos os *frameworks* mais utilizados na atualidade e, depois, outros conceitos e tecnologias importantes envolvendo segurança, APIs e autenticação.

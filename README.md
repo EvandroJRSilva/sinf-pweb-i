@@ -30,6 +30,7 @@ Repositório para os materiais da disciplina P. Web I
 
 #### Atualizada
 
+- ROADMAP.SH. **Frontend Developer**. Developer Roadmaps, 2026. Disponível em: https://roadmap.sh/frontend. Acesso em 04 fev. 2026.
 - MDN. **HTML: Linguagem de Marcação de Hipertexto**. Disponível em: https://developer.mozilla.org/pt-BR/docs/Web/HTML. Acesso em: 04 fev. 2026.
 - MDN. **CSS**. Disponível em: https://developer.mozilla.org/pt-BR/docs/Web/CSS. Acesso em: 04 fev. 2026.
 - MDN. **JavaScript**. Disponível em: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript. Acesso em: 04 fev. 2026.
