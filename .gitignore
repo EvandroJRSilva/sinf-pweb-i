@@ -11,6 +11,10 @@
 *.toc
 
 # Diretórios
-AULAS/Apresentação/
 2025-2/
+AULAS/Apresentação/
+Plano de Ensino/*
 PROVAS/
+
+# Exceções
+!Plano de Ensino/plano_ensino.pdf

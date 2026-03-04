@@ -3,7 +3,7 @@
 Sumário
 
 - [Aula 01](#aula-01)
-  - [O que é a Internet?](#o-que-é-a-internet)
+  - [Como a Internet funciona](#como-a-internet-funciona)
     - [Conceitos básicos e terminologia](#conceitos-básicos-e-terminologia)
     - [Autoridades da Internet](#autoridades-da-internet)
   - [História das Redes de Computadores e da Internet](#história-das-redes-de-computadores-e-da-internet)
@@ -13,13 +13,8 @@ Sumário
     - [Década de 1990: A explosão da Internet](#década-de-1990-a-explosão-da-internet)
     - [Século XXI](#século-xxi)
   - [Tecnologia de Redes Locais a Globais](#tecnologia-de-redes-locais-a-globais)
-    - [Nanoredes](#nanoredes)
-    - [*Near-field communication* - NFC](#near-field-communication---nfc)
-    - [*Body Area Network* - BAN](#body-area-network---ban)
     - [*Personal Area Network* - PAN](#personal-area-network---pan)
     - [*Local Area Network* - LAN](#local-area-network---lan)
-      - [Tipos de LAN](#tipos-de-lan)
-    - [*Campus Area Network* - CAN](#campus-area-network---can)
     - [*Metropolitan Area Network* - MAN](#metropolitan-area-network---man)
       - [IXes ou IXPs - *Internet exchange points*](#ixes-ou-ixps---internet-exchange-points)
     - [*Wide Area Network* - WAN](#wide-area-network---wan)
@@ -35,43 +30,31 @@ Sumário
     - [DNS](#dns)
     - [HTTP](#http)
     - [URL](#url)
-  - [Programação para a Web I](#programação-para-a-web-i)
+  - [Padrões da Web\[^1\]](#padrões-da-web1)
+  - [Visão geral das tecnologias modernas da web\[^2\]](#visão-geral-das-tecnologias-modernas-da-web2)
+    - [Linguagens e estruturas do lado do servidor](#linguagens-e-estruturas-do-lado-do-servidor)
+  - [Como navegadores funcionam\[^3\]](#como-navegadores-funcionam3)
 
-<style>
-  .container-flex {
-  display: flex; /* Makes the child elements sit side by side */
-  flex-wrap: wrap; /* Allows items to wrap to a new line when no more space */
-  gap: 20px; /* Adds space between elements (modern alternative to margins) */
-}
+## Como a Internet funciona
 
-  .item {
-    min-width: 100px;
-    max-width: 1500px;
+Antes de entender como a Internet funciona, é interessante entender o que é uma **rede de computadores**, a qual consiste em um grupo de computadores, ou outros dispositivos, os quais estão conectados uns aos outros. A partir disso, podemos conceituar a Internet como uma rede de bilhões de dispositivos, os quais estão espalhados por todo o mundo. Esses dispositivos podem ser servidores, PCs, videogames, celulares, tablets, relógios, veı́culos, eletrodomésticos, etc.
 
-    min-height: 100px;
-    max-height: 150px;
-  }
-  
-  .figura{
-   /* flex: 1;*/
-    flex-basis: 50%;
-  }
+<figure style="text-align: center;">
+  <img src="./imagens/internet-schema-1.png">
+  <figcaption>Dois dispositivos conectados (fonte: <a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work">MDN</a>)</figcaption>
+</figure>
 
-  .texto{
-    /*flex: 1;*/
-    flex-basis: 40%;
-  }
+De forma superficial a Internet funciona ao conectar diferentes dispositivos através do uso de protocolos padronizados. O núcleo da Internet consiste em uma rede global de **roteadores**, os quais são responsáveis por direcionar o tráfego de dados entre diferentes dispositivos e sistemas. Para serem enviados pela rede, os dados são "quebrados" em pequenas unidades chamadas de **pacote**. Ao receber um pacote um roteador examina seus metadados e então o encaminha para o próximo roteador no caminho, e isso ocorre até que os dados cheguem ao destino.
 
-  /*.container-flex > div {
-  flex: 1 1 100px; /* Makes each element take an equal amount of available space */
-}
-</style>
+<figure style="text-align: center;">
+  <img src="./imagens/internet-schema-3.png">
+  <figcaption>Vários dispositivos conectados através de um switch (fonte: <a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work">MDN</a>)</figcaption>
+</figure>
 
-## O que é a Internet?
-
-Antes de entender o que é a Internet, é interessante entender o que é uma **rede de computadores**, a qual consiste em um grupo de cmoputadores, ou outros dispositivos, os quais estão conectados uns aos outros. A partir disso, podemos conceituar a Internet como uma rede de bilhões de dispositivos, os quais estão espalhados por todo o mundo. Esses dispositivos podem ser servidores, PCs, videogames, celulares, tablets, relógios, veı́culos, eletrodomésticos, etc.
-
-De forma superficial a Internet funciona ao conectar diferentes dispositivos através do uso de protocolos padronizados. O núcleo da Internet consiste em uma rede global de **roteadores**, os quais são responsáveis por direcionar o tráfego de dados entre diferentes dispositivos e sistemas. Para serem enviados pela rede, os dados são "quebrados" em pacotes pequenos unidades chamadas de **pacote**. Ao receber um pacote um roteador examina seus metadados e então o encaminha para o próximo roteador no caminho, e isso ocorre até que os dados cheguem ao destino.
+<figure style="text-align: center;">
+  <img src="./imagens/internet-schema-5.png">
+  <figcaption>Várias redes conectadas (fonte: <a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work">MDN</a>)</figcaption>
+</figure>
 
 O conteúdo a seguir aprofunda vários desses conceitos, para permitir que possamos entender melhor, e de forma básica, as redes de computadores, inclusive a Internet, e como tudo funciona.
 
@@ -193,39 +176,7 @@ Estamos sendo testemunhas vivas de todas as evoluções e revoluções. Qual(is)
 
 As redes podem variar de pequenas e pessoais a grandes e globais, e são denominadas de acordo com sua abrangência geográfica e escala: **Nanoredes**, **NFC**, **BAN**, **PAN**, **LAN**, **CAN**, **MAN**, **WAN**.
 
-### Nanoredes
-
-Consiste em um conjunto de nanomáquinas capazes de se comunicar. Aplicações possı́veis: biologia, meio-ambiente, tecnologia militar e industrial e bens de consumo. 
-
-Prática recomendada do IEEE para *framework* de comunicação em nanoescala e molecular: [1906.1-2015](https://ieeexplore.ieee.org/document/7378262).
-
-<figure style="text-align: center;">
-  <img src="./imagens/nanonet.png">
-  <figcaption>Nanomáquinas em rede para aplicação de medicamento</figcaption>
-</figure>
-
-### *Near-field communication* - NFC
-
-Consiste em um conjunto de tecnologias de comunicação sem fio em curta distância: 10 cm ou menos. Tem suas raı́zes na tecnologia [RFID](https://en.wikipedia.org/wiki/Radio-frequency_identification).
-
-Aplicações:
-
-- Pagamento por aproximação, cartão fı́sico ou virtual.
-- Recarregamento de celular sem fio.
-- Automatização de outros tipos de conexão (ex.: ativar, emparelhar e desativar o Bluetooth).
-- Permite dispositivos eletrônicos serem utilizados como documentos de identidade.
-- Permite dispositivos eletrônicos ter configurações alteradas. Por exemplo, todas as pessoas que entram em uma sala de cinema têm seus celulares configurados no modo silencioso/vibratório automaticamente.
-
-### *Body Area Network* - BAN
-
-Rede formada por dispositivos computacionais vestı́veis. Geralmente são sensores sem fio, e pode ser referida também como **WBAN** (*Wireless BAN*), **BSN** (*Body Sensor Network*) ou **MBAN** (*Medical BAN*). Exemplos:
-
-- Implante subcutâneo.
-- Comprimido/pı́lula.
-- Smartwatches, pulseiras, etc.
-- Dispositivos que podem ser carregados: na mão, bolso, sacola, etc.
-
-[IEEE 802.15](https://grouper.ieee.org/groups/802/15/) - *Working Grupo for Wireless Specialty Networks*.
+Vamos focar em apenas algumas.
 
 ### *Personal Area Network* - PAN
 
@@ -245,38 +196,11 @@ Quase sempre, cada computador se comunica com um dispositivo chamado **ponto de 
 O padrão para LANs sem fio é o IEEE 802.11. [Artigo na Wikipedia](https://en.wikipedia.org/wiki/IEEE_802.11). [Working Group da IEEE](https://www.ieee802.org/11/).
 
 <figure style="text-align: center;">
-  <img src="./imagens/figura05.png">
+  <img src="./imagens/figura06.png" style="width:800px;">
 </figure>
 
 <figure style="text-align: center;">
-  <img src="./imagens/figura06.png">
-</figure>
-
-<figure style="text-align: center;">
-  <img src="./imagens/figura07.png">
-</figure>
-
-#### Tipos de LAN
-
-**HAN** (*Home Area Network*), consiste em uma rede doméstica, ou seja, a conectividade de todos os dispositivos em uma residência.
-
-Em um ambiente corporativo, pode ser interessante separar uma LAN em subredes, ou seja, uma LAN para cada setor. Então, terı́amos várias LANs virtuais (**VLANs** - *Virtual LANs*).
-
-Em uma LAN onde os dispositivos se comunicam apenas sem fio pode ser referida como **WLAN** (*Wireless LAN*).
-
-<div style="display:flex">
-  <figure>
-    <img src="./imagens/Fibre_Channel_Storage_Area_Network.png">
-  </figure>
-  <p>Nos centros de processamento de dados há vários computadores dedicados ao armazenamento de informações. A rede local entre os servidores para acessar os dados armazenados é chamada de <b>SAN</b> (<i>Storage Area Network</i>).</p>
-</div>
-
-### *Campus Area Network* - CAN
-
-Pode ser também *Corporate Area Network*. Consiste em um conjunto de LANs que estão próximas fisicamente. Exemplo da UFPI em Teresina (CT, CCHL, CCS, CCN, CCE, CCA):
-
-<figure style="text-align: center;">
-  <img src="./imagens/rnp-ufpi.png">
+  <img src="./imagens/figura07.png" style="width:800px;">
 </figure>
 
 ### *Metropolitan Area Network* - MAN
@@ -356,14 +280,16 @@ Uma rede é formada pela combinação de uma sub-rede e seus hosts. Redes difere
 
 ## O Modelo de referência TCP/IP
 
+O TCP/IP consiste em uma coleção fundamental de protocolos de comunicação da Internet. Os protocolos são estruturados em quatro camadas conceituais, entretanto é comum também estudarmos a Camada Física nas disciplinas de Redes de Computadores.
+
 <figure style="text-align: center;">
   <img src="./imagens/tcp-ip.png">
-  <figcaption>Camadas do TCP/IP</figcaption>
+  <figcaption>Camadas do TCP/IP sobre a Camada Física</figcaption>
 </figure>
 
 ### Camada Física
 
-Não é "parte oficial" do modelo, porém é presente no mundo real. É onde são definidas as interfaces elétrica, de sincronização e outras, pelas quais os bits são enviados como sinais pelos canais (cabos e ondas eletromagnéticas que se propagam pelo ar).
+É onde são definidas as interfaces elétrica, de sincronização e outras, pelas quais os bits são enviados como sinais pelos canais (cabos e ondas eletromagnéticas que se propagam pelo ar).
 
 É aqui que temos também a **modulação digital** (conversão de sinais analógicos em digitais, e vice-versa) e **multiplexação** (transmissão de vários sinais no mesmo meio ao mesmo tempo, sem que interfiram uns nos outros).
 
@@ -478,10 +404,53 @@ Dois exemplos reais:
 - <span style="color:red;">https</span>://<span style="color:blue;">www.youtube.com</span>/<span style="color:#8000FF;">watch</span>?<span style="color:#FF8000;">v=pKxWPo73pX0</span>
 - <span style="color:red;">https</span>://<span style="color:blue;">developer.mozilla.org</span>/pt-BR/docs/Web/<span style="color:#8000FF;">HTML</span>#<span style="color:#088A85;">t%C3%B3picos_avan%C3%A7ados</span>
 
-## Programação para a Web I
+## Padrões da Web[^1]
 
-Agora que tivemos uma densa revisão sobre a Internet, é hora de vermos maiores detalhes sobre a disicplina.
+[^1]: Adaptado de https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/The_web_standards_model#padrões_da_web.
 
-Nosso foco será sobre o desenvolvimento *frontend*, ou seja, a parte dos aplicativos/sistemas web mais próximos do usuário. Por isso veremos as seguintes tecnologias: HTML, CSS e JavaScript.
+Os padrões da Web são as tecnologias que usamos para construir sites. Esses padrões existem como longos documentos técnicos chamados especificações, que detalham exatamente como a tecnologia deve funcionar. Por exemplo, o [HTML Living Standard](https://html.spec.whatwg.org/multipage/) descreve exatamente como o HTML (todos os elementos HTML e suas APIs associadas e outras tecnologias adjacentes) deve ser implementado.
 
-Em seguida nos aprofundaremos no *frontend* ao estudarmos os *frameworks* mais utilizados na atualidade e, depois, outros conceitos e tecnologias importantes envolvendo segurança, APIs e autenticação.
+Os padrões da Web são criados por órgãos de padrões - instituições que convidam grupos de pessoas de diferentes empresas de tecnologia para se reunirem e concordarem sobre como as tecnologias devem funcionar da melhor maneira para cumprir todos os seus casos de uso. O [*World Wide Web Consortium*](https://grokipedia.com/page/World_Wide_Web_Consortium) (W3C) é o órgão de padrões da web mais conhecido, mas existem outros como o [WHATWG](https://whatwg.org/) (que foi responsável pela modernização da linguagem HTML), [ECMA](https://www.ecma-international.org/) (que publicou o padrão para ECMAScript, no qual o JavaScript é baseado), [Khronos](https://www.khronos.org/) (que publica tecnologias para gráficos 3D, como WebGL) e outros.
+
+## Visão geral das tecnologias modernas da web[^2]
+
+[^2]: Adaptado de https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/The_web_standards_model#vis%C3%A3o_geral_das_tecnologias_modernas_da_web.
+
+- **Navegadores**: são os programas de software que as pessoas usam para consumir a web e incluem Firefox, Chrome, Opera, Safari e Edge.
+- **HTTP**: o Protocolo de Transferência de Hipertexto é um protocolo de mensagens que permite aos navegadores da web se comunicarem com os servidores da web (onde os sites da web são armazenados).
+- **HTML**, **CSS** e **JavaScript**: são as três tecnologias principais para a construção de um site.
+  - A linguagem de marcação de hipertexto, ou **HTML** , é uma linguagem de marcação que consiste em diferentes elementos nos quais você pode agrupar (marcar) o conteúdo para dar-lhe significado (semântica) e estrutura.
+  - *Cascading Style Sheets* (**CSS**) é uma linguagem baseada em regras usada para aplicar estilos ao seu HTML, por exemplo, definindo texto e cores de fundo, adicionando bordas, animando coisas ou fazendo o layout de uma página de uma determinada maneira.
+  - **JavaScript** é a linguagem de programação que usamos para adicionar interatividade aos sites, desde a troca de estilo dinâmico até a obtenção de atualizações do servidor, até gráficos 3D complexos.
+
+### Linguagens e estruturas do lado do servidor
+
+HTML, CSS e JavaScript são linguagens de frontend (ou cliente), o que significa que são executadas pelo navegador para produzir um front-end de site que seus usuários possam usar.
+
+Há outra classe de linguagens chamadas linguagens de backend (ou do lado do servidor), o que significa que são executadas no servidor antes de o resultado ser enviado ao navegador para exibição. Um uso típico para uma linguagem do lado do servidor é obter alguns dados de um banco de dados e gerar algum HTML para conter os dados, antes de enviar o HTML ao navegador para exibi-lo ao usuário.
+
+Linguagens de servidor de exemplo incluem ASP.NET, Java, Python, PHP e NodeJS.
+
+## Como navegadores funcionam[^3]
+
+[^3]: Traduzido e adaptado de https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_browsers_load_websites.
+
+A primeira parte de como um navegador funciona é vista em [Como a Web funciona](#como-a-web-funciona). Resumo rápido:
+
+1. Digitamos o **nome de domínio** de um site.
+2. O DNS retorna o endereço IP para o domínio requisitado.
+3. Uma ou mais requisições HTTP são feitas ao servidor do IP fornecido.
+4. O servidor responde às requisições.
+
+Nessa resposta do servidor, o navegador pode receber variados tipos de arquivo: HTML, CSS, JavaScript, arquivos de mídia (imagem, áudio, vídeo, PDF, etc.) e outros que sejam suportados. A partir disso o navegador inicia o processo de **renderização**, ou seja, a construção da página de acordo com todos os arquivos recebidos:
+
+1. A estrutura da página, definida no arquivo HTML, é transformada em uma árvore **DOM** (*Document Objetct Model*), basicamente uma estrutura hierárquica dos elementos da página.
+2. O(s) estilo(s) da página, definido(s) no(s) CSS é carregado e aplicado. Após sua aplicação, a página já estará visível na tela do computador.
+   <figure style="text-align: center;">
+     <img src="./imagens/html-css-parsing .png">
+   </figure>
+3. Logo depois, qualquer código JavaScript encontrado na página (seja no próprio arquivo HTML, ou de arquivos separados) é analisado, interpretado, compilado e executado. Isso acontece em algum momento antes da última renderização da página.
+
+<div style="text-align: center;font-size:50px;">
+  <p style="margin-top: 50px;">FIM</p>
+</div>
