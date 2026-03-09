@@ -3,22 +3,132 @@
 Sumário
 
 - [Aula 02](#aula-02)
+  - [O que é HTML](#o-que-é-html)
+    - [Elemento HTML](#elemento-html)
+      - [Elementos vazios](#elementos-vazios)
+      - [Atributos](#atributos)
+    - [Estrutura de um documento HTML](#estrutura-de-um-documento-html)
   - [Listas](#listas)
-  - [Tabelas](#tabelas)
-  - [Formulários](#formulários)
-  - [Elementos semânticos](#elementos-semânticos)
+    - [Listas ordenadas](#listas-ordenadas)
+    - [Listas não ordenadas](#listas-não-ordenadas)
+    - [Aninhando listas](#aninhando-listas)
+    - [Listas de descrição/definição](#listas-de-descriçãodefinição)
+  - [Multimídia](#multimídia)
   - [Exercícios](#exercícios)
+    - [Introdução](#introdução)
     - [Listas](#listas-1)
-    - [Tabelas](#tabelas-1)
-    - [Formulários](#formulários-1)
-    - [Elementos Semânticos](#elementos-semânticos-1)
+    - [Áudio e Vídeo](#áudio-e-vídeo)
+
+## O que é HTML
+
+Excelente site para tutorial e referência (HTML, CSS e JavaScript): [MDN](https://developer.mozilla.org/pt-BR/). [Página de tutoriais do HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML).
+
+O [*HyperText Markup Language*](https://html.spec.whatwg.org/), é uma **linguagem de marcação** utilizada na construção de páginas na Web. 
+
+É a linguagem *essencial* da web. Isso significa que existem outras linguagens e elementos que são utilizados na construção das páginas web. O [W3C](https://www.w3.org/) (*World Wide Web Consortium*) é a principal organização de padronização da web. Consiste em um consórcio de (atualmente) 460 membros, desde empresas a órgãos governamentais e independentes. Alguns padrões da W3C: 
+
+- CSS;
+- SVG;
+- PNG;
+- XML;
+- DOM;
+- OWL.
+
+Uma **linguagem de marcação** é um sistema de codificação de texto que consiste em um conjunto de símbolos inseridos em um documento de texto para controlar sua estrutura, formatação, ou o relacionamento entre suas partes. Em outras palavras é um conjunto de regras que 'governa' qual informação marcada pode ser incluída em um documento e como ela será combinada com o conteúdo do documento, de forma a facilitar o uso por humanos e máquinas. No HTML esse controle é feito com o uso de **elementos**.
+
+### Elemento HTML
+
+<figure style="text-align: center;">
+  <img src="./imagens/grumpy-cat-small.png">
+  <figcaption>Anatomia de um elemento HTML</figcaption>
+</figure>
+
+As partes principais do elemento são:
+
+- **Tag de abertura**: Consiste no nome do elemento (neste caso: `p`), envolvido entre parênteses angulares de abertura e fechamento. Isso indica onde o elemento começa, ou inicia a produzir efeito — neste caso, onde o parágrafo se inicia.
+- **Tag de fechamento**: É o mesmo que a tag de abertura, exceto que este inclui uma barra diagonal antes do nome do elemento. Indica onde o elemento termina — neste caso, onde fica o fim do parágrafo. Falhar em incluir o fechamento de uma tag é um erro comum para iniciantes e pode levar a resultados estranhos.
+- **O conteúdo**: Este é o conteúdo do elemento, que neste caso é somente texto.
+- O **elemento**: A tag de abertura, mais a tag de fechamento, mais o conteúdo, é igual ao elemento.
+
+Os elementos podem ser **aninhados**:
+
+<div style="display:flex;gap:20px;">
+  <pre><code>
+&lt;p&gt;O Prof. Evandro é o &lt;strong&gt;melhor&lt;/strong&gt; professor de SI da UFPI.&lt;/p&gt;
+  </code></pre>
+  <p>O Prof. Evandro é o <strong>melhor</strong> professor de SI da UFPI.</p>
+</div>
+
+E são classificados em várias categorias: [lista de categorias de elementos](https://html.spec.whatwg.org/multipage/indices.html#element-content-categories).
+
+Para uma lista completa de tags (elementos HTML) clique [aqui](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements).
+
+#### Elementos vazios
+
+Nem todos os elementos seguem o padrão de possuírem tag de abertura, conteúdo e tag de fechamento. Alguns elementos consistem apenas em uma única tag, que é geralmente usada para inserir/incorporar algo no documento no lugar em que ele é incluído. Dois exemplos: `<img>` e `<br>`.
+
+#### Atributos
+
+<figure style="text-align: center;">
+  <img src="./imagens/grumpy-cat-attribute-small.png">
+</figure>
+
+Elementos podem ter atributos, os quais controlam como eles irão funcionar. Consistem em pares `nome=valor` dentro da tag de abertura. O valor pode ser escrito sem aspas caso não tenha espaço vazio, ou os caracteres `<`, `>`, `‘`, `’`, `“`, `”` e `=`. Se tiver, o valor terá de ser escrito entre aspas duplas, `nome=“valor”` ou aspas simples também, `nome=‘valor’`.
+
+No exemplo tivemos o elemento de hiperlink `<a>` com seu atributo *href*.
+
+Um atributo deve conter:
+
+- Um espaço entre ele e o nome do elemento (ou o atributo anterior, caso o elemento já contenha um ou mais atributos.)
+- O nome do atributo, seguido por um sinal de igual.
+- Um valor de atributo, com aspas de abertura e fechamento em volta dele.
+
+[Lista de atributos globais](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Global_attributes), ou seja, que podem ser usados em todos os elementos.
+
+[Lista de atributos e seus respectivos elementos](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Attributes).
+
+### Estrutura de um documento HTML
+
+A seguir o exemplo simples de um documento HTML completo:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Título</title>
+    </head>
+    <body>
+        <h1>Cabeçalho</h1>
+        <p>Este é um exemplo <a href=“exemplo.html”>simples</a>.</p>
+        <!– isto é um comentário –>
+    </body>
+</html>
+```
+
+Percebe-se que o documento consiste em uma **árvore de elementos e texto**. No código temos:
+
+1. `<!DOCTYPE html>`: não é um elemento HTML, mas uma instrução para que o navegador saiba a versão da linguagem de marcação que está sendo utilizada. O HTML5 requer um elemento `<DOCTYPE>` para garantir que a página seja renderizada pelo navegador de maneira correta.
+2. `<html></html>`: envolve o conteúdo da página inteira e é conhecido como o **elemento raiz** (*root element*) da página HTML, ou seja, todos os outros elementos devem ser descendentes desse elemento.
+   1. No exemplo estamos configurando o atributo `lang` para `pt-br`. Com isso estamos indicando que a língua principal da página é `pt-br`.
+3. `<head></head>`: atua como um container para todo o conteúdo da página HTML que não é visível para os visitantes do site. É onde são declarados os metadados sobre o documento, incluindo seu título e links para scripts e folhas de estilos.
+4. `<meta charset="UTF-8">`: define o tipo da codificação dos caracteres que o seu documento deve usar, neste caso, para o tipo UTF-8.
+5. `<title></title>`:  define o título de sua página, que aparecerá na guia do navegador na qual a página está carregada e é usado para descrevê-la quando for salva nos favoritos.
+6. `<body></body>`: contém todo o conteúdo a ser mostrado aos usuários quando eles visitarem sua página, como texto, imagens, vídeos, jogos, faixas de áudio reproduzíveis, ou qualquer outra coisa.
+7. `<h1></h1>`: tag de cabeçalho. Ao todo são 6 cabeçalhos: h1 - h6.
+8. `<p></p>`: tag de parágrafo.
+9. `<a></a>`: tag de link.
+10. `<!– ... ->`: comentário, ou seja, texto que não será renderizado pelo navegador.
 
 ## Listas
 
-**TODO**
-  - Listas de definições
+Existem três tipos principais de listas:
 
-As listas podem ser **ordenadas** (seus elementos são ordenados de acordo com algum tipo de numeração) ou **não ordenadas** (não há qualquer tipo de ordenação).
+- **Ordenadas**: seus elementos são ordenados de acordo com algum tipo de numeração.
+- **Não ordenadas**: não há qualquer tipo de ordenação.
+- **Lista de descrição/definição**: serve para organizar um conjunto de itens e suas descrições/definições associadas.
+
+### Listas ordenadas
 
 A tag para listas ordenadas é [`<ol>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/ol) de *ordered list*. Seus elementos devem estar entre tags `<li>` (*list item*).
 
@@ -26,130 +136,215 @@ Atributos: `reversed`, `start` e `type`.
 
 Exemplo:
 
-```html
-<ol start="5", type="A">
-  <li> Primeiro item</li>
-  <li>
-    segundo item
-    <!-- Veja que a tag de fechamento </li> não é colocada aqui! -->
-    <ol>
-      <li>segundo item primeiro subitem</li>
-      <li>segundo item segundo subitem</li>
-      <li>segundo item terceiro subitem</li>
+<div style="display:flex;gap:20px;">
+  <pre><code>
+&lt;ol start="5", type="A"&gt;
+  &lt;li>Primeiro item&lt;/li&gt;
+  &lt;li>Segundo item&lt;/li&gt;
+  &lt;li>Terceiro item&lt;/li&gt;
+&lt;/ol&gt;
+  </code></pre>
+  <div>
+    <ol start="5", type="A">
+      <li>Primeiro item</li>
+      <li>Segundo item</li>
+      <li>Terceiro item</li>
     </ol>
-  </li>
-  <!-- Aqui está a tag de fechamento </li> -->
-  <li>terceiro item</li>
-</ol>
-```
+  </div>
+</div>
+
+### Listas não ordenadas
 
 A tag para listas não-ordenadas é [`<ul>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/ul) de *unordered list*. Seus elementos devem estar entre tags `<li>` (*list item*).
 
+Exemplo:
+
+<div style="display:flex;gap:20px;">
+  <pre><code>
+&lt;ul>
+  &lt;li>Pera&lt;/li&gt;
+  &lt;li>Uva&lt;/li&gt;
+  &lt;li>Maçã&lt;/li&gt;
+  &lt;li>Salada Mista&lt;/li&gt;
+&lt;/ul&gt;
+  </code></pre>
+  <div>
+    <ul>
+      <li>Pera</li>
+      <li>Uva</li>
+      <li>Maçã</li>
+      <li>Salada Mista</li>
+    </ul>
+  </div>
+</div>
+
+### Aninhando listas
+
 Ambas as listas podem ser aninhadas e misturadas, ou seja, `<ol>` dentro de `<ul>` e vice-versa.
-
-## Tabelas
-
-Tabelas podem ser construídas com o uso da tag [`<table>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/table). O conteúdo permitido em seu interior deve seguir a seguinte ordem:
-
-1. Um elemento `<caption>` (opcional).
-2. Zero ou mais `<colgroup>` elementos.
-3. Um elemento `<thead>` (opcional).
-4. Uma das duas alternativas:
-   1. Zero ou mais elementos `<tbody>`
-   2. Um ou mais elementos `<tr>`
-5. Um elemento `<tfoot>` (opcional).
-
-**Elementos**
-
-- [`<caption>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/caption): tag usada para legendas.
-- [`<colgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/colgroup): serve para definir um grupo de colunas dentro uma tabela.
-- [`<thead>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/thead): encapsula um conjunto de linhas de tabela (`<tr>`), indicando que fazem parte do cabeçalho de uma tabela, com informações sobre as colunas da tabela (comumente elementos `<th>`).
-- [`<tbody>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/tbody): encapsula um conjunto de linhas de tabela (`<tr>`), indicado que compõem o corpo de dados da tabela
-- [`<tr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/tr): define uma linha de células em uma tabela. As células da linha podem então consistir em um misto de células de dado (`<td>`) e células de cabeçalho (`<th>`).
-- [`<th>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/th): define uma célula como o cabeçalho de um grupo de células, e pode ser usado como filho de um elemento `<tr>`. A natureza exata de seu grupo é definida pelos atributos `scope` e `headers`.
-- [`<td>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/td): define uma célula de tabela que contém dados e pode ser usada como filha do elemento `<tr>`.
-- [`<tfoot>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/tfoot): define um conjunto de linhas as quais farão parte do rodapé de uma tabela HTML.
 
 Exemplo:
 
-```html
-<table>
-  <caption>Exemplo de tabela</caption>
-  <thead>
-    <tr>
-      <th colspan="3">CABEÇALHO</th>
-    </tr>
-    <tr>
-      <th>Coluna 1</th>
-      <th>Coluna 2</th>
-      <th>Coluna 3</th>
-    </tr>
-  </thead>
-    <tbody>
-      <tr>
-        <td>Linha 1 - Coluna 1</td>
-        <td>Linha 1 - Coluna 2</td>
-        <td>Linha 1 - Coluna 3</td>
-      </tr>
-      <tr>
-        <td>Linha 2 - Coluna 1</td>
-        <td>Linha 2 - Coluna 2</td>
-        <td>Linha 2 - Coluna 3</td>
-      </tr>
-      <tr>
-        <td>Linha 3 - Coluna 1</td>
-        <td>Linha 3 - Coluna 2</td>
-        <td>Linha 3 - Coluna 3</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="3">RODAPÉ</th>
-      </tr>
-    </tfoot>
-</table>
-```
+<div style="display:flex;gap:20px;">
+  <pre><code>
+&lt;ol start="5", type="A"&gt;
+  &lt;li> Primeiro item&lt;/li&gt;
+  &lt;li&gt;
+    Segundo item
+    &lt;!-- Veja que a tag de fechamento &lt;/li&gt; não é colocada aqui! --&gt;
+    &lt;ol&gt;
+      &lt;li&gt;segundo item primeiro subitem&lt;/li&gt;
+      &lt;li&gt;segundo item segundo subitem&lt;/li&gt;
+      &lt;li&gt;segundo item terceiro subitem
+        &lt;ul&gt;
+          &lt;li&gt; Elemento não ordenado dentro da lista ordenada&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;!-- Aqui está a tag de fechamento &lt;/li&gt; --&gt;
+  &lt;li>terceiro item&lt;/li&gt;
+&lt;/ol&gt;
+  </code></pre>
+  <div>
+    <ol start="5", type="A">
+      <li> Primeiro item</li>
+      <li>
+        Segundo item
+        <!-- Veja que a tag de fechamento </li> não é colocada aqui! -->
+        <ol>
+          <li>segundo item primeiro subitem</li>
+          <li>segundo item segundo subitem</li>
+          <li>segundo item terceiro subitem
+            <ul>
+              <li> Elemento não ordenado dentro da lista ordenada</li>  
+            </ul>
+          </li>
+        </ol>
+      </li>
+      <!-- Aqui está a tag de fechamento </li> -->
+      <li>terceiro item</li>
+    </ol>
+  </div>
+</div>
 
-## Formulários
+### Listas de descrição/definição
 
-**TODO**: 
-  - exemplos
+A tag para listas de desrição/definição é [`<dl>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/dl) de *definition list*. Possui duas "subtags" `<dt>` (*description term*) e `<dd>` (*description definition*).
 
-Formulários são construídos com a tag [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form), se tornando um "container" para vários elementos.
+Exemplo:
 
-**Elementos**
+<div style="display:flex;">
+  <pre><code>
+&lt;dl&gt;
+  &lt;dt&gt;Solilóquio&lt;/dt&gt;
+  &lt;dd&gt;
+    Recurso dramático ou literário que consiste em verbalizar, na primeira pessoa, aquilo que se passa na consciência de um personagem para a audiência ou plateia, mas não para os demais personagens.
+  &lt;/dd&gt;
+  &lt;dt&gt;Monólogo&lt;/dt&gt;
+  &lt;dd&gt;
+    Forma de discurso teatral ou literário em que um único indivíduo expressa seus pensamentos, sentimentos e reflexões, falando sozinho ou dirigindo-se ao público
+  &lt;/dd&gt;
+&lt;/dl&gt;
+  </code></pre>
+  <div>
+    <dl>
+      <dt>Solilóquio</dt>
+      <dd>
+        Recurso dramático ou literário que consiste em verbalizar, na primeira pessoa, aquilo que se passa na consciência de um personagem para a audiência ou plateia, mas não para os demais personagens.
+      </dd>
+      <dt>Monólogo</dt>
+      <dd>
+        Forma de discurso teatral ou literário em que um único indivíduo expressa seus pensamentos, sentimentos e reflexões, falando sozinho ou dirigindo-se ao público
+      </dd>
+    </dl>
+  </div>
+</div>
 
-- [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button): elemento interativo que pode ser ativado pelo usuário. Quando ativado, executa alguma ação, por exemplo, a submissão do formulário, ou fazer aparecer um *dialog*.
-- [`<fieldset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset): é usado para agrupar elementos dentro um de formulário.
-- [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input): é usado para criar controles interativos os quais aceitam dados inseridos pelo usuário. Existem vários tipos de dados e widgets de controle, a depender do disipositivo e agente de usuário.
-- [`<object>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/object): representa um recurso externo, o qual pode ser tratado como uma imagem, um contexto de navegação aninhado, ou um recurso para ser manipulado por um plugin. Pode ser vinculado a um formulário.
-- [`<output>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/output): é um elemento container pelo qual um site ou um aplicativo pode inserir os resultados de algum cálculo ou o resultado de uma ação de usuário.
-- [`<select`>](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select): representa um controle que provê um menu de opções.
-- [`<textarea>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea): representa um controle de edição de texto de múltiplas linhas. É usado para permitir ao usuário inserir um texto maior.
+## Multimídia
 
-## Elementos semânticos
+Para imagens as duas principais tags são: 
 
-**TODO:**
-  - exemplos
+- [`<img>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/img): representa a inserção de imagem no documento.
+  - **Principais atributos**: 
+    - `alt`: define um texto alternativo que descreve a imagem.
+    - `height`: a altura da imagem em pixels ou porcentagem.
+    - `src` (**obrigatório**): o caminho para o arquivo de imagem.
+    - `width`: a largura da imagem em pixels ou porcentagem.
+- [`<figure>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/figure): representa conteúdo autocontido, potencialmente com uma legenda opcional, que é especificada usando o elemento `<figcaption>`. A figura, sua legenda e seu conteúdo são referenciados como uma única unidade.
+  - Só possui os atributos globais.
 
-Os elementos semânticos descrevem claramente o seu significado, tanto para o navegador quanto para o desenvolvedor. A partir dessa definição, quase todos os elementos HTML podem ser considerados semânticos. Entretanto, costumam ser listados os elementos estruturais, ou de layout:
+Para a inserção de vídeo temos a tag
 
-- [`<article`>](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article): representa uma composição auto-contida em um documento, página, aplicação ou site, cujo intuito é ser livremente distribuído ou reusado. Por exemplo: um post em um fórum, um artigo de jornal, um post de um blog, um comentário, etc.
-- [`<aside>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/aside): representa a porção de um documento cujo contéudo é somente indiretamente relacionado ao conteúdo principal do documento. É frequentemente utilizado como barras laterais.
-- [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details): cria um widget de divugação cuja informação só é visível quando o widget é acionado. Um sumário ou texto precisa ser fornecido a partir do elemento `<summary>`.
-- [`<figcaption`>](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/figcaption): representa a legenda que descreve o conteúdo de seu elemento pai `<figure>`.
-- [`<figure>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/figure): representa um conteúdo auto-contido que pode ser especificado com o uso do elemento `<figcaption>`. Esses dois elementos, se usados juntos, são tratados como uma unidade.
-- [`<footer>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/footer): representa o rodapé para o conteúdo do ancestral mais próximo ou do elemento raiz de seccionamento.
-- [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form).
-- [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/header): representa conteúdo introdutório a ser inserido no topo da página.
-- [`<main>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/main): representa o conteúdo dominante do `<body>` de um documento.
-- [`<mark>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/mark): representa texto que está marcado ou destacado.
-- [`<nav>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav): representa a seção de uma página cujo propósito é fornecer links de navegação, por exemplo, menus, sumário, etc.
-- [`<section>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/section): representa uma seção genérica e autônoma de um documento.
-- [`<summary`>](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/summary): especifica um sumário, legenda, ou o conteúdo para um elemento `<details>`.
-- [`<time>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/time): representa um período específico de tempo, por exemplo, um horário, uma data, ou uma duração de tempo.
+- [`<video>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/video): incorpora um reprodutor de mídia que suporta a reprodução de vídeo no documento.
+  - **Atributos principais**:
+    - `autoplay`: booleano, se especificado, o vídeo vai ser executado assim que possível sem precisar de carregar todo o arquivo.
+    - `controls`: se estiver presente, o navegador oferecerá controles para permitir o usuário controlar a reprodução do vídeo, incluindo volume, navegação (seek), e pausa/continuação da reprodução.
+    - `height`: a altura da da área de exibição em pixels.
+    - `loop`: booleano, se especificado, ao chegar no fim do vídeo, ele voltará automaticamente para o começo.
+    - `muted`: booleano, se especificado, o áudio vai começar mudo.
+    - `poster`: para definir a *thumbnail* do vídeo.
+    - `src`: a URL do vídeo a ser incorporado. É opcional, e ao invés dela é possível usar o elemento `<source>` dentro do bloco do vídeo para especificar o vídeo a ser incorporado .
+    - `width`: a largura da da área de exibição em pixels.
+
+Para adicionar vídeos do YouTube, por exemplo, é necessário utilizar a tag [`<iframe>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/iframe).
+
+Para a inserção de áudio temos a tag
+
+- [`<audio>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/audio)
 
 ## Exercícios
+
+### Introdução
+
+1. Crie um arquivo chamado index.html contendo a estrutura mínima de um documento HTML:
+   - A declaração `<!DOCTYPE html>.`
+   - As tags `<html>`, `<head>` e `<body>`.
+   - No `<head>`, coloque um `<title>` com o texto: Minha Primeira Página Web.
+   - No `<body>`, escreva um parágrafo com seu nome e curso.
+
+2. Na mesma página, adicione:
+   - Um título principal `<h1>` com o nome da disciplina: Programação para a Web 1.
+   - Dois subtítulos `<h2>` com os textos: Introdução à Web e Fundamentos de HTML.
+   - Um subtítulo `<h3>` chamado Primeiros Testes.
+
+3. Adicione dois parágrafos `<p>` no corpo da página:
+    - O primeiro com um resumo da disciplina.
+    - O segundo com uma curiosidade pessoal (ex.: “Meu primeiro contato com a Internet foi…”).
+
+4. Adicione três links à sua página usando a tag `<a>`:
+    - Um link para o site da UFPI.
+    - Um link para o [MDN Web Docs](https://developer.mozilla.org/pt-BR/).
+    - Um link para o [W3Schools](https://www.w3schools.com/) configurado para abrir em uma nova aba (`target="_blank"`).
+
+5. Adicione uma imagem usando `<img>`:
+   - Escolha uma imagem da Internet ou local.
+   - Inclua os atributos `src`, `alt` e `title`.
+   - Ajuste a largura da imagem (`width="200px"` por exemplo).
+
+6. Crie:
+    - Um `<div>` com fundo colorido (usando atributo `style`).
+    - Dentro do `<div>`, adicione um `<p>` com texto qualquer.
+    - Adicione também um `<span>` dentro do parágrafo, destacando uma palavra em outra cor.
+    - Compare a diferença entre elementos de **bloco** (`div`, `p`) e **inline** (`span`).
+
+7. Atribua:
+   - `id="principal"` ao `<h1>` da página.
+   - `class="subtitulo"` aos `<h2>`.
+   - Passe o mouse sobre os títulos e veja o atributo `title` exibido como dica.
+
+8. Monte uma página HTML que contenha:
+   - Um título `<h1>` com seu nome.
+   - Um parágrafo com uma breve biografia.
+   - Um link para um vídeo ou artigo que você goste.
+   - Uma imagem que represente um hobby ou interesse pessoal.
+   - Um uso de `<span>` para destacar uma palavra importante.
+
+9. Crie uma mini “página de apresentação pessoal” contendo:
+    - Um título com seu nome e curso.
+    - Uma foto (pode ser avatar ou ícone).
+    - Uma lista de três hobbies ou interesses.
+    - Um link para um site que você visita frequentemente.
+    - Pelo menos um uso de `id` e um de `class` nos elementos.
 
 ### Listas
 
@@ -166,49 +361,40 @@ Os elementos semânticos descrevem claramente o seu significado, tanto para o na
 11. Monte uma lista aninhada de músicas organizadas por cantores.
 12. Crie uma lista ordenada de navegadores web e destaque o navegador favorito com a tag `<mark>`.
 
-### Tabelas
+### Áudio e Vídeo
 
-1. Crie uma tabela simples com duas colunas: Nome e Idade.
-2. Crie uma tabela de três colunas: Produto, Preço e Quantidade.
-3. Adicione um cabeçalho à tabela do exercício anterior usando `<thead>`.
-4. Crie uma tabela com cabeçalho e rodapé (`<tfoot>`) mostrando o total de uma compra.
-5. Crie uma tabela com 3 linhas e 3 colunas representando um calendário semanal.
-6. Crie uma tabela com mesclagem de células usando rowspan e colspan.
-7. Crie uma tabela com bordas visíveis para exibir notas de alunos em três disciplinas.
-8. Crie uma tabela que mostre os horários de um dia letivo (matéria x horário).
-9. Crie uma tabela que contenha links em algumas células.
-10. Crie uma tabela com imagens dentro das células (exemplo: tabela de bandeiras e países).
-11. Crie uma tabela com formatação de cabeçalho usando `<th scope="col">` e `<th scope="row">`.
-12. Crie uma tabela de comparação entre dois produtos (smartphones), destacando diferenças.
+1. Crie um player de áudio simples que mostre os controles padrão do navegador. Use um arquivo `.mp3`.
+2. Insira um vídeo com 480×270 pixels e controles padrão.
+3. Crie um áudio que comece a tocar automaticamente ao carregar a página.
+4. Coloque um vídeo curto (ex.: 5–10 segundos) que repita automaticamente para sempre.
+5. Insira um arquivo de áudio que toque automaticamente e em loop, mas sem exibir controles.
+6. Adicione um vídeo que mostre uma imagem estática (poster) antes de começar a reprodução.
+7. Crie um player de áudio que forneça dois formatos diferentes (ex.: MP3 e OGG) usando duas tags `<source>`.
+8. Insira um vídeo que inicie sem som (muted) e com autoplay + loop (ótimo para vídeos de fundo).
+9. Crie um vídeo que:
+   1.  Forneça 2–3 formatos (mp4, webm, ogv)
+   2.  Tenha largura 100% e altura automática (responsivo)
+   3.  Inclua uma mensagem de fallback clara
+   4.  Use poster e controles
+10. Crie um player de áudio com as seguintes características combinadas: autoplay, loop, muted (inicia sem som), preload="auto", controls. Explique qual atributo está conflitando com outro, e por quê.
+11. Crie um player de vídeo que inclua legendas usando a tag `<track>`. Requisitos:
+    1.  Use kind="subtitles"
+    2.  srclang="pt-BR"
+    3.  label="Português (Brasil)"
+    4.  Arquivo .vtt simples com pelo menos 3 legendas
+    5.  Coloque o atributo default para ativar as legendas automaticamente
 
-### Formulários
+    Exemplo mínimo de arquivo `legenda.vtt`:
+    ```vtt
+    WEBVTT
 
-1. Crie um formulário com campos de texto para nome e email.
-2. Crie um formulário com campo de senha.
-3. Crie um formulário com botão de envio (`<input type="submit">`).
-4. Crie um formulário com caixa de seleção (checkbox) para selecionar hobbies.
-5. Crie um formulário com botões de opção (radio) para escolher gênero.
-6. Crie um formulário com lista suspensa (`<select>`).
-7. Crie um formulário com área de texto (`<textarea>`).
-8. Crie um formulário com campo de data.
-9. Crie um formulário com campo de número.
-10. Crie um formulário de login com nome de usuário e senha.
-11. Crie um formulário de cadastro com nome, email, senha e data de nascimento.
-12. Crie um formulário para avaliação de produto com estrelas (radio buttons).
-13. Crie um formulário de pesquisa de satisfação com diferentes tipos de campos.
-14. Crie um formulário de upload de arquivo (`<input type="file">`).
+    00:00:01.000 --> 00:00:04.000
+    Primeira frase de legenda
 
-### Elementos Semânticos
-
-1. Crie uma página que use `<header>` para o título e `<footer>` para os créditos.
-2. Crie uma página que use `<article>` para um texto sobre tecnologia.
-3. Crie uma página que use `<section>` para organizar conteúdo em três partes.
-4. Crie uma página que use `<nav>` para links de navegação.
-5. Crie uma página que use `<aside>` para uma barra lateral com anúncios.
-6. Crie uma página que use `<main>` para o conteúdo principal.
-7. Crie uma página que combine `<article>` e `<section>` para dividir tópicos de um blog.
-8. Crie uma página com `<figure>` e `<figcaption>` para uma imagem ilustrativa.
-9. Crie uma página que use `<time>` para marcar uma data de publicação.
-10. Crie uma página que use `<mark>` para destacar um trecho importante em um parágrafo.
-11. Crie uma página que use `<address>` para exibir informações de contato.
-12. Crie uma página que combine todos os elementos semânticos em uma estrutura de blog simples.
+    00:00:05.000 --> 00:00:08.000
+    Segunda legenda bem legal
+    ```
+12. (**DESAFIO**) Crie uma página com:
+    1.  Um único elemento `<video>` ou `<audio>`.
+    2.  Três botões abaixo dele (música 1, música 2, vídeo curto).
+    3.  Ao clicar em cada botão, o `src` do media element muda e o player inicia automaticamente.
