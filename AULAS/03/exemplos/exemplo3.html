@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Exemplo Completo de Formulário HTML</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+      fieldset { margin: 1.5rem 0; padding: 1.2rem 1.8rem; border: 1px solid #ddd; border-radius: 8px; }
+      legend { font-weight: bold; padding: 0 12px; color: #444; }
+      .form-row { margin: 1.1rem 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+      .form-row label { min-width: 160px; }
+      small { color: #666; font-size: 0.85rem; margin-left: 8px; }
+    </style>
+  </head>
+  <body>
+    <h1>Formulário Completo – Todos os Elementos</h1>
+    
+    <form action="/processar" method="post" enctype="multipart/form-data">
+    
+    <fieldset>
+      <legend>Dados Pessoais</legend>
+      <div class="form-row">
+        <label for="nome">Nome completo:</label>
+        <input type="text" id="nome" name="nome" required placeholder="Ex: Maria da Silva" autofocus>
+      </div>
+
+      <div class="form-row">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required placeholder="seu.nome@exemplo.com">
+      </div>
+
+      <div class="form-row">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" minlength="8" required>
+      </div>
+
+      <div class="form-row">
+        <label for="tel">Telefone/WhatsApp:</label>
+        <input type="tel" id="tel" name="telefone" pattern="\[0-9]{2}\ [0-9]{4,5}-[0-9]{4}" placeholder="(99) 99999-9999">
+      </div>
+
+      <div class="form-row">
+        <label for="data-nasc">Data de nascimento:</label>
+        <input type="date" id="data-nasc" name="nascimento" required>
+      </div>
+
+      <div class="form-row">
+        <label for="horario">Horário preferido:</label>
+        <input type="time" id="horario" name="horario">
+      </div>
+
+      <div class="form-row">
+        <label for="niver">Aniversário (mês e dia):</label>
+        <input type="month" id="niver" name="mes-aniversario">
+      </div>
+
+      <div class="form-row">
+        <label for="semana">Semana de início:</label>
+        <input type="week" id="semana" name="semana-inicio">
+      </div>
+
+      <div class="form-row">
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" min="18" max="120" step="1" value="25">
+      </div>
+
+      <div class="form-row">
+        <label for="altura">Altura (m):</label>
+        <input type="number" id="altura" name="altura" min="1.4" max="2.3" step="0.01" value="1.72">
+      </div>
+
+      <div class="form-row">
+        <label for="salario">Pretensão salarial:</label>
+        <input type="range" id="salario" name="pretensao" min="2000" max="25000" step="500" value="5000">
+        <output name="salario-output">R$ 5.000</output>
+      </div>
+
+      <div class="form-row">
+        <label for="cor">Cor favorita:</label>
+        <input type="color" id="cor" name="cor-favorita" value="#4a90e2">
+      </div>
+    </fieldset>
+
+
+    <fieldset>
+      <legend>Endereço e Comunicação</legend>
+
+      <div class="form-row">
+        <label for="url">Site / Portfólio:</label>
+        <input type="url" id="url" name="site" placeholder="https://seusite.com">
+      </div>
+
+      <div class="form-row">
+        <label for="busca">Pesquisar vagas:</label>
+        <input type="search" id="busca" name="termo-busca" placeholder="Digite palavras-chave...">
+      </div>
+
+      <div class="form-row">
+        <label>Como nos conheceu?</label>
+        <select name="como-conheceu" required>
+          <option value="">Selecione...</option>
+          <option value="google">Google</option>
+          <option value="linkedin">LinkedIn</option>
+          <option value="amigo">Indicação de amigo</option>
+          <option value="instagram">Instagram</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Outro canal (se “Outro” acima):</label>
+        <input type="text" name="outro-canal" list="canais-sugestao" placeholder="Digite aqui...">
+        <datalist id="canais-sugestao">
+          <option value="YouTube">
+          <option value="Facebook">
+          <option value="Twitter/X">
+          <option value="Evento presencial">
+        </datalist>
+      </div>
+    </fieldset>
+    
+    <fieldset>
+      <legend>Preferências e Arquivos</legend>
+
+      <div class="form-row">
+        <label>Áreas de interesse (pode escolher várias):</label>
+        <div>
+          <label><input type="checkbox" name="areas" value="front-end"> Front-end</label><br>
+          <label><input type="checkbox" name="areas" value="back-end"> Back-end</label><br>
+          <label><input type="checkbox" name="areas" value="mobile"> Mobile</label><br>
+          <label><input type="checkbox" name="areas" value="dados"> Ciência de Dados</label><br>
+          <label><input type="checkbox" name="areas" value="devops"> DevOps</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>Nível de senioridade desejado:</label>
+        <div>
+          <label><input type="radio" name="nivel" value="junior" required> Júnior</label>
+          <label><input type="radio" name="nivel" value="pleno"> Pleno</label>
+          <label><input type="radio" name="nivel" value="senior"> Sênior</label>
+          <label><input type="radio" name="nivel" value="tech-lead"> Tech Lead</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="cv">Currículo (PDF ou Word):</label>
+        <input type="file" id="cv" name="curriculo" accept=".pdf,.doc,.docx" required>
+      </div>
+
+      <div class="form-row">
+        <label for="foto">Foto profissional (opcional):</label>
+        <input type="file" id="foto" name="foto" accept="image/*" capture="user">
+      </div>
+    </fieldset>
+    
+    <fieldset>
+      <legend>Mensagem e Avaliação</legend>
+
+      <div class="form-row">
+        <label for="bio">Mini bio / sobre você:</label><br>
+        <textarea name="bio" id="bio" rows="5" cols="60" maxlength="800" 
+                    placeholder="Conte um pouco sobre sua experiência..."></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="nota">De 1 a 10, qual nota você daria para nossa vaga?</label>
+        <input type="number" id="nota" name="avaliacao" min="1" max="10" step="1">
+      </div>
+
+      <div class="form-row">
+        <label for="data-entrega">Data limite para envio de teste (se houver):</label>
+        <input type="datetime-local" id="data-entrega" name="prazo-teste">
+      </div>
+    </fieldset>
+
+    <div style="margin: 2rem 0; text-align: center;">
+      <button type="submit">Enviar Candidatura</button>
+      <button type="reset">Limpar formulário</button>
+    </div>
+    </form>
+  </body>
+</html>

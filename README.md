@@ -174,7 +174,7 @@ As faltas poderão ser justificadas a partir de algum documento que comprove o m
 - Choques de horário com atividade remunerada (trabalho).
 - Questões de saúde.
 
-O documento deve ser enviado para o e-mail <a href="mailto:evandro.silva@ufpi.edu.br">evandro.silva@ufpi.edu.br</a>. O campo **assunto** deverá ser preenchido da seguinte forma: `POO 2 - [Atestado|Declaração] para falta no dia DD/MM`. <span style="color:red;font-weight: bold;">O abono da falta ocorrerá somente ao fim do semestre letivo</span>.
+O documento deve ser enviado para o e-mail <a href="mailto:evandro.silva@ufpi.edu.br">evandro.silva@ufpi.edu.br</a>. O campo **assunto** deverá ser preenchido da seguinte forma: `PWeb 1 - [Atestado|Declaração] para falta no dia DD/MM`. <span style="color:red;font-weight: bold;">O abono da falta ocorrerá somente ao fim do semestre letivo</span>.
 
 ## Calendário
 

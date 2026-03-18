@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemplo 2</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse; /* Collapsa as bordas em uma única line */
+            padding: 8px; /* Adiciona espaço dentro das células */
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+  </head>
+  <body>
+    <table>
+        <caption>Vendas Mensais</caption>
+        <colgroup>
+            <col style="background-color: lightgray;"> <!-- primeira coluna -->
+            <col  style="background-color: lightblue;"> <!-- segunda coluna -->
+            <col span="2" style="background-color: lightgreen;"> <!-- terceira coluna -->
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Mês</th>
+                <th>Vendas</th>
+                <th>Mínimo</th>
+                <th>Máximo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>January</td>
+                <td>$5.000</td>
+                <td>$400</td>
+                <td>$750</td>
+            </tr>
+            <tr>
+                <td>February</td>
+                <td>$3.500</td>
+                <td>$100</td>
+                <td>$453</td>
+            </tr>
+            <tr>
+                <td>Março</td>
+                <td>$2.000</td>
+                <td>$120</td>
+                <td>$400</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total</td>
+                <td>$10.500</td>
+                <td>$100</td>
+                <td>$750</td>
+            </tr>
+        </tfoot>
+    </table>
+  </body>
+</html>

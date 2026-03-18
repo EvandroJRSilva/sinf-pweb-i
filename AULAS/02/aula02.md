@@ -89,6 +89,8 @@ Um atributo deve conter:
 
 ### Estrutura de um documento HTML
 
+TODO: ver sobre a URL de um arquivo local; adicionar todos os elementos básicos do html (footer, aside, etc.) no exemplo de estrutura.
+
 A seguir o exemplo simples de um documento HTML completo:
 
 ```html

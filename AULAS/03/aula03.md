@@ -3,283 +3,128 @@
 **Sumário**
 
 - [Aula 03](#aula-03)
-  - [Estilização](#estilização)
-    - [Sintaxe básica](#sintaxe-básica)
-    - [Aplicando o CSS](#aplicando-o-css)
-  - [Seletores](#seletores)
-    - [Seletor de tipo](#seletor-de-tipo)
-    - [Seletores de classe](#seletores-de-classe)
-    - [Seletores de id](#seletores-de-id)
-    - [Lista de seletores](#lista-de-seletores)
-    - [Seletor universal](#seletor-universal)
+  - [Tabelas](#tabelas)
+  - [Formulários](#formulários)
+    - [Elementos](#elementos)
+  - [Elementos semânticos do HTML](#elementos-semânticos-do-html)
   - [Exercícios](#exercícios)
-    - [Seletores de tipo](#seletores-de-tipo)
-    - [Seletores de ID](#seletores-de-id-1)
-    - [Seletores de classe](#seletores-de-classe-1)
-    - [Lista de seletores](#lista-de-seletores-1)
-  - [Desafios](#desafios)
-    - [Seletores de atributo (15 exercícios)](#seletores-de-atributo-15-exercícios)
-    - [Pseudo-classes (15 exercícios)](#pseudo-classes-15-exercícios)
-    - [Pseudo-elementos (10 exercícios)](#pseudo-elementos-10-exercícios)
-    - [Combinadores (15 exercícios)](#combinadores-15-exercícios)
+    - [Tabelas](#tabelas-1)
+    - [Formulários](#formulários-1)
+    - [Elementos Semânticos](#elementos-semânticos)
 
 ---
 
-O **CSS** (*Cascading Style Sheets*, ou Folhas de Estilo em Cascata, numa tradução livre) é uma linguagem usada para descrever a apresentação de um documento escrito em HTML ou XML. Uma `folha de estilo` consiste em um conjunto de regras que especificam a apresentação de um documento. Portanto, o CSS descreve como elementos devem ser renderizados na tela ou em outras mídias. 
+## Tabelas
 
-É uma das principais linguagens da web e suas [especificações](https://www.w3.org/Style/CSS) são padronizadas pelo W3C. As especificações não são versionadas, porém, o W3C compila um panorama (*snapshot*) do **último estado estável das especificações** e também do progresso de **módulos individuais**. O *snapshot* de 2025 pode ser acessado com [este link](https://www.w3.org/TR/css-2025/). As últimas especificações são o CSS Nível 2 Revisão 1 (título em Inglês: *Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification*), ou [CSS 2.1](https://www.w3.org/TR/CSS2/).
+Tabelas podem ser construídas com o uso da tag [`<table>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/table). O conteúdo permitido em seu interior deve seguir a seguinte ordem:
 
-O CSS pode ser usado em várias situações relacionadas à aparência de uma página, por exemplo:
+1. Um elemento `<caption>` (opcional).
+2. Zero ou mais `<colgroup>` elementos.
+3. Um elemento `<thead>` (opcional).
+4. Uma das duas alternativas:
+   1. Zero ou mais elementos `<tbody>`
+   2. Um ou mais elementos `<tr>`
+5. Um elemento `<tfoot>` (opcional).
 
-- Estilização de texto, incluindo modificação da cor e tamanho de títulos e links.
-- Criação de layouts, como layouts de grade (*grid layout*) ou de múltiplas colunas.
-- Aplicação de efeitos especiais, como animação.
+**Elementos**
+
+- [`<caption>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/caption): tag usada para legendas.
+- [`<colgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/colgroup): serve para definir um grupo de colunas dentro uma tabela.
+- [`<thead>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/thead): encapsula um conjunto de linhas de tabela (`<tr>`), indicando que fazem parte do cabeçalho de uma tabela, com informações sobre as colunas da tabela (comumente elementos `<th>`).
+- [`<tbody>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/tbody): encapsula um conjunto de linhas de tabela (`<tr>`), indicado que compõem o corpo de dados da tabela
+- [`<tr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/tr): define uma linha de células em uma tabela. As células da linha podem então consistir em um misto de células de dado (`<td>`) e células de cabeçalho (`<th>`).
+- [`<th>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/th): define uma célula como o cabeçalho de um grupo de células, e pode ser usado como filho de um elemento `<tr>`. A natureza exata de seu grupo é definida pelos atributos `scope` e `headers`.
+- [`<td>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/td): define uma célula de tabela que contém dados e pode ser usada como filha do elemento `<tr>`.
+- [`<tfoot>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/tfoot): define um conjunto de linhas as quais farão parte do rodapé de uma tabela HTML.
+
+Exemplos: [1](exemplos/exemplo1.html) e [2](exemplos/exemplo2.html).
+
+## Formulários
+
+Formulários são construídos com a tag [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form), se tornando um "container" para vários elementos.
+
+### Elementos
+
+- [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button): elemento interativo que pode ser ativado pelo usuário. Quando ativado, executa alguma ação, por exemplo, a submissão do formulário, ou fazer aparecer um *dialog*.
+- [`<fieldset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset): é usado para agrupar elementos dentro um de formulário.
+- [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input): é usado para criar controles interativos os quais aceitam dados inseridos pelo usuário. Existem vários tipos de dados e widgets de controle, a depender do disipositivo e agente de usuário.
+- [`<object>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/object): representa um recurso externo, o qual pode ser tratado como uma imagem, um contexto de navegação aninhado, ou um recurso para ser manipulado por um plugin. Pode ser vinculado a um formulário.
+- [`<output>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/output): é um elemento container pelo qual um site ou um aplicativo pode inserir os resultados de algum cálculo ou o resultado de uma ação de usuário.
+- [`<select`>](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select): representa um controle que provê um menu de opções.
+- [`<textarea>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea): representa um controle de edição de texto de múltiplas linhas. É usado para permitir ao usuário inserir um texto maior.
+
+## Elementos semânticos do HTML
+
+**TODO:**
+  - exemplos
+
+Os elementos semânticos descrevem claramente o seu significado, tanto para o navegador quanto para o desenvolvedor. A partir dessa definição, quase todos os elementos HTML podem ser considerados semânticos. Entretanto, costumam ser listados os elementos estruturais, ou de layout:
+
+- [`<article`>](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article): representa uma composição auto-contida em um documento, página, aplicação ou site, cujo intuito é ser livremente distribuído ou reusado. Por exemplo: um post em um fórum, um artigo de jornal, um post de um blog, um comentário, etc.
+- [`<aside>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/aside): representa a porção de um documento cujo contéudo é somente indiretamente relacionado ao conteúdo principal do documento. É frequentemente utilizado como barras laterais.
+- [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details): cria um widget de divugação cuja informação só é visível quando o widget é acionado. Um sumário ou texto precisa ser fornecido a partir do elemento `<summary>`.
+- [`<figcaption`>](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/figcaption): representa a legenda que descreve o conteúdo de seu elemento pai `<figure>`.
+- [`<figure>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/figure): representa um conteúdo auto-contido que pode ser especificado com o uso do elemento `<figcaption>`. Esses dois elementos, se usados juntos, são tratados como uma unidade.
+- [`<footer>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/footer): representa o rodapé para o conteúdo do ancestral mais próximo ou do elemento raiz de seccionamento.
+- [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form).
+- [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/header): representa conteúdo introdutório a ser inserido no topo da página.
+- [`<main>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/main): representa o conteúdo dominante do `<body>` de um documento.
+- [`<mark>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/mark): representa texto que está marcado ou destacado.
+- [`<nav>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav): representa a seção de uma página cujo propósito é fornecer links de navegação, por exemplo, menus, sumário, etc.
+- [`<section>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/section): representa uma seção genérica e autônoma de um documento.
+- [`<summary`>](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/summary): especifica um sumário, legenda, ou o conteúdo para um elemento `<details>`.
+- [`<time>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/time): representa um período específico de tempo, por exemplo, um horário, uma data, ou uma duração de tempo.
+
+---
 
 
-## Estilização
-
-Vamos relembrar do [seguinte exemplo](../02/tabela.html):
-
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Exemplo de Tabela</title>
-</head>
-
-<body>
-    <!--
-        Comentário
-    -->
-    <h1>Exemplo de Tabela em HTML</h1>
-    <table>
-        <caption>Exemplo de tabela</caption>
-        <thead>
-            <tr>
-                <th colspan="3">CABEÇALHO</th>
-            </tr>
-            <tr>
-                <th>Coluna 1</th>
-                <th>Coluna 2</th>
-                <th>Coluna 3</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Linha 1 - Coluna 1</td>
-                <td>Linha 1 - Coluna 2</td>
-                <td>Linha 1 - Coluna 3</td>
-            </tr>
-            <tr>
-                <td>Linha 2 - Coluna 1</td>
-                <td>Linha 2 - Coluna 2</td>
-                <td>Linha 2 - Coluna 3</td>
-            </tr>
-            <tr>
-                <td>Linha 3 - Coluna 1</td>
-                <td>Linha 3 - Coluna 2</td>
-                <td>Linha 3 - Coluna 3</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th colspan="3">RODAPÉ</th>
-            </tr>
-        </tfoot>
-    </table>
-</body>
-</html>
-```
-
-Apesar de ser uma tabela funcional, visualmente está bem ruim:
-
-![Tabela sem CSS](./imagens/tabela_sem_css.png)
-
-A partir de agora vamos usar essa tabela como material para aprendermos sobre CSS.
-
-### Sintaxe básica
-
-O CSS é uma linguagem baseada em regras, as quais são definidas ao se especificar grupos de estilos que devem ser aplicados a um elemento particular ou um grupo de elementos da página. Exemplo:
-
-```css
-h1{
-    color: red;
-    font-size: 2.5em;
-}
-```
-
-- A regra acima inicia com um `seletor`, ou seja, uma seleção de qual elemento será estilizado. No exemplo o cabeçalho de primeiro nível foi selecionado. Logo após o `seletor` são abertas as *chaves*, delimitando o bloco da regra em questão.
-- Dentro do bloco podemos ter uma ou mais declarações, as quais possuem a forma de um par `propriedade: valor;`. No exemplo, foram declaradas duas prorpridades, `color` e `font-size`. A cor escolhida foi vermelho (`red`), e o tamanho escolhido foi `2.5em`. Esse `em` é um valor proporcional relativo ao elemento pai do elemento atual.
-
-### Aplicando o CSS
-
-Existem três formas de se aplicar o CSS a um elemento:
-
-1. **Estilo *inline***: quando utilizamos o atributo `style` de um elemento. [Exemplo](./exemplo_estilo-1.html).
-2. **Estilo interno**: quando definimos o CSS em uma tag `<style>` dentro da tag `<head>`. [Exemplo](./exemplo_estilo-2.html).
-3. **Estilo externo**: quando o CSS é definido em um arquivo próprio de extensão `.css` e importado dentro da tag `<head>`. [Exemplo](./exemplo_estilo-3.html).
-
-## Seletores
-
-### Seletor de tipo
-
-Um `seletor de tipo` é conhecido também como `seletor de tag` ou `seletor de elemento`, porque ele seleciona uma `tag` ou elemento do documento. Exemplo: [Seletores de Tipo](./seletor_tipo.html).
-
-### Seletores de classe
-
-Começa com um `.`, e diferencia letras maiúsculas de minúsculas. Seleciona todos os elementos do documento que sejam dessa `classe`. [Exemplo](./seletor_classe.html).
-
-É possível definir uma `classe` para elementos específicos: [exemplo](./seletor_classe2.html). E também múltiplas `classes` para um mesmo elemento: [exemplo](./seletor_classe3.html).
-
-### Seletores de id
-
-Começa com `#` e também diferencia letras maiúsculas de minúsculas. Funciona da mesma forma que os `seletores de classe`, com a diferença de que um `id` só pode ser usado uma vez por página, e os elementos só podem ter um único valor de `id`.
-
-É possível preceder o `id` com um `seletor de tipo` para estilizar apenas um elemento que seja do mesmo `tipo` e `id`: [exemplo](./seletor_id.html).
-
-### Lista de seletores
-
-Caso mais de um elemento use a mesma estilização, eles podem ser declarados juntos, mas separados por uma vírgula: [exemplo](./lista_seletor.html).
-
-### Seletor universal
-
-O `*` serve como seletor universal e serve para selecionar tudo. É melhor utilizando a combinação de seletores. Exemplo:
-
-```css
-p * {
-    ...
-}
-```
-
-Neste caso estão sendo selecionados todos os elementos que estejam dentro de um parágrafo.
 
 ## Exercícios
 
-### Seletores de tipo
+### Tabelas
 
-1. Use CSS para mudar a cor de todos os parágrafos (`<p>`) para azul.
-2. Aplique uma fonte diferente apenas para os títulos `<h1>`.
-3. Defina que todos os `<h2>` terão fundo cinza.
-4. Aumente o tamanho da fonte de todos os `<li>` de uma lista.
-5. Alinhe o texto de todos os parágrafos ao centro.
-6. Faça com que todos os links `<a>` fiquem em negrito.
-7. Estilize todas as imagens `<img>` para terem uma borda de 2px preta.
-8. Defina que todos os `<h3>` terão a cor vermelha e um espaçamento inferior de 10px.
-9. Aplique sombra em todos os títulos `<h1>`.
-10. Faça todos os `<p>` terem espaçamento entre linhas de 1.5.
-11. Altere a cor de fundo de todos os `<table>`.
-12. Faça com que todos os `<ul>` fiquem sem marcadores (list-style: none).
-13. Estilize todos os `<blockquote>` com itálico e margem lateral de 20px.
-14. Faça todos os `<button>` ficarem com fundo verde e texto branco.
-15. Estilize todos os `<form>` para terem largura máxima de 400px.
+1. Crie uma tabela simples com duas colunas: Nome e Idade.
+2. Crie uma tabela de três colunas: Produto, Preço e Quantidade.
+3. Adicione um cabeçalho à tabela do exercício anterior usando `<thead>`.
+4. Crie uma tabela com cabeçalho e rodapé (`<tfoot>`) mostrando o total de uma compra.
+5. Crie uma tabela com 3 linhas e 3 colunas representando um calendário semanal.
+6. Crie uma tabela com mesclagem de células usando rowspan e colspan.
+7. Crie uma tabela com bordas visíveis para exibir notas de alunos em três disciplinas.
+8. Crie uma tabela que mostre os horários de um dia letivo (matéria x horário).
+9. Crie uma tabela que contenha links em algumas células.
+10. Crie uma tabela com imagens dentro das células (exemplo: tabela de bandeiras e países).
+11. Crie uma tabela com formatação de cabeçalho usando `<th scope="col">` e `<th scope="row">`.
+12. Crie uma tabela de comparação entre dois produtos (smartphones), destacando diferenças.
 
-### Seletores de ID
+### Formulários
 
-1. Crie um seletor para um parágrafo com `id="intro"` e defina a cor do texto como roxa.
-2. Estilize um título `<h1 id="principal">` com sublinhado.
-3. Faça com que o elemento com `id="menu"` tenha fundo preto e texto branco.
-4. Defina altura e largura para o elemento com `id="caixa"`.
-5. Centralize o texto do elemento com `id="rodape"`.
-6. Aplique `border-radius: 10px` ao elemento com `id="avatar"`.
-7. Defina que o `id="logo"` terá um tamanho fixo de 200px.
-8. Faça com que o `id="mensagem"` tenha fonte maior e negrito.
-9. Crie uma sombra para o elemento com `id="painel"`.
-10. Faça o `id="cabecalho"` ter borda inferior sólida de 2px.
+1. Crie um formulário com campos de texto para nome e email.
+2. Crie um formulário com campo de senha.
+3. Crie um formulário com botão de envio (`<input type="submit">`).
+4. Crie um formulário com caixa de seleção (checkbox) para selecionar hobbies.
+5. Crie um formulário com botões de opção (radio) para escolher gênero.
+6. Crie um formulário com lista suspensa (`<select>`).
+7. Crie um formulário com área de texto (`<textarea>`).
+8. Crie um formulário com campo de data.
+9. Crie um formulário com campo de número.
+10. Crie um formulário de login com nome de usuário e senha.
+11. Crie um formulário de cadastro com nome, email, senha e data de nascimento.
+12. Crie um formulário para avaliação de produto com estrelas (radio buttons).
+13. Crie um formulário de pesquisa de satisfação com diferentes tipos de campos.
+14. Crie um formulário de upload de arquivo (`<input type="file">`).
 
-### Seletores de classe
+### Elementos Semânticos
 
-1. Crie uma classe `.destaque` e aplique fundo amarelo.
-2. Estilize a classe `.erro` para exibir texto em vermelho.
-3. Aplique `.sucesso` com fundo verde e texto branco.
-4. Crie a classe `.botao` e estilize com padding e borda arredondada.
-5. Crie `.caixa` e aplique sombra e espaçamento interno.
-6. Crie `.texto-grande` para aumentar o tamanho da fonte.
-7. Crie `.subtitulo` para alterar a cor de `<h2>`.
-8. Crie `.menu-horizontal` para organizar `<li>` lado a lado.
-9. Crie `.imagem-redonda` para aplicar `border-radius: 50%`.
-10. Crie `.oculto` que oculte o elemento (`display: none`).
-11. Crie `.alerta` que exiba texto em caixa alta (`text-transform: uppercase`).
-12. Crie `.negrito` para texto em `bold`.
-13. Crie `.sublinhado` para aplicar `text-decoration: underline`.
-14. Crie `.margem` para adicionar espaçamento externo.
-15. Crie `.texto-azul` para alterar a cor para azul.
+1. Crie uma página que use `<header>` para o título e `<footer>` para os créditos.
+2. Crie uma página que use `<article>` para um texto sobre tecnologia.
+3. Crie uma página que use `<section>` para organizar conteúdo em três partes.
+4. Crie uma página que use `<nav>` para links de navegação.
+5. Crie uma página que use `<aside>` para uma barra lateral com anúncios.
+6. Crie uma página que use `<main>` para o conteúdo principal.
+7. Crie uma página que combine `<article>` e `<section>` para dividir tópicos de um blog.
+8. Crie uma página com `<figure>` e `<figcaption>` para uma imagem ilustrativa.
+9. Crie uma página que use `<time>` para marcar uma data de publicação.
+10. Crie uma página que use `<mark>` para destacar um trecho importante em um parágrafo.
+11. Crie uma página que use `<address>` para exibir informações de contato.
+12. Crie uma página que combine todos os elementos semânticos em uma estrutura de blog simples.
 
-### Lista de seletores
-
-1. Estilize todos os `<h1>`, `<h2>`, `<h3>` para usarem a mesma fonte.
-2. Faça `<p>`, `<li>` terem a mesma cor de texto.
-3. Defina `<table>`, `<th>`, `<td>` com bordas visíveis.
-4. Estilize `<a>`, `<button>` para terem o mesmo estilo de link.
-5. Faça `<header>`, `<footer>` terem o mesmo fundo cinza.
-6. Aplique `text-align: center` em `<h1>`, `<h2>`.
-7. Crie fundo amarelo para `<input>`, `<textarea>`.
-8. Aplique borda arredondada em `<img>`, `<video>`.
-9. Faça `<ul>`, `<ol>` sem marcadores.
-10. Estilize `<section>`, `<article>` com sombra leve.
-
-## Desafios
-
-Pesquise sobre [`seletores de atributo`](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Attribute_selectors), [`seletores de pseudo classe`](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Pseudo_classes_and_elements), [`seletores de pseudo elemetos`](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Pseudo_classes_and_elements) e [`combinadores`](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Combinators). Então faça os seguintes exercícios.
-
-### Seletores de atributo (15 exercícios)
-
-1. Estilize todos os links `<a>` com `target="_blank"` em vermelho.
-2. Faça com que os inputs `type="text"` tenham fundo cinza.
-3. Estilize `input[type="password"]` com borda vermelha.
-4. Altere a cor de todos os `input[type="email"]`.
-5. Aplique padding a todos os `input[type="number"]`.
-6. Estilize links `a[href^="https"]` (iniciam com https).
-7. Estilize `a[href$=".pdf"]` (terminam com .pdf).
-8. Faça com que `a[href*="google"]` tenham cor verde.
-9. Estilize `input[disabled]` com fundo claro.
-10. Altere a cor de fundo dos `input[required]`.
-11. Estilize imagens `<img[alt]>` com borda azul.
-12. Estilize `<input[placeholder]>` com texto itálico.
-13. Altere links `<a[title]>` para cor roxa.
-14. Estilize `<option[selected]>` com fundo diferente.
-15. Aplique estilo a todos os `button[type="submit"]`.
-
-### Pseudo-classes (15 exercícios)
-
-1. Estilize links `<a:hover>` para ficarem sublinhados.
-2. Mude a cor dos links `<a:visited>`.
-3. Estilize `<input:focus>` para ter borda azul.
-4. Faça `<button:hover>` mudar de cor ao passar o mouse.
-5. Estilize `<li:first-child>` em negrito.
-6. Estilize `<li:last-child>` em itálico.
-7. Faça `<tr:nth-child(even)>` ter fundo cinza.
-8. Faça `<tr:nth-child(odd)>` ter fundo branco.
-9. Estilize `<p:first-of-type>` em vermelho.
-10. Estilize `<p:last-of-type>` em azul.
-11. Faça `<input:checked>` ficar em negrito.
-12. Estilize `<input:disabled>` em cinza claro.
-13. Faça `<div:hover>` p mudar de cor.
-14. Crie um estilo para `<input:valid>` com fundo verde.
-15. Crie um estilo para `<input:invalid>` com fundo vermelho.
-
-### Pseudo-elementos (10 exercícios)
-
-1. Use `p::first-letter` para aumentar a primeira letra.
-2. Use `p::first-line` para mudar a cor da primeira linha.
-3. Use `p::selection` para alterar a cor do texto selecionado.
-4. Use `p::before` para adicionar “→ ” antes de cada parágrafo.
-5. Use `p::after` para adicionar “ ✓” no fim de cada parágrafo.
-6. Use `li::marker` para trocar os marcadores da lista.
-7. Use `input::placeholder` para mudar a cor do placeholder.
-8. Use `blockquote::before` e `::after` para aspas.
-9. Use `h1::first-letter` para aplicar cor diferente apenas na inicial.
-10. Use `a::after` para mostrar um ícone “🔗” em links externos.
-
-### Combinadores (15 exercícios)
-
-1. Estilize todos os `<p>` que estão dentro de `<div>` (descendente).
-2. Estilize `<h2>` que vem logo após `<h1>` (adjacente +).
-3. Estilize `<p>` que vem imediatamente depois de uma `<img>`.
-4. Estilize `<ul>` `<li>` que estão dentro de uma `<nav>`.
-5. Estilize `<p>` filhos diretos de `<article>` (>).
-6. Estilize `<span>` que está dentro de `<h1>`.
-7. Estilize todos os `<input>` dentro de `<form>`.
-8. Estilize `<a>` que está dentro de `<footer>`.
-9. Estilize `<li>` dentro de `<ul class="menu">`.
-10. Estilize todos os `<section> > p` para cor azul.
