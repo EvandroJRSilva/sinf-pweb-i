@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model CSS – Demonstração Completa</title>
+  <style>
+    /* Reset moderno – quase todo projeto usa isso hoje */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f0f4f8;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1a3c5e;
+      margin-bottom: 40px;
+    }
+
+    .explicacao {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Caixa com content-box (padrão antigo – veja o problema) */
+    .content-box {
+      width: 300px;
+      height: 180px;
+      padding: 30px;
+      border: 15px solid #e74c3c;
+      background: #ffecec;
+      margin: 40px auto;
+      box-sizing: content-box;   /* ← veja como fica maior que 300px */
+      text-align: center;
+      font-weight: bold;
+      color: #c0392b;
+    }
+
+    /* Caixa com border-box (o que quase todo mundo usa hoje) */
+    .border-box {
+      width: 300px;
+      height: 180px;
+      padding: 30px;
+      border: 15px solid #27ae60;
+      background: #e8f5e9;
+      margin: 40px auto;
+      text-align: center;
+      font-weight: bold;
+      color: #1e8449;
+    }
+
+    /* Demonstração de margin collapse + diferentes shorthands */
+    .margin-exemplo {
+      background: #3498db;
+      color: white;
+      padding: 20px 40px;
+      margin: 60px auto 20px;          /* top/right&left/bottom */
+      width: 70%;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .margin-exemplo + .margin-exemplo {
+      margin-top: 80px;   /* ← as margens verticais colapsam (não viram 100px) */
+      background: #9b59b6;
+    }
+
+    .legenda {
+      text-align: center;
+      font-size: 0.95em;
+      color: #555;
+      margin: 10px 0 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Entendendo o CSS Box Model (2026)</h1>
+
+  <div class="explicacao">
+    <p><strong>Regra moderna recomendada:</strong> <code>* { box-sizing: border-box; }</code></p>
+    <p>Isso faz com que <code>width</code> e <code>height</code> representem o tamanho final visível (content + padding + border).</p>
+    <p>Sem isso, adicionar padding ou border "estoura" o layout.</p>
+  </div>
+
+  <div class="content-box">
+    content-box (padrão antigo)<br>
+    width: 300px declarado<br>
+    → Tamanho real na tela: 300 + 30×2 + 15×2 = <strong>390px</strong>
+  </div>
+  <div class="legenda">Observe como a caixa vermelha ficou maior que os 300px declarados</div>
+
+  <div class="border-box">
+    border-box (recomendado hoje)<br>
+    width: 300px declarado<br>
+    → Tamanho real na tela: <strong>exatamente 300px</strong><br>
+    (o conteúdo encolhe automaticamente)
+  </div>
+  <div class="legenda">Aqui o layout fica previsível e intuitivo</div>
+
+  <div class="margin-exemplo">
+    Margem superior: 60px<br>
+    Margem lateral: 40px (shorthand)
+  </div>
+
+  <div class="margin-exemplo">
+    Margem superior declarada: 80px<br>
+    Mas colapsou com a de cima → distância real entre caixas = 80px (não 140px)
+  </div>
+
+</body>
+</html>

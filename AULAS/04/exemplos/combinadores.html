@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combinadores CSS – Descendente, Filho, Adjacente e Geral</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      line-height: 1.6;
+    }
+
+    h1 { color: #2c3e50; text-align: center; }
+
+    /* 1. Descendente (espaço) */
+    .conteudo p {
+      margin: 1em 0;
+      color: #444;
+    }
+
+    /* 2. Filho direto (>) */
+    .menu > li {
+      background: #ecf0f1;
+      padding: 10px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+    }
+
+    /* 3. Irmão adjacente (+) */
+    h2 + p {
+      margin-top: 0;
+      padding-top: 0;
+      font-style: italic;
+      color: #7f8c8d;
+    }
+
+    dt + dd {
+      font-weight: bold;
+      color: #e67e22;
+    }
+
+    /* 4. Irmão geral (~) */
+    h3 ~ p {
+      background: #fffacd;
+      padding: 10px;
+      border-left: 5px solid #f1c40f;
+    }
+
+    img ~ figcaption {
+      font-size: 0.85em;
+      color: #95a5a6;
+      text-align: center;
+    }
+
+    /* Combinações de seletores + combinadores */
+    .card > h4 + p ~ ul {
+      margin-left: 30px;
+      list-style-type: circle;
+      color: #2980b9;
+    }
+
+    article.conteudo > p:first-child {
+      font-size: 1.1em;
+      border-bottom: 2px dashed #bdc3c7;
+      padding-bottom: 10px;
+    }
+
+    .destaque ~ .destaque {
+      border-top: 1px solid #e74c3c;
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Exemplo de Combinadores CSS</h1>
+
+  <section class="conteudo">
+    <h2>Título h2</h2>
+    <p>Este parágrafo é afetado por <code>h2 + p</code> (irmão adjacente).</p>
+    <p>Este também é afetado por <code>h2 ~ p</code> (irmão geral).</p>
+    <p>Mais um parágrafo descendente de <code>.conteudo</code>.</p>
+
+    <h3>Subtítulo h3</h3>
+    <p>Todo <code>p</code> após <code>h3</code> ganha fundo amarelo claro (irmão geral).</p>
+    <p>Este também.</p>
+  </section>
+
+  <dl>
+    <dt>Termo 1</dt>
+    <dd>Definição logo após (afetado por dt + dd)</dd>
+    <dd>Outra definição (afetada por dt ~ dd)</dd>
+  </dl>
+
+  <nav>
+    <ul class="menu">
+      <li>Item direto do menu (filho direto)</li>
+      <li>Outro item direto</li>
+      <li>
+        <span>Item com descendente → </span>
+        <strong>este strong é descendente, não filho direto</strong>
+      </li>
+    </ul>
+  </nav>
+
+  <figure>
+    <img src="https://via.placeholder.com/400x200/3498db/ffffff?text=Imagem" alt="Exemplo">
+    <figcaption>Legenda afetada por img ~ figcaption (irmão geral)</figcaption>
+  </figure>
+
+  <div class="card">
+    <h4>Título do card</h4>
+    <p>Parágrafo logo após h4 (poderia usar + aqui).</p>
+    <ul>
+      <li>Item da lista</li>
+      <li>Outro item</li>
+    </ul>
+    <!-- Combinação: h4 + p ~ ul -->
+  </div>
+
+  <div class="destaque">Bloco 1 de destaque</div>
+  <div class="destaque">Bloco 2 – ganha borda superior por .destaque ~ .destaque</div>
+  <div class="destaque">Bloco 3 – também afetado</div>
+
+  <p style="margin-top: 60px; text-align: center; color: #7f8c8d; font-size: 0.9em;">
+    Teste passando o mouse, lendo o código e comparando os efeitos de cada combinador.
+  </p>
+
+</body>
+</html>

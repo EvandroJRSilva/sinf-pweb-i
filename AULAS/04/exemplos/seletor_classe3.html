@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo de Tabela</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .notebox {
+            border: 4px solid #666666;
+            padding: 0.5em;
+            margin: 0.5em;
+        }
+
+        .notebox.warning {
+            border-color: orange;
+            font-weight: bold;
+        }
+
+        .notebox.danger {
+            border-color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebox">Esta é uma nota de informação.</div>
+
+    <div class="notebox warning">Esta é uma nota de aviso.</div>
+
+    <div class="notebox danger">Esta é uma nota de perigo!</div>
+
+    <div class="danger">
+        Esta nota não será estilizada porque falta a classe notebox.
+    </div>
+</body>
+</html>

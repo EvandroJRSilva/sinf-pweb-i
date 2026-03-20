@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pseudo-classes vs. Pseudo-elementos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    h1 { text-align: center; color: #2c3e50; }
+
+    /* ==================== PSEUDO-CLASSES ISOLADAS ==================== */
+    .botao-hover:hover {
+      background: #e74c3c;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .input-focus:focus {
+      border: 3px solid #3498db;
+      box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.3);
+    }
+
+    li:nth-child(odd) { background: #ecf0f1; }
+    li:nth-child(even) { background: #f8f9fa; }
+
+    /* ==================== PSEUDO-ELEMENTOS ISOLADOS ==================== */
+    .card::before {
+      content: "🚀";
+      font-size: 2rem;
+      position: absolute;
+      top: -15px;
+      left: 20px;
+    }
+
+    .card::after {
+      content: "✓";
+      font-size: 1.5rem;
+      color: green;
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+    }
+
+    blockquote::first-letter {
+      font-size: 4rem;
+      color: #8e44ad;
+      float: left;
+      line-height: 1;
+      margin-right: 8px;
+    }
+
+    ::selection {
+      background: #f1c40f;
+      color: #2c3e50;
+    }
+
+    /* ==================== COMBINADOS (Pseudo-classe + Pseudo-elemento) ==================== */
+    .botao-combinado {
+      position: relative;
+      padding: 15px 30px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .botao-combinado:hover::after {
+      content: " → Cliquei!";
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      background: #2ecc71;
+      padding: 8px 15px;
+      white-space: nowrap;
+      transition: all 0.4s;
+    }
+
+    .botao-combinado:hover::before {
+      content: "🔥";
+      position: absolute;
+      left: 15px;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+      100% { transform: scale(1); }
+    }
+
+    .lista-combinada li:hover::before {
+      content: "👉";
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pseudo-classes e Pseudo-elementos na Prática</h1>
+
+  <!-- Pseudo-classes isoladas -->
+  <h2>1. Apenas Pseudo-classes</h2>
+  <button class="botao-hover">Passe o mouse (hover)</button><br><br>
+  <input type="text" class="input-focus" placeholder="Clique aqui para focar"><br><br>
+
+  <ul>
+    <li>Item 1 (nth-child)</li>
+    <li>Item 2 (nth-child)</li>
+    <li>Item 3 (nth-child)</li>
+  </ul>
+
+  <!-- Pseudo-elementos isolados -->
+  <h2>2. Apenas Pseudo-elementos</h2>
+  <div class="card" style="position:relative; width:300px; padding:40px 20px; border:2px solid #2c3e50; margin:20px 0;">
+    Card com ::before e ::after
+  </div>
+
+  <blockquote>
+    Este parágrafo demonstra ::first-letter e ::selection. Selecione o texto para ver o efeito!
+  </blockquote>
+
+  <!-- Combinados -->
+  <h2>3. Combinados (Pseudo-classe + Pseudo-elemento)</h2>
+  <button class="botao-combinado">Botão Mágico (hover + ::before + ::after)</button>
+
+  <ul class="lista-combinada">
+    <li>Passe o mouse aqui</li>
+    <li>Passe o mouse aqui</li>
+    <li>Passe o mouse aqui</li>
+  </ul>
+
+  <p style="margin-top:40px; text-align:center; color:#7f8c8d;">
+    ✅ Tudo funcionando! Teste todos os efeitos e veja como pseudo-classes e pseudo-elementos trabalham juntos.
+  </p>
+
+</body>
+</html>

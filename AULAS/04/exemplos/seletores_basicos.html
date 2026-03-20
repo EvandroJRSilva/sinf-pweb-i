@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo - Seletores Básicos</title>
+  <style>
+    /* 1. Seletor de Tipo */
+    body { background: #f8f9fa; font-family: Arial, sans-serif; }
+    h1 { color: #e74c3c; }
+    p { margin: 15px 0; }
+
+    /* 2. Seletor de Classe */
+    .destaque { background: yellow; padding: 8px; font-weight: bold; }
+    .azul { color: #3498db; }
+
+    /* 3. Seletor de ID */
+    #cabecalho { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+    #principal { border: 3px solid #27ae60; padding: 20px; margin: 20px; }
+
+    /* 4. Seletor Universal */
+    * { box-sizing: border-box; }
+
+    /* 5. Lista de Seletores */
+    h1, h2, .titulo {
+      font-family: 'Georgia', serif;
+      text-align: center;
+    }
+    p, span, li {
+      line-height: 1.8;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ID + Tipo -->
+  <header id="cabecalho">
+    <h1>Exemplo de Seletores básicos</h1>
+  </header>
+
+  <main id="principal">
+    <h2 class="titulo">Título com classe</h2>
+
+    <!-- Classe + Tipo -->
+    <p class="destaque">Este parágrafo usa a classe <code>.destaque</code>.</p>
+    
+    <p class="azul">Este parágrafo usa a classe <code>.azul</code>.</p>
+
+    <!-- Universal + Lista de seletores afetando vários elementos -->
+    <ul>
+      <li>Item 1 da lista</li>
+      <li>Item 2 da lista</li>
+    </ul>
+
+    <span class="azul">Texto dentro de uma span com classe azul.</span>
+
+    <button>Botão normal (afetado indiretamente pelo reset universal)</button>
+  </main>
+
+  <footer>
+    <p>Exemplo completo que utiliza todos os seletores básicos.</p>
+  </footer>
+
+</body>
+</html>
