@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estilização Completa de Listas no CSS</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f8f9fc;
+      padding: 40px;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 50px;
+    }
+
+    h2 {
+      color: #34495e;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      margin-top: 50px;
+    }
+
+    ul, ol {
+      margin: 25px 0;
+      padding-left: 40px;
+    }
+
+    /* ===================== LIST-STYLE-TYPE ===================== */
+    .list-disc   { list-style-type: disc; }
+    .list-circle { list-style-type: circle; }
+    .list-square { list-style-type: square; }
+    .list-roman  { list-style-type: upper-roman; }
+    .list-alpha  { list-style-type: lower-alpha; }
+    .list-none   { list-style-type: none; }
+
+    /* ===================== LIST-STYLE-POSITION ===================== */
+    .inside  { list-style-position: inside; }
+    .outside { list-style-position: outside; }
+
+    /* ===================== LIST-STYLE-IMAGE ===================== */
+    .list-image {
+      list-style-image: url('https://via.placeholder.com/24x24/3498db/ffffff?text=★');
+    }
+
+    /* ===================== OUTRAS ESTILIZAÇÕES DE LISTAS ===================== */
+    .lista-personalizada {
+      list-style: none;                    /* remove o marcador padrão */
+      padding: 0;
+    }
+
+    .lista-personalizada li {
+      padding: 12px 0 12px 40px;
+      position: relative;
+      border-bottom: 1px solid #eee;
+      transition: all 0.3s;
+    }
+
+    .lista-personalizada li:hover {
+      background: #f0f8ff;
+      transform: translateX(8px);
+    }
+
+    /* Marcador personalizado com ::before */
+    .lista-personalizada li::before {
+      content: "→";
+      position: absolute;
+      left: 15px;
+      color: #e74c3c;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    /* Lista com numeração customizada */
+    .lista-numerada-custom {
+      counter-reset: item;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .lista-numerada-custom li {
+      counter-increment: item;
+      padding: 10px 0 10px 50px;
+      position: relative;
+    }
+
+    .lista-numerada-custom li::before {
+      content: counter(item) ".";
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+      color: #27ae60;
+      width: 35px;
+      text-align: right;
+    }
+
+    /* Lista com fundo alternado (zebra) */
+    .zebra li:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    /* Lista horizontal */
+    .lista-horizontal {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .lista-horizontal li {
+      background: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+    }
+
+    /* Estilização do marcador com ::marker (CSS moderno) */
+    .usando-marker li::marker {
+      color: #9b59b6;
+      font-size: 1.4em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Estilização Completa de Listas no CSS</h1>
+
+    <h2>1. list-style-type</h2>
+    <ul class="list-disc"><li>Disc (padrão)</li><li>Outro item</li></ul>
+    <ul class="list-circle"><li>Circle</li><li>Outro item</li></ul>
+    <ul class="list-square"><li>Square</li><li>Outro item</li></ul>
+    <ol class="list-roman"><li>Upper Roman</li><li>Outro item</li></ol>
+    <ol class="list-alpha"><li>Lower Alpha</li><li>Outro item</li></ol>
+    <ul class="list-none"><li>List-style: none (sem marcador)</li></ul>
+
+    <h2>2. list-style-position</h2>
+    <p><strong>outside (padrão):</strong></p>
+    <ul class="outside"><li>Texto longo que quebra linha continua alinhado com o marcador.</li></ul>
+
+    <p><strong>inside:</strong></p>
+    <ul class="inside"><li>Texto longo que quebra linha continua alinhado com o marcador (dentro).</li></ul>
+
+    <h2>3. list-style-image</h2>
+    <ul class="list-image">
+      <li>Item com imagem como marcador</li>
+      <li>Outro item com estrela azul</li>
+    </ul>
+
+    <h2>4. Combinação avançada: list-style shorthand</h2>
+    <ul style="list-style: square inside url('https://via.placeholder.com/18x18/ff9800/fff?text=▶');">
+      <li>Shorthand: square + inside + imagem</li>
+    </ul>
+
+    <h2>5. Lista totalmente personalizada com ::before</h2>
+    <ul class="lista-personalizada">
+      <li>Primeiro item com seta vermelha</li>
+      <li>Segundo item com hover bonito</li>
+      <li>Terceiro item com transição</li>
+    </ul>
+
+    <h2>6. Lista numerada customizada com counter</h2>
+    <ol class="lista-numerada-custom">
+      <li>Primeiro passo</li>
+      <li>Segundo passo</li>
+      <li>Terceiro passo</li>
+    </ol>
+
+    <h2>7. Lista com zebra (nth-child) + ::marker</h2>
+    <ul class="zebra usando-marker">
+      <li>Item zebra 1</li>
+      <li>Item zebra 2</li>
+      <li>Item zebra 3</li>
+      <li>Item zebra 4</li>
+    </ul>
+
+    <h2>8. Lista horizontal (útil para menus)</h2>
+    <ul class="lista-horizontal">
+      <li>Home</li>
+      <li>Sobre</li>
+      <li>Serviços</li>
+      <li>Contato</li>
+      <li>Blog</li>
+    </ul>
+
+    <p style="text-align: center; margin-top: 60px; color: #7f8c8d;">
+      ✅ Todos os principais atributos de listas foram demonstrados: 
+      list-style-type, list-style-position, list-style-image, list-style shorthand, 
+      ::before, ::marker, counter, nth-child, flex e muito mais.
+    </p>
+  </div>
+
+</body>
+</html>

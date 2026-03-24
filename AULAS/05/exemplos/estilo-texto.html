@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estilização Completa de Fontes no CSS</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f4f7fa;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 40px;
+    }
+
+    .demo {
+      margin: 50px 0;
+      padding: 25px;
+      border: 2px solid #eee;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    /* ==================== EXEMPLOS INDIVIDUAIS ==================== */
+
+    .color {
+      color: #e74c3c;                    /* cor do texto */
+    }
+
+    .font-family {
+      font-family: 'Georgia', serif;     /* família de fonte */
+    }
+
+    .font-size {
+      font-size: 2.2rem;                 /* tamanho da fonte */
+    }
+
+    .font-style {
+      font-style: italic;                /* itálico */
+    }
+
+    .font-weight {
+      font-weight: 700;                  /* negrito (700 = bold) */
+    }
+
+    .text-transform {
+      text-transform: uppercase;         /* transforma em maiúsculas */
+    }
+
+    .text-decoration {
+      text-decoration: underline wavy #3498db 3px;  /* sublinhado ondulado */
+    }
+
+    .text-shadow {
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);  /* sombra no texto */
+    }
+
+    .text-align {
+      text-align: center;                /* alinhamento do texto */
+    }
+
+    .line-height {
+      line-height: 2.8;                  /* espaçamento entre linhas */
+    }
+
+    .letter-spacing {
+      letter-spacing: 4px;               /* espaçamento entre letras */
+    }
+
+    .word-spacing {
+      word-spacing: 15px;                /* espaçamento entre palavras */
+    }
+
+    /* ==================== COMBINAÇÃO DE VÁRIAS PROPRIEDADES ==================== */
+    .titulo-fancy {
+      color: #8e44ad;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3.5rem;
+      font-style: italic;
+      font-weight: 900;
+      text-transform: capitalize;
+      text-decoration: underline;
+      text-shadow: 4px 4px 8px rgba(142, 68, 173, 0.4);
+      text-align: center;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin: 30px 0;
+    }
+
+    .paragrafo-especial {
+      color: #2c3e50;
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      font-weight: 400;
+      text-align: justify;
+      line-height: 2;
+      letter-spacing: 0.5px;
+      word-spacing: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Estilização Completa de Fontes no CSS</h1>
+
+    <div class="demo">
+      <h2 class="color">1. color</h2>
+      <p>Este texto está com <span class="color">cor vermelha (#e74c3c)</span>.</p>
+    </div>
+
+    <div class="demo">
+      <h2 class="font-family">2. font-family</h2>
+      <p class="font-family">Este parágrafo usa a fonte Georgia (serif).</p>
+    </div>
+
+    <div class="demo">
+      <h2 class="font-size">3. font-size</h2>
+      <p class="font-size">Texto bem grande com 2.2rem.</p>
+    </div>
+
+    <div class="demo">
+      <h2 class="font-style">4. font-style</h2>
+      <p class="font-style">Este texto está em itálico.</p>
+    </div>
+
+    <div class="demo">
+      <h2 class="font-weight">5. font-weight</h2>
+      <p class="font-weight">Texto bem forte (font-weight: 700).</p>
+    </div>
+
+    <div class="demo">
+      <h2 class="text-transform">6. text-transform</h2>
+      <p class="text-transform">todo este texto foi transformado para maiúsculas.</p>
+    </div>
+
+    <div class="demo">
+      <h2 class="text-decoration">7. text-decoration</h2>
+      <p class="text-decoration">Texto com sublinhado ondulado azul.</p>
+    </div>
+
+    <div class="demo">
+      <h2 class="text-shadow">8. text-shadow</h2>
+      <p class="text-shadow" style="font-size: 2.5rem; font-weight: bold;">
+        Texto com sombra bonita
+      </p>
+    </div>
+
+    <div class="demo">
+      <h2 class="text-align">9. text-align</h2>
+      <p class="text-align">Este texto está centralizado.</p>
+    </div>
+
+    <div class="demo">
+      <h2 class="line-height">10. line-height</h2>
+      <p class="line-height">
+        Espaçamento bem grande entre as linhas.<br>
+        Isso melhora bastante a legibilidade em textos longos.
+      </p>
+    </div>
+
+    <div class="demo">
+      <h2 class="letter-spacing">11. letter-spacing</h2>
+      <p class="letter-spacing">Espaçamento aumentado entre as letras.</p>
+    </div>
+
+    <div class="demo">
+      <h2 class="word-spacing">12. word-spacing</h2>
+      <p class="word-spacing">Aqui o espaçamento entre as palavras está bem maior.</p>
+    </div>
+
+    <!-- Exemplo combinando várias propriedades -->
+    <div class="demo">
+      <h2 class="titulo-fancy">Título com várias propriedades combinadas</h2>
+      <p class="paragrafo-especial">
+        Este parágrafo demonstra a combinação de várias propriedades de fonte ao mesmo tempo: 
+        cor, família tipográfica monospace, tamanho, alinhamento justificado, altura de linha, 
+        espaçamento entre letras e entre palavras.
+      </p>
+    </div>
+
+  </div>
+
+</body>
+</html>
