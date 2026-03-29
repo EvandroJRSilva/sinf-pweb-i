@@ -1,0 +1,11 @@
+- 2026.1.5
+  - Arquivo `changelog.md` criado.
+  - AULAS/05/
+    - Atualização do arquivo `aula05.md`.
+    - Adição de exemplos/
+    - Adição de imagem em imagens/
+    - Exclusão dos arquivos antigos.
+- 2026.1.5.1
+  - AULAS/05/
+    - Exemplos `estilo-listas.html` e `estilo-tabela.html` atualizados.
+  - Acrescentado o arquivo `exercícios_av1.md`

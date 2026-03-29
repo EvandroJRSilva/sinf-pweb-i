@@ -53,7 +53,7 @@
 
     /* ===================== LIST-STYLE-IMAGE ===================== */
     .list-image {
-      list-style-image: url('https://via.placeholder.com/24x24/3498db/ffffff?text=★');
+      list-style-image: url('https://placehold.co/20x20/cornflowerblue/white?text=A');
     }
 
     /* ===================== OUTRAS ESTILIZAÇÕES DE LISTAS ===================== */
@@ -65,7 +65,7 @@
     .lista-personalizada li {
       padding: 12px 0 12px 40px;
       position: relative;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #BBB;
       transition: all 0.3s;
     }
 
@@ -109,7 +109,7 @@
 
     /* Lista com fundo alternado (zebra) */
     .zebra li:nth-child(even) {
-      background: #f8f9fa;
+      background: #babcbf;
     }
 
     /* Lista horizontal */
@@ -158,12 +158,13 @@
     <h2>3. list-style-image</h2>
     <ul class="list-image">
       <li>Item com imagem como marcador</li>
-      <li>Outro item com estrela azul</li>
+      <li>Outro item com um A branco sobre fundo azul</li>
     </ul>
 
     <h2>4. Combinação avançada: list-style shorthand</h2>
-    <ul style="list-style: square inside url('https://via.placeholder.com/18x18/ff9800/fff?text=▶');">
+    <ul style="list-style: square inside url('https://placehold.co/20x20/ff9800/fff?text=>');">
       <li>Shorthand: square + inside + imagem</li>
+      <li>O quadrado é utilizado se a imagem não for carregada</lili>
     </ul>
 
     <h2>5. Lista totalmente personalizada com ::before</h2>
