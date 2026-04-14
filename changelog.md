@@ -9,3 +9,9 @@
   - AULAS/05/
     - Exemplos `estilo-listas.html` e `estilo-tabela.html` atualizados.
   - Acrescentado o arquivo `exercícios_av1.md`
+- 2026.1.6
+  - AULAS/06/
+    - Arquivos anteriores movidos para `AULAS/07/`.
+    - Novo arquivo `aula06.md`.
+  - Ajustes nos arquivos de algumas aulas.
+  - Ajustes no `.gitnigore`
