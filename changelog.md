@@ -15,3 +15,8 @@
     - Novo arquivo `aula06.md`.
   - Ajustes nos arquivos de algumas aulas.
   - Ajustes no `.gitnigore`
+- 2026.1.7
+  - AULAS/07/
+    - Arquivo `aula07.md` antigo renomeado para `aula07_01.md` e movido para `AULAS/07/01`.
+      - Arquivos de exemplo movidos para a mesma pasta.
+    - Arquivo `aula06.md`, que havia sido trazido da pasta `AULAS/06/`, renomeado para `aula07.md`.

@@ -1,42 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>DHTML</title>
         <style>
-            a { background-color: #eee; }
-            a:hover { background: #ff0; }
-            #toggle-me { background: #cfc; 
-                display: none; 
-                margin: 30px 0; 
-                padding: 1em; }
+            .container {
+                display: flex;
+                gap: 0.5rem;
+                flex-direction: column;
+            }
+
+            button {
+                width: 200px;
+            }
         </style>
     </head>
     <body>
-        <h1>DHTML</h1>
-            
-        <h2><a id="showhide" href="#">Exibir parágrafo</a></h2>
-            
-        <p id="toggle-me">Este é um parágrafo que só é exibido sob demanda.</p>
-            
-        <p>O restante do documento continua normal.</p>
-            
+        <div class="container">
+            <textarea class="story"></textarea>
+            <button id="set-text" type="button">Inserir texto</button>
+            <button id="clear-text" type="button">Apagar o texto</button>
+        </div>
+
         <script>
-            function changeDisplayState(displayElement, textElement) {
-                if (displayElement.style.display === "none" || displayElement.style.display === "") {
-                    displayElement.style.display = "block";
-                    textElement.innerHTML = "Ocultar o parágrafo";
-                } else {
-                    displayElement.style.display = "none";
-                    textElement.innerHTML = "Exibir o parágrafo";
-                }
-            }
-            
-            let displayElement = document.getElementById("toggle-me");
-            let textElement = document.getElementById("showhide");
-            textElement.addEventListener("click", function (event) {
-                event.preventDefault();
-                changeDisplayState(displayElement, textElement);
+            const story = document.body.querySelector(".story");
+
+            const setText = document.body.querySelector("#set-text");
+            setText.addEventListener("click", () => {
+                story.textContent = "Era uma vez, numa noite escura e tempestuosa...";
+            });
+
+            const clearText = document.body.querySelector("#clear-text");
+            clearText.addEventListener("click", () => {
+                story.textContent = "";
             });
         </script>
     </body>

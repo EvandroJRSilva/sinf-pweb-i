@@ -469,6 +469,8 @@ result = (a !== null && a !== undefined) ? a : b;
 
 Exemplo de sua utilidade:
 
+**TODO**: verificar o exemplo abaixo; está voltando string vazia (""). Forçar o undefined ou null.
+
 ```javascript
 let usuario = "Joãozinho";
 
@@ -554,6 +556,19 @@ let boasVindas = (idade < 18)?
 
 boasVindas();
 ```
+
+**TODO**: como fazer para inserir o valor de idade no parâmetro abaixo: 
+
+```javascript
+idade = prompt("Insira a sua idade", 18);
+
+boasVindas = (idade < 18)?
+    (idade) => alert(`Não pode entrar: menor de idade -> ${idade}`) :
+    () => alert("Pode entrar: maior de idade");
+
+boasVindas();
+```
+
 
 ## Exercícios 1
 
