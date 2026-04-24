@@ -20,3 +20,15 @@
     - Arquivo `aula07.md` antigo renomeado para `aula07_01.md` e movido para `AULAS/07/01`.
       - Arquivos de exemplo movidos para a mesma pasta.
     - Arquivo `aula06.md`, que havia sido trazido da pasta `AULAS/06/`, renomeado para `aula07.md`.
+- 2026.1.8
+  - AULAS/06/
+    - Adicionado sumário na `aula06.md`
+  - AULAS/07/
+    - Acrescentados resoluções de exercícios.
+    - Excluída a pasta `01`, com material antigo.
+  - AULAS/08/
+    - Atualização do arquivo `aula08.md`.
+    - Acrescentadas imagens.
+    - Acrescentados arquivos de exemplo.
+  - Atualização do `.gitignore`
+  - Acréscimo dos arquivos `package-lock.json` e `package.json`.

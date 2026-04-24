@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><title>Prática DOM</title></head>
+<body>
+  <div id="minhaDiv">Aqui jaz uma div</div>
+  <script>
+    const minhaDiv = document.querySelector("div");
+    //const minhaDiv = document.getElementById("minhaDiv")
+
+    minhaDiv.insertAdjacentHTML("afterend", "<p>Bombeamento de sangue</p>");
+  </script>
+</body>
+</html>

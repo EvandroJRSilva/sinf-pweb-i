@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Média 26</title>
+    <style>
+        .verde {
+            background-color: green;
+            color: white;
+        }
+
+        .branco {
+            background-color: white;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+  <div id="minhaDiv">Aqui jaz uma div</div>
+  <script>
+    const minhaDiv = document.querySelector("div");
+    //const minhaDiv = document.getElementById("minhaDiv")
+
+    minhaDiv.addEventListener("mouseover", () => {
+        //minhaDiv.className = "verde";
+        minhaDiv.style = "background-color: green; color: white;";
+    })
+
+    minhaDiv.addEventListener("mouseout", () => {
+        //minhaDiv.className = "branco";
+        minhaDiv.style = "background-color: white; color: green;";
+    })
+  </script>
+</body>
+</html>

@@ -1,203 +1,273 @@
 # Aula 08
 
-## Eventos do JavaScript[^1]
+## CSS Frameworks
 
-Sumário
+São bibliotecas pré-projetadas para dar o pontapé inicial no estilo e layout de um projeto. Em vez de criar cada botão, grade e regra tipográfica do zero, com um framework CSS um desenvolvedor utiliza um sistema refinado de classes e componentes projetados para manter o projeto com uma boa aparência. Os frameworks também cuidam da responsividade, permitindo a um site que se adapte a diferentes dispositivos.
 
-- [Aula 08](#aula-08)
-  - [Eventos do JavaScript\[^1\]](#eventos-do-javascript1)
-    - [Além de `click`](#além-de-click)
-    - [Removendo *listeners*](#removendo-listeners)
-    - [Adicionando múltiplos *listeners* para um único evento](#adicionando-múltiplos-listeners-para-um-único-evento)
-    - [Objetos de evento](#objetos-de-evento)
-    - [Evitando o comportamento padrão](#evitando-o-comportamento-padrão)
-  - [Exercícios](#exercícios)
-    - [Questões Fáceis (1-20)](#questões-fáceis-1-20)
-    - [Questões Médias (21-40)](#questões-médias-21-40)
-    - [Questões Difíceis (41-50)](#questões-difíceis-41-50)
+Eles podem ser categorizados entre Baseados em Componentes (*Component-based*) e Priorizados à utilidade (*Utility-first*). Os frameworks da primeira categoria fornecem elementos de UI pré-estilizados, prontos para uso. Seu principal expoente é o [Bootstrap](https://getbootstrap.com/). Os frameworks da segunda categoria fornecem classes utilitárias de baixo nível usadas para a construção de designs personalizados. Seu principal expoente é o [Tailwind CSS](https://tailwindcss.com/), atualmente o mais utilizado no mercado.
 
+Outros frameworks bastante conhecidos, ou em ascenção:
 
-[^1]: [Material original](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events)
+- [Foundation](https://get.foundation/index.html)
+- [Bulma](https://bulma.io/)
+- [Semantic UI](https://semantic-ui.com/)
+- [Materialize](https://materializecss.com/)
+- [shadcn](https://ui.shadcn.com/)
+- [Pico](https://picocss.com/)
+- [Ant Design](https://ant.design/)
+- [Open Props](https://open-props.style/)
 
-Eventos são coisas que acontecem no sistema onde você está programando, sobre os quais o sistema te informa e você pode escrever códigos para reagir a eles. Por exemplo, se o usuário clica em um botão, você pode querer reagir a essa ação, exibindo alguma informação.
+## Tailwind CSS
 
-Eventos são coisas que acontecem no sistema onde você está programando — o sistema produz um sinal de algum tipo quando um evento ocorre, e fornece um mecanismo pelo qual uma ação (ou seja, a execução de um código) pode ocorrer quando o evento acontece. Eventos são disparados dentro da janela do navegador e tendem a estar ligados a um item específico dentro da janela (um elemento, ou conjunto de elementos, o documento HTML carregado, ou a janela inteira). Por exemplo:
+O Tailwind CSS funciona analisando todos os seus arquivos HTML, componentes JavaScript e quaisquer outros modelos em busca de nomes de classe, gerando os estilos correspondentes e, em seguida, gravando-os em um arquivo CSS estático.
 
-- O usuário seleciona, clica, ou passa o cursor por algum elemento.
-- O usuário pressiona alguma tecla do teclado.
-- O usuário redimensiona ou fecha a janela do navegador.
-- Uma página web termina de ser carregada.
-- Um formulário é submetido.
-- Um vídeo é reproduzido, pausado ou finalizado.
-- Um erro acontece.
+Tudo certo até então. Vamos até o [site oficial ver como instalá-lo](https://tailwindcss.com/docs/installation/using-vite). Então nos deparamos com as seguintes abas:
 
-Para ver todos os eventos possívels em um DOM: [índice de eventos](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Events#event_index).
+- **Using Vite**
+- **Using PostCSS**
+- **Tailwind CLI**
+- **Framework Guides**
+- **Play CDN**
 
-Para reagir a um evento, é preciso anexar um *`event listener`*, o qual fica "ouvindo" (ou observando) a execução do programa à espera do evento em questão. Quando o evento acontece, uma função *`event handler`* (manipulador de evento) é chamada para "reagir".
+<figure style="text-align:center;">
+    <img src="./imagens/ops.meme_.nba_-768x576.jpg">
+</figure>
 
-Vejamos o [exemplo 1](exemplo1.html).
+Se paramos para ler vemos o seguinte:
 
-### Além de `click`
+- **Using Vite**: instalando o Tailwind CSS como um plugin de Vite é a maneira mais simples de integrá-lo com frameworks como Laravel, SvelteKit, React Router, Nuxt e SolidJS.
+  - Ok, por enquanto não é o que a gente quer.
+- **Using PostCSS**: instalando o Tailwind CSS como um plugin de PostCSS é a maneira mais fácil de integrá-lo com frameworks como Next.js e Angular.
+  - Hummm...
+- **Tailwind CLI**: A maneira mais simples e rápida de comelar a usar o Tailwind CSS do zero é com a ferramenta de linha de comando (CLI) do Tailwind.
+  - Me parece que é este que queremos de início!
+- **Framework Guides**: guias para framework específicos que cobrem nossa abordagem recomendada para instalar o Tailwind CSS em vários ambientes populares.
+  - Não é o que a gente quer, por enquanto.
+- **Play CDN**
+  - Use o Play CDN para testar o Tailwind direto no navegador sem qualquer configuração. O Play CDN é projetado para propósitos de desenvolvimento apenas, e não é destinado para produção.
+    - Pode ser interessante para brincar depois.
 
-Vamos observar outros eventos possíveis disparados por um botão. No [exemplo 3](exemplo3.html) vamos trocar `click` pelo seguinte:
+Aparentemente o **Tailwind CLI** é o mais adequado para vermos o Tailwind CSS de forma isolada. Então vamos ver como instalá-lo:
 
-- `focus` e `blur` — o que vai fazer a cor mudar quando o botão é selecionado e deselecionado (testar com tab para selecionar sem clicar).
-- `dblclick` — a cor deve mudar com um clique duplo no botão.
-- `mouseover` e `mouseout` — a cor deve mudar quando o mouse estiver em cima do botão e também sair de cima dele.
-
-### Removendo *listeners*
-
-Um *listener* adicionado com `addEventLister()` pode ser removido. A forma mais comum de se fazer isso é usado o método `removeEventListener()`. Exemplo:
-
-```js
-botao.removeEventListener("click", changeBackground);
+```
+npm install tailwindcss @tailwindcss/cli
 ```
 
-Para programas grandes e complexos, essa remoção por melhorar a eficiência do código. Também existe a possibilidade de um mesmo botão resultar em ações diferentes, dependendo das circunstâncias.
+Mas o que é [`npm`](https://www.npmjs.com/)? No site do [`Node.js`](https://nodejs.org/learn/getting-started/an-introduction-to-the-npm-package-manager) podemos ver que o `npm` é o gerenciador de pacotes padrão do `Node.js`. E o que é o `Node.js`? Basicamente um ambiente de execução (*runtime environment*) de JavaScript; em outras palavras é a tecnologia que permite a **execução de código JavaScript fora do navegador**, o que faz com que ele seja a escolha certa para o **backend** em um paradigma *JavaScript everywhere*.
 
-### Adicionando múltiplos *listeners* para um único evento
+Então vem a dúvida:
 
-Nesse caso, o método `addEventLister()` pode ser declarado várias vezes para ter múltiplos manipuladores (*event handlers*). Ex.:
+<figure style="text-align:center;">
+    <img src="./imagens/why_peterxjang.png">
+    <figcaption>Fonte: <a href="https://peterxjang.com/blog/modern-javascript-explained-for-dinosaurs.html">Modern JavaScript Explained for Dinosaurs</a></figcaption>
+</figure>
 
+De início é confuso (ser confuso é a especialidade do JavaScript), mas com o tempo passamos a entender que o `npm` acabou se tornando o gerenciador de pacotes "padrão" da web e, por isso, precisamos dele (e por consequência do `Node.js`) mesmo quando nosso foco é apenas *frontend*.
 
-```js
-elemento.addEventListener("click", functionA);
-elemento.addEventListener("click", functionB);
-```
+Para instalar o `npm` basta instalar o `Node.js`. A maneira mais segura é instalar o `Node.js` a partir de um `nvm` (*Node Version Manager*). Procure o `nvm` para seu sistema operacional e então instale o `Node.js` (e o `npm` de tabela).
 
-No exemplo acima as duas funções são executadas.
+Além do `npm` existem outros gerenciadores de pacote:
 
-### Objetos de evento
+- [Yarn](https://classic.yarnpkg.com/)
+- [pnpm](https://pnpm.io/)
+- [bun](https://bun.com/)
 
-São os objetos associados ao evento disparado, e são passados automaticamente para as funções *`event handlers`*, de forma que permite mais funcionalidades e informações. Vejamos o [exemplo 1 modificado](exemplo1_1.html).
+Agora que temos o `npm` vamos seguir as instruções do site do Tailwind:
 
-Como são objetos, possuem atributos e métodos. Ou seja, dá para brincar bastante com as inúmeras possibilidades de cada tipo de evento.
+- No terminal, para instalar: `npm install tailwindcss @tailwindcss/cli`
+- Importando o Tailwind para o arquivo CSS principal: `@import "tailwindcss";`
+- Iniciando o processo de build do Tailwind CLI, que vai escanear os arquivos para criar o CSS: `npx @tailwindcss/cli -i ./AULAS/08/input.css -o ./AULAS/08/output.css --watch`
+- Adicionando o arquivo CSS gerado no `<head>`.
 
-### Evitando o comportamento padrão
+Agora vamos brincar um pouco:
 
-Algumas vezes podemos nos deparar com uma situação onde não queremos que um evento faça o que faz por padrão. O exemplo mais comum para exemplificar uma situação desse tipo é a submissão de um formulário web.
-
-Mais especificamente a situação ocorre quando o usuário insere informações erradas e, por causa disso, o melhor é evitar o envio desses dados para o servidor, uma vez que sabemos que os dados serão rejeitados. Vejamos o [exemplo 2](exemplo2.html).
+- [Tailwind playground](https://play.tailwindcss.com/)
+- [Tailwind showcase](https://tailwindcss.com/showcase)
+- [index.html](./index.html)
 
 ## Exercícios
 
-Para cada exercício, use este HTML básico como base (adapte elementos conforme necessário):
+### Fáceis
+
+#### Grupo 1: Estilização de Texto e Cores
+
+**Código Base:**
 
 ```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head><title>Prática Eventos</title></head>
-    <body>
-        <!-- Adicione elementos aqui conforme a questão -->
-        <script>
-            // Seu código JS aqui
-        </script>
-    </body>
-</html>
+<div class="container">
+  <h1>Título do Artigo</h1>
+  <p>Este é um parágrafo de exemplo para testar classes utilitárias.</p>
+  <button>Clique Aqui</button>
+</div>
 ```
+1.  **Centralização:** Centralize horizontalmente o conteúdo da `div` principal.
+2.  **Tipografia:** Mude a cor do `h1` para azul escuro e coloque-o em negrito.
+3.  **Botão:** Adicione um fundo azul, texto branco e cantos arredondados ao botão.
+4.  **Espaçamento:** Adicione uma margem inferior ao `h1` e um preenchimento (padding) interno à `div`.
+5.  **Hover:** Faça o botão mudar de cor quando o mouse passar por cima.
 
-### Questões Fáceis (1-20)
+#### Grupo 2: Box Model e Bordas
 
-1. **Clique simples:** Adicione um `<button id="btn">Clique</button>`. Use `addEventListener('click')` para alterar seu texto para "Clicado!" ao clicar.
+**Código Base:**
 
-2. **Duplo clique:** No mesmo botão, adicione `addEventListener('dblclick')` para alertar "Duplo clique detectado!".
+```html
+<section>
+  <div class="box">Conteúdo 1</div>
+  <div class="box">Conteúdo 2</div>
+</section>
+```
+6.  **Largura:** Defina uma largura fixa (ex: 200px) para as boxes.
+7.  **Bordas:** Adicione uma borda de 2px sólida e cinza em ambas as boxes.
+8.  **Sombra:** Aplique uma sombra leve (`shadow-md`) na primeira box.
+9.  **Opacidade:** Deixe a segunda box com 50% de opacidade.
+10. **Alinhamento:** Use Flexbox no elemento `section` para colocar as boxes lado a lado.
 
-3. **Mouse down:** Em um `<div id="quadrado">Pressione</div>`, use `mousedown` para mudar a cor de fundo para 'red'.
+#### Grupo 3: Listas e Backgrounds
 
-4. **Mouse up:** No mesmo div, adicione `mouseup` para mudar a cor de volta para 'white'.
+**Código Base:**
 
-5. **Mouse over:** Crie um `<p id="texto">Passe o mouse</p>`. Use `mouseover` para adicionar uma classe CSS 'destaque' (defina no estilo).
+```html
+<ul>
+  <li>Item A</li>
+  <li>Item B</li>
+  <li>Item C</li>
+</ul>
+```
+11. **Estilo de Lista:** Remova os pontos padrão da lista e adicione um fundo cinza claro.
+12. **Divisores:** Use as classes `divide-y` para criar linhas entre os itens da lista.
+13. **Padding:** Adicione preenchimento interno em cada `li`.
+14. **Destaque:** Mude o fundo do primeiro item da lista para amarelo.
+15. **Arredondamento:** Deixe as bordas do container da lista totalmente arredondadas.
 
-6. **Mouse out:** No mesmo parágrafo, use `mouseout` para remover a classe 'destaque'.
+#### Grupo 4: Imagens e Proporções
 
-7. **Focus em input:** Adicione um `<input id="campo">`. Use `focus` para destacar a borda com `style.border = '2px solid blue'`.
+**Código Base:**
 
-8. **Blur em input:** No input, use `blur` para remover o destaque da borda (`border = ''`).
+```html
+<figure>
+  <img src="https://via.placeholder.com/150" alt="Exemplo">
+  <figcaption>Legenda da Imagem</figcaption>
+</figure>
+```
+16. **Tamanho:** Redimensione a imagem para um tamanho fixo (ex: `w-32 h-32`).
+17. **Círculo:** Transforme a imagem em um círculo perfeito.
+18. **Ajuste:** Use `object-cover` para garantir que a imagem preencha o espaço sem distorcer.
+19. **Legenda:** Centralize o texto da legenda e coloque-o em itálico.
+20. **Filtro:** Adicione um filtro de escala de cinza (`grayscale`) à imagem.
 
-9. **Key down:** No input, adicione `keydown` para alertar a tecla pressionada com `event.key`.
+### Médias
 
-10. **Key up:** No input, use `keyup` para converter o texto para maiúsculas (`value = value.toUpperCase()`).
+#### Grupo 5: Flexbox e Layouts Responsivos
 
-11. **Input change:** Use `input` no input para atualizar um `<span id="eco"></span>` com o valor digitado em tempo real.
+**Código Base:**
 
-12. **Change em select:** Crie um `<select id="opcoes"><option value="1">Um</option></select>`. Use `change` para imprimir o valor selecionado no console.
+```html
+<nav class="navbar">
+  <div class="logo">Logo</div>
+  <div class="links">
+    <a href="#">Home</a>
+    <a href="#">Sobre</a>
+    <a href="#">Contato</a>
+  </div>
+</nav>
+```
+1. **Distribuição:** Use Flexbox para colocar o Logo na esquerda e os Links na direita.
+2. **Responsividade:** Esconda os links em telas pequenas e mostre-os apenas em telas `md` ou maiores.
+3. **Espaçamento:** Use a utilidade `space-x-4` para separar os links entre si.
+4. **Sticky:** Fixe a navbar no topo da página durante o scroll.
+5. **Alinhamento Vertical:** Garanta que todos os itens dentro da navbar estejam centralizados verticalmente.
 
-13. **Submit de form:** Adicione um `<form id="form"><input type="submit"></form>`. Use `submit` com `preventDefault()` para alertar "Formulário enviado!".
+#### Grupo 6: Grid System
 
-14. **Load da página:** Use `window.addEventListener('load')` para imprimir "Página carregada!" no console.
+**Código Base:**
 
-15. **Resize da janela:** Adicione `window.addEventListener('resize')` para atualizar um `<p id="tamanho">Largura: </p>` com `window.innerWidth`.
+```html
+<div class="grid-container">
+  <div class="card">1</div>
+  <div class="card">2</div>
+  <div class="card">3</div>
+  <div class="card">4</div>
+</div>
+```
+6. **Colunas:** Crie um grid de 2 colunas para dispositivos móveis e 4 colunas para desktop.
+7. **Gap:** Adicione um espaçamento de 2rem (8 unidades do Tailwind) entre os cards.
+8. **Span:** Faça o primeiro card ocupar 2 colunas no desktop.
+9. **Proporção:** Defina que todas as linhas do grid tenham a mesma altura mínima.
+10. **Ordem:** Mude a ordem visual para que o card 4 apareça primeiro no desktop.
 
-16. **Scroll da página:** Use `window.addEventListener('scroll')` para mudar o título da página para "Rolando..." quando scroll > 100px.
+#### Grupo 7: Formulários e Estados
 
-17. **Pointer down:** Em um `<div>`, use `pointerdown` para logar "Pointer ativado" no console.
+**Código Base:**
 
-18. **Pointer up:** No mesmo div, adicione `pointerup` para logar "Pointer liberado".
+```html
+<form>
+  <label>Email</label>
+  <input type="email" placeholder="Seu email">
+  <p class="error">Email inválido</p>
+</form>
+```
+11. **Foco:** Mude a cor da borda do input para roxo quando ele for focado (`focus`).
+12. **Ring:** Adicione um efeito de "ring" (anel) externo no foco do input.
+13. **Placeholder:** Mude a cor do texto do placeholder para um cinza bem claro.
+14. **Condicional:** Esconda o parágrafo de erro por padrão e mostre-o apenas se necessário (simule via classe).
+15. **Desabilitado:** Estilize o input para que ele fique com fundo cinza e cursor proibido quando estiver `disabled`.
 
-19. **Touch start (simulado):** Adicione `touchstart` a um `<div>` para alertar "Toque iniciado" (teste em touch device ou emulador).
+#### Grupo 8: Cards Complexos
 
-20. **Drag start:** Torne um `<div draggable="true" id="arrastavel">Arraste</div>` e use `dragstart` para logar "Drag iniciado".
+**Código Base:**
 
-### Questões Médias (21-40)
+```html
+<div class="profile-card">
+  <img src="user.jpg">
+  <h3>Nome do Usuário</h3>
+  <p>Bio curta do usuário aqui.</p>
+  <div class="tags"><span>UI/UX</span><span>Dev</span></div>
+</div>
+```
+16. **Overflow:** Garanta que nada saia dos limites do card usando `overflow-hidden`.
+17. **Group Hover:** Ao passar o mouse no card (pai), mude a cor do título (filho).
+18. **Gradiente:** Adicione um fundo gradiente que vai do azul para o roxo no card.
+19. **Pílulas:** Estilize as spans dentro da div "tags" para parecerem pílulas (bg colorido e full round).
+20. **Aspect Ratio:** Force a imagem do perfil a manter uma proporção de 16/9.
 
-21. **Clique com target:** Em um `<div>` com `<button>` filho, use `click` no div para verificar `event.target` e alertar se é o botão.
+### Difíceis
 
-22. **Mouse move:** Use `mousemove` em um `<div>` para atualizar coordenadas em um `<p>` com `event.clientX` e `event.clientY`.
+#### Grupo 9: Componentes Avançados e Animações
 
-23. **Keypress (deprecated, mas simples):** No input, use `keypress` para impedir teclas numéricas (se `event.key` for número, `preventDefault()`).
+**Código Base:**
 
-24. **Select em textarea:** Crie um `<textarea>`. Use `select` para destacar o texto selecionado com uma cor de fundo.
+```html
+<div class="modal-overlay">
+  <div class="modal-content">
+    <h2>Confirmação</h2>
+    <p>Deseja excluir este arquivo?</p>
+    <div class="actions">
+      <button class="cancel">Não</button>
+      <button class="confirm">Sim</button>
+    </div>
+  </div>
+</div>
+```
+1. **Overlay:** Crie um fundo semitransparente com desfoque (`backdrop-blur`).
+2. **Animação de Entrada:** Use `animate-bounce` ou uma transição de escala suave para o modal aparecer.
+3. **Posicionamento:** Centralize o modal perfeitamente na tela usando `fixed` e técnicas de Flex ou Grid.
+4. **Botões Customizados:** Use `@apply` (ou simule) para criar uma classe de botão base e variantes para "cancel" e "confirm".
+5. **Z-Index:** Garanta que o modal esteja acima de qualquer outro elemento da página.
 
-25. **Reset de form:** Em um form com inputs, use `reset` para limpar um `<span>` que ecoa o status do form.
+#### Grupo 10: Dark Mode e Customização
 
-26. **Invalid em input:** Adicione `required` a um input. Use `invalid` para mostrar uma mensagem de erro em um `<div>`.
+**Código Base:**
 
-27. **Error em imagem:** Crie `<img src="invalida.jpg">`. Use `error` para alterar o src para uma imagem válida.
-
-28. **Pointer move:** Use `pointermove` em um elemento para rastrear movimento e atualizar posição em tempo real.
-
-29. **Pointer over/out:** Use `pointerover` e `pointerout` para alternar visibilidade de um tooltip `<div>`.
-
-30. **Pointer enter/leave (sem bubbling):** Em um `<ul>` com `<li>`, use `pointerenter` e `pointerleave` em cada li para destacar individualmente.
-
-31. **Touch move:** Em um `<div>`, use `touchmove` para mover o div seguindo o toque (atualize `style.left` com `event.touches[0].clientX`).
-
-32. **Touch end:** No mesmo div, use `touchend` para fixar a posição final e logar "Toque finalizado".
-
-33. **Drag over:** Crie um drop target `<div id="drop">Solte aqui</div>`. Use `dragover` com `preventDefault()` para permitir drop.
-
-34. **Drag leave:** No drop target, use `dragleave` para mudar cor de fundo para indicar saída.
-
-35. **Unload da página:** Use `window.addEventListener('beforeunload')` para confirmar saída com `event.returnValue = "Tem certeza?"`.
-
-36. **Scroll em elemento específico:** Em um `<div style="overflow:scroll;height:200px;">` com conteúdo longo, use `scroll` para logar posição do scroll.
-
-37. **Change com validação:** Em um select, use `change` para validar se o valor é "válido" e adicionar/remover classe de erro.
-
-38. **Input com debounce:** Use `input` em um input, mas adicione um timer para atualizar um `<p>` apenas após 500ms sem digitação.
-
-39. **Múltiplos eventos em um elemento:** Combine `click` e `dblclick` no botão: se dblclick, cancele o click com `setTimeout`.
-
-40. **Propagação com stopPropagation:** Clique em um `<button>` dentro de `<div>`; use `stopPropagation()` no button para impedir alerta no div.
-
-### Questões Difíceis (41-50)
-
-41. **Delegação de cliques:** Crie uma lista dinâmica de botões via JS. Use um listener `click` no `<ul>` pai para remover o botão clicado via `event.target`.
-
-42. **Evento customizado:** Crie um `CustomEvent('userLogin', {detail: {user: 'João'}})`. Dispare no `document` e ouça para atualizar um `<p>` com o nome.
-
-43. **Drag and drop completo:** Torne um item arrastável (`dragstart` setData), permita drop em target (`drop` appendChild), com feedback em `dragenter/dragleave`.
-
-44. **Pointer events para touch/mouse unificado:** Use `pointerdown/up/move` em um canvas simulado (`<div>`) para desenhar uma linha seguindo o pointer.
-
-45. **Touch gesture básico:** Use `touchstart` e `touchmove` para detectar pinch (distância entre toques) e zoomar um `<img>`.
-
-46. **Keydown com atalhos globais:** Use `keydown` no `document` para atalhos como Ctrl+S (salvar form) ou Esc (fechar modal), verificando `event.ctrlKey` e `event.key`.
-
-47. **Captura de fase (capture: true):** Adicione listeners com `{capture: true}` no `<body>` e `<div>` para capturar cliques na ordem de captura vs. bubbling.
-
-48. **Otimização de mousemove:** Para um jogo simples, throttle `mousemove` com `requestAnimationFrame` para atualizar posição sem lag excessivo.
-
-49. **Custom event com bolhas:** Crie e dispare um evento customizado que borbulhe (`bubbles: true`) de um `<span>` para `<div>` pai, manipulando em ambos.
-
-50. **SPA-like navegação com eventos:** Use `popstate` e `click` em links para navegação sem reload, atualizando conteúdo dinâmico e histórico do browser.
+```html
+<body class="bg-white text-black">
+  <div class="card bg-gray-100">
+    <h1 class="text-blue-600">Painel de Controle</h1>
+    <p>Dados sensíveis aqui.</p>
+  </div>
+</body>
+```
+6. **Dark Mode:** Configure o código para que, no modo escuro, o fundo da página fique preto e o texto branco.
+7. **Card Escuro:** No modo escuro, o fundo do card deve mudar para um cinza grafite (`bg-gray-800`).
+8. **Cores Arbitrárias:** Use um valor de cor hexadecimal específico que não existe na paleta padrão do Tailwind (ex: `#123456`) usando a sintaxe de colchetes.
+9. **Peer State:** Crie um checkbox invisível e, quando ele for marcado, mude o estilo do card de "Dados sensíveis" usando a classe `peer`.
+10. **Container Queries:** (Se disponível/plugin) Altere o layout do card com base no tamanho do seu container pai, não da janela do navegador.
