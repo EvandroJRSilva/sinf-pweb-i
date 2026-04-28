@@ -32,3 +32,10 @@
     - Acrescentados arquivos de exemplo.
   - Atualização do `.gitignore`
   - Acréscimo dos arquivos `package-lock.json` e `package.json`.
+- 2026.1.9
+  - AULAS/08/
+    - Arquivos `package-lock.json` e `package.json` relacionados ao Tailwind CSS movidos para cá.
+    - Pequenas atualizações nos arquivos `intex.html` e `output.css`.
+  - AULAS/09/
+    - Atualização do arquivo `aula09.md`.
+  - .gitignore atualizado
