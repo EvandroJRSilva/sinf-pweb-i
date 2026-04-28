@@ -1,5 +1,26 @@
 # Aula 08
 
+**Sumário**
+
+- [Aula 08](#aula-08)
+  - [CSS Frameworks](#css-frameworks)
+  - [Tailwind CSS](#tailwind-css)
+  - [Exercícios](#exercícios)
+    - [Fáceis](#fáceis)
+      - [Grupo 1: Estilização de Texto e Cores](#grupo-1-estilização-de-texto-e-cores)
+      - [Grupo 2: Box Model e Bordas](#grupo-2-box-model-e-bordas)
+      - [Grupo 3: Listas e Backgrounds](#grupo-3-listas-e-backgrounds)
+      - [Grupo 4: Imagens e Proporções](#grupo-4-imagens-e-proporções)
+    - [Médias](#médias)
+      - [Grupo 5: Flexbox e Layouts Responsivos](#grupo-5-flexbox-e-layouts-responsivos)
+      - [Grupo 6: Grid System](#grupo-6-grid-system)
+      - [Grupo 7: Formulários e Estados](#grupo-7-formulários-e-estados)
+      - [Grupo 8: Cards Complexos](#grupo-8-cards-complexos)
+    - [Difíceis](#difíceis)
+      - [Grupo 9: Componentes Avançados e Animações](#grupo-9-componentes-avançados-e-animações)
+      - [Grupo 10: Dark Mode e Customização](#grupo-10-dark-mode-e-customização)
+
+
 ## CSS Frameworks
 
 São bibliotecas pré-projetadas para dar o pontapé inicial no estilo e layout de um projeto. Em vez de criar cada botão, grade e regra tipográfica do zero, com um framework CSS um desenvolvedor utiliza um sistema refinado de classes e componentes projetados para manter o projeto com uma boa aparência. Os frameworks também cuidam da responsividade, permitindo a um site que se adapte a diferentes dispositivos.
