@@ -38,4 +38,13 @@
     - Pequenas atualizações nos arquivos `intex.html` e `output.css`.
   - AULAS/09/
     - Atualização do arquivo `aula09.md`.
+- 2026.1.9.1
   - .gitignore atualizado
+- 2026.1.9.2
+  - AULAS/03/
+    - Modificações pontuais nos exemplos.
+  - AULAS/06/
+    - Inserção de alguns TODOs.
+  - AULAS/09/
+    - Atualização do arquivo `aula09.md`.
+    - Adição da pasta `app/` com exemplo de aplicativo em React.
