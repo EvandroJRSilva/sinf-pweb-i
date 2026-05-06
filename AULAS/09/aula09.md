@@ -49,7 +49,7 @@ Vamos agora seguir o [tutorial](https://react.dev/learn/tutorial-tic-tac-toe) e 
 
 ### Tarefa de casa
 
-Leia, estude e faça um resumo da página [Pensando em React](https://react.dev/learn/thinking-in-react). O texto (pode ser em `.txt`, `.md` ou `.pdf`) deve ser **enviado para o meu e-mail até a próxima sexta (08/05/26) às 23:59**.
+Leia, estude e faça um resumo da página [Pensando em React](https://react.dev/learn/thinking-in-react). O texto deve ser manuscrito e o arquivo pode ser `.pdf` ou arquivo de imagem, e deve ser **enviado para o meu e-mail até a próxima sexta (08/05/26) às 23:59**.
 
 ## Exercícios
 

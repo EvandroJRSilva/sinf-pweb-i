@@ -48,3 +48,6 @@
   - AULAS/09/
     - Atualização do arquivo `aula09.md`.
     - Adição da pasta `app/` com exemplo de aplicativo em React.
+- 2026.1.9.3
+  - AULAS/09/
+    - Atualização do arquivo `aula09.md`
