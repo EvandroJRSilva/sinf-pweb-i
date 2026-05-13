@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///home/evandro/Workspaces/UFPI/PICOS/Sistemas%20de%20Informa%C3%A7%C3%A3o/Disciplinas/Programa%C3%A7%C3%A3o%20para%20a%20Web%20I/AULAS/10/next-app/app/blog/page.js"],"sourcesContent":["// Dummy imports\nimport { getPosts } from '@/lib/posts'\nimport { Post } from '@/ui/post'\n \nexport default async function Page() {\n  const posts = await getPosts()\n \n  return (\n    <ul>\n      {posts.map((post) => (\n        <Post key={post.id} post={post} />\n      ))}\n    </ul>\n  )\n}"],"names":["Page","posts","getPosts","map","post","Post","id"],"mappings":"AAAA,gBAAgB;;;;;;;;;;;;;;;;;;;AAID,eAAeA;IAC5B,MAAMC,QAAQ,MAAMC;IAEpB,qBACE,8OAAC;kBACED,MAAME,GAAG,CAAC,CAACC,qBACV,8OAACC;gBAAmBD,MAAMA;eAAfA,KAAKE,EAAE;;;;;;;;;;AAI1B"}}]
-}

@@ -59,3 +59,9 @@
     - Pasta `next-default/` com o template de projeto Next.js.
     - Pasta `react-router/` com o template de projeto do React-Router.
     - Arquivo `react-puro.html` como exemplo de uso do React sem framework e bundler.
+- 2026.1.10.1
+  - AULAS/10/
+    - next-app/
+      - Pasta `.next/` excluída.
+  - `.gitignore`
+    - Adição da pasta `.next/`.

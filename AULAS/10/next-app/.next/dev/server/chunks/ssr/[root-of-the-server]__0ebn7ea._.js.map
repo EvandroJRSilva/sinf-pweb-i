@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///home/evandro/Workspaces/UFPI/PICOS/Sistemas%20de%20Informa%C3%A7%C3%A3o/Disciplinas/Programa%C3%A7%C3%A3o%20para%20a%20Web%20I/AULAS/10/next-app/app/page.tsx"],"sourcesContent":["export default function Page() {\n  return <h1>Hello, Next.js!</h1>\n}"],"names":["Page"],"mappings":";;;;;;AAAe,SAASA;IACtB,qBAAO,8OAAC;kBAAG;;;;;;AACb"}}]
-}
