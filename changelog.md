@@ -51,3 +51,11 @@
 - 2026.1.9.3
   - AULAS/09/
     - Atualização do arquivo `aula09.md`
+- 2026.1.10
+  - AULAS/10/
+    - Atualização do arquivo `aula10.md`.
+    - Pastas `exemplo-1`, `exemplo-2` e `imagens` excluídas.
+    - Pasta `next-app/` com um exemplo mínimo de Next.js.
+    - Pasta `next-default/` com o template de projeto Next.js.
+    - Pasta `react-router/` com o template de projeto do React-Router.
+    - Arquivo `react-puro.html` como exemplo de uso do React sem framework e bundler.

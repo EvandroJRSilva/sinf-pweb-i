@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>React Hello World</title>
+        <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script>
+            window.onload = function()
+            {
+                class Saudacao extends React.Component
+                {
+                    render()
+                    {
+                        return React.createElement('h1', null, 'Saudações, ' + this.props.name + '!');
+                    }
+                }
+
+                ReactDOM.render(
+                    React.createElement(Saudacao, { name : 'Evandro' }),
+                    document.getElementById('root')
+                );
+            };
+        </script>
+    </body>
+</html>
