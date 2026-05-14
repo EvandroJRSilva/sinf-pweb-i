@@ -65,3 +65,10 @@
       - Pasta `.next/` excluída.
   - `.gitignore`
     - Adição da pasta `.next/`.
+- 2026.1.11
+  - AULAS/10/
+    - Atualização do exemplo mínimo do `Next.js`, com uma rota acrescentada.
+  - AULAS/11/
+    - Removidas as pastas de exemplos e exercícios.
+    - Atualização do arquivo `aula11.md`.
+    - Adição de pasta de exemplo para `ESLint`  `Prettier`, com seus respectivos arquivos.
