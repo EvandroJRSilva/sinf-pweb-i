@@ -1,35 +1,35 @@
 // Código propositalmente com problemas para o ESLint detectar
 
-    let usuarios = []
+    let usuarios = [];
 
-    const botao = document.getElementById("btnCadastrar")
+    const botao = document.getElementById("btnCadastrar");
 
     botao.addEventListener("click", function(){
 
-      var nome = document.getElementById("nome").value
-      var idade = document.getElementById("idade").value
+      let nome = document.getElementById("nome").value;
+      let idade = document.getElementById("idade").value;
 
-      if(nome == "" || idade == ""){
-        alert("Preencha todos os campos")
-        return
+      if(nome === "" || idade === ""){
+        alert("Preencha todos os campos");
+        return;
       }
 
       let usuario = {
         nome: nome,
         idade: idade
-      }
+      };
 
-      usuarios.push(usuario)
+      usuarios.push(usuario);
 
-      atualizarTela()
+      atualizarTela();
 
-    })
+    });
 
     function atualizarTela(){
 
-      const resultado = document.getElementById("resultado")
+      const resultado = document.getElementById("resultado");
 
-      resultado.innerHTML = ""
+      resultado.innerHTML = "";
 
       for(let i = 0; i < usuarios.length; i++){
 
@@ -38,10 +38,10 @@
           usuarios[i].nome +
           " possui " +
           usuarios[i].idade +
-          " anos.</p>"
+          " anos.</p>";
 
       }
 
     }
 
-    console.log("Aplicação iniciada")
+    console.log("Aplicação iniciada");

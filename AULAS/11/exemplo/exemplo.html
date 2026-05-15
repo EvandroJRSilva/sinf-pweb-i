@@ -1,36 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Demonstração ESLint</title>
-<style>
-* {margin: 0;padding: 0;box-sizing: border-box;font-family: Arial, Helvetica, sans-serif;}
-body {background-color: #f4f4f4;display: flex;justify-content: center;align-items: center;min-height: 100vh;}
-.container {width: 400px;background-color: white;padding: 24px;border-radius: 10px;box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);}
-h1 {margin-bottom: 20px;text-align: center;color: #333;}
-.campo {margin-bottom: 16px;}
-label {display: block;margin-bottom: 6px;color: #444;}
-input {width: 100%;padding: 10px;border: 1px solid #ccc;border-radius: 6px;}
-button {width: 100%;padding: 12px;border: none;background-color: #2563eb;color: white;font-size: 16px;border-radius: 6px;cursor: pointer;}
-button:hover {background-color: #1d4ed8;}
-.resultado {margin-top: 20px;padding: 12px;background-color: #eef2ff;border-radius: 6px;color: #222;min-height: 50px;}
-</style>
-</head>
-<body>
-<div class="container">
-<h1>Cadastro de Usuário</h1>
-<div class="campo">
-<label for="nome">Nome</label>
-<input type="text" id="nome" placeholder="Digite seu nome">
-</div>
-<div class="campo">
-<label for="idade">Idade</label>
-<input type="number" id="idade" placeholder="Digite sua idade">
-</div>
-<button id="btnCadastrar">Cadastrar</button>
-<div class="resultado" id="resultado">Nenhum usuário cadastrado.</div>
-</div>
-<script src="index.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demonstração ESLint</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .container {
+        width: 400px;
+        background-color: white;
+        padding: 24px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+      }
+      .campo {
+        margin-bottom: 16px;
+      }
+      label {
+        display: block;
+        margin-bottom: 6px;
+        color: #444;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        background-color: #2563eb;
+        color: white;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #1d4ed8;
+      }
+      .resultado {
+        margin-top: 20px;
+        padding: 12px;
+        background-color: #eef2ff;
+        border-radius: 6px;
+        color: #222;
+        min-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cadastro de Usuário</h1>
+      <div class="campo">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Digite seu nome" />
+      </div>
+      <div class="campo">
+        <label for="idade">Idade</label>
+        <input type="number" id="idade" placeholder="Digite sua idade" />
+      </div>
+      <button id="btnCadastrar">Cadastrar</button>
+      <div class="resultado" id="resultado">Nenhum usuário cadastrado.</div>
+    </div>
+    <script src="index.js"></script>
+  </body>
 </html>

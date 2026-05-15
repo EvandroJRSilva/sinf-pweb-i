@@ -72,3 +72,6 @@
     - Removidas as pastas de exemplos e exercícios.
     - Atualização do arquivo `aula11.md`.
     - Adição de pasta de exemplo para `ESLint`  `Prettier`, com seus respectivos arquivos.
+- 2026.1.11.1
+  - AULAS/11/exemplo/
+    - `exemplo.html` e `index.js` ajustados pelo Prettier e ESLint.
