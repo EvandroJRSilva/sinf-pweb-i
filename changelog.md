@@ -75,3 +75,9 @@
 - 2026.1.11.1
   - AULAS/11/exemplo/
     - `exemplo.html` e `index.js` ajustados pelo Prettier e ESLint.
+- 2026.1.12
+  - AULAS/12/
+    - Excluídos exemplos de aula antiga.
+    - `aula12.md` atualizada.
+    - `imagens/`
+      - Adicionadas várias imagens.
