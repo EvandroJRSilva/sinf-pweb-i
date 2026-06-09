@@ -198,7 +198,7 @@ O *Cross-Origin Resource Sharing* é um mecanismo baseado em cabeçalhos HTTP qu
 
 Quando um navegador faz uma requisição `cross-origin` ele inclui um cabeçalho `Origin` na requisição. O servidor responde com um cabeçalho `Access-Control-Allow-Origin`. Se o valor no cabeçalho da resposta coincide com o do cabelho `Origin`, o navegador permite o acesso aos dados da resposta. Se não coincidir, o navegador bloqueia o acesso, resultando em um `CORS error`.
 
-<figure style="text-align:center;">
+<figure style="text-align:center;background-color:black;">
     <img src="./imagens/cors-success-flow.ClXPyLu0.svg">
     <img src="./imagens/cors-error-flow.C_kIbKfJ.svg">
     <figcaption>Fonte: <a href="https://rbika.com/blog/understanding-cors">R Bika(s)</a></figcaption>
@@ -206,7 +206,7 @@ Quando um navegador faz uma requisição `cross-origin` ele inclui um cabeçalho
 
 Requisições que utilizam métodos diferentes de GET, POST, HEAD, ou que incluem cabeçalhos não padronizados, devem ser verificadas previamente. Nesses casos, antes de ser enviada a requisição real, o navegador envia uma requisição prévia (*pre-flight request*) usando o método HTTP `OPTIONS`. O servidor precisa responder com os cabeçalhos `Access-Control-Allow-Origin` e `Access-Control-Allow-Methods`. Se esses cabeçalhos coincidem com o método e `Origin` da requisição, o navegador procede com a requisição real. Dessa forma é garantido que o servidor explicitamente permite essas requisições antes de processá-las, prevenindo modificações não intencionais nos dados do servidor.
 
-<figure style="text-align:center;">
+<figure style="text-align:center;background-color:black;">
     <img src="./imagens/cors-preflight-success.Bc7fDRgG.svg">
     <img src="./imagens/cors-preflight-error.DC3CAJcz.svg">
     <figcaption>Fonte: <a href="https://rbika.com/blog/understanding-cors">R Bika(s)</a></figcaption>

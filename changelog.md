@@ -81,3 +81,11 @@
     - `aula12.md` atualizada.
     - `imagens/`
       - Adicionadas várias imagens.
+- 2026.1.13
+  - AULAS/12/
+    - `aula12.md` últimas imagens atualizadas com background preto.
+  - AULAS/13/
+    - Pastas de exemplos exlcuídas.
+    - `aula13.md` atualizada.
+    - `imagens/`
+      - Adicionadas algumas imagens.
