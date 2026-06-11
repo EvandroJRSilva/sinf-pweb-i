@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemplo sessionStorage</title>
+  </head>
+  <body>
+    <h2>sessionStorage</h2>
+    <input id="nomeSession" type="text" placeholder="Fulano da Silva">
+    <button onclick="salvar()">Salvar Nome</button>
+    <br><br>
+    <button onclick="mostrar()">Mostrar Nome</button><span id="mostraNome"></span>
+
+    <script>
+        function salvar() {
+            let nome = document.getElementById("nomeSession").value;
+            sessionStorage.setItem("nome", nome);
+        }
+        function mostrar() {
+            document.getElementById("mostraNome").textContent = sessionStorage.getItem("nome");
+        }
+    </script>
+  </body>
+</html>

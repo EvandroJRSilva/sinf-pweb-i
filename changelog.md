@@ -89,3 +89,9 @@
     - `aula13.md` atualizada.
     - `imagens/`
       - Adicionadas algumas imagens.
+- 2026.1.14
+  - AULAS/14/
+    - `exemplo-django/` excluído.
+    - `aula14.md` atualizada.
+    - `exemplos/`
+      - Adicionados exemplos.
