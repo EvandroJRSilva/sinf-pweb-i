@@ -95,3 +95,6 @@
     - `aula14.md` atualizada.
     - `exemplos/`
       - Adicionados exemplos.
+- 2026.1.14.1
+  - Plano de Ensino/
+    - Atualização do arquivo `plano_enino.pdf`.
