@@ -30,14 +30,16 @@ Repositório para os materiais da disciplina P. Web I
 
 #### Atualizada
 
-- ROADMAP.SH. **Frontend Developer**. Developer Roadmaps, 2026. Disponível em: https://roadmap.sh/frontend. Acesso em 04 fev. 2026.
+- HAVERBEKE, Marijn. **Eloquent JavaScript**. 4. ed. No Starch Press, 2024. Disponível em: [https://eloquentjavascript.net/](https://eloquentjavascript.net/). Acesso em: 20 ago. 2025.
+- CONNOLLY, Randy e HOAR, Ricardo. **Fundamentals of Web Development**. 3.ed. [S.l.]: Pearson, 2021.
+- DUCKETT, Jon. **HTML & CSS: design and build websites**. Indianapolis, IN: John Wiley & Sons, 2011.
+- DUCKETT, Jon. **JavaScript and JQuery: Interactive Front-End Web Development**. Indianapolis, IN: John Wiley & Sons, 2014.
 - MDN. **HTML: Linguagem de Marcação de Hipertexto**. Disponível em: https://developer.mozilla.org/pt-BR/docs/Web/HTML. Acesso em: 04 fev. 2026.
 - MDN. **CSS**. Disponível em: https://developer.mozilla.org/pt-BR/docs/Web/CSS. Acesso em: 04 fev. 2026.
 - MDN. **JavaScript**. Disponível em: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript. Acesso em: 04 fev. 2026.
 - MDN. **Cookies HTTP**. Disponível em https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Cookies. Acesso em: 04 fev. 2026.
 - PILGRIM, Mark. **Dive into HTML5 with illustrations from the public domain**. Disponível em: [https://mislav.github.io/diveintohtml5/](https://mislav.github.io/diveintohtml5/) (HTML, contéudo em Inglês), ou [https://www.jesusda.com/docs/ebooks/ebook_manual_en_dive-into-html5.pdf](https://www.jesusda.com/docs/ebooks/ebook_manual_en_dive-into-html5.pdf) (PDF), ou [https://github.com/zenorocha/diveintohtml5](https://github.com/zenorocha/diveintohtml5) (conteúdo traduzido). Acesso a todas as páginas citadas em: 20 ago. 2025.
 - **Aprenda Layout com CSS**. Disponível em: [https://pt-br.learnlayout.com/](https://pt-br.learnlayout.com/). Acesso em: 20 ago. 2025.
-- HAVERBEKE, Marijn. **Eloquent JavaScript**. 4. ed. No Starch Press, 2024. Disponível em: [https://eloquentjavascript.net/](https://eloquentjavascript.net/). Acesso em: 20 ago. 2025.
 
 ### Complementar
 
@@ -51,7 +53,9 @@ Repositório para os materiais da disciplina P. Web I
 
 #### Atualizada
 
-- DUCKETT, Jon. **HTML and CSS: Design and Build Websites**. 1 ed. Wiley, 2014.
+- WEB.DEV. **Guidance to build modern web experiences that work on any browser**. Disponível em [https://web.dev/](https://web.dev/). Acesso em: 3 ago. 2026.
+- JAVASCRIPT.INFO. **The Modern JavaScript Tutorial**. Disponível em [https://javascript.info/](https://javascript.info/). Acesso em: 3 ago. 2026.
+- ROADMAP.SH. **Frontend Developer**. Developer Roadmaps, 2026. Disponível em: https://roadmap.sh/frontend. Acesso em 04 fev. 2026.
 - OGDEN, Max. **JavaScript For Cats**. Disponível em: [https://jsforcats.com/](https://jsforcats.com/). Acesso em: 20 ago. 2025.
 - W3Schools. **W3Schools Tutorials** (HTML, CSS, JavaScript, XML, Cookies). Disponível em: [https://www.w3schools.com/](https://www.w3schools.com/). Acesso em: 20 ago. 2025.
 - TANENBAUM, Andrew; FEAMSTER, Nick; WETHERALL, David. **Redes de Computadores**. 6. ed., São Paulo: Bookman, 2021.
@@ -60,91 +64,140 @@ Repositório para os materiais da disciplina P. Web I
 
 ## Conteúdo Programático
 
-### Unidade 1 - HTML e CSS
+### Unidade 1 - undamentos da Web e Construção de Interfaces Estáticas
 
-- A Internet
-  - Como ela funciona?
-  - O que é HTTP?
-  - O que é Nome de Domínio?
-  - O que é Hospedagem?
-  - O que é o DNS e como ele funciona.
-  - O que são os navegadores e como eles funcionam.
-- HTML
-  - Sintaxe básica
-  - Multimída
-  - Listas
-  - Tabelas
+- Introdução ao desenvolvimento Web
+  - História da Web
+  - Arquitetura cliente-servidor
+  - Navegadores
+  - HTTP e HTTPS
+  - Estrutura de uma aplicação web
+  - Ferramentas de desenvolvimento
+- HTML 
+  - Estrutura de documentos
+    - Estrutura básica
+    - Elementos
+    - Atributos
+    - Hierarquia
+    - Comentários
+    - Boas práticas
+  - HTML Semântico
+    - Cabeçalhos
+    - Seções
+    - Navegação
+    - Artigos
+    - Rodapés
+    - Acessibilidade básica
   - Formulários
+    - Inputs
+    - Labels
+    - Select
+    - Textarea
+    - Botões
+    - Validação nativa
 - CSS
-  - Estilização básica
-  - Estilização de texto
-  - Layout
+  - Introdução
+    - Seletores
+    - Cascata
+    - Especificidade
+    - Herança
+    - Organização do CSS
+  - Box Model
+    - Margin
+    - Border
+    - Padding
+    - Width
+    - Height
+    - Overflow
+  - Layouts modernos
+    - Display
+    - Flexbox
+    - CSS Grid
+    - Posicionamento
+    - Camadas
+  - Design responsivo
+    - Media Queries
+    - Unidades relativas
+    - Mobile First
+    - Viewport
+    - Imagens responsivas
 
-### Unidade 2 - JavaScript e Frameworks
+### Unidade 2 - Programação JavaScript e Manipulação da Interface
 
 - JavaScript
-  - Sintaxe básica.
-  - Eventos.
-  - Objetos.
-  - HTML DOM API.
-  - Requisições em rede.
-  - JSON.
-- Frameworks para JavaScript
-  - Introdução.
-  - React.
-- Package Managers
-- CSS Frameworks
-  - Tailwind
-- Outros frameworks
-  - Vue.js.
-  - Angular.
-  - Svelte.
-- Linters & Formatters
-  - ESLint.
-  - Prettier.
-- Module Bundlers
-  - Vite.
-  - esbuild.
-- Testes
-  - Vitest.
-  - Playwright.
+  - Introdução
+    - Linguagem
+    - Variáveis
+    - Tipos
+    - Operadores
+    - Conversões
+  - Controle de fluxo
+    - Condicionais
+    - Estruturas de repetição
+    - Escopo
+    - Boas práticas
+  - Funções
+    - Declaração
+    - Expressões
+    - Arrow Functions
+    - Parâmetros
+    - Retorno
+  - Objetos e Arrays
+    - Objetos literais
+    - Arrays
+    - Métodos principais
+    - Desestruturação
+- DOM
+  - Estrutura do documento
+  - Seletores
+  - Navegação
+  - Manipulação
+- Eventos
+  - Eventos do mouse
+  - Teclado
+  - Formulários
+  - Event Listener
+  - Propagação
+- Manipulação dinâmica de páginas
+  - Criação de elementos
+  - Alteração de estilos
+  - Classes CSS
+  - Templates
+- Armazenamento no navegador
+  - Cookies
+  - Local Storage
+  - Session Storage
+  - Persistência
 
-### Unidade 3 - APIs, Autenticação, Desktop, Mobile e Segurança
+### Unidade 3 - Desenvolvimento Frontend Moderno
 
-- Web Security
-  - CORS.
-  - HTTPs.
-  - CSP.
-  - OWASP Risks.
-- Web APIs
-  - Web Storage API
-    - Cookies HTTP.
-  - History API.
-  - Fetch API.
-- Autenticação
-  - Autenticação básica.
-  - Autenticação baseada em sessão.
-  - Autenticação baseada em token.
-  - Autenticação JWT.
-  - OAuth.
-  - Single Sign On (SSO).
-- Aplicativos Mobile
-  - React Native.
-  - Flutter
-- Aplicativos Desktop
-  - Electron.
-  - Flutter.
-- Tópicos
-  - SSR
-  - SSG
-  - Type Checkers
-  - Deployment
-  - Design Systems
-  - Performance
-  - Web Components
-  - GraphQL
-  - Accessibility
-  - PWAs
+- Comunicação cliente-servidor
+  - JSON
+  - Introdução às APIs
+  - REST
+  - Requisições HTTP
+- Fetch API
+  - GET
+  - POST
+  - Tratamento de erros
+  - Promises
+  - Callbacks
+  - async/await
+- Modularização do JavaScript
+  - ES Modules
+  - Organização do projeto
+  - Importação e exportação
+- Ferramentas modernas do frontend
+  - npm
+  - Bundlers
+    - Vite
+  - Organização de projetos
+- Introdução a Frameworks Frontend
+  - Motivação
+  - Componentização
+  - Estado
+  - Visão geral de React, Vue e Angular
+  - Quando utilizar frameworks
 
 ## Avaliação
 
@@ -178,261 +231,42 @@ O documento deve ser enviado para o e-mail <a href="mailto:evandro.silva@ufpi.ed
 
 ## Calendário
 
-<link rel="stylesheet" href="calendario.css">
-
-<!--<span style="background-color:#32cd32;color:white;padding:5px 10px;"><b>AULA</b></span>-->
-<span class="badge aula">AULA</span>
-<span class="badge feriado">FERIADO</span>
-<span class="badge prova">PROVA</span>
-
-<div class="tabelas">
-   <table class="calendario">
-  	<thead>
-  		<tr><th colspan="5">Março</th></tr>
-  		<tr>
-  			<th>Seg</th>
-  			<th>Ter</th>
-  			<th>Qua</th>
-  			<th>Qui</th>
-  			<th>Sex</th>
-  		</tr>
-  	</thead>
-  	<tbody>
-  		<tr>
-  			<td>02</td>
-  			<td>03</td>
-  			<td>04</td>
-  			<td>05</td>
-  			<td>06</td>
-  		</tr>
-  		<tr>
-  			<td>09</td>
-  			<td>10</td>
-  			<td class="aula" conteudo="Apresentação da disciplina; Internet.">11</td>
-  			<td>12</td>
-  			<td class="aula" conteudo="HTML: Introdução, Multimídia e Listas.">13</td>
-  		</tr>
-  		<tr>
-  			<td>16</td>
-  			<td>17</td>
-  			<td class="aula" conteudo="HTML: Tabelas e Formulários.">18</td>
-  			<td>19</td>
-  			<td class="aula" conteudo="CSS: Estilização básica.">20</td>
-  		</tr>
-  		<tr>
-  			<td>23</td>
-  			<td>24</td>
-  			<td class="aula" conteudo="CSS: Estilização de texto.">25</td>
-  			<td>26</td>
-  			<td class="aula" conteudo="CSS: Layout.">27</td>
-  		</tr>
-  		<tr>
-  			<td>30</td>
-  			<td>31</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  	</tbody>
-  </table>
-
-  <table class="calendario">
-  	<thead>
-  		<tr><th colspan="5">Abril</th></tr>
-  		<tr>
-  			<th>Seg</th>
-  			<th>Ter</th>
-  			<th>Qua</th>
-  			<th>Qui</th>
-  			<th>Sex</th>
-  		</tr>
-  	</thead>
-  	<tbody>
-  		<tr>
-  			<td></td>
-  			<td></td>
-  			<td class="prova" conteudo="AV1">01</td>
-  			<td>02</td>
-  			<td class="feriado" conteudo="Sexta-feira da paixão">03</td>
-  		</tr>
-  		<tr>
-  			<td>06</td>
-  			<td>07</td>
-  			<td class="aula" conteudo="JavaScript: Sintaxe básica.">08</td>
-  			<td>09</td>
-  			<td class="aula" conteudo="JavaScript: Eventos, Objetos e HTML DOM API.">10</td>
-  		</tr>
-  		<tr>
-  			<td>13</td>
-  			<td>14</td>
-  			<td class="aula" conteudo="JavaScript: Requisições em rede e JSON.">15</td>
-  			<td>16</td>
-  			<td class="aula" conteudo="Frameworks para JavaScript: Introdução.">17</td>
-  		</tr>
-  		<tr>
-  			<td>20</td>
-  			<td class="feriado" conteudo="Tiradentes">21</td>
-  			<td class="aula" conteudo="Frameworks para JavaScript: Introdução ao React.">22</td>
-  			<td>23</td>
-  			<td class="aula" conteudo="Frameworks para JavaScript: React - continuação.">24</td>
-  		</tr>
-  		<tr>
-  			<td>27</td>
-  			<td>28</td>
-  			<td class="aula" conteudo="Package Managers">29</td>
-  			<td>30</td>
-  			<td></td>
-  		</tr>
-  	</tbody>
-  </table>
-
-  <table class="calendario">
-  	<thead>
-  		<tr><th colspan="5">Maio</th></tr>
-  		<tr>
-  			<th>Seg</th>
-  			<th>Ter</th>
-  			<th>Qua</th>
-  			<th>Qui</th>
-  			<th>Sex</th>
-  		</tr>
-  	</thead>
-  	<tbody>
-  		<tr>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  			<td class="feriado" conteudo="Dia do Trabalho">01</td>
-  		</tr>
-  		<tr>
-  			<td>04</td>
-  			<td>05</td>
-  			<td class="aula" conteudo="CSS: Tailwind.">06</td>
-  			<td>07</td>
-  			<td class="aula" conteudo="Outros frameworks para JavaScript">08</td>
-  		</tr>
-  		<tr>
-  			<td>11</td>
-  			<td>12</td>
-  			<td class="aula" conteudo="Linters & Formatters; Module Bundlers.">13</td>
-  			<td>14</td>
-  			<td class="aula" conteudo="Testes">15</td>
-  		</tr>
-  		<tr>
-  			<td>18</td>
-  			<td>19</td>
-  			<td class="prova" conteudo="AV2">20</td>
-  			<td>21</td>
-  			<td class="prova" conteudo="AV2">22</td>
-  		</tr>
-  		<tr>
-  			<td>25</td>
-  			<td>26</td>
-  			<td class="aula" conteudo="Web Security">27</td>
-  			<td>28</td>
-  			<td class="aula" conteudo="Web APIs: Web Storage API + HTTP cookies.">29</td>
-  		</tr>
-  	</tbody>
-  </table>
-
-  <table class="calendario">
-  	<thead>
-  		<tr><th colspan="5">Junho</th></tr>
-  		<tr>
-  			<th>Seg</th>
-  			<th>Ter</th>
-  			<th>Qua</th>
-  			<th>Qui</th>
-  			<th>Sex</th>
-  		</tr>
-  	</thead>
-  	<tbody>
-  		<tr>
-  			<td>01</td>
-  			<td>02</td>
-  			<td class="aula" conteudo="Web APIs: History API + Fetch API">03</td>
-  			<td class="feriado" conteudo="Corpus Christi">04</td>
-			<td style="background-image: repeating-linear-gradient(135deg, #32cd32, #32cd32 10px, #6495ed 10px, #6495ed 20px);" conteudo="Ponto facultativo / Autenticação: Básica, baseada em sessão e baseada em token.">05</td>
-  		</tr>
-  		<tr>
-  			<td>08</td>
-  			<td>09</td>
-  			<td class="aula" conteudo="Autenticação: JWT, OAuth e SSO.">10</td>
-  			<td>11</td>
-  			<td class="aula" conteudo="Aplicativos Mobile: React Native.">12</td>
-  		</tr>
-  		<tr>
-  			<td>15</td>
-  			<td>16</td>
-  			<td class="aula" conteudo="Aplicativos Desktop: Electron">17</td>
-  			<td>18</td>
-  			<td class="aula" conteudo="Flutter">19</td>
-  		</tr>
-  		<tr>
-  			<td>22</td>
-  			<td>23</td>
-  			<td class="aula" conteudo="Tópicos 1 a 5.">24</td>
-  			<td>25</td>
-  			<td class="aula" conteudo="Tópicos 6 a 10.">26</td>
-  		</tr>
-  		<tr>
-  			<td>29</td>
-  			<td>30</td>
-  			<td></td>
-  			<td></td>
-  			<td></td>
-  		</tr>
-  	</tbody>
-  </table>
-
-  <table class="calendario">
-  	<thead>
-  		<tr><th colspan="5">Julho</th></tr>
-  		<tr>
-  			<th>Seg</th>
-  			<th>Ter</th>
-  			<th>Qua</th>
-  			<th>Qui</th>
-  			<th>Sex</th>
-  		</tr>
-  	</thead>
-  	<tbody>
-  		<tr>
-  			<td></td>
-  			<td></td>
-  			<td class="prova" conteudo="AV3">01</td>
-  			<td>02</td>
-			<td class="prova" conteudo="AV3">03</td>
-  		</tr>
-  		<tr>
-  			<td>06</td>
-  			<td>07</td>
-  			<td class="prova" conteudo="Avaliação Final">08</td>
-  			<td>09</td>
-  			<td>10</td>
-  		</tr>
-  		<tr>
-  			<td>13</td>
-  			<td>14</td>
-  			<td>15</td>
-  			<td>16</td>
-  			<td>17</td>
-  		</tr>
-  		<tr>
-  			<td>20</td>
-  			<td>21</td>
-  			<td>22</td>
-  			<td>23</td>
-  			<td>24</td>
-  		</tr>
-  		<tr>
-  			<td>27</td>
-  			<td>28</td>
-  			<td>29</td>
-  			<td>30</td>
-  			<td>31</td>
-  		</tr>
-  	</tbody>
-  </table>
-</div>
+| **AULA** | **DATA** | **Dia da Semana** | **CONTEÚDO** |
+|---|---|---|---|
+| 01 | 12/08/26 | Quarta | Apresentação da disciplina <br> Introdução ao desenvolvimento Web |
+| 02 | 14/08/26 | Sexta  | HTML: estrutura de documentos |
+| 03 | 19/08/26 | Quarta | HTML Semântico |
+| 04 | 21/08/26 | Sexta  | Formulários HTML |
+| 05 | 26/08/26 | Quarta | Introdução ao CSS |
+| 06 | 28/08/26 | Sexta  | Box Model |
+| 07 | 02/09/26 | Quarta | Layouts modernos |
+| 08 | 04/09/26 | Sexta  | Design Responsivo |
+| 09 | 09/09/26 | Quarta | Revisão + Projeto integrador |
+| 10 | 11/09/26 | Sexta  | Primeira Avaliação |
+| 11 | 16/09/26 | Quarta | Introdução ao JavaScript |
+| 12 | 18/09/26 | Sexta  | JavaScript: Controle de fluxo |
+| 13 | 23/09/26 | Quarta | JavaScript: Funções |
+| 14 | 25/09/26 | Sexta  | JavaScript: Objetos e Arrays |
+|    | 30/09/26 | Quarta | SINFO |
+| 15 | 02/10/26 | Sexta  | JavaScript: DOM |
+| 16 | 07/10/26 | Quarta | JavaScript: Eventos |
+| 17 | 09/10/26 | Sexta  | Manipulação dinâmica de páginas |
+| 18 | 14/10/26 | Quarta | Armazenamento no navegador |
+| 19 | 16/10/26 | Sexta  | Projeto integrador (Livre) |
+|    | 21/10/26 | Quarta | BRACIS |
+|    | 23/10/26 | Sexta  | Projeto integrador (Livre) |
+|    | 28/10/26 | Quarta | Feriado: Dia do Servidor Público |
+| 20 | 30/10/26 | Sexta  | Segunda Avaliação |
+| 21 | 04/11/26 | Quarta | Segunda Avaliação |
+| 22 | 06/11/26 | Sexta  | Comunicação cliente-servidor |
+| 23 | 11/11/26 | Quarta | Programação Assíncrona: Fetch API  |
+| 24 | 13/11/26 | Sexta  | Modularização do JavaScript |
+| 25 | 18/11/26 | Quarta | Ferramentas modernas do frontend |
+|    | 20/11/26 | Sexta  | Feriado: Dia da Consciência Negra |
+| 26 | 25/11/26 | Quarta | Introdução a Frameworks Frontend |
+| 27 | 27/11/26 | Sexta  | Projeto integrador (Livre) |
+| 28 | 02/12/26 | Quarta | Projeto integrador (Livre) |
+| 29 | 04/12/26 | Sexta  | Terceira Avaliação |
+| 30 | 09/12/26 | Quarta | Terceira Avaliação |
+|    | 11/12/26 | Sexta  | Avaliação Final |
+|    | 16/12/26 | Quarta | |
