@@ -3,100 +3,35 @@
 Sumário
 
 - [Aula 01](#aula-01)
-  - [Como a Internet funciona](#como-a-internet-funciona)
-    - [Conceitos básicos e terminologia](#conceitos-básicos-e-terminologia)
-    - [Autoridades da Internet](#autoridades-da-internet)
   - [História das Redes de Computadores e da Internet](#história-das-redes-de-computadores-e-da-internet)
     - [1961 - 1972: Desenvolvimento da Comutação de Pacotes](#1961---1972-desenvolvimento-da-comutação-de-pacotes)
     - [1972 - 1980: Redes proprietárias e interligação de redes](#1972---1980-redes-proprietárias-e-interligação-de-redes)
     - [1980 - 1990: Proliferação de redes](#1980---1990-proliferação-de-redes)
     - [Década de 1990: A explosão da Internet](#década-de-1990-a-explosão-da-internet)
     - [Século XXI](#século-xxi)
-  - [Tecnologia de Redes Locais a Globais](#tecnologia-de-redes-locais-a-globais)
-    - [*Personal Area Network* - PAN](#personal-area-network---pan)
-    - [*Local Area Network* - LAN](#local-area-network---lan)
-    - [*Metropolitan Area Network* - MAN](#metropolitan-area-network---man)
-      - [IXes ou IXPs - *Internet exchange points*](#ixes-ou-ixps---internet-exchange-points)
-    - [*Wide Area Network* - WAN](#wide-area-network---wan)
-    - [Redes interligadas](#redes-interligadas)
+  - [Como a Internet funciona](#como-a-internet-funciona)
+    - [Conceitos básicos e terminologia](#conceitos-básicos-e-terminologia)
+    - [Autoridades da Internet](#autoridades-da-internet)
   - [O Modelo de referência TCP/IP](#o-modelo-de-referência-tcpip)
-    - [Camada Física](#camada-física)
-    - [Camada de Enlace](#camada-de-enlace)
-    - [Camada de Rede](#camada-de-rede)
-    - [Camada de Transporte](#camada-de-transporte)
-    - [Camada de Aplicação](#camada-de-aplicação)
-    - [Comunicação entre dois hosts através da Interet](#comunicação-entre-dois-hosts-através-da-interet)
   - [Como a Web funciona](#como-a-web-funciona)
     - [DNS](#dns)
     - [HTTP](#http)
     - [URL](#url)
   - [Padrões da Web\[^1\]](#padrões-da-web1)
   - [Visão geral das tecnologias modernas da web\[^2\]](#visão-geral-das-tecnologias-modernas-da-web2)
-    - [Linguagens e estruturas do lado do servidor](#linguagens-e-estruturas-do-lado-do-servidor)
+    - [Linguagens de desenvolvimento](#linguagens-de-desenvolvimento)
   - [Como navegadores funcionam\[^3\]](#como-navegadores-funcionam3)
-
-## Como a Internet funciona
-
-Antes de entender como a Internet funciona, é interessante entender o que é uma **rede de computadores**, a qual consiste em um grupo de computadores, ou outros dispositivos, os quais estão conectados uns aos outros. A partir disso, podemos conceituar a Internet como uma rede de bilhões de dispositivos, os quais estão espalhados por todo o mundo. Esses dispositivos podem ser servidores, PCs, videogames, celulares, tablets, relógios, veı́culos, eletrodomésticos, etc.
-
-<figure style="text-align: center;">
-  <img src="./imagens/internet-schema-1.png">
-  <figcaption>Dois dispositivos conectados (fonte: <a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work">MDN</a>)</figcaption>
-</figure>
-
-De forma superficial a Internet funciona ao conectar diferentes dispositivos através do uso de protocolos padronizados. O núcleo da Internet consiste em uma rede global de **roteadores**, os quais são responsáveis por direcionar o tráfego de dados entre diferentes dispositivos e sistemas. Para serem enviados pela rede, os dados são "quebrados" em pequenas unidades chamadas de **pacote**. Ao receber um pacote um roteador examina seus metadados e então o encaminha para o próximo roteador no caminho, e isso ocorre até que os dados cheguem ao destino.
-
-<figure style="text-align: center;">
-  <img src="./imagens/internet-schema-3.png">
-  <figcaption>Vários dispositivos conectados através de um switch (fonte: <a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work">MDN</a>)</figcaption>
-</figure>
-
-<figure style="text-align: center;">
-  <img src="./imagens/internet-schema-5.png">
-  <figcaption>Várias redes conectadas (fonte: <a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work">MDN</a>)</figcaption>
-</figure>
-
-O conteúdo a seguir aprofunda vários desses conceitos, para permitir que possamos entender melhor, e de forma básica, as redes de computadores, inclusive a Internet, e como tudo funciona.
-
-### Conceitos básicos e terminologia
-
-- **Pacote**: uma pequena unidade de dados, a qual é transmitida pela internet.
-- **Comutador** (**roteador**/**switch**): um dispositivo que direciona os pacotes de dados entre diferentes redes.
-- **Endereço IP**: um identificador único assinalado a cada dispositivo em uma rede, usado para rotear dados para o destino correto.
-- **Gateway**: o dispositivo que faz a conexão entre duas ou mais redes e oferece a conversão necessária, tanto em termos de hardware quanto de software.
-- **Hospedeiro**/**Host**: dispositivo conectado a uma rede.
-- **ISPs**: *Internet Service Providers* - Provedores de Serviços de Internet.
-- **PDU**: *Protocol Data Unit* - Unidade de Dados do Protocolo. Basicamente o nome dado à unidade de dados manipulada por um protocolo.
-- **Protocolos**: programas que definem como a informação é trocada entre os dispositivos, e garantem que os dados são transmitidos de forma confiável e segura.
-
-### Autoridades da Internet
-
-O funcionamento correto da Internet depende de todos os envolvidos operarem obedecendo **padrões internacionais**, os quais são criados por algumas **autoridades**:
-
-- **ISO** (*International Organization for Standardization*)
-- **IEEE** (*Institute of Electrical and Eletronics Engineers*)
-  - O *Instituto de Engenheiros Elétricos e Eletrônicos* é a maior organização profissional do mundo. Possui grupos de trabalho que desenvolvem padrões nas áreas de engenharia elétrica e informática.
-- **IETF** (*Internet Engineering Task Force*)
-  - A *Força Tarefa de Engenharia da Internet* é estruturada em grupos que tratam questões relacionadas à Internet.
-  - Uma nova ideia deve ser apresentada formalmente em uma **RFC** (*Request For Comments* - Requisição de Comentários). Após validada, a ideia pode ganhar o status de padrão.
-- **IEN** (*Internet Experiment Notes*): [lista dos primeiros documentos da Internet](https://www.potaroo.net/ietf/html/ienindex.html).
-
-Além dos protocolos, o funcionamento correto da Internet depende de todos os envolvidos operarem obedecendo **padrões internacionais**, os quais são criados por algumas **autoridades**:
-
-- **ICANN** (*Internet Corporation for Assigned Names and Numbers*)
-- **IANA** (*Internet Assigned Numbers Authority*)
-
-Relação entre ICANN, IETF e IANA:
-
-- ICANN supervisiona o gerenciamento de nomes de domı́nio (DNS), endereços IP e parâmetros de protocolos.
-- IETF foca em desenvolver padrões técnicos e protocolos para a Internet.
-- IANA, sob a ICANN, é a responsável de fato pela coordenação e atribuição de endereços de IP, gerenciamento da zona raiz do DNS e atribuição dos parâmetros de protocolos.
 
 ## História das Redes de Computadores e da Internet
 
 ### 1961 - 1972: Desenvolvimento da Comutação de Pacotes
 
 Antes de 1960 as redes de comunicação consistiam basicamente em telégrafo e telefone, e sua respectiva comutação de circuito. Porém, a quantidade de computadores estava crescendo, e em locais distantes uns dos outros. Naturalmente surgiu o interesse pela comutação de pacotes.
+
+<figure style="text-align: center;">
+  <img src="./imagens/comutação_gemini.png">
+  <figcaption>Comutação de circuitos vs. Comutação de pacotes</figcaption>
+</figure>
 
 Ao redor do mundo, 3 grupos de pesquisa começam a inventar a comutação de pacotes (sem nenhum conhecer o outro):
 
@@ -172,184 +107,89 @@ Vídeos do TecMundo sobre a história da Internet:
 
 Estamos sendo testemunhas vivas de todas as evoluções e revoluções. Qual(is) foi(ram) a(s) mais impactante(s)?
 
-## Tecnologia de Redes Locais a Globais
+## Como a Internet funciona
 
-As redes podem variar de pequenas e pessoais a grandes e globais, e são denominadas de acordo com sua abrangência geográfica e escala: **Nanoredes**, **NFC**, **BAN**, **PAN**, **LAN**, **CAN**, **MAN**, **WAN**.
-
-Vamos focar em apenas algumas.
-
-### *Personal Area Network* - PAN
-
-<div style="display:flex;">
-  <figure style="width:150px;">
-    <img src="./imagens/bluetooth-logo.png">
-  </figure>
-  <p>Rede entre dispositivos computacionais dentro do alcance de uma pessoa. Por exemplo, todos os seus dispositivos em um quarto/sala: celular, fones, notebook, relógio, teclado, mouse, etc. A principal rede sem fio de curta é o <b>Bluetooth</b>.</p>
-</div>
-
-### *Local Area Network* - LAN
-
-É uma rede particular que opera dentro e próximo de um único prédio: casa, escritório, fábrica, etc. As antigas e saudosas ***LAN Houses*** têm esse nome justamente por causa da rede entre seus computadores.
-
-Quase sempre, cada computador se comunica com um dispositivo chamado **ponto de acesso** (AP - *Access Point*), **roteador sem fio** ou **estação-base**.
-
-O padrão para LANs sem fio é o IEEE 802.11. [Artigo na Wikipedia](https://en.wikipedia.org/wiki/IEEE_802.11). [Working Group da IEEE](https://www.ieee802.org/11/).
+Antes de entender como a Internet funciona, é interessante entender o que é uma **rede de computadores**, a qual consiste em um grupo de computadores, ou outros dispositivos, os quais estão conectados uns aos outros. A partir disso, podemos conceituar a Internet como uma rede de bilhões de dispositivos, os quais estão espalhados por todo o mundo. Esses dispositivos podem ser servidores, PCs, videogames, celulares, tablets, relógios, veı́culos, eletrodomésticos, etc.
 
 <figure style="text-align: center;">
-  <img src="./imagens/figura06.png" style="width:800px;">
+  <img src="./imagens/internet-schema-1.png">
+  <figcaption>Dois dispositivos conectados (fonte: <a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work">MDN</a>)</figcaption>
+</figure>
+
+De forma superficial a Internet funciona ao conectar diferentes dispositivos através do uso de protocolos padronizados. O núcleo da Internet consiste em uma rede global de **roteadores**, os quais são responsáveis por direcionar o tráfego de dados entre diferentes dispositivos e sistemas. Para serem enviados pela rede, os dados são "quebrados" em pequenas unidades chamadas de **pacote**. Ao receber um pacote um roteador examina seus metadados e então o encaminha para o próximo roteador no caminho, e isso ocorre até que os dados cheguem ao destino.
+
+<figure style="text-align: center;">
+  <img src="./imagens/internet-schema-3.png">
+  <figcaption>Vários dispositivos conectados através de um switch (fonte: <a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work">MDN</a>)</figcaption>
 </figure>
 
 <figure style="text-align: center;">
-  <img src="./imagens/figura07.png" style="width:800px;">
-</figure>
-
-### *Metropolitan Area Network* - MAN
-
-É a interconexão de várias LANs presentes em uma região metropolitana.
-
-CANs e MANs podem ser consideradas “**backbones** (espinhas dorsais) locais” de redes de computadores, uma vez que consistem em infraestrutura considerável, permitindo a conexão de milhares a milhões de dispositivos.
-
-<figure style="text-align: center;">
-  <img src="./imagens/rnp-teresina.png">
-  <figcaption><a href="https://viaipe.rnp.br/?&estado=PI&periodo=1d&aglomerado=0#@-5.066321981043081,-42.80170440673828,13z">MAN</a> da <a href="https://www.rnp.br/">RNP</a> (Rede Nacional de Ensino e Pesquisa) em Teresina: <a href="https://www.redepoti.rnp.br/">Rede Poti</a>.</figcaption>
+  <img src="./imagens/internet-schema-5.png">
+  <figcaption>Várias redes conectadas (fonte: <a href="https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work">MDN</a>)</figcaption>
 </figure>
 
 <figure style="text-align: center;">
-  <img src="./imagens/rede_poti.jpg">
-  <figcaption>Outro mapa da Rede Poti.</figcaption>
+  <img src="./imagens/submarine-cables.png">
+  <figcaption>Cabos submarinos intercontinentais - como o mundo se conecta (fonte: <a href="https://www.submarinecablemap.com/">Submarine Cable Map</a>)</figcaption>
 </figure>
 
-<figure style="text-align: center;">
-  <img src="./imagens/rnp-picos.png">
-  <figcaption>MAN da RNP em Picos.</figcaption>
-</figure>
+### Conceitos básicos e terminologia
 
-#### IXes ou IXPs - *Internet exchange points*
+- **Pacote**: uma pequena unidade de dados, a qual é transmitida pela internet.
+- **Comutador** (**roteador**/**switch**): um dispositivo que direciona os pacotes de dados entre diferentes redes.
+- **Endereço IP**: um identificador único assinalado a cada dispositivo em uma rede, usado para rotear dados para o destino correto.
+- **Gateway**: o dispositivo que faz a conexão entre duas ou mais redes e oferece a conversão necessária, tanto em termos de hardware quanto de software.
+- **Hospedeiro**/**Host**: dispositivo conectado a uma rede.
+- **ISPs**: *Internet Service Providers* - Provedores de Serviços de Internet.
+- **PDU**: *Protocol Data Unit* - Unidade de Dados do Protocolo. Basicamente o nome dado à unidade de dados manipulada por um protocolo.
+- **Protocolos**: programas que definem como a informação é trocada entre os dispositivos, e garantem que os dados são transmitidos de forma confiável e segura.
 
-Em Português: **Ponto de Troca de Tráfego** (PTT.
+### Autoridades da Internet
 
-São os locais fı́sicos onde **Sistemas Autônomos** (SAs), ou seja, as redes de ISPs, provedoras de conteúdo, instituições acadêmicas, etc., podem se conectar umas às outras.
+O funcionamento correto da Internet depende de todos os envolvidos operarem obedecendo **padrões internacionais**, os quais são criados por algumas **autoridades**:
 
-No Brasil, temos o [CGI.br](https://cgi.br/) (**Comitê Gestor da Internet**), uma agência governamental, que mantém o sistema de IX chamado [IX.br](https://ix.br/), operando a partir da organização sem fins lucrativos [NIC.br](https://nic.br/) (**Núcleo de Informação e Coordenação do Ponto**). Os *datacenters* onde os equipamentos do IX.br são instalados e operados pelo NIC.br são chamados de **PIX** (Ponto de Interconexão).
+- **ISO** (*International Organization for Standardization*)
+- **IEEE** (*Institute of Electrical and Eletronics Engineers*)
+  - O *Instituto de Engenheiros Elétricos e Eletrônicos* é a maior organização profissional do mundo. Possui grupos de trabalho que desenvolvem padrões nas áreas de engenharia elétrica e informática.
+- **IETF** (*Internet Engineering Task Force*)
+  - A *Força Tarefa de Engenharia da Internet* é estruturada em grupos que tratam questões relacionadas à Internet.
+  - Uma nova ideia deve ser apresentada formalmente em uma **RFC** (*Request For Comments* - Requisição de Comentários). Após validada, a ideia pode ganhar o status de padrão.
+- **IEN** (*Internet Experiment Notes*): [lista dos primeiros documentos da Internet](https://www.potaroo.net/ietf/html/ienindex.html).
 
-- [Mapa de SAs e PTTs](https://mapadeas.ceptro.br/).
-- [Lista de todos os IX do mundo](https://en.wikipedia.org/wiki/List_of_Internet_exchange_points_by_size).
+Além dos protocolos, o funcionamento correto da Internet depende de todos os envolvidos operarem obedecendo **padrões internacionais**, os quais são criados por algumas **autoridades**:
 
-Atualmente existem [39 IX](https://ix.br/localidades/atuais) no Brasil. Dados de 02/03/2026:
+- **ICANN** (*Internet Corporation for Assigned Names and Numbers*)
+- **IANA** (*Internet Assigned Numbers Authority*)
 
-- Média de tráfego diário total: [49,02 Tbps](https://ix.br/agregado/), sendo **São Paulo**, **Fortaleza** e **Rio de Janeiro** os três maiores. São Paulo costuma ser o maior do mundo, tanto em tráfego quanto em número de participantes.
-- [IX de São Paulo](https://ix.br/trafego/agregado/sp):
-  - Média de tráfego: 19,27 Tbps
-  - Pico de tráfego: 30,51 Tbps
-  - Participantes: 2647
-- [IX de Fortaleza](https://ix.br/trafego/agregado/ce):
-  - Média de tráfego: 4,4 Tbps
-  - Pico de tráfego: 6,8 Tbps
-  - Participantes: 911
-- [IX do Rio de Janeiro](https://ix.br/trafego/agregado/rj) - *outlier* (houve algum problema na medição)
-  - Média de tráfego: 20,72 Tbps
-  - Pico de tráfego: 6,33 Pbps
-  - Participantes: 755
-- [IX de Teresina](https://ix.br/trafego/agregado/the)
-  - Média de tráfego: 13,64 Gbps
-  - Pico de tráfego: 30,88 Gbps
-  - Participantes: 59
+Relação entre ICANN, IETF e IANA:
 
-### *Wide Area Network* - WAN
-
-Abrange uma grande área geográfica, de Estados a Continentes. Pode atender a uma organização privada ou pode ser uma oferta de serviço comercial.
-
-<figure style="text-align: center;">
-  <img src="./imagens/rnp-piaui.png">
-  <figcaption><a href="https://viaipe.rnp.br/?&estado=PI&periodo=1d#@-6.282538526926375,-41.231689453125,7z">WAN</a> da RNP no Piauí.</figcaption>
-</figure>
-
-<figure style="text-align: center;">
-  <img src="./imagens/Rede-Ipe-2025.png">
-  <figcaption><a href="https://www.rnp.br/sistema-rnp/infraestrutura-para-pesquisa/evolucao-da-rede-ipe/">WAN</a> da RNP no Brasil (<a href="https://redeipe.rnp.br/home">Rede Ipê</a>).</figcaption>
-</figure>
-
-### Redes interligadas
-
-Uma rede é formada pela combinação de uma sub-rede e seus hosts. Redes diferentes possuem hardwares e softwares diferentes, muitas vezes incompatíveis. Uma rede interligada consiste na interconexão de um conjunto de redes distintas e operadas independentemente. Pode ter qualquer tamanho: duas ou mais LANs/MANs/WANs, etc.
-
-<figure style="text-align: center;">
-  <img src="./imagens/submarine-cables.png" alt="Mapa Mundi mostrando o caminho aproximado dos cabos de comunicação submarinos">
-  <figcaption>Internet: a expressão máxima das redes interligadas (fonte: <a href="https://www.submarinecablemap.com/">submarinecablemap</a>)</figcaption>
-</figure>
+- ICANN supervisiona o gerenciamento de nomes de domı́nio (DNS), endereços IP e parâmetros de protocolos.
+- IETF foca em desenvolver padrões técnicos e protocolos para a Internet.
+- IANA, sob a ICANN, é a responsável de fato pela coordenação e atribuição de endereços de IP, gerenciamento da zona raiz do DNS e atribuição dos parâmetros de protocolos.
 
 ## O Modelo de referência TCP/IP
 
 O TCP/IP consiste em uma coleção fundamental de protocolos de comunicação da Internet. Os protocolos são estruturados em quatro camadas conceituais, entretanto é comum também estudarmos a Camada Física nas disciplinas de Redes de Computadores.
 
 <figure style="text-align: center;">
-  <img src="./imagens/tcp-ip.png">
-  <figcaption>Camadas do TCP/IP sobre a Camada Física</figcaption>
-</figure>
-
-### Camada Física
-
-É onde são definidas as interfaces elétrica, de sincronização e outras, pelas quais os bits são enviados como sinais pelos canais (cabos e ondas eletromagnéticas que se propagam pelo ar).
-
-É aqui que temos também a **modulação digital** (conversão de sinais analógicos em digitais, e vice-versa) e **multiplexação** (transmissão de vários sinais no mesmo meio ao mesmo tempo, sem que interfiram uns nos outros).
-
-### Camada de Enlace
-
-É responsável por mover pacotes entre dois hosts de um mesmo enlace. A transmissão e recepção de pacotes pode ser controlada através de um *driver* da placa de rede, um firmware ou chipsets especializados.
-
-Os pacotes recebidos passam pelo processo de **enquadramento**, e os quadros são transmitidos para a camada fı́sica.
-
-O TCP/IP inclui especificações sobre a tradução de métodos de endereçamento usados pelo IP (*Internet Protocol*) para endereços de camada de rede, como o MAC (*Media Access Control*).
-
-<figure style="text-align: center;">
-  <img src="./imagens/endereco.jpeg">
-</figure>
-
-### Camada de Rede
-
-É a camada responsável pelo envio de datagramas (PDU da camada de rede) de uma rede para outra rede (roteamento) através dos endereços IP.
-
-Os datagramas (ou pacotes) de uma mesma mensagem podem trafegar independentemente (comutação de pacotes). Caso seja necessário, as camadas superiores reorganizam os pacotes.
-
-<figure style="text-align: center;">
-  <img src="./imagens/comutação_gemini.png">
-  <figcaption>Diferença entre Comutação de Circuitos e Comutação de Pacotes.</figcaption>
-</figure>
-
-Dois protocolos principais: **IP** (v4 e v6) e **ICMP** (*Internet Control Message Protocol*), um protocolo de suporte para mensagens de erro ou operacionais.
-
-### Camada de Transporte
-
-Estabelece canais de comunicação fim-a-fim, utilizados para a troca de dados entre aplicações.
-
-Principais protocolos: **TCP** (*Transmission Control Protocol*), **UDP** (*User Datagram Protocol*) e mais recentemente **QUIC**, que é basicamente HTTP/3 sobre UDP.
-
-### Camada de Aplicação
-
-É a camada que contém todos os protocolos de nı́vel mais alto, no sentido de ser mais próximo do usuário. Exemplos de protocolos: HTTP, DNS, FTP, SMTP, etc.
-
-<figure style="text-align: center;">
   <img src="./imagens/protocolos-tcp-ip.png">
   <figcaption>Alguns dos principais protocolos do TCP/IP</figcaption>
 </figure>
 
-<figure style="text-align: center;">
-  <img src="./imagens/8-popular-network-protocols.gif">
-</figure>
-
-### Comunicação entre dois hosts através da Interet
-
-<figure style="text-align: center;">
-  <img src="./imagens/Encapsulamento.png">
-</figure>
+Para o nosso caso, i.e., desenvolvimento para web no *front-end*, o que mais nos interessa está na Camada de Aplicação. É essa camada que contém todos os protocolos de nı́vel mais alto, no sentido de ser mais próximo do usuário. Exemplos de protocolos: HTTP, DNS, FTP, SMTP, etc.
 
 ## Como a Web funciona
 
 De forma geral, a Web funciona em cima de um fluxo de comunicação chamado **cliente-servidor**.
 
-O **cliente** é um programa na máquina que faz requisições, normalmente, é o navegador que você esteja usando. O **servidor** costuma ser uma máquina que vai estar utilizando um programa de servidor, além de ter dados armazenados.
+<figure style="text-align: center;">
+  <img src="./imagens/simple-client-server.png">
+  <figcaption>Esquema simples de cliente-servidor (fonte: <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works">MDN</a>)</figcaption>
+</figure>
 
-De forma resumida a comunicação ocorre da seguinte forma:
+O **cliente** é um programa na máquina que faz requisições (normalmente, é o navegador que você esteja usando). O **servidor** costuma ser uma máquina que vai estar utilizando um programa de servidor, além de ter dados armazenados.
+
+De forma detalhada e resumida ao mesmo tempo, a comunicação ocorre da seguinte forma:
 
 1. Ao abrir o navegador você digita uma `URL`.
 2. O navegador faz um `DNS Lookup`, e envia uma requisição `HTTP` para o servidor.
@@ -384,6 +224,8 @@ Uma de suas características mais marcantes são os `Códigos de Status` das res
 - 502 : Bad Gateway
 - 503 : Service Unavailable
 
+Pode-se dizer que é o protocolo mais importante para o desenvolvimento web, tanto no *front-end* quanto no *back-end*.
+
 ### URL
 
 O *Uniform Resource Locator* consiste no endereço de rede no qual se encontra algum recurso da Web. Suas definições podem ser encontradas nos RFCs [1738](https://datatracker.ietf.org/doc/html/rfc1738), [3986](https://datatracker.ietf.org/doc/html/rfc3986), [4248](https://datatracker.ietf.org/doc/html/rfc4248) e [4266](https://datatracker.ietf.org/doc/html/rfc4266).
@@ -417,19 +259,19 @@ Os padrões da Web são criados por órgãos de padrões - instituições que co
 [^2]: Adaptado de https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/The_web_standards_model#vis%C3%A3o_geral_das_tecnologias_modernas_da_web.
 
 - **Navegadores**: são os programas de software que as pessoas usam para consumir a web e incluem Firefox, Chrome, Opera, Safari e Edge.
-- **HTTP**: o Protocolo de Transferência de Hipertexto é um protocolo de mensagens que permite aos navegadores da web se comunicarem com os servidores da web (onde os sites da web são armazenados).
+- **HTTP**.
 - **HTML**, **CSS** e **JavaScript**: são as três tecnologias principais para a construção de um site.
   - A linguagem de marcação de hipertexto, ou **HTML** , é uma linguagem de marcação que consiste em diferentes elementos nos quais você pode agrupar (marcar) o conteúdo para dar-lhe significado (semântica) e estrutura.
   - *Cascading Style Sheets* (**CSS**) é uma linguagem baseada em regras usada para aplicar estilos ao seu HTML, por exemplo, definindo texto e cores de fundo, adicionando bordas, animando coisas ou fazendo o layout de uma página de uma determinada maneira.
   - **JavaScript** é a linguagem de programação que usamos para adicionar interatividade aos sites, desde a troca de estilo dinâmico até a obtenção de atualizações do servidor, até gráficos 3D complexos.
 
-### Linguagens e estruturas do lado do servidor
+### Linguagens de desenvolvimento
 
-HTML, CSS e JavaScript são linguagens de frontend (ou cliente), o que significa que são executadas pelo navegador para produzir um front-end de site que seus usuários possam usar.
+HTML, CSS e JavaScript são linguagens de *front-end* (ou cliente), o que significa que são executadas pelo navegador para produzir um *front-end* de site que seus usuários possam usar.
 
-Há outra classe de linguagens chamadas linguagens de backend (ou do lado do servidor), o que significa que são executadas no servidor antes de o resultado ser enviado ao navegador para exibição. Um uso típico para uma linguagem do lado do servidor é obter alguns dados de um banco de dados e gerar algum HTML para conter os dados, antes de enviar o HTML ao navegador para exibi-lo ao usuário.
+Há outra classe de linguagens chamadas linguagens de *back-end* (ou do lado do servidor), o que significa que são executadas no servidor antes de o resultado ser enviado ao navegador para exibição. Linguagens de servidor de exemplo incluem `ASP.NET`, `Java`, `Python`, `PHP` e `NodeJS`. 
 
-Linguagens de servidor de exemplo incluem ASP.NET, Java, Python, PHP e NodeJS.
+Um uso típico para uma linguagem do lado do servidor é obter alguns dados de um banco de dados e gerar algum HTML para conter esses dados, antes de enviar o HTML ao navegador para exibi-lo ao usuário.
 
 ## Como navegadores funcionam[^3]
 
@@ -444,12 +286,41 @@ A primeira parte de como um navegador funciona é vista em [Como a Web funciona]
 
 Nessa resposta do servidor, o navegador pode receber variados tipos de arquivo: HTML, CSS, JavaScript, arquivos de mídia (imagem, áudio, vídeo, PDF, etc.) e outros que sejam suportados. A partir disso o navegador inicia o processo de **renderização**, ou seja, a construção da página de acordo com todos os arquivos recebidos:
 
-1. A estrutura da página, definida no arquivo HTML, é transformada em uma árvore **DOM** (*Document Objetct Model*), basicamente uma estrutura hierárquica dos elementos da página.
-2. O(s) estilo(s) da página, definido(s) no(s) CSS é carregado e aplicado. Após sua aplicação, a página já estará visível na tela do computador.
+1. A estrutura da página, definida no arquivo HTML, é transformada em uma árvore **DOM** (*Document Objetct Model*), basicamente uma estrutura hierárquica dos elementos da página. Ex.:
+   <div style="display: flex; justify-content: center; gap: 10px;">
+   <pre>
+   <code>
+   &lt;p&gt;
+     Vamos usar:
+     &lt;span&gt;HTML&lt;/span&gt;
+     &lt;span&gt;CSS&lt;/span&gt;
+     &lt;span&gt;JavaScript&lt;/span&gt;
+   &lt;/p&gt;
+   </code>
+   </pre>
+   <pre>
+   P
+   ├─ "Vamos usar:"
+   ├─ SPAN
+   |  └─ "HTML"
+   ├─ SPAN
+   |  └─ "CSS"
+   └─ SPAN
+       └─ "JavaScript"
+   </pre>
+   </div>
+
+2. O(s) estilo(s) da página, definido(s) no(s) CSS é(são) carregado(s) e aplicado(s). Após sua aplicação, a página já estará visível na tela do computador.
    <figure style="text-align: center;">
      <img src="./imagens/html-css-parsing .png">
    </figure>
 3. Logo depois, qualquer código JavaScript encontrado na página (seja no próprio arquivo HTML, ou de arquivos separados) é analisado, interpretado, compilado e executado. Isso acontece em algum momento antes da última renderização da página.
+
+Se quiser entender como uma página é renderizada, e com riqueza de detalhes, veja os seguintes materiais:
+
+- [Populating the page: how browsers work](https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work).
+- [HTML Living Standard - Rendering](https://html.spec.whatwg.org/multipage/rendering.html).
+
 
 <div style="text-align: center;font-size:50px;">
   <p style="margin-top: 50px;">FIM</p>

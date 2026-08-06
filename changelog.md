@@ -2,3 +2,11 @@
   - Reinicialização do `changelog.md`.
   - Novas entradas no `.gitignore`.
   - `README.md` atualizado.
+- 2026.2.1
+  - `AULAS/01/`
+    - `imagens/`
+      - Exclusão de várias imagens e gifs que não estão mais presentes em `aula01.md`.
+      - Acréscimo de uma imagem nova: `simple-client-server.png`
+    - `aulas01.md` autalizado.
+  - Nova entrada em `.gitignore`
+  - Pequena atualização em `README.md`

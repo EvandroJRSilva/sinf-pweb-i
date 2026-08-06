@@ -64,7 +64,9 @@ Repositório para os materiais da disciplina P. Web I
 
 ## Conteúdo Programático
 
-### Unidade 1 - undamentos da Web e Construção de Interfaces Estáticas
+### Unidade 1 - Fundamentos da Web e Construção de Interfaces Estáticas
+
+**Objetivo:** compreender o funcionamento da Web e desenvolver páginas estruturadas, semânticas e responsivas utilizando HTML e CSS.
 
 - Introdução ao desenvolvimento Web
   - História da Web
@@ -80,7 +82,6 @@ Repositório para os materiais da disciplina P. Web I
     - Atributos
     - Hierarquia
     - Comentários
-    - Boas práticas
   - HTML Semântico
     - Cabeçalhos
     - Seções
