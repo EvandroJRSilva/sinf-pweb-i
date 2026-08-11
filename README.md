@@ -220,6 +220,18 @@ Considerar-se-á **aprovado** na disciplina o aluno que obtiver **assiduidade ig
 
 Terá direito de realizar exame final o aluno que satisfaça os requisitos de assiduidade e que obtenha média parcial maior ou igual a 4,0 (quatro) e menor que 7,0 (sete).
 
+### Primeira Avaliação
+
+A previsão para a primeira avaliação é de que consistirá em um trabalho e uma prova escrita. Os requisitos do trabalho serão enviados em data oportuna.
+
+Contudo, como especificado anteriormente, existe a possibilidade de serem definidos outros instrumentos de avaliação para compor a nota.
+
+### Segunda e Terceira Avaliações
+
+As segunda e terceira avaliações consistirão em um trabalho escrito e apresentado. Esses trabalhos serão a continuação do trabalho anterior, com acréscimos relativos ao conteúdo pertencente à respectiva unidade. Os requisitos serão enviados em data oportuna.
+
+Da mesma forma que a primeira avaliação, existe a possibilidade de serem definidos outros instrumentos de avaliação para compor a nota.
+
 ### Faltas
 
 As faltas poderão ser justificadas a partir de algum documento que comprove o motivo da falta. Os motivos incluem, mas não se limitam a:

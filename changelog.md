@@ -10,3 +10,5 @@
     - `aulas01.md` autalizado.
   - Nova entrada em `.gitignore`
   - Pequena atualização em `README.md`
+- 2026.2.1.1
+  - Atualização do `README.md`.
