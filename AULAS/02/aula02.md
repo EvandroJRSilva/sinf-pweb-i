@@ -8,16 +8,12 @@ Sumário
       - [Elementos vazios](#elementos-vazios)
       - [Atributos](#atributos)
     - [Estrutura de um documento HTML](#estrutura-de-um-documento-html)
-  - [Listas](#listas)
-    - [Listas ordenadas](#listas-ordenadas)
-    - [Listas não ordenadas](#listas-não-ordenadas)
-    - [Aninhando listas](#aninhando-listas)
-    - [Listas de descrição/definição](#listas-de-descriçãodefinição)
-  - [Multimídia](#multimídia)
+    - [Estrutura semântica e não semântica](#estrutura-semântica-e-não-semântica)
+    - [Hierarquia](#hierarquia)
   - [Exercícios](#exercícios)
-    - [Introdução](#introdução)
-    - [Listas](#listas-1)
-    - [Áudio e Vídeo](#áudio-e-vídeo)
+    - [Fácil](#fácil)
+    - [Médio](#médio)
+    - [Difícil](#difícil)
 
 ## O que é HTML
 
@@ -89,8 +85,6 @@ Um atributo deve conter:
 
 ### Estrutura de um documento HTML
 
-TODO: ver sobre a URL de um arquivo local; adicionar todos os elementos básicos do html (footer, aside, etc.) no exemplo de estrutura.
-
 A seguir o exemplo simples de um documento HTML completo:
 
 ```html
@@ -122,281 +116,368 @@ Percebe-se que o documento consiste em uma **árvore de elementos e texto**. No 
 9. `<a></a>`: tag de link.
 10. `<!– ... ->`: comentário, ou seja, texto que não será renderizado pelo navegador.
 
-## Listas
+### Estrutura semântica e não semântica
 
-Existem três tipos principais de listas:
+A partir da estrutura básica que já vimos, uma página HTML (ou parte dela) pode também ser organizada de forma semântica e não semântica:
 
-- **Ordenadas**: seus elementos são ordenados de acordo com algum tipo de numeração.
-- **Não ordenadas**: não há qualquer tipo de ordenação.
-- **Lista de descrição/definição**: serve para organizar um conjunto de itens e suas descrições/definições associadas.
+<figure style="text-align: center;">
+  <img src="./imagens/html_semantic_n-semantic.webp">
+  <figcaption>Fonte: <a href="https://medium.com/@Bharat2044/what-are-semantics-in-html-e5b55c61f354">Bharat</a></figcaption>
+</figure>
 
-### Listas ordenadas
+[Exemplo](exemplo-semantic.html):
 
-A tag para listas ordenadas é [`<ol>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/ol) de *ordered list*. Seus elementos devem estar entre tags `<li>` (*list item*).
-
-Atributos: `reversed`, `start` e `type`.
-
-Exemplo:
-
-<div style="display:flex;gap:20px;">
-  <pre><code>
-&lt;ol start="5", type="A"&gt;
-  &lt;li>Primeiro item&lt;/li&gt;
-  &lt;li>Segundo item&lt;/li&gt;
-  &lt;li>Terceiro item&lt;/li&gt;
-&lt;/ol&gt;
-  </code></pre>
-  <div>
-    <ol start="5", type="A">
-      <li>Primeiro item</li>
-      <li>Segundo item</li>
-      <li>Terceiro item</li>
-    </ol>
-  </div>
-</div>
-
-### Listas não ordenadas
-
-A tag para listas não-ordenadas é [`<ul>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/ul) de *unordered list*. Seus elementos devem estar entre tags `<li>` (*list item*).
-
-Exemplo:
-
-<div style="display:flex;gap:20px;">
-  <pre><code>
-&lt;ul>
-  &lt;li>Pera&lt;/li&gt;
-  &lt;li>Uva&lt;/li&gt;
-  &lt;li>Maçã&lt;/li&gt;
-  &lt;li>Salada Mista&lt;/li&gt;
-&lt;/ul&gt;
-  </code></pre>
-  <div>
-    <ul>
-      <li>Pera</li>
-      <li>Uva</li>
-      <li>Maçã</li>
-      <li>Salada Mista</li>
-    </ul>
-  </div>
-</div>
-
-### Aninhando listas
-
-Ambas as listas podem ser aninhadas e misturadas, ou seja, `<ol>` dentro de `<ul>` e vice-versa.
-
-Exemplo:
-
-<div style="display:flex;gap:20px;">
-  <pre><code>
-&lt;ol start="5", type="A"&gt;
-  &lt;li> Primeiro item&lt;/li&gt;
-  &lt;li&gt;
-    Segundo item
-    &lt;!-- Veja que a tag de fechamento &lt;/li&gt; não é colocada aqui! --&gt;
-    &lt;ol&gt;
-      &lt;li&gt;segundo item primeiro subitem&lt;/li&gt;
-      &lt;li&gt;segundo item segundo subitem&lt;/li&gt;
-      &lt;li&gt;segundo item terceiro subitem
-        &lt;ul&gt;
-          &lt;li&gt; Elemento não ordenado dentro da lista ordenada&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;!-- Aqui está a tag de fechamento &lt;/li&gt; --&gt;
-  &lt;li>terceiro item&lt;/li&gt;
-&lt;/ol&gt;
-  </code></pre>
-  <div>
-    <ol start="5", type="A">
-      <li> Primeiro item</li>
-      <li>
-        Segundo item
-        <!-- Veja que a tag de fechamento </li> não é colocada aqui! -->
-        <ol>
-          <li>segundo item primeiro subitem</li>
-          <li>segundo item segundo subitem</li>
-          <li>segundo item terceiro subitem
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Dive into HTML Semantics</title>
+</head>
+<body>
+    <header>
+        <h1>Web Development Blog</h1>
+        <nav>
             <ul>
-              <li> Elemento não ordenado dentro da lista ordenada</li>  
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-          </li>
-        </ol>
-      </li>
-      <!-- Aqui está a tag de fechamento </li> -->
-      <li>terceiro item</li>
-    </ol>
-  </div>
-</div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Introduction</h2>
+            <p>Welcome to our exploration of HTML semantic elements...</p>
+        </section>
+        <article>
+            <h2>Unraveling HTML Semantics</h2>
+            <p>Today, we embark on a journey into the depths of HTML semantics...</p>
+        </article>
+    </main>
+    <footer>
+        <p>&copy; 2024 Web Development Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+```
 
-### Listas de descrição/definição
+### Hierarquia
 
-A tag para listas de desrição/definição é [`<dl>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/dl) de *definition list*. Possui duas "subtags" `<dt>` (*description term*) e `<dd>` (*description definition*).
+A partir das estruturas que vimos, podemos identificar também hierarquias (DOM Tree):
 
-Exemplo:
+```
+<!DOCTYPE html>
+<html> (Root)
+├── <head> (Metadata)
+│   ├── <title>
+│   └── <meta>
+└── <body> (Visible Content)
+    ├── <header>
+    ├── <main>
+    │   └── <section>
+    │       └── <p>
+    └── <footer>
+```
 
-<div style="display:flex;">
-  <pre><code>
-&lt;dl&gt;
-  &lt;dt&gt;Solilóquio&lt;/dt&gt;
-  &lt;dd&gt;
-    Recurso dramático ou literário que consiste em verbalizar, na primeira pessoa, aquilo que se passa na consciência de um personagem para a audiência ou plateia, mas não para os demais personagens.
-  &lt;/dd&gt;
-  &lt;dt&gt;Monólogo&lt;/dt&gt;
-  &lt;dd&gt;
-    Forma de discurso teatral ou literário em que um único indivíduo expressa seus pensamentos, sentimentos e reflexões, falando sozinho ou dirigindo-se ao público
-  &lt;/dd&gt;
-&lt;/dl&gt;
-  </code></pre>
-  <div>
-    <dl>
-      <dt>Solilóquio</dt>
-      <dd>
-        Recurso dramático ou literário que consiste em verbalizar, na primeira pessoa, aquilo que se passa na consciência de um personagem para a audiência ou plateia, mas não para os demais personagens.
-      </dd>
-      <dt>Monólogo</dt>
-      <dd>
-        Forma de discurso teatral ou literário em que um único indivíduo expressa seus pensamentos, sentimentos e reflexões, falando sozinho ou dirigindo-se ao público
-      </dd>
-    </dl>
-  </div>
-</div>
+Como se trata de uma árvore, os elementos (enquanto nós na árvore) podem ser classificados de acordo com os termos:
 
-## Multimídia
-
-Para imagens as duas principais tags são: 
-
-- [`<img>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/img): representa a inserção de imagem no documento.
-  - **Principais atributos**: 
-    - `alt`: define um texto alternativo que descreve a imagem.
-    - `height`: a altura da imagem em pixels ou porcentagem.
-    - `src` (**obrigatório**): o caminho para o arquivo de imagem.
-    - `width`: a largura da imagem em pixels ou porcentagem.
-- [`<figure>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/figure): representa conteúdo autocontido, potencialmente com uma legenda opcional, que é especificada usando o elemento `<figcaption>`. A figura, sua legenda e seu conteúdo são referenciados como uma única unidade.
-  - Só possui os atributos globais.
-
-Para a inserção de vídeo temos a tag
-
-- [`<video>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/video): incorpora um reprodutor de mídia que suporta a reprodução de vídeo no documento.
-  - **Atributos principais**:
-    - `autoplay`: booleano, se especificado, o vídeo vai ser executado assim que possível sem precisar de carregar todo o arquivo.
-    - `controls`: se estiver presente, o navegador oferecerá controles para permitir o usuário controlar a reprodução do vídeo, incluindo volume, navegação (seek), e pausa/continuação da reprodução.
-    - `height`: a altura da da área de exibição em pixels.
-    - `loop`: booleano, se especificado, ao chegar no fim do vídeo, ele voltará automaticamente para o começo.
-    - `muted`: booleano, se especificado, o áudio vai começar mudo.
-    - `poster`: para definir a *thumbnail* do vídeo.
-    - `src`: a URL do vídeo a ser incorporado. É opcional, e ao invés dela é possível usar o elemento `<source>` dentro do bloco do vídeo para especificar o vídeo a ser incorporado .
-    - `width`: a largura da da área de exibição em pixels.
-
-Para adicionar vídeos do YouTube, por exemplo, é necessário utilizar a tag [`<iframe>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/iframe).
-
-Para a inserção de áudio temos a tag
-
-- [`<audio>`](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements/audio)
+- **Pai** (*parent*).
+- **Filho** (*child*).
+- **Irmão** (*sibling*).
+- **Descendente** (*descendant*).
 
 ## Exercícios
 
-### Introdução
+### Fácil
 
-1. Crie um arquivo chamado index.html contendo a estrutura mínima de um documento HTML:
-   - A declaração `<!DOCTYPE html>.`
-   - As tags `<html>`, `<head>` e `<body>`.
-   - No `<head>`, coloque um `<title>` com o texto: Minha Primeira Página Web.
-   - No `<body>`, escreva um parágrafo com seu nome e curso.
+1. Em HTML, qual é a principal função de uma `tag`?<br>
+    A)Armazenar informações em um banco de dados.<br>
+    B) Definir a estrutura e/ou o significado de uma parte do documento.<br>
+    C) Executar código JavaScript automaticamente.<br>
+    D) Definir exclusivamente a aparência visual da página.<br>
+    E) Criar arquivos no computador do usuário.<br>
 
-2. Na mesma página, adicione:
-   - Um título principal `<h1>` com o nome da disciplina: Programação para a Web 1.
-   - Dois subtítulos `<h2>` com os textos: Introdução à Web e Fundamentos de HTML.
-   - Um subtítulo `<h3>` chamado Primeiros Testes.
+2. Crie um documento HTML mínimo contendo:<br>
+   - a declaração `DOCTYPE`;
+   - o elemento `<html>`;
+   - um `<head>`;
+   - um `<body>`;
+   - o título da página como "Minha primeira página".
 
-3. Adicione dois parágrafos `<p>` no corpo da página:
-    - O primeiro com um resumo da disciplina.
-    - O segundo com uma curiosidade pessoal (ex.: “Meu primeiro contato com a Internet foi…”).
+    Não é necessário adicionar nenhum conteúdo ao `<body>`.
 
-4. Adicione três links à sua página usando a tag `<a>`:
-    - Um link para o site da UFPI.
-    - Um link para o [MDN Web Docs](https://developer.mozilla.org/pt-BR/).
-    - Um link para o [W3Schools](https://www.w3schools.com/) configurado para abrir em uma nova aba (`target="_blank"`).
+3. Crie um documento HTML contendo três títulos:<br>
+    - Sistemas de Informação como título de nível 1;
+    - Programação para a Web como título de nível 2;
+    - HTML como título de nível 3.
 
-5. Adicione uma imagem usando `<img>`:
-   - Escolha uma imagem da Internet ou local.
-   - Inclua os atributos `src`, `alt` e `title`.
-   - Ajuste a largura da imagem (`width="200px"` por exemplo).
+4. Escreva o código HTML que apresente o seguinte texto em um parágrafo:<br>
+   > HTML é uma linguagem utilizada para estruturar documentos destinados à Web.
 
-6. Crie:
-    - Um `<div>` com fundo colorido (usando atributo `style`).
-    - Dentro do `<div>`, adicione um `<p>` com texto qualquer.
-    - Adicione também um `<span>` dentro do parágrafo, destacando uma palavra em outra cor.
-    - Compare a diferença entre elementos de **bloco** (`div`, `p`) e **inline** (`span`).
+5. Considere o código:<br>
+   ```html
+   <a href="https://www.exemplo.com">Exemplo</a>
+   ```
+   
+   Qual é a função do atributo `href`?<br>
+    A) Define o texto que será exibido pelo link.<br>
+    B) Define a cor do link.<br>
+    C) Define o endereço para o qual o link aponta.<br>
+    D) Define o tamanho da fonte do link.<br>
+    E) Define o título da página.<br>
 
-7. Atribua:
-   - `id="principal"` ao `<h1>` da página.
-   - `class="subtitulo"` aos `<h2>`.
-   - Passe o mouse sobre os títulos e veja o atributo `title` exibido como dica.
+6. Crie um documento HTML contendo um link com o texto "Portal da Universidade" que aponte para:
 
-8. Monte uma página HTML que contenha:
-   - Um título `<h1>` com seu nome.
-   - Um parágrafo com uma breve biografia.
-   - Um link para um vídeo ou artigo que você goste.
-   - Uma imagem que represente um hobby ou interesse pessoal.
-   - Um uso de `<span>` para destacar uma palavra importante.
+    > https://www.ufpi.br
 
-9. Crie uma mini “página de apresentação pessoal” contendo:
-    - Um título com seu nome e curso.
-    - Uma foto (pode ser avatar ou ícone).
-    - Uma lista de três hobbies ou interesses.
-    - Um link para um site que você visita frequentemente.
-    - Pelo menos um uso de `id` e um de `class` nos elementos.
+7. Escreva um elemento HTML para exibir a imagem `logo.png`.
 
-### Listas
+    O elemento deve possuir:<br>
+    - `src` apontando para `logo.png`;
+    - `alt` contendo o texto "Logotipo da universidade".
 
-1. Crie uma lista não ordenada com os nomes de três linguagens de programação.
-2. Crie uma lista ordenada com os passos para preparar um café.
-3. Crie uma lista de compras usando `<ul>`.
-4. Crie uma lista numerada com os meses do ano.
-5. Crie uma lista de filmes favoritos e use sublistas para organizar por gênero (ação, drama, comédia).
-6. Crie uma lista ordenada com tipos de protocolos da Internet (HTTP, HTTPS, FTP, SMTP).
-7. Crie uma lista de tópicos de um curso, onde cada item da lista contém também uma breve descrição em parágrafo.
-8. Crie uma lista não ordenada de três países, cada um contendo uma sublista com duas cidades.
-9. Crie uma lista ordenada onde cada item contém também um link externo.
-10. Crie uma lista de definições usando `<dl>`, `<dt>`, `<dd>` explicando termos como “HTML”, “CSS” e “JavaScript”.
-11. Monte uma lista aninhada de músicas organizadas por cantores.
-12. Crie uma lista ordenada de navegadores web e destaque o navegador favorito com a tag `<mark>`.
+8. Crie uma lista não ordenada contendo os seguintes itens:<br>
+    - HTML
+    - CSS
+    - JavaScript
+    - Python
 
-### Áudio e Vídeo
+9. Qual dos elementos abaixo deve conter o conteúdo que será apresentado na área principal da página?<br>
+    A) `<head>`<br>
+    B) `<title>`<br>
+    C) `<meta>`<br>
+    D) `<body>`<br>
+    E) `<html>`<br>
 
-1. Crie um player de áudio simples que mostre os controles padrão do navegador. Use um arquivo `.mp3`.
-2. Insira um vídeo com 480×270 pixels e controles padrão.
-3. Crie um áudio que comece a tocar automaticamente ao carregar a página.
-4. Coloque um vídeo curto (ex.: 5–10 segundos) que repita automaticamente para sempre.
-5. Insira um arquivo de áudio que toque automaticamente e em loop, mas sem exibir controles.
-6. Adicione um vídeo que mostre uma imagem estática (poster) antes de começar a reprodução.
-7. Crie um player de áudio que forneça dois formatos diferentes (ex.: MP3 e OGG) usando duas tags `<source>`.
-8. Insira um vídeo que inicie sem som (muted) e com autoplay + loop (ótimo para vídeos de fundo).
-9. Crie um vídeo que:
-   1.  Forneça 2–3 formatos (mp4, webm, ogv)
-   2.  Tenha largura 100% e altura automática (responsivo)
-   3.  Inclua uma mensagem de fallback clara
-   4.  Use poster e controles
-10. Crie um player de áudio com as seguintes características combinadas: autoplay, loop, muted (inicia sem som), preload="auto", controls. Explique qual atributo está conflitando com outro, e por quê.
-11. Crie um player de vídeo que inclua legendas usando a tag `<track>`. Requisitos:
-    1.  Use kind="subtitles"
-    2.  srclang="pt-BR"
-    3.  label="Português (Brasil)"
-    4.  Arquivo .vtt simples com pelo menos 3 legendas
-    5.  Coloque o atributo default para ativar as legendas automaticamente
+10. Crie um trecho HTML contendo:<br>
+    - um título de nível 1 com o texto "Sobre o curso";
+    - um parágrafo com o texto "Este curso apresenta os fundamentos do desenvolvimento Web."
 
-    Exemplo mínimo de arquivo `legenda.vtt`:
-    ```vtt
-    WEBVTT
+11. Crie um link com o texto "Pesquisar" apontando para `https://www.google.com`. O link deve possuir também um atributo title com o valor: `Abrir página de pesquisa`.
 
-    00:00:01.000 --> 00:00:04.000
-    Primeira frase de legenda
-
-    00:00:05.000 --> 00:00:08.000
-    Segunda legenda bem legal
+12. Escreva HTML para apresentar as seguintes três informações, cada uma em uma linha:<br>
     ```
-12. (**DESAFIO**) Crie uma página com:
-    1.  Um único elemento `<video>` ou `<audio>`.
-    2.  Três botões abaixo dele (música 1, música 2, vídeo curto).
-    3.  Ao clicar em cada botão, o `src` do media element muda e o player inicia automaticamente.
+    Nome: Maria
+    Curso: Sistemas de Informação
+    Semestre: 2º
+    ```
+
+    Utilize um único elemento `<p>` e elementos apropriados para realizar as quebras de linha.
+
+13. Qual alternativa apresenta corretamente os elementos utilizados para títulos em HTML, do maior nível hierárquico para o menor?<br>
+    A) `<title>`, `<subtitle>`, `<subsubtitle>`<br>
+    B) `<h1>`, `<h2>`, `<h3>`<br>
+    C) `<header>`, `<section>`, `<article>`<br>
+    D) `<heading1>`, `<heading2>`, `<heading3>`<br>
+    E) `<head>`, `<body>`, `<footer>`<br>
+
+14. Crie um documento HTML completo que apresente:<br>
+    - título da página: "Página Inicial";
+    - título `<h1>`: "Bem-vindo!";
+    - parágrafo: "Esta é minha primeira página HTML."
+
+15. Qual é a finalidade principal do elemento `<title>`?<br>
+    A) Criar o título principal visível no corpo da página.<br>
+    B) Definir o título associado ao documento, normalmente exibido na aba ou janela do navegador.<br>
+    C) Definir o título de uma imagem.<br>
+    D) Criar um cabeçalho dentro do `<body>`.<br>
+    E) Exibir uma mensagem ao usuário.<br>
+
+### Médio
+
+16.  Crie uma página HTML completa para representar um pequeno perfil pessoal. A página deve conter:<br>
+    - título do documento: "Meu perfil";
+    - `<h1>` com seu nome;
+    - um parágrafo apresentando brevemente você;
+    - um subtítulo `<h2>` chamado "Meus interesses";
+    - uma lista não ordenada com pelo menos três interesses.
+
+
+17. Crie uma página contendo três links:
+    1.  Google, apontando para https://www.google.com;
+    2.  MDN, apontando para https://developer.mozilla.org;
+    3.  W3C, apontando para https://www.w3.org.
+
+    Todos os links devem possuir um atributo title que explique o destino do link.
+
+18. Considere:<br>
+    ```html
+    <img src="foto.jpg" alt="Estudantes em uma sala de aula">
+    ```
+
+    Qual é a finalidade mais importante do atributo alt?<br>
+    A) Definir o endereço da imagem.<br>
+    B) Alterar automaticamente o tamanho da imagem.<br>
+    C) Fornecer um texto alternativo para a imagem.<br>
+    D) Definir a extensão do arquivo.<br>
+    E) Criar uma legenda visual obrigatoriamente abaixo da imagem.<br>
+
+19. Crie uma página HTML para representar uma disciplina universitária chamada Estatística. A página deve conter:<br>
+    - um `<h1>` com o nome da disciplina;
+    - um parágrafo descrevendo a disciplina;
+    - um `<h2>` chamado "Conteúdo";
+    - uma lista contendo pelo menos quatro conteúdos;
+    - um `<h2>` chamado "Material";
+    - um link para um material fictício chamado material.html.
+
+
+20. Crie uma página contendo:<br>
+    - uma imagem chamada universidade.jpg;
+    - texto alternativo adequado para a imagem;
+    - um título `<h1>` chamado "Nossa Universidade";
+    - um parágrafo descrevendo a universidade;
+    - um link chamado "Saiba mais", apontando para sobre.html.
+
+    Organize os elementos em uma ordem coerente.
+
+21. Crie uma estrutura HTML para uma pequena página com um menu contendo os seguintes links:<br>
+    ```
+    Início
+    Cursos
+    Professores
+    Contato
+    ```
+
+    Os links devem apontar, respectivamente, para:<br>
+    ```
+    index.html
+    cursos.html
+    professores.html
+    contato.html
+    ```
+
+22. O código abaixo apresenta problemas de estrutura e fechamento de elementos:<br>
+    ```html
+    <html>
+      <head>
+        <title>Minha página
+      </head>
+
+      <body>
+        <h1>Bem-vindo
+        <p>Este é meu site.
+    </html>
+    ```
+
+    Reescreva o código corrigindo os problemas para produzir um documento HTML estruturalmente adequado.
+
+23. Crie uma página que contenha:<br>
+    - uma imagem com src e alt;
+    - um link com href e title;
+    - um elemento `<p>` com um atributo id de valor descricao;
+    - um título `<h1>` com o texto "Página de teste".
+
+24. Considere a estrutura:<br>
+    ```html
+    <html>
+        <head>
+            ...
+        </head>
+        <body>
+            ...
+        </body>
+    </html>
+    ```
+
+    Qual alternativa descreve corretamente a diferença entre `<head>` e `<body>`?<br>
+    A) `<head>` contém todo o conteúdo visível e `<body>` contém apenas metadados.<br>
+    B) `<head>` contém informações e recursos relacionados ao documento; `<body>` contém o conteúdo da página.<br>
+    C) Ambos possuem exatamente a mesma função.<br>
+    D) `<head>` deve estar dentro de `<body>`.<br>
+    E) `<body>` deve estar fora de `<html>`.<br>
+
+25.  Crie uma página HTML representando uma notícia. Ela deve conter:<br>
+    - título do documento: "Notícias da Universidade";
+    - título principal com a manchete;
+    - um parágrafo introdutório;
+    - subtítulo "Detalhes";
+    - pelo menos dois parágrafos;
+    - uma imagem relacionada à notícia, utilizando src e alt;
+    - um link chamado "Leia mais".
+
+### Difícil
+
+26. Crie um documento HTML utilizando, além de `<html>`, `<head>` e `<body>`, os seguintes elementos:<br>
+    - `<header>`;
+    - `<nav>`;
+    - `<main>`;
+    - `<section>`;
+    - `<footer>`.
+
+    A página deve representar um pequeno site de uma universidade e conter:<br>
+    - um cabeçalho com o nome da universidade;
+    - uma área de navegação com três links;
+    - uma seção principal com título e texto;
+    - um rodapé com o texto "© 2026 Universidade".
+
+27. Crie uma página HTML representando um produto de uma loja virtual. A página deve conter:<br>
+    - título do documento;
+    - cabeçalho;
+    - nome do produto como `<h1>`;
+    - imagem do produto com alt;
+    - descrição;
+    - preço;
+    - uma lista com pelo menos três características do produto;
+    - um link chamado "Comprar";
+    - rodapé.
+
+    Procure organizar os elementos de maneira semanticamente coerente.
+
+28. Crie uma página HTML para representar um curso de Desenvolvimento Web. A página deverá possuir:<br>
+    - um `<header>` com o nome do curso;
+    - um `<nav>` com links para Início, Conteúdo e Contato;
+    - um `<main>`;
+    - pelo menos três `<section>` dentro do `<main>`;
+    - cada seção deve possuir um título;
+    - uma seção deve conter uma lista;
+    - outra deve conter uma imagem;
+    - outra deve conter um link;
+    - um `<footer>`.
+
+    Utilize corretamente os níveis de título (h1, h2, etc.).
+
+29. O código abaixo foi produzido por um estudante, mas contém diversos problemas:<br>
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Curso Web
+    <body>
+        <header>
+            <h1>Desenvolvimento Web</h2>
+        </header>
+
+
+        <main>
+            <p>Aprenda HTML e CSS.
+            <img src="web.jpg">
+            <a>Material do curso</a>
+        </main>
+
+
+        <footer>
+            <p>Universidade 2026
+    </html>
+    ```
+
+    Reescreva o documento corrigindo os problemas encontrados. Além de corrigir as tags abertas/fechadas incorretamente, faça as alterações necessárias para que:<br>
+    - a imagem tenha texto alternativo;
+    - o link tenha um destino;
+    - os elementos estruturais estejam corretamente organizados.
+
+30.  Crie uma página HTML completa para um portfólio acadêmico de um estudante de Sistemas de Informação. A página deve conter, no mínimo:<br>
+    - estrutura completa de um documento HTML;
+    - `<title>` apropriado;
+    - `<header>`;
+    - `<nav>` com pelo menos três links;
+    - `<main>`;
+    - uma seção de apresentação;
+    - uma seção de habilidades contendo uma lista;
+    - uma seção de projetos contendo pelo menos dois projetos;
+    - uma imagem com src e alt;
+    - links para informações ou projetos;
+    - `<footer>`.
+
+    Além de funcionar no navegador, o código deve apresentar boa organização hierárquica dos elementos e uso coerente das tags HTML.

@@ -12,3 +12,10 @@
   - Pequena atualização em `README.md`
 - 2026.2.1.1
   - Atualização do `README.md`.
+- 2026.2.2
+  - `AULAS/02`
+    - Excluída a pasta antiga de resolução de exercícios.
+    - `imagens/`
+      - Acrescentadas duas imagens.
+    - `aula02.md` com ceonteúdo e exercícios atualizados.
+    - Acrescentado o exemplo prático `exemplo-semantic.html`
