@@ -19,3 +19,8 @@
       - Acrescentadas duas imagens.
     - `aula02.md` com ceonteúdo e exercícios atualizados.
     - Acrescentado o exemplo prático `exemplo-semantic.html`
+- 2026.2.3
+  - `AULAS/03`
+    - Excluída a pasta `exemplos/`.
+    - Adicionada a imagem `a11y.png`.
+    - Atualização do arquivo `aula03.md`.
