@@ -24,3 +24,10 @@
     - Excluída a pasta `exemplos/`.
     - Adicionada a imagem `a11y.png`.
     - Atualização do arquivo `aula03.md`.
+- 2026.2.4
+  - `AULAS/04`
+    - Exclusão dos exemplos anteriores, relacionados a outro conteúdo.
+    - Exclusão da pasta `exercícios/`, que continham exercícios resolvidos relacionados a outro conteúdo.
+    - Exclusão da pasta `imagens/`.
+    - Atualização do arquivo `aula04.md`.
+    - Exclusão do arquivo `exemplo_empilhamento.html`.
