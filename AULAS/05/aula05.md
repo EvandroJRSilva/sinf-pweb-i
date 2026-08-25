@@ -4,310 +4,422 @@
 Sumário
 
 - [Aula 05](#aula-05)
-  - [Estilização de texto](#estilização-de-texto)
-    - [Fontes](#fontes)
-    - [Layout](#layout)
-    - [Lista de outras propriedades interessantes](#lista-de-outras-propriedades-interessantes)
-    - [Exemplo](#exemplo)
-  - [Estilização de listas](#estilização-de-listas)
-    - [Estilos específicos de lista](#estilos-específicos-de-lista)
-  - [Estilização de links](#estilização-de-links)
-  - [Estilização de tabelas](#estilização-de-tabelas)
+  - [CSS (*Cascading Style Sheets*)](#css-cascading-style-sheets)
+  - [Sintaxe básica](#sintaxe-básica)
+    - [Aplicando o CSS](#aplicando-o-css)
+  - [Seletores](#seletores)
+    - [Seletor de tipo (ou Seletor de Elemento/Tag)](#seletor-de-tipo-ou-seletor-de-elementotag)
+    - [Seletor de classe](#seletor-de-classe)
+    - [Seletor de id](#seletor-de-id)
+    - [Seletor universal](#seletor-universal)
+    - [Lista de Seletores (ou Grupo de Seletores)](#lista-de-seletores-ou-grupo-de-seletores)
+    - [Seletores de atributo](#seletores-de-atributo)
+      - [Seletores de presença e valor](#seletores-de-presença-e-valor)
+      - [Seletores de substring](#seletores-de-substring)
+    - [Pseudo-classes](#pseudo-classes)
+    - [Pseudo-elementos](#pseudo-elementos)
+  - [Combinadores](#combinadores)
+    - [Combinador Descendente](#combinador-descendente)
+    - [Combinador Filho Direto (Child combinator)](#combinador-filho-direto-child-combinator)
+    - [Combinador Irmão Adjacente (Adjacent sibling / Next-sibling)](#combinador-irmão-adjacente-adjacent-sibling--next-sibling)
+    - [Combinador Irmão Geral (General sibling / Subsequent-sibling)](#combinador-irmão-geral-general-sibling--subsequent-sibling)
+  - [Tópicos](#tópicos)
+    - [Herança](#herança)
+    - [Especificidade](#especificidade)
+    - [Propriedades abreviadas (*shorthand properties*)](#propriedades-abreviadas-shorthand-properties)
   - [Exercícios](#exercícios)
-    - [Estilização de texto](#estilização-de-texto-1)
-      - [Fácil](#fácil)
-      - [Médio](#médio)
-      - [Difícil](#difícil)
-    - [Estilização de Listas](#estilização-de-listas-1)
-      - [Fácil](#fácil-1)
-      - [Médio](#médio-1)
-      - [Difícil](#difícil-1)
-    - [Estilização de Links](#estilização-de-links-1)
-      - [Fácil](#fácil-2)
-    - [Médio](#médio-2)
-      - [Difícil](#difícil-2)
-    - [Estilização de Tabelas](#estilização-de-tabelas-1)
-      - [Fácil](#fácil-3)
-      - [Médio](#médio-3)
-      - [Difícil](#difícil-3)
+    - [Fácil](#fácil)
+    - [Médio](#médio)
+    - [Difícil](#difícil)
 
 
-## Estilização de texto
 
-As propriedades CSS usadas para estilizar texto geralmente caem em duas categorias:
+## CSS (*Cascading Style Sheets*)
 
-- **Estilo de fonte**: propriedades que afetam a fonta como tamanho, negrito, itálico, etc.
-- **Estilo de layout de texto**: propriedades que afetam o espaçamento e outras características de layout do texto, o que permite a manipulação de, por exemplo, o espaço entre linhas e entre letras e como o texto é alinhado dentro de uma *caixa de conteúdo*.
+O CSS (Folhas de Estilo em Cascata, numa tradução livre), de acordo com o [W3C](https://www.w3.org/TR/css/#css) 
 
-### Fontes
+> é uma linguagem para a escrita de `folhas de estilo`, projetada para descrever a renderização de documentos estruturados (e.g., HTML e XML) em uma variedade de mídias. O CSS é usado para descrever a apresentação de um documento fonte, e normalmente não modifica a semântica subjacente expressa por seu documento de linguagem.
 
-Atributos que podem ser estilizados:
+Uma `folha de estilo` consiste em um conjunto de regras que especificam a apresentação de um documento.
 
-- `color`: as cores podem ser definidas a partir de uma [palavra-chave](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/named-color), valores RGB em hexadecimal, valores RGB (com ou sem opacidade), matiz (*hue*), HWB (*Hue Whiteness Blackness*) e HSL (*Hue Saturation Lightness*).
-- `font-family`: permite especificar uma fonte, ou uma lista de fontas para serem aplicadas a elementos selecionados. A fonte só será aplicada se estiver disponível na máquina que está acessando a página, senão, será utilizada uma fonte padrão.
-  - As fontes padrões são: `serif`, `sans-serif`, `monospace`, `cursive` e `fantasy`.
-  - Existe uma forma de contornar o problema da fonte não estar presente na máquina do usuário. Pesquise sobre `@font-face`.
-- `font-size`: o tamanho da fonte pode ser definido em unidades como `px` (pixels), `em`, `rem`, e também em porcentagem.
-- `font-style`: serve para aplicar itálico a uma fonte. Valores possíveis:
-  - `normal`
-  - `italic`
-  - `oblique`
-- `font-weight`: configura o quão negrito vai ser o texto. Os valores possíveis:
-  - `normal`
-  - `bold`
-  - `lighter`, `bolder`
-  - `100` - `900`
-- `text-transform`: permite configurar alguns tipos de transformação. Valores possíveis:
-  - `none`
-  - `uppercase`
-  - `lowercase`
-  - `capitalize`
-  - `full-width`
-- `text-decoration`: permite configurar decorações no texto. Valores possíveis:
-  - `none`
-  - `underline`
-  - `overline`
-  - `line-through`
-- `text-shadow`: aplica efeito de sombra sobre um texto.
+É uma das principais linguagens da web ([*home page* do CSS](https://www.w3.org/Style/CSS)) e suas especificações são padronizadas pelo W3C. As especificações não são versionadas, porém, o W3C compila um panorama (*snapshot*) do **último estado estável das especificações** e também do progresso de **módulos individuais**. O *snapshot* de 2026 pode ser acessado com [este link](https://www.w3.org/TR/css-2026/). As últimas especificações são o CSS Nível 2 Revisão 1 (título em Inglês: *Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification*), ou [CSS 2.1](https://www.w3.org/TR/CSS2/).
 
-### Layout
+O CSS pode ser usado em várias situações relacionadas à aparência de uma página, por exemplo:
 
-Atributos a serem estilizados:
+- Estilização de texto, incluindo modificação da cor e tamanho de títulos e links.
+- Criação de layouts, como layouts de grade (*grid layout*) ou de múltiplas colunas.
+- Aplicação de efeitos especiais, como animação.
 
-- `text-align`: controla o alinhamento do texto. Valores:
-  - `left`
-  - `right`
-  - `center`
-  - `justify`
-- `line-height`
-- `letter-spacing`
-- `word-spacing`
+## Sintaxe básica
 
-### Lista de outras propriedades interessantes
-
-[Neste link](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Text_styling/Fundamentals#other_properties_worth_looking_at) você pode encontrar uma lista com várias outras propriedades de texto que podem ser estilizadas.
-
-### Exemplo
-
-**[Arquivo de exemplo](./exemplos/estilo-texto.html)**
-
-## Estilização de listas
-
-Uma primeira, e simples, estilização, pode ser sobre o espaçamento. Exemplo:
+O CSS é uma linguagem baseada em regras, as quais são definidas ao se especificar grupos de estilos que devem ser aplicados a um elemento particular ou um grupo de elementos da página. Exemplo:
 
 ```css
-html {
-  font-family: "Helvetica", "Arial", sans-serif;
-  font-size: 10px;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-ul,ol,dl,p {
-  font-size: 1.5rem;
-}
-
-ul,ol,dl {
-    padding-left: 2rem;
-}
-
-li,p,dd,dt {
-  line-height: 1.5;
-}
-
-dt {
-  font-weight: bold;
+h1{
+    color: red;
+    font-size: 2.5em;
 }
 ```
 
-### Estilos específicos de lista
+- A regra acima inicia com um `seletor`, ou seja, uma seleção de qual elemento será estilizado. No exemplo o cabeçalho de primeiro nível foi selecionado. Logo após o `seletor` são abertas as *chaves*, delimitando o bloco da regra em questão.
+- Dentro do bloco podemos ter uma ou mais declarações, as quais possuem a forma de um par `propriedade: valor;`. No exemplo, foram declaradas duas prorpridades, `color` e `font-size`. A cor escolhida foi vermelho (`red`), e o tamanho escolhido foi `2.5em`. Esse `em` é um valor proporcional relativo ao elemento pai do elemento atual.
 
-Existem três propriedades que podem ser manipuladas para estilizar listas `<ul>` e `<ol>`:
+### Aplicando o CSS
 
-- [`list-style-types`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/list-style-type): para configurar o marcador da lista, ou sua numeração. Algums valores:
-  - `<ul>`: `disc`, `circle`, `square` (pode ser emoji também).
-  - `<ol>`: `decimal`, `georgian`, `lower-roman`, etc.
-- [`list-style-position`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/list-style-position): para configurar a posição dos marcadores. Valores: `inside` e `outsite`.
-- [`line-style-image`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/list-style-image): para selecionar uma imagem como um marcador.
+Existem três formas de se aplicar o CSS a um elemento:
 
-**[Arquivo de exemplo](./exemplos/estilo-listas.html)**.
+1. **Estilo *inline***: quando utilizamos o atributo `style` de um elemento. [Exemplo](./exemplos/exemplo_estilo-1.html).
+2. **Estilo interno**: quando definimos o CSS em uma tag `<style>` dentro da tag `<head>`. [Exemplo](./exemplos/exemplo_estilo-2.html).
+3. **Estilo externo**: quando o CSS é definido em um arquivo próprio de extensão `.css` e importado dentro da tag `<head>`. [Exemplo](./exemplos/exemplo_estilo-3.html).
 
-## Estilização de links
+## Seletores
 
-Os links podem ser estilizados a partir dos seus estados, os quais podemos acessar através das pseudo-classes: `:link`, `:visited`, `:hover`, `:focus` e `:active`.
+### Seletor de tipo (ou Seletor de Elemento/Tag)
 
-A partir disso, o limite da estilização é seu conhecimento e criatividade. Lembrando que é possível incluir ícones também (com o `::after`, por exemplo).
+Seleciona todos os elementos HTML de acordo com o nome da tag. É o seletor mais básico e direto. Ele afeta todos os elementos daquele tipo na página.
 
-## Estilização de tabelas
+**Sintaxe**: 
 
-A estilização de tabelas vai seguir uma "estilização geral", ou seja, manipulação dos atributos dos elementos de tabela. Por exemplo, pode ser possível a estilização de espaçamento, alinhamento dentro das células, bordas, coloração das linhas em zebra, e de outros elementos, como o `caption`.
+`nome-da-tag { propriedade: valor; }`
 
-**[Arquivo de exemplo](./exemplos/estilo-tabela.html)**
+**Exemplos**:
+
+```css
+p { color: navy; }                  /* todos os parágrafos */
+h1 { font-size: 2.5rem; }           /* todos os títulos h1 */
+div { background-color: #f0f0f0; }  /* todos os divs */
+a { text-decoration: none; }        /* todos os links */
+```
+
+### Seletor de classe
+
+Seleciona elementos que possuem um atributo `class`. Uma mesma classe pode ser usada em vários elementos diferentes. É o seletor mais flexível e mais utilizado em projetos reais.
+
+**Sintaxe**:
+
+`.nome-da-classe { propriedade: valor; }`
+
+**Exemplos**:
+
+```css
+.destaque { font-weight: bold; color: red; }
+.botao { padding: 12px 24px; background: #007bff; color: white; }
+.card { border: 1px solid #ddd; border-radius: 8px; }
+```
+
+É possível definir uma `classe` para elementos específicos:
+
+```css
+span.highlight { background-color: yellow; }
+h1.highlight { background-color: pink; }
+```
+
+E também múltiplas `classes` para um mesmo elemento:
+
+```css
+.notebox {
+   border: 4px solid #666666;
+   padding: 0.5em;
+   margin: 0.5em;
+}
+
+.notebox.warning {
+   border-color: orange;
+   font-weight: bold;
+}
+
+.notebox.danger {
+   border-color: red;
+   font-weight: bold;
+}
+```
+
+### Seletor de id
+
+Seleciona um único elemento da página através do atributo `id`. Tem a maior especificidade entre os seletores básicos.
+
+**Sintaxe**:
+
+`#nome-do-id { propriedade: valor; }`
+
+**Exemplos**:
+
+```css
+#cabecalho { background: #333; color: white; padding: 20px; }
+#menu-principal { position: sticky; top: 0; }
+#rodape { text-align: center; font-size: 0.9rem; }
+```
+
+### Seletor universal
+
+Seleciona todos os elementos da página (incluindo `<html>`, `<body>`, etc.). Muito usado para resets globais ou para aplicar uma propriedade a tudo.
+
+**Sintaxe**:
+
+`* { propriedade: valor; }`
+
+**Exemplos**:
+
+```css
+* { margin: 0; padding: 0; box-sizing: border-box; }   /* reset clássico */
+* { font-family: 'Arial', sans-serif; }                /* fonte padrão para tudo */
+```
+
+### Lista de Seletores (ou Grupo de Seletores)
+
+Permite aplicar as mesmas regras de estilo a vários seletores diferentes de uma só vez. Separa os seletores por vírgula. Economiza código e facilita a manutenção.
+
+**Sintaxe**:
+
+`seletor1, seletor2, seletor3 { propriedade: valor; }`
+
+**Exemplo**:
+
+```css
+h1, h2, h3, h4 { color: #2c3e50; font-family: 'Georgia', serif; }
+p, li, span { line-height: 1.6; }
+button, .botao, input[type="submit"] { cursor: pointer; }
+```
+
+**[Exemplo com todos os seletores básicos](./exemplos/seletores_basicos.html)**.
+
+### Seletores de atributo
+
+#### Seletores de presença e valor
+
+Esses seletores permitem a seleção de um elemento baseado na presença de um atributo, ou em várias correspondências diferentes com o valor do atributo.
+
+| **Seletor** | **Exemplo** | **Descrição** |
+|---|---|---|
+| `[attr]` | `a[title]` | Seleciona elementos que possuam o elemento `attr`. |
+| `[attr=valor]` | `a[href="https://exemplo.com"]` | Seleciona elementos com um atributo `attr` cujo valor seja exatamente `valor`. |
+| `[attr~=valor]` | `p[class~="especial"]` | Seleciona elementos com um atributo `attr` cujo valor seja exatamente `valor` ou contenha `valor` em sua lista de valores. |
+| `[attr\|=valor]` | `div[lang\|="pt"]` | Seleciona elementos com um atributo `attr` cujo valor seja exatamente `valor` ou comece com `valor` imediatamente seguido por um hífen. |
+
+**[Exemplo de seletores de presença e valor](./exemplos/seletor_presenca-valor.htmll)**.
+
+#### Seletores de substring
+
+Esses seletores permitem uma correspondência mais avançada de substrings dentro do valor do seu atributo. Por exemplo, se você tivesse classes de `box-warning` e `box-error` e quisesse combinar tudo que começou com a string "box-", você poderia usar `[class^="box-"]` para selecionar os dois (ou `[class|="box"]` como descrito abaixo).
+
+| **Seletor** | **Exemplo** | **Descrição** |
+|---|---|---|
+| `[attr^=value]` | `li[class^="box-"]` | Corresponde a elementos com um atributo `attr` cujo valor começa com `valor`. |
+| `[attr$=value]` | `li[class$="-box"]` | Corresponde a elementos com um atributo `attr` cujo valor termina com `valor`. |
+| `[attr*=value]` | `li[class*="box"]` | Corresponde a elementos com um atributo `attr` cujo valor contém o `valor` em qualquer lugar dentro da string. |
+
+**[Exemplo de seletores de substring](./exemplos/seletor_substring.html)**.
+
+### Pseudo-classes
+
+As pseudo-classes são palavras-chave que definem um **estado especial de um elemento**. Elas não existem no HTML, mas são ativadas pelo navegador conforme a interação do usuário ou pela posição/condição do elemento na estrutura.
+
+Elas sempre começam com dois pontos (`:`) e são colocadas depois do seletor normal. As pseudo-classes mais comuns:
+
+| Pseudo-classe | Quando é ativada? | Uso comum |
+|---|---|---|
+| `:hover` | Mouse passa por cima | "Efeitos de botão, link, card" |
+| `:active` | Elemento está sendo clicado (pressionado) | Feedback de clique |
+| `:focus` | Elemento recebe foco (teclado ou clique) | "Formulários, acessibilidade" |
+| `:visited` | Link já foi visitado | Links visitados |
+| `:link` | Link ainda não foi visitado | Links não visitados |
+| `:first-child` | Primeiro filho do pai | "Listas, tabelas" |
+| `:last-child` | Último filho do pai | "Listas, tabelas" |
+| `:nth-child(n)` | Elemento na posição específica | "Zebra stripes, galerias" |
+| `:checked` | Checkbox/radio está marcado | Formulários |
+| `:disabled` | Elemento está desabilitado | Inputs bloqueados |
+| `:not()` | Negação (exclui algo) | `:not(:hover)` |
+
+**Exemplos**:
+
+```css
+a:hover { color: red; }
+button:active { transform: scale(0.95); }
+input:focus { outline: 3px solid blue; }
+li:nth-child(2n) { background: #f0f0f0; }
+```
+
+### Pseudo-elementos
+
+Pseudo-elementos permitem criar conteúdo fictício ou estilizar partes específicas de um elemento sem precisar adicionar tags extras no HTML.
+
+Eles representam uma “parte virtual” do elemento e sempre começam com dois dois-pontos (`::`). Os pseudo-elementos mais comuns:
+
+| Pseudo-elemento | O que faz? | Uso comum |
+|---|---|---|
+| `::before` |Insere conteúdo antes do elemento | "Ícones, setas, contadores" |
+| `::after` | Insere conteúdo depois do elemento | "Ícones, marca d’água, aspas" |
+| `::first-letter` |Estiliza a primeira letra | "Drop caps, capitulares" |
+| `::first-line` | Estiliza a primeira linha do texto | Destaque inicial de parágrafo |
+| `::selection` | Estiliza o texto selecionado pelo usuário | Highlight personalizado |
+| `::marker` | Estiliza o marcador de listas (`<ul>` e `<ol>`) | Bolinhas ou números customizados |
+
+**Exemplos**:
+
+```css
+.card::before { content: "⭐"; }
+blockquote::after { content: "”"; font-size: 4rem; }
+p::first-letter { font-size: 3rem; float: left; }
+::selection { background: gold; color: black; }
+```
+
+**[Exemplo completo de pseudo-classes e pseudo-elementos](./exemplos/pseudo-classes_pseudo-elementos.html)**.
+
+## Combinadores
+
+### Combinador Descendente
+
+Seleciona elementos que são **descendentes** (filhos, netos, bisnetos etc.) de outro elemento, **independentemente do nível de aninhamento**. É o combinador mais amplo e mais usado.
+
+Símbolo: ` ` (um ou mais espaços).
+
+**Exemplos**:
+
+```css
+article p          { color: #444; }              /* todo <p> que esteja dentro de <article> (qualquer nível) */
+nav a              { text-decoration: none; }    /* todo link dentro de nav */
+.card .preco       { font-weight: bold; }        /* classe .preco dentro de .card */
+```
+
+### Combinador Filho Direto (Child combinator)
+
+Seleciona apenas elementos que são **filhos diretos** (nível imediatamente abaixo) do elemento anterior. Ignora netos e níveis mais profundos.
+
+Símbolo: `>`
+
+**Exemplos**:
+
+```css
+ul > li            { list-style: square; }       /* apenas filhos diretos de ul */
+article > h2       { margin-top: 0; }            /* h2 que é filho direto de article */
+.menu > .item      { padding: 10px; }            /* apenas itens diretos do menu */
+```
+
+### Combinador Irmão Adjacente (Adjacent sibling / Next-sibling)
+
+Seleciona um elemento que é irmão imediato (vem logo em seguida) do elemento anterior, e **ambos devem ter o mesmo pai**.
+
+Símbolo: `+`
+
+**Exemplos**:
+
+```css
+h2 + p             { margin-top: 0; }               /* primeiro parágrafo após h2 (muito usado em textos) */
+dt + dd            { margin-bottom: 1.2em; }        /* definição após termo em <dl> */
+li.active + li     { border-top: 1px solid gray; }  /* primeiro item de lista após um item de lista da classe active */
+```
+
+### Combinador Irmão Geral (General sibling / Subsequent-sibling)
+
+Seleciona todos os irmãos que aparecem depois (em qualquer posição posterior) do elemento anterior, desde que tenham o mesmo pai. Mais amplo que o `+`.
+
+Símbolo: `~`
+
+**Exemplos**:
+
+```css
+h2 ~ p             { color: #555; line-height: 1.7; }           /* todos <p> após h2 */
+img ~ figcaption   { font-style: italic; font-size: 0.9em; }    /* todos os <figcaption> após img */
+dt ~ dd            { margin-left: 2em; }                        /*todos os <dd> após dt */
+```
+
+**[Exemplo geral de combinadores](./exemplos/combinadores.html)**.
+
+## Tópicos
+
+### [Herança](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Inheritance)
+
+A **herança** controla o que acontece quando nenhum valor é especificado para uma propriedade ou elemento.
+
+As propriedades do CSS podem ser categorizadas em dois tipos:
+
+1. **propriedades herdadas**, as quais, por padrão, são definidas de acordo com o `valor computado` do elemento pai.
+2. **propriedades não-herdades**, as quais, por padrão, são definidas de acordo com o `valor inicial` da propriedade.
+
+Acesse o link para estudar mais a fundo.
+
+### [Especificidade](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity)
+
+A **especificidade** é o peso que os navegadores usam no algoritmo em cascata para determinar a declaração CSS **mais relevante** para um elemento, o que, por sua vez, determina o valor da propriedade a ser aplicada ao elemento. O algoritmo de especificidade calcula esse peso a partir de um seletor CSS e compara os valores resultantes para decidir qual regra, dentre as declarações CSS concorrentes dentro da mesma origem e camada, será aplicada a um elemento.
+
+Acesse o link para estudar mais a fundo.
+
+### [Propriedades abreviadas](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties) (*shorthand properties*)
+
+São propriedades CSS que permitem a definição dos valores de múltiplas propriedades em uma única declaração. Por exemplo, as seguintes declarações:
+
+```CSS
+background-color: black;
+background-image: url("images/bg.gif");
+background-repeat: no-repeat;
+background-position: left top;
+```
+
+Podem ser abreviadas para:
+
+```CSS
+background: black url("images/bg.gif") no-repeat left top;
+```
+
+Acesse o link para estudar mais a fundo.
 
 ## Exercícios
 
-### Estilização de texto
+### Fácil
 
-#### Fácil
-
-1. Crie um parágrafo com texto vermelho e fonte Arial.
-2. Altere o tamanho da fonte de um título `<h1>` para 48px.
-3. Faça um texto ficar em negrito usando `font-weight`.
-4. Transforme todo o texto de um parágrafo em maiúsculas com `text-transform`.
-5. Centralize o texto de um `<h2>` usando `text-align`.
-6. Aplique `italic` em um trecho de texto com `font-style`.
-7. Adicione sombra ao texto de um título com `text-shadow` (simples, 2px 2px cinza).
-8. Defina `line-height: 1.8` em um parágrafo longo para melhorar a legibilidade.
-9. Aumente o espaçamento entre letras (`letter-spacing: 2px`) em um subtítulo.
-10. Mude a cor de fundo de um parágrafo e a cor do texto para contraste alto.
-
-#### Médio
-
-1. Crie um título que combine `font-family: 'Georgia', serif`, `font-size: 2.5rem`, `font-weight: 700` e `color: navy`.
-2. Faça um parágrafo com `text-decoration: underline wavy red` e `text-shadow`.
-3. Use `word-spacing: 8px` em um texto e compare com o padrão.
-4. Aplique diferentes `font-size` em `<h1>`, `<h2>` e `<p>` usando `rem` e `px`.
-5. Crie um bloco de citação com `font-style: italic`, `line-height: 2` e borda esquerda colorida.
-6. Estilize um texto selecionado (`::selection`) com fundo amarelo e texto preto.
-7. Combine `text-align: justify`, `letter-spacing` e `word-spacing` em um parágrafo longo.
-8. Crie um título com `text-transform: capitalize` e sombra suave.
-9. Use `font-family` com fallback (ex: Arial, Helvetica, sans-serif) em todo o body.
-10. Faça um efeito de texto “drop cap” (primeira letra grande) usando `::first-letter`.
-
-#### Difícil
-
-1. Crie um título com múltiplas sombras (`text-shadow`) em camadas para efeito 3D.
-2. Implemente um parágrafo com `font-variant: small-caps`, `letter-spacing` negativo e `text-decoration`.
-3. Desenvolva um layout de texto responsivo que ajuste `font-size` e `line-height` com media queries.
-4. Crie um efeito de texto gradiente usando `background-clip: text` e `color: transparent`.
-5. Estilize um artigo completo combinando todas as propriedades de texto + `text-indent` e `white-space`.
-6. Faça um título animado que muda `letter-spacing` e `color` no `:hover`.
-7. Crie um sistema de tipografia com variáveis CSS (`--font-primary`, `--base-size`) e aplique em múltiplos elementos.
-8. Combine `::first-line` e `::first-letter` com diferentes estilos em um parágrafo longo.
-9. Desenvolva um cartão com texto justificado, sombra no texto e espaçamentos personalizados que fique bonito em mobile e desktop.
-10. Crie um efeito de “texto neon” usando múltiplas `text-shadow` coloridas e `text-transform: uppercase`.
-
-### Estilização de Listas
-
-#### Fácil
-
-1. Mude o marcador de uma lista não ordenada para quadrados (`list-style-type: square`).
-2. Use números romanos maiúsculos em uma lista ordenada.
-3. Remova completamente os marcadores de uma lista (`list-style-type: none`).
-4. Coloque os marcadores dentro do conteúdo (`list-style-position: inside`).
-5. Crie uma lista com marcadores circulares.
-6. Use `list-style-type: lower-alpha` em uma lista ordenada.
-7. Aplique `list-style: none` e adicione `padding` nos itens.
-8. Mude a cor dos itens de lista com `color`.
-9. Crie uma lista simples com fundo claro em cada item.
-10. Use `list-style-type: disc` e aumente o espaçamento entre itens.
-
-#### Médio
-
-1. Use uma imagem como marcador com `list-style-image`.
-2. Combine `list-style-type`, `list-style-position` e `list-style-image` usando o `shorthand list-style`.
-3. Crie marcadores personalizados com `::before` e conteúdo Unicode (ex: seta →).
-4. Faça uma lista com zebra stripes usando `nth-child(even)`.
-5. Estilize uma lista de navegação horizontal com Flexbox e remova marcadores.
-6. Use `::marker` para mudar a cor e tamanho dos números em uma lista ordenada.
-7. Crie uma lista de tarefas com checkbox visual usando `::before` e hover.
-8. Aplique bordas inferiores em cada item de lista exceto o último.
-9. Faça uma lista com contadores personalizados (`counter-reset` e `counter-increment`).
-10. Estilize uma lista aninhada com diferentes marcadores em cada nível.
-
-#### Difícil
-
-1. Crie uma lista totalmente customizada sem usar `list-style`, apenas com `::before` e posicionamento absoluto.
-2. Desenvolva uma lista de preços com ícones SVG como marcadores e hover que expande o item.
-3. Implemente uma lista com numeração contínua em múltiplas seções usando counters.
-4. Crie um menu dropdown usando lista aninhada + `:hover` e transições.
-5. Faça uma lista “timeline” vertical com linhas conectando os itens usando pseudo-elementos.
-6. Estilize uma lista de cards usando grid/flex e marcadores personalizados que mudam no hover.
-7. Crie uma lista com imagens de fundo diferentes para cada item usando `:nth-child`.
-8. Desenvolva uma lista acessível com `::marker` customizado e foco visível.
-9. Combine `list-style-image` com fallback para `list-style-type` e animação no marcador.
-10. Crie uma lista interativa que muda o marcador de “não feito” para “feito” ao clicar (usando classe + JS simples ou apenas CSS com `:checked` se for checkbox).
-
-### Estilização de Links
-
-#### Fácil
-
-1. Mude a cor de links não visitados para azul.
-2. Mude a cor de links visitados para roxo.
-3. Adicione sublinhado removido em links e reaparecendo no `:hover`.
-4. Mude a cor e cursor no `:hover`.
-5. Adicione uma borda inferior no `:hover`.
-6. Remova o outline padrão e crie um outline customizado no `:focus`.
-7. Mude a cor no momento do clique (`:active`).
-8. Faça links ficarem bold no `:hover`.
-9. Estilize links dentro de um parágrafo de forma diferente.
-10. Adicione seta após o link no `:hover` usando `::after`.
+1. Escreva o CSS necessário para que a cor de fundo de todo o `<body>` seja `#f0f8ff`.
+2. Alinhe o texto de todos os elementos `<h1>` rigorosamente ao centro.
+3. Remova a linha sublinhada padrão de todos os links (`<a>`).
+4. Crie uma classe CSS chamada `.texto-forte` que torne qualquer texto aplicado em negrito.
+5. Escreva um seletor de tipo para que as imagens (`<img>`) ocupem sempre 100% da largura do contêiner em que estiverem.
+6. Mude a cor do texto para branco apenas nos elementos `<button>` que também possuam a classe `.btn`.
+7. Adicione uma margem de `1.5rem` abaixo (bottom) de todos os parágrafos.
+8. Defina a fonte padrão global da página para `'Inter', sans-serif`.
+9. Escreva a regra que fará um elemento com o ID `alerta-secreto` desaparecer completamente do layout (sem ocupar espaço).
+10. Estilize os textos que estão dentro de `<span>` para que fiquem obrigatoriamente em itálico.
+11. Use o seletor universal para zerar a `margin` e o `padding`, além de definir `box-sizing` como `border-box`.
+12. Aplique uma borda sólida (solid), de 2px, na cor preta, a todos os elementos `<table>`.
+13. Escreva a regra que altera a cor de um link (`<a>`) para `#ff0000` apenas quando o usuário posicionar o mouse sobre ele.
+14. Aplique a propriedade que transforma o texto de qualquer `<h2>` em letras totalmente maiúsculas.
+15. Ajuste o tamanho da fonte (font-size) de um elemento com ID `titulo-principal` para `32px`.
+16. Adicione um espaçamento interno de `12px` em todos os lados para todas as células do cabeçalho de uma tabela (`<th>`).
+17. Remova as 'bolinhas' (marcadores) que aparecem por padrão ao lado dos itens (`<li>`) de listas não ordenadas (`<ul>`).
+18. Adicione uma sombra simples ao redor de uma classe `.caixa` usando `box-shadow`.
+19. Crie uma regra na classe `.avatar-redondo` que arredonde as bordas de uma imagem quadrada transformando-a em um círculo perfeito.
+20. Modifique a cor da borda de um campo `<input>` para azul vivo, estritamente enquanto ele estiver em foco (digitando nele).
 
 ### Médio
 
-1. Crie estilos completos seguindo a ordem correta: `:link`, `:visited`, `:hover`, `:focus`, `:active`.
-2. Faça um link mudar de cor, fundo e adicionar sombra no `:hover`.
-3. Crie botões estilizados como links com transições suaves.
-4. Use `:focus-visible` para melhorar acessibilidade (outline só no teclado).
-5. Faça links visitados terem texto riscado leve.
-6. Crie efeito underline que cresce do centro no `:hover`.
-7. Estilize links externos com ícone diferente.
-8. Combine `:hover` e `:focus` com as mesmas propriedades.
-9. Faça um menu de links com fundo colorido no estado ativo.
-10. Adicione transição de cor e escala no `:hover` e `:active`.
+21. Escreva o CSS de um botão (`.btn-suave`) com fundo verde, cantos arredondados, texto sem sublinhado, e implemente uma transição fluida de cor ao receber hover.
+22. Utilizando *Flexbox*, posicione uma `<div>` filha perfeitamente centralizada (eixos X e Y) dentro do seu elemento pai que tem a classe `.container-flex`.
+23. Monte o CSS de uma classe `.grid-container` estruturando um layout de exatas 3 colunas iguais usando CSS Grid.
+24. Aplique uma cor de fundo cinza clara (`#eeeeee`) alternadamente (linhas ímpares ou pares) nas linhas (`<tr>`) de uma `<tbody>` para gerar efeito zebrado.
+25. Converta uma simples lista horizontal de links `<ul>` em uma barra de navegação alinhada e espaçada equitativamente utilizando `display: flex;` e `justify-content`.
+26. Escreva a lógica CSS para criar um checkbox personalizado: oculte visualmente o `<input type="checkbox">` e estilize o `label` com um pseudo-elemento.
+27. Desenvolva o CSS de um *Tooltip*: ao dar hover em `.item`, exiba uma caixa de texto customizada baseada no valor de um atributo `data-tooltip` via `content`.
+28. Aplique a propriedade `filter` em uma imagem de perfil para deixá-la em preto e branco por padrão, e restaurar as cores reais ao evento de *hover*.
+29. Construa as propriedades necessárias em um `<header>` para que ele se comporte como um "Sticky Header" no topo da página durante o scroll vertical.
+30. Declare duas variáveis nativas do CSS (`--cor-primaria` e `--cor-secundaria`) no bloco `:root` e aplique a variável primária na cor de texto de um título.
+31. Escreva a sequência de propriedades para recortar o plano de fundo em formato gradiente e aplicá-lo ao texto (efeito texto gradiente) com `-webkit-background-clip`.
+32. Com CSS Grid, configure um `.card-container` responsivo para criar colunas que tenham no mínimo 300px e expandam até uma fração do espaço disponível (`minmax`).
+33. Crie uma animação completa chamada `pulsar` com `@keyframes` (aumentando e diminuindo a escala/scale) e a atribua a uma classe `.alerta-critico`.
+34. Usando Flexbox, posicione em uma linha horizontal um ícone e um texto dentro de um botão `.btn-icone`, forçando um espaçamento exato de `8px` entre eles sem usar margin.
+35. Estilize com formatação de capitular (*drop cap*) gigante a primeira letra apenas do primeiro parágrafo de um contêiner `.artigo`.
+36. Altere o formato do cursor do mouse para a "mão com dedo apontando" apenas nos elementos `<article class="card-clicavel">`.
+37. Implemente o CSS em um texto `.truncado` limitando-o a uma linha e cortando o texto excedente em formato de reticências "...".
+38. Crie a lógica (posições e transições) para uma `<aside class="sidebar">` inicialmente escondida (fora da tela à esquerda) que desliza para dentro quando ganha a classe `.ativa`.
+39. Utilize a função `calc()` para determinar que a largura da classe `.painel` deve corresponder a `100%` da tela, descontando `250px`.
+40. Escreva uma Media Query `@media` que faça um elemento `.colunas-duplas` (que usava grid ou flex) assumir um empilhamento em bloco simples (1 coluna) em telas menores que `768px`.
 
-#### Difícil
+### Difícil
 
-1. Crie links com efeito “neon” que brilha no `:hover` e `:focus` usando múltiplas sombras.
-2. Desenvolva um card de link que levanta e muda várias propriedades no :hover.
-3. Implemente links com underline animado (de baixo para cima).
-4. Crie um sistema de navegação onde o link atual fica com classe `.active` e estilos especiais.
-5. Faça links que mudam de ícone e texto no `:visited`.
-6. Use `:not()` para estilizar links exceto os de uma classe específica.
-7. Crie um efeito de ripple (onda) no clique usando `:active` e pseudo-elemento.
-8. Desenvolva links em um footer com múltiplos estados e responsividade.
-9. Combine pseudo-classes com pseudo-elementos (`::before` ou `::after`) para adicionar conteúdo dinâmico.
-10. Crie um menu hamburger que usa links com estados complexos e animações.
-
-### Estilização de Tabelas
-
-#### Fácil
-
-1. Adicione bordas em todas as células da tabela.
-2. Use `border-collapse: collapse` para unir as bordas.
-3. Centralize o texto das células.
-4. Dê padding maior nas células (`th` e `td`).
-5. Mude a cor de fundo do cabeçalho (`thead` ou `th`).
-6. Altere a cor do texto do cabeçalho.
-7. Faça a tabela ocupar 100% da largura.
-8. Adicione borda externa mais grossa na tabela.
-9. Mude o alinhamento de colunas específicas (ex: números à direita).
-10. Aplique fundo claro alternado em linhas (zebra simples).
-
-#### Médio
-
-1. Crie zebra stripes completas com `tr:nth-child(even)`.
-2. Adicione hover nas linhas (`tr:hover`).
-3. Estilize cabeçalho com fundo escuro e texto branco.
-4. Use `border-spacing` quando `border-collapse: separate`.
-5. Faça tabela responsiva com scroll horizontal em telas pequenas.
-6. Estilize células específicas com classes (ex: `.total` em negrito).
-7. Crie tabela com linhas divisórias internas diferentes.
-8. Adicione sombra suave na tabela inteira.
-9. Use `caption` estilizado acima da tabela.
-10. Combine zebra + hover com transição de cor.
-
-#### Difícil
-
-1. Crie tabela com zebra em colunas e linhas ao mesmo tempo.
-2. Desenvolva tabela com linhas que expandem detalhes ao clicar (usando `:target` ou classe).
-3. Faça tabela com `rowspan` e `colspan` mantendo zebra e hover corretos.
-4. Crie tabela comparativa com colunas destacadas no hover.
-5. Implemente tabela responsiva que vira cards em mobile (usando media queries avançadas).
-6. Adicione ordenação visual (setas) no cabeçalho com CSS puro.
-7. Crie efeito de “striped” diagonal ou personalizado.
-8. Desenvolva tabela com sticky header (cabeçalho fixo ao rolar).
-9. Combine bordas arredondadas, sombras e hover complexo.
-10. Crie um dashboard table com múltiplas cores por status (usando classes e `:nth-child` avançado).
+41. Desenvolva a interação de um menu dropdown em múltiplos níveis apenas com CSS nativo, estruturando o comportamento dos submenus (`ul > li > ul`) visíveis através do seletor `:hover` no ancestral.
+42. Escreva as regras de Media Query focadas em acessibilidade sistêmica (`prefers-color-scheme: dark`) para inverter de forma otimizada as variáveis de fundo claro para fundo escuro.
+43. Crie uma seta triangular pura em CSS (sem SVG ou imagens), apontada para cima, utilizando um elemento `<div class="seta-cima">` de tamanho zero, modelada exclusivamente através das propriedades e larguras de `border`.
+44. Construa um "loader spinner" circular contínuo implementando máscaras avançadas (`mask` ou `-webkit-mask`) combinadas a um background conic-gradient animado girando 360 graus infinitamente.
+45. Formule um seletor robusto via função `:has()` no `.form-group` de modo a desenhar uma borda externa em todo o formulário ou label apenas quando algum dos seus `<input>` internos estiver no estado `:invalid`.
+46. Manipule a pseudo-árvore sombra para sobrescrever a barra de progresso nativa `<progress class="custom-progress">`, alterando suas cores nas *engines* `-webkit-progress-bar` e `-webkit-progress-value`.
+47. Implemente CSS Scroll Snap nativo fixando (`scroll-snap-align`) seções verticais com tamanho `100vh` dentro de um container mandatório (`scroll-snap-type: y mandatory`), fazendo a rolagem travar por página completa.
+48. Utilize *Container Queries* (`@container`) nomeadas para alterar o visual de um *card* (display flex-row vs flex-column) baseando-se estritamente na largura do próprio `.card-wrapper` e ignorando a *viewport* da janela.
+49. Reproduza fielmente o efeito *Glassmorphism* em um `.painel-vidro`: estabeleça um fundo semitransparente, desfoque o background externo com `backdrop-filter: blur`, adicione brilho na borda superior, preservando a legibilidade dos textos internos.
+50. Planeje uma estrutura para renderizar uma Galeria estilo Masonry leve usando apenas os módulos de *CSS Multi-column Layout*, distribuindo blocos variáveis e definindo `break-inside: avoid` para que os itens não fiquem divididos visualmente nas quebras de coluna.

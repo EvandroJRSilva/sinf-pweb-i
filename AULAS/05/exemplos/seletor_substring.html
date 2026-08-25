@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Seletores de Atributo</title>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            
+            li[class^="a"] {
+                font-size: 120%;
+            }
+
+            li[class$="a"] {
+                background-color: yellow;
+            }
+
+            li[class*="a"] {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Presença de atributo e seletores de valor</h1>
+        <ul>
+            <li class="a">Item 1</li>
+            <li class="ab">Item 2</li>
+            <li class="bca">Item 3</li>
+            <li class="bcabc">Item 4</li>
+        </ul>
+    </body>
+</html>

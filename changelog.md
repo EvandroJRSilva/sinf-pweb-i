@@ -31,3 +31,10 @@
     - Exclusão da pasta `imagens/`.
     - Atualização do arquivo `aula04.md`.
     - Exclusão do arquivo `exemplo_empilhamento.html`.
+- 2026.2.5
+  - `AULAS/05`
+    - `exemplos/`
+      - Exclusão de exemplos anteriores.
+      - Adição de exemplos relacionados ao conteúdo dessa aula.
+    - Exclusão da pasta `imagens/`.
+    - Atualização do arquivo `aula05.md`.
