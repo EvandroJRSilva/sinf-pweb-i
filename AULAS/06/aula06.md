@@ -3,1219 +3,891 @@
 **Sumário**
 
 - [Aula 06](#aula-06)
-  - [O que é um *script*?](#o-que-é-um-script)
-  - [O que é JavaScript?](#o-que-é-javascript)
-    - [Especificação oficial](#especificação-oficial)
-  - [Embutindo código JavaScript no HTML](#embutindo-código-javascript-no-html)
-  - [Sintaxe](#sintaxe)
-    - [`var` vs. `let` vs. `const`](#var-vs-let-vs-const)
-      - [Exemplo de escopo](#exemplo-de-escopo)
-      - [Exemplo de reatribuição](#exemplo-de-reatribuição)
-      - [Exemplo de redeclaração](#exemplo-de-redeclaração)
-      - [Exemplo de *hoisting*](#exemplo-de-hoisting)
-    - [Tipos de dados](#tipos-de-dados)
-      - [Number](#number)
-      - [Null](#null)
-      - [Undefined](#undefined)
-      - [Symbol](#symbol)
-    - [Interação básica](#interação-básica)
-    - [Conversões de tipo](#conversões-de-tipo)
-      - [Conversão para String](#conversão-para-string)
-      - [Conversão numérica](#conversão-numérica)
-      - [Conversão booleana](#conversão-booleana)
-    - [Operadores](#operadores)
-      - [Igualdade estrita](#igualdade-estrita)
-      - [Operador de coalescência nulo `??`](#operador-de-coalescência-nulo-)
-    - [Expressões de funções](#expressões-de-funções)
-      - [Funções *callback*](#funções-callback)
-    - [Funções de seta](#funções-de-seta)
-  - [Exercícios 1](#exercícios-1)
-    - [Tópico 1: Hello, world! (Executando o primeiro programa com console.log)](#tópico-1-hello-world-executando-o-primeiro-programa-com-consolelog)
-    - [Tópico 2: Code structure (Estrutura do código: declarações, ponto e vírgula, comentários)](#tópico-2-code-structure-estrutura-do-código-declarações-ponto-e-vírgula-comentários)
-    - [Tópico 3: The modern mode, “strict mode” ('use strict' para modo estrito)](#tópico-3-the-modern-mode-strict-mode-use-strict-para-modo-estrito)
-    - [Tópico 4: Variables (Variáveis: var, let, const e escopo)](#tópico-4-variables-variáveis-var-let-const-e-escopo)
-    - [Tópico 5: Data types (Tipos de dados: primitivos como number, string, boolean, etc.)](#tópico-5-data-types-tipos-de-dados-primitivos-como-number-string-boolean-etc)
-    - [Tópico 6: Interaction: alert, prompt, confirm (Interações: alert, prompt, confirm no navegador)](#tópico-6-interaction-alert-prompt-confirm-interações-alert-prompt-confirm-no-navegador)
-    - [Tópico 7: Type Conversions (Conversões de tipo: automáticas e manuais)](#tópico-7-type-conversions-conversões-de-tipo-automáticas-e-manuais)
-    - [Tópico 8: Basic operators, maths (Operadores básicos e matemática)](#tópico-8-basic-operators-maths-operadores-básicos-e-matemática)
-    - [Tópico 9: Code quality, formatting, naming (Qualidade de código, formatação, nomenclatura)](#tópico-9-code-quality-formatting-naming-qualidade-de-código-formatação-nomenclatura)
-    - [Tópico 10: Comments, debugging (Comentários e depuração básica)](#tópico-10-comments-debugging-comentários-e-depuração-básica)
-    - [Tópico 11: Loops – while and for (Loops while e for)](#tópico-11-loops--while-and-for-loops-while-e-for)
-    - [Tópico 12: Loops – for...in and for...of (Loops for...in e for...of)](#tópico-12-loops--forin-and-forof-loops-forin-e-forof)
-    - [Tópico 13: Controlling Loop Flow – break and continue (Controle de Fluxo em Loops – break e continue)](#tópico-13-controlling-loop-flow--break-and-continue-controle-de-fluxo-em-loops--break-e-continue)
-    - [Tópico 14: The switch Statement (Instrução switch)](#tópico-14-the-switch-statement-instrução-switch)
-    - [Tópico 15: Functions (Funções)](#tópico-15-functions-funções)
-    - [Tópico 16: Function expressions (Expressões de Função)](#tópico-16-function-expressions-expressões-de-função)
-    - [Tópico 17: Arrow functions, the basics (Funções Arrow, os básicos)](#tópico-17-arrow-functions-the-basics-funções-arrow-os-básicos)
-  - [Exercícios 2](#exercícios-2)
-    - [Teóricos](#teóricos)
-    - [Práticos](#práticos)
-      - [Básico](#básico)
+  - [Box Model](#box-model)
+    - [Como o tamanho total é calculado](#como-o-tamanho-total-é-calculado)
+    - [*Margin collapsing*](#margin-collapsing)
+    - [Exemplo](#exemplo)
+  - [Exercícios](#exercícios)
 
 
-## O que é um *script*?
 
-Um `script` é uma lista de comandos executáveis como uma `macro` ou um conjunto de arquivos criados por uma linguagem de script. `Scripts` (como `PHP`, `Perl`) que são executados em um `servidor web` são chamados de scripts `server-side`, e scripts (como o `JavaScript`[^1]) que são executados no computador de um usuário, interpretados pelo navegador, são chamados de scripts `client-side`.
+## Box Model
 
-[^1]: [Uma breve história do JavaScript](https://www.youtube.com/watch?v=aX3ZABCdC38&t=21s).
+**Materiais do MDN:**
 
-## O que é JavaScript?
+- [Introduction to the CSS box model](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Introduction)
+- [The box model](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model)
 
-`JavaScript` é uma linguagem de script orientada a objeto e multiplataforma desenvolvida pela `Netscape`. O JavaScript foi criado pelo programador da Netscape **Brendan Eich**.
+Todo **elemento** HTML é tratado como uma caixa retangular pelo navegador. O Box Model define como essa caixa é calculada e como suas partes interagem entre si.
 
-Foi lançado primeiramente sob o nome `LiveScript`, como parte do `Netscape Navigator 2.0` em Setembro de 1995, e depois renomeado como JavaScript em 4 de Dezembro de 1995. Foi desenvolvido para o uso em páginas web com forte integração com HTML.
+<figure style="text-align:center;">
+    <img src="./imagens/boxmodel.png">
+</figure>
 
-O JavaScript pode criar aplicações que são executadas em navegadores como o Edge, Opera, FireFox, Google Chrome, etc. A Netscape submeteu o JavaScript ao ECMA International para padronização, o que resultou na versão padronizada chamada `ECMAScript`.
+As quatro camadas principais (de dentro para fora):
 
-### Especificação oficial
+1. *Content area* ou *content box* (conteúdo)
+    - Área onde fica o texto, imagem, vídeo etc.
+    - É limitado pelo `content edge`.
+    - Controlada diretamente pelas propriedades `width`, `height` e suas variações.
 
-A especificação mais recente do JavaScript é a seguinte: [ECMA-262](https://ecma-international.org/publications-and-standards/standards/ecma-262/).
+2. *Padding area* ou *padding box* (preenchimento interno)
+    - Espaço entre o conteúdo e a borda.
+    - Limitado pelo `padding edge`.
+    - Afeta o fundo do elemento (background).
+    - Propriedades: `padding-top`, `padding-right`, `padding-bottom`, `padding-left`, ou *shorthand*: `padding: 10px 20px 15px 5px;`
 
-Clicando no link você será levado à uma página onde poderá escolher visualizar as especificações em PDF ou HTML. Caso você tenha interesse em se aprofundar o máximo possível nessa linguagem, recomendo o máximo de leitura possível dessa documentação.
+3. *Border area* ou *border box* (borda)
+    - Linha ao redor do padding + content.
+    - Limitado pelo `border edge`.
+    - Pode ter espessura, estilo e cor.
+    - Propriedades: `border-width`, `border-style`, `border-color`, ou *shorthand*: `border: 4px solid #333;`
 
-## Embutindo código JavaScript no HTML
+4. *Margin area* ou *margin box* (margem [externa])
+    - Espaço fora da borda.
+    - Limitado pelo `margin edge`.
+    - Não tem cor/fundo (é transparente).
+    - Causa colapso de margens verticais entre elementos `block` adjacentes.
+    - Propriedades: `margin: 20px;` (todos os lados) ou `margin: 10px 30px;`
 
-O `HTML` possui um elemento [`script`](https://html.spec.whatwg.org/#the-script-element) o qual é utilizado para englobar códigos script.
+### Como o tamanho total é calculado
 
-```html
-<script>
-    Código JavaScript ...    
-</script>
-```
+Existem dois modelos de cálculo controlados pela propriedade `box-sizing`:
 
-Os dois principais atributos são:
+| Valor | O que inclui em `width` e `height`? | Fórmula do tamanho total final,Comportamento típico |
+|---|---|---|
+| `content-box` | Apenas o content | Total = width + padding-esq/dir + border-esq/dir + margin-esq/dir,Padrão histórico (padrão do CSS) – causa surpresas frequentes |
+| `border-box` | content + padding + border (margin fica fora) | "Total = width (fixo) – padding e border são ""subtraídos"" do espaço interno",Muito mais previsível e usado na prática |
 
-- `src`: localização do arquivo `.js` a ser carregado e executado.
-- `type`: o tipo de script.
+Exemplo prático comparativo:
 
-O código `JavaScript` é embutido geralmente dentro da tag `head` e/ou da tag `body`. Quando o script está na tag `head`, sua execução se dará assim que a página for carregada. Por causa disso, alguns desenvolvedores colocam as tags `<script>` ao fim da tag `<body>`, pouco antes de seu fechamento (`</body>`).
-
-Exemplos:
-
-Script em `head`
-
-```html
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <title>Script em head</title>
-        <script type="text/javascript">
-            Código ...
-        </script>
-    </head>
-    <body>
-    </body>
-</html>
-```
-
-Script em `body`
-
-```html
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <title>>Script em body</title>
-    </head>
-    <body>
-        <script type="text/javascript">
-            Código ...
-        </script>
-    </body>
-</html>
-```
-
-Script em `head` e `body`
-
-```html
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <title>>Script em body</title>
-        <script type="text/javascript">
-            Código ...
-        </script>
-    </head>
-    <body>
-        <script type="text/javascript">
-            Código ...
-        </script>
-    </body>
-</html>
-```
-
-Dois scripts em `body`
-
-```html
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <title>>Script em body</title>
-    </head>
-    <body>
-        <script type="text/javascript" src="jsexemplo.js"></script>
-        <script type="text/javascript">
-            Código ...
-        </script>
-    </body>
-</html>
-```
-
-## Sintaxe
-
-Parte significativa da sintaxe da linguagem é semelhante ao que temos nas demais linguagens mais conhecidas, portanto, nosso foco se dará sobre o que o JavaScript tem de diferente.
-
-Antes de continuar, a seguir será mostrado parte da estrutura da documentação do [ECMA-262](https://ecma-international.org/publications-and-standards/standards/ecma-262/), para que você possa ter uma primeira visão de onde procurar o tópico de sintaxe de seu interesse.
-
-```
-5 Notational Conventions
-  5.1 Syntactic and Lexical Grammars
-  5.2 Algorithm Conventions
-6 ECMAScript Data Types and Values
-  6.1 ECMAScript Language Types
-  6.2 ECMAScript Specification Types
-7 Abstract Operations
-  7.1 Type Conversion
-  7.2 Testing and Comparison Operations
-  7.3 Operations on Objects
-  7.4 Operations on Iterator Objects
-...
-12 ECMAScript Language: Lexical Grammar
-  12.1 Unicode Format-Control Characters
-  12.2 White Space
-  12.3 Line Terminators
-  12.4 Comments
-  12.5 Hashbang Comments
-  12.6 Tokens
-  12.7 Names and Keywords
-  12.8 Punctuators
-  12.9 Literals
-  12.10 Automatic Semicolon Insertion
-13 ECMAScript Language: Expressions
-  13.1 Identifiers
-  13.2 Primary Expression
-  13.3 Left-Hand-Side Expressions
-  13.4 Update Expressions
-  13.5 Unary Operators
-  13.6 Exponentiation Operator
-  13.7 Multiplicative Operators
-  13.8 Additive Operators
-  13.9 Bitwise Shift Operators
-  13.10 Relational Operators
-  13.11 Equality Operators
-  13.12 Binary Bitwise Operators
-  13.13 Binary Logical Operators
-  13.14 Conditional Operator ( ? : )
-  13.15 Assignment Operators
-  13.16 Comma Operator ( , )
-14 ECMAScript Language: Statements and Declarations
-  14.1 Statement Semantics
-  14.2 Block
-  14.3 Declarations and the Variable Statement
-  14.4 Empty Statement
-  14.5 Expression Statement
-  14.6 The if Statement
-  14.7 Iteration Statements
-  14.8 The continue Statement
-  14.9 The break Statement
-  14.10 The return Statement
-  14.11 The with Statement
-  14.12 The switch Statement
-  14.13 Labelled Statements
-  14.14 The throw Statement
-  14.15 The try Statement
-  14.16 The debugger Statement
-15 ECMAScript Language: Functions and Classes
-  15.1 Parameter Lists
-  15.2 Function Definitions
-  15.3 Arrow Function Definitions
-  15.4 Method Definitions
-  15.5 Generator Function Definitions
-  15.6 Async Generator Function Definitions
-  15.7 Class Definitions
-  15.8 Async Function Definitions
-  15.9 Async Arrow Function Definitions
-  15.10 Tail Position Calls
-...
-```
-
-### `var` vs. `let` vs. `const`
-
-Essas são 3 formas de se declarar uma "variável". Veja a seguir um comparativo
-
-| **Característica** | `var` | `let` | `const` |
-|---|---|---|---|
-| Escopo |  função ou global | bloco ({}) | bloco ({}) |
-| Reatribuível | sim | sim | não |
-| Redeclarável | sim | não | não |
-| *Hoisting* | inicializado como `undefined` | Não incializado | Não incializado |
-
-#### Exemplo de escopo
-
-```javascript
-var olares = "Olá mundo!";
-
-if (true) {
-    var olares = "Olá planeta!";
-}
-
-console.log(olares); // Saída: Olá planeta!
-```
-
-```javascript
-let olares = "Olá mundo!";
-
-if (true) {
-    let olares = "Olá planeta!";
-    console.log(olares); // Saída: Olá planeta!
-}
-
-console.log(olares); // Saída: Olá mundo!
-```
-
-```javascript
-const olares = "Olá mundo!";
-
-if (true) {
-    const olares = "Olá planeta!";
-    console.log(olares); // Saída: Olá planeta!
-}
-
-console.log(olares); // Saída: Olá mundo!
-```
-
-#### Exemplo de reatribuição
-
-```javascript
-var olares = "Olá mundo!";
-olares = "Olá planeta!";
-
-console.log(olares); // Saída: Olá planeta!
-```
-
-```javascript
-let olares = "Olá mundo!";
-olares = "Olá planeta!";
-
-console.log(olares); // Saída: Olá planeta!
-```
-
-```javascript
-const olares = "Olá mundo!";
-olares = "Olá planeta!"; // ERRO --> não pode ser reatribuído
-
-console.log(olares);
-```
-
-> **ATENÇÃO**: se a variável `const` receber um objeto, ainda assim é possível modificar os atributos do objeto.
-
-```javascript
-const bejeto = {
-    mensagem: "Olá mundo!",
-    repita: 4
-}
-
-bejeto.mensagem = "Olá planeta!";
-console.log(bejeto.mensagem); // Saída: Olá planeta!
-```
-
-#### Exemplo de redeclaração
-
-```javascript
-var olares = "Olá mundo!";
-var olares = "Olá planeta!";
-
-console.log(olares); // Saída: Olá planeta!
-```
-
-```javascript
-let olares = "Olá mundo!";
-let olares = "Olá planeta!"; // ERRO --> não pode ser declarado novamente!
-
-console.log(olares);
-```
-
-```javascript
-const olares = "Olá mundo!";
-const olares = "Olá planeta!"; // ERRO --> não pode ser declarado novamente!
-
-console.log(olares);
-```
-
-#### Exemplo de *hoisting*
-
-```javascript
-console.log(olares); // Saída: undefined
-
-var olares = "Olá mundo!";
-```
-
-```javascript
-console.log(olares); // ERRO --> olares não foi declarado
-
-let olares = "Olá mundo!";
-```
-
-```javascript
-console.log(olares); // ERRO --> olares não foi declarado
-
-const olares = "Olá mundo!";
-```
-
-### Tipos de dados
-
-Existem 8 tipos de dados básicos no JavaScript. Uma variável pode ser associada a qualquer tipo de dado. Ao mesmo tempo, o JavaScript permite que o tipo de dado de uma variável possa mudar no decorrer da execução do programa (`tipagem dinâmica`):
-
-```javascript
-let message = "hello";
-message = 123456;
-```
-
-Os tipos de dados são: `Number`, `BigInt`, `String`, `Boolean`, `Null`, `Undefined`, `Objetct` e `Symbol`.
-
-#### [Number](https://262.ecma-international.org/16.0/index.html?_gl=1*lozk0z*_ga*MTgxNDk2ODA4NS4xNzU5MjgwODE5*_ga_TDCK4DWEPP*czE3NTk4NjQzMzckbzMkZzAkdDE3NTk4NjQzMzckajYwJGwwJGgw#sec-ecmascript-language-types-number-type)
-
-Representa os valores do tipo `inteiro` e `ponto flutuante` (*float*). Além dos valores normais existem alguns "valores especiais":`NaN` (*Not a Number*), `+Infinity` (infinito positivo) e `-Infinity` (infinito negativo).
-
-```javascript
-alert(1 / 0) // Infinity
-// ou também
-alert(Infinity);
-
-// NaN
-alert("não é um número" / 2);
-```
-
-#### [Null](https://262.ecma-international.org/16.0/index.html?_gl=1*lozk0z*_ga*MTgxNDk2ODA4NS4xNzU5MjgwODE5*_ga_TDCK4DWEPP*czE3NTk4NjQzMzckbzMkZzAkdDE3NTk4NjQzMzckajYwJGwwJGgw#sec-ecmascript-language-types-null-type)
-
-Um tipo de dado com somente um valor possível: `null`. Indica um valor nulo, inexistente.
-
-#### [Undefined](https://262.ecma-international.org/16.0/index.html?_gl=1*lozk0z*_ga*MTgxNDk2ODA4NS4xNzU5MjgwODE5*_ga_TDCK4DWEPP*czE3NTk4NjQzMzckbzMkZzAkdDE3NTk4NjQzMzckajYwJGwwJGgw#sec-ecmascript-language-types-undefined-type)
-
-Da mesma forma que o `Null`, `Undefined` é um tipo de dado com apenas um "valor".
-
-É um tipo de dado que se refere a uma variável que se sabe o tipo de dado a ser armazenado, mas não tem o valor em si, ou seja, significa que um "valor não foi atribuído".
-
-```javascript
-let idade;
-alert(idade); // undefined
-```
-
-#### [Symbol](https://262.ecma-international.org/16.0/index.html?_gl=1*lozk0z*_ga*MTgxNDk2ODA4NS4xNzU5MjgwODE5*_ga_TDCK4DWEPP*czE3NTk4NjQzMzckbzMkZzAkdDE3NTk4NjQzMzckajYwJGwwJGgw#sec-ecmascript-language-types-symbol-type)
-
-Este tipo de dados é o conjunto de todos os valores que não são String, mas que podem ser usados como chave para a propriedade de um objeto.
-
-### Interação básica
-
-As três funções básicas para interação com o usuário são:
-
-- `alert`: exibe uma mensagem e espera o usuário clicar em "OK". Exemplo:
-  
-  ```javascript
-  alert("Olá");
-  ```
-
-- `prompt`: exibe uma janela com uma mensagem, um campo para escrita e os botões 'OK' e 'Cancel'. Sintaxe:
-
-  ```javascript
-  resultado = prompt(titulo, [default]);
-  ```
-
-  onde `title` é o texto que será exibido e `default` [^2] (opcional) é o valor padrão para o campo de entrada de dado.
-
-  [^2]: Convenção: um parâmetro entre colchetes indica que ele é opcional.
-    
-  Exemplo:
-
-  ```javascript
-  let idade = prompt("Qual é a sua idade?", 100);
-  alert(`Você tem ${idade} anos!`); // Você tem 100 anos!
-  ```
-
-- `confirm`: exibe uma janela com uma pergunta e dois botões: "OK" e "Cancel". Exemplo:
-  
-  ```javascript
-  let ehAluno = confirm("Você é aluno(a)?");
-  alert(ehAluno); // true se o botão OK foi clicado
-  ```
-
-Ainda temos a função `console.log()` que pode ser usada para "interação", entretanto ela funciona apenas como um `print` para o console do navegador.
-
-### Conversões de tipo
-
-Na maioria das vezes os operados e funções convertem os valores dados automaticamente para o tipo necessário. Por exemplo, a função `alert` converte automaticamente qualquer valor para String. Porém, existem situações em que é necessário que o desenvolvedor faça a conversão explicitamente.
-
-#### Conversão para String
-
-Neste caso queremos transformar algum valor em uma String. Isso pode ser feito com a função `String(valor)`. Exemplo:
-
-```javascript
-let valor = true;
-alert(typeof valor); // mostra o tipo de dado - booleano
-
-valor = String(valor); // agora valor é "true"
-alert(typeof valor); // string
-```
-
-#### Conversão numérica
-
-É a transformação de um valor no tipo numérico (`number`). Expressões e funções matemáticas fazem essa conversão automaticamente:
-
-```javascript
-alert("6" / "2"); // 3
-```
-
-A conversão "manual" é feita com a função `Number(valro)`:
-
-```javascript
-let str = "123";
-alert(typeof str); // string
-
-let num = Number(str);
-alert(typeof num); // number
-```
-
-A conversão segue as seguintes regras:
-
-| Valor | Saída |
-|-------|-------|
-| `undefined` | `NaN` |
-| `null` | 0 |
-| `true` e `false` | `1` e `0` |
-| `string` | espaços em branco (incluindo tabulações `\t` e quebra de linha `\n`) no início e no fim são removidas. Se a string remanescente for vazia, o resultado é `0`. Senão, o número é "lido" da string. Um erro retorna `NaN`. |
-
-#### Conversão booleana
-
-É feito com a função `Boolean(valor)` e segue as seguintes regras:
-
-- Valores que são intuitivamente "vazios", como `0`, uma `string` vaiza, `null`, `undefined` e `NaN`, são convertidos em `false`.
-- Outros valores são convertidos em `true`.
-
-### Operadores
-
-#### Igualdade estrita
-
-Devido às conversões de tipos, temos os operador `===` que verifica a igualdade entre valores, porém **SEM CONVERSÃO**. Exemplos:
-
-```javascript
-alert('2' > 1); // true; '2' é convertido para 2
-alert('01' == 1); // true, '01' é convertido para 1
-alert(true == 1); // true
-alert(false == 0); // true
-
-alert(0 === false); // false
-```
-
-A negação desse operador é: `!==`.
-
-#### Operador de coalescência nulo `??`
-
-Este operador é uma adição recente à linguagem, e retorna o primeiro argumento que **não é** `null` ou `undefined`. Exemplo:
-
-```javascript
-result = a ?? b;
-```
-
-tem o mesmo efeito de: 
-```javascript
-result = (a !== null && a !== undefined) ? a : b;
-```
-
-Exemplo de sua utilidade:
-
-**TODO**: verificar o exemplo abaixo; está voltando string vazia (""). Forçar o undefined ou null.
-
-```javascript
-let usuario = "Joãozinho";
-
-alert(usuario ?? "Anônimo");
-```
-
-No exemplo acima, como `usuario` tinha sido definido, o `alert` mostra o nome **Joãozinho**.
-
-### Expressões de funções
-
-Uma função declarada normalmente costuma ter a seguinte sintaxe:
-
-```javascript
-function nome(param1, ..., paramN){
-    ...
+```css
+.caixa {
+  width: 300px;
+  height: 200px;
+  padding: 20px;
+  border: 10px solid black;
+  margin: 30px;
 }
 ```
 
-O JavaScript permite também que uma função possa ser "declarada" como uma expressão ('função expressão' ou 'expressão de função'?). Isso é possível porque uma função em JavaScript é um valor e, portanto, pode ser armazenada em uma variável:
+- **content-box** (padrão): Tamanho total na tela = 360px largura × 260px altura (300 + 20+20 + 10+10)
+- **border-box**: Tamanho total na tela = 300px largura × 200px altura (exatamente o que você declarou)
 
-```javascript
-let dizPonha = function(){
-    alert('Ponha');
-};
-```
+<figure style="text-align: center;">
+    <img src="imagens/content-box.png">
+</figure>
 
-#### Funções *callback*
+Por isso, a grande maioria dos projetos modernos usa:
 
-Esse é o caso de funções sendo passadas como parâmetros para outras funções. É possível, inclusive, passar uma expressão de função:
-
-```javascript
-function pergunta(questao, sim, nao){
-    if(confirm(questao)) sim()
-    else nao();
+```css
+* {
+  box-sizing: border-box;
 }
-
-pergunta(
-    "Você concorda?",
-    function() {alert("Você concordou.");},
-    function() {alert("Você cancelou a execução.");}
-);
 ```
 
-### Funções de seta
+### *Margin collapsing*
 
-Outra sintaxe possível, simples e concisa para criar funções. Sua sintaxe é da seguinte forma:
+Algumas vezes as margens `top` e `bottom` dos blocos são combinados (colapsados) em uma única margem cujo tamanho é o maior valor das margens individuais (existem casos que requerem abordagem diferente). 
 
-```javascript
-let func = (arg1, arg2, ..., argN) => expressao;
+O colpaso das margens vai acontecer nos seguintes casos:
+
+- Irmãos adjacentes;
+- Sem conteúdo separando um nó pai e seu descendente;
+- Blocos vazios (sem `border`, `padding`, etc.).
+
+**Exceções** (quando as margens nunca colapsam): 
+
+- Se a propriedade [`float`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/float) está definida; 
+- Se a propriedade `position` estiver configurada para `absolute`;
+- Se os elementos estão em um container com a propriedade `display` configurada para `flex` ou `grid`.
+
+### Exemplo
+
+**[Exemplo completo de box model](./exemplos/boxmodel.html)**
+
+## Exercícios
+
+### Fácil (exercícios 1 a 15)
+
+Fixação isolada de `width`, `height`, `padding`, `border` e `margin`. Cálculos com valores em pixels.
+
+#### Exercício 1 — Definir largura e altura da área de conteúdo
+
+**Objetivo:** Aplicar `width` e `height` e reconhecer que, no padrão, esses valores descrevem só o conteúdo.
+
+Crie um arquivo HTML com um único `div.caixa` dentro do `body`. Aplique um fundo visível (`#c5e4f3`) para enxergar a caixa.
+
+**Código inicial:**
+
+```css
+.caixa {
+  width: 240px;
+  height: 120px;
+  background: #c5e4f3;
+}
 ```
 
-Exemplo:
+**Tarefas:**
 
-```javascript
-let soma = (a, b) => a + b;
+1. Abra o arquivo no navegador e, nas DevTools, confira `width` e `height` computados.
+2. Aumente `width` para `320px` e `height` para `160px`. A área colorida deve crescer exatamente nesses incrementos.
+3. Responda: com o CSS padrão, `width: 240px` controla o conteúdo, o padding-box ou o border-box?
 
-/*
-    O equivalente em expressão de função
-    let soma = function(a, b){
-        return a + b;
-    };
-*/
+**Dica:** Se não zerou as margens do `body`, a caixa não encosta na borda da janela — isso é margin do `body`, não da caixa.
 
-alert(soma(1, 2)); // 3
+#### Exercício 2 — Padding uniforme
+
+**Objetivo:** Ver que o padding empurra o conteúdo para dentro e aumenta o tamanho pintado pelo `background`.
+
+Use o mesmo `.caixa` do exercício 1 (`width: 240px; height: 120px; background: #c5e4f3`). Coloque um texto curto dentro do `div`.
+
+**Código inicial:**
+
+```css
+.caixa {
+  width: 240px;
+  height: 120px;
+  background: #c5e4f3;
+  padding: 20px;
+}
 ```
 
-E se não tiver parâmetros?
+**Tarefas:**
 
-```javascript
-let dizPonha = () => alert("Ponha");
+1. Observe que o fundo azul cobre conteúdo + padding.
+2. Calcule a largura da área pintada (padding-box): conteúdo + padding esquerdo + padding direito.
+3. Calcule a altura da área pintada da mesma forma.
+4. O texto deve ficar a `20px` de cada borda interna da área colorida.
 
-dizPonha();
+#### Exercício 3 — Padding por lado
+
+**Objetivo:** Controlar cada lado independentemente com as propriedades longas.
+
+Partindo de `width: 200px; height: 100px; background: #fde68a`, aplique paddings diferentes.
+
+**Código inicial:**
+
+```css
+.caixa {
+  width: 200px;
+  height: 100px;
+  background: #fde68a;
+  padding-top: 10px;
+  padding-right: 40px;
+  padding-bottom: 30px;
+  padding-left: 8px;
+}
 ```
 
-Dá para fazer um combo com recursos do JavaScript:
+**Tarefas:**
 
-```javascript
-let idade = prompt("Insira a sua idade", 18);
+1. Calcule a largura do padding-box.
+2. Calcule a altura do padding-box.
+3. Confira no inspetor se `padding-left` é `8px` e `padding-right` é `40px`.
 
-let boasVindas = (idade < 18)?
-    () => alert("Oie!") :
-    () => alert("Saudações");
+#### Exercício 4 — Atalho padding com 1, 2, 3 e 4 valores
 
-boasVindas();
+**Objetivo:** Memorizar a ordem do atalho: cima, direita, baixo, esquerda (sentido horário a partir do topo).
+
+Para cada regra abaixo, escreva os quatro valores equivalentes (`top`, `right`, `bottom`, `left`).
+
+**Código inicial:**
+
+```css
+A) padding: 16px;
+B) padding: 10px 24px;
+C) padding: 8px 12px 20px;
+D) padding: 4px 8px 12px 16px;
 ```
 
-**TODO**: como fazer para inserir o valor de idade no parâmetro abaixo: 
+**Tarefas:**
 
-```javascript
-idade = prompt("Insira a sua idade", 18);
+1. Traduza A, B, C e D para `padding-top`, `padding-right`, `padding-bottom` e `padding-left`.
+2. Aplique D em um `div` de `width: 180px` e calcule a largura do padding-box.
 
-boasVindas = (idade < 18)?
-    (idade) => alert(`Não pode entrar: menor de idade -> ${idade}`) :
-    () => alert("Pode entrar: maior de idade");
+**Dica:** Dois valores significam vertical | horizontal. Três valores significam topo | horizontal | base.
 
-boasVindas();
+#### Exercício 5 — Border soma no tamanho (content-box)
+
+**Objetivo:** Perceber que a borda fica entre o padding e a margin e, no padrão, aumenta a largura/altura finais.
+
+Comece com uma caixa de `200×80px`, padding `0` e fundo `#fecaca`.
+
+**Código inicial:**
+
+```css
+.caixa {
+  width: 200px;
+  height: 80px;
+  background: #fecaca;
+  border: 5px solid #7f1d1d;
+}
 ```
 
+**Tarefas:**
 
-## Exercícios 1
-
-### Tópico 1: Hello, world! (Executando o primeiro programa com console.log)
-1. Escreva um script que use `console.log` para imprimir "Olá, mundo!" no console do navegador. Abra o console (F12) e verifique se a mensagem aparece.
-
-### Tópico 2: Code structure (Estrutura do código: declarações, ponto e vírgula, comentários)
-1. Crie um código com duas declarações: `console.log("Primeira linha");` e `console.log("Segunda linha");`. Adicione um comentário `// Isso é um comentário` antes da segunda linha e execute para ver se ignora o comentário.
-2. Escreva três `console.log` em uma linha só, separados por `;`, como `console.log(1); console.log(2); console.log(3);`. Execute e observe se todas imprimem.
-
-### Tópico 3: The modern mode, “strict mode” ('use strict' para modo estrito)
-1. Inicie um script com `'use strict';` e tente declarar uma variável sem `let`, `const` ou `var` (ex.: `x = 5;`). Observe o erro no console.
-2.  Em modo estrito, crie uma função que use uma variável não declarada e chame-a. Compare com código sem `'use strict';` para ver a diferença no erro.
-3.  Adicione `'use strict';` a um script simples que atribua valores a variáveis e imprima-os. Teste se o modo estrito afeta a execução normal.
+1. Qual é a largura do border-box (conteúdo + padding + border)?
+2. Qual é a altura do border-box?
+3. Mude só a cor da borda. O tamanho deve permanecer igual.
+4. Mude `border-width` para `10px` e recalcule largura e altura do border-box.
 
-### Tópico 4: Variables (Variáveis: var, let, const e escopo)
-1.  Declare uma variável `nome` com `let` e valor "JavaScript", depois reatribua para "Programação" e imprima ambas as vezes com `console.log`.
-2.  Use `const` para uma variável `pi = 3.14` e tente reatribuí-la. Observe o erro e imprima o valor original.
-3.  Declare `var x = 1;` dentro de uma função, chame a função duas vezes e imprima `x` fora dela para ver o escopo global.
-4.  Crie duas variáveis `let` no escopo global e local (dentro de um bloco `{}`), altere a local e imprima para comparar.
+#### Exercício 6 — Atalho e lados da border
 
-### Tópico 5: Data types (Tipos de dados: primitivos como number, string, boolean, etc.)
-1.  Crie variáveis de tipos diferentes: `num = 42; str = "texto"; bool = true; nul = null;` e use `typeof` para imprimir o tipo de cada uma.
-2.  Atribua `undefined` a uma variável não inicializada e use `typeof` para confirmá-lo. Imprima também `null` e compare os tipos.
-3.  Crie um `BigInt` com valor 123n e uma string com aspas duplas "Olá". Imprima ambos e seus tipos.
-4.  Use `Symbol("id")` para criar um símbolo, atribua a uma variável e imprima seu tipo e descrição com `console.log(symbol.description)`.
-5.  Misture tipos: some um number (5) e uma string ("5") e imprima o resultado para ver a concatenação automática.
+**Objetivo:** Aplicar espessuras diferentes em cada lado e ver o efeito no tamanho.
 
-### Tópico 6: Interaction: alert, prompt, confirm (Interações: alert, prompt, confirm no navegador)
-1.  Use `alert("Olá!");` em um script e execute no navegador para ver o diálogo de alerta.
-2.  Peça o nome do usuário com `prompt("Digite seu nome:");`, armazene em uma variável e imprima no console com `console.log("Olá, " + nome);`.
-3.  Use `confirm("Você gosta de JS?");`, armazene o booleano retornado e imprima "Sim" se true, "Não" se false, usando if.
-4.  Combine prompt e confirm: pergunte idade com prompt, confirme com confirm se é maior de 18, e alerte o resultado.
-5.  Crie um loop simples que use prompt para digitar números até "sair", somando-os, e confirme o total final.
-6.  Use alert para mostrar um cálculo: prompt dois números, some e alerte o resultado.
+Use `width: 220px; height: 90px; padding: 0`.
 
-### Tópico 7: Type Conversions (Conversões de tipo: automáticas e manuais)
-1.  Some uma string "5" e um number 2, imprima para ver "52", depois use `Number("5") + 2` para obter 7.
-2.  Converta um booleano true para number com `Number(true)` e imprima; faça o mesmo para false e uma string vazia "".
-3.  Use `String(123)` para converter um número para string, concatene com " é um número" e imprima.
-4.  Converta prompt (que retorna string) para number com `Number(prompt("Número:"))`, some dois e alerte.
-5.  Teste conversão booleana: `Boolean(0)` e `Boolean(" ")`, imprima para ver falsy e truthy.
-6.  Crie uma função que receba input de prompt, converta para number e verifique se é NaN com `isNaN()`.
-7.  Some arrays ou objetos implicitamente (ex.: [] + []) e observe o resultado ""); compare com números.
+**Código inicial:**
 
-### Tópico 8: Basic operators, maths (Operadores básicos e matemática)
-1.  Calcule 10 + 5 * 2 (precedência) e imprima; depois use parênteses (10 + 5) * 2.
-2.  Use incremento: `let x = 5; x++; console.log(x);` e decremente `x--;`.
-3.  Atribuição composta: `let a = 10; a += 3; a -= 2;` e imprima a cada passo.
-4.  Calcule resto: 17 % 5 e imprima; verifique se 10 % 2 é 0 para par.
-5.  Potência: use `Math.pow(2, 3)` ou ** para 2**3 e imprima 8.
-6.  Arredonde: `Math.round(4.6)` e `Math.floor(4.7)`, imprima ambos.
-7.  Gere um número aleatório entre 0 e 1 com `Math.random()`, multiplique por 10 e arredonde.
-8.  Calcule hipotenusa: Math.sqrt(3**2 + 4**2) e imprima 5.
+```css
+.caixa {
+  width: 220px;
+  height: 90px;
+  background: #e0e7ff;
+  border-style: solid;
+  border-color: #312e81;
+  border-top-width: 2px;
+  border-right-width: 12px;
+  border-bottom-width: 2px;
+  border-left-width: 12px;
+}
+```
 
-### Tópico 9: Code quality, formatting, naming (Qualidade de código, formatação, nomenclatura)
-1.  Refatore um código bagunçado: transforme `let a=1;b=2;c=a+b;console.log(c);` em linhas formatadas com nomes descritivos como `let primeiro = 1;`.
-2.  Nomeie variáveis: crie `let precoProduto = 10.5; let quantidade = 3;` e calcule total com nome `totalCompra`.
-3.  Formate um if longo: quebre linhas para `if (condicao1 && condicao2) { ... }` com indentação.
-4.  Use camelCase: `let meuNome = "João"; let idadeUsuario = 25;` e imprima uma frase formatada.
-5.  Evite magia: em vez de `let desconto = 0.15;`, use uma constante `const TAXA_DESCONTO = 0.15;`.
-6.  Formate uma função: declare `function calcularIdade(anoNascimento) { return 2025 - anoNascimento; }` com espaçamentos.
-7.  Nomeie loops: `for (let i = 0; i < 5; i++) { let numeroAtual = i; console.log(numeroAtual); }`.
-8.  Refatore para qualidade: troque variáveis curtas por descritivas em um cálculo de área (raio, pi, area).
-9.  Use formatação consistente: escreva 3 console.log com quebras de linha e tabs para alinhar.
+**Tarefas:**
 
-### Tópico 10: Comments, debugging (Comentários e depuração básica)
-1.  Adicione um comentário de bloco `/* Isso é um bloco */` em um script e um de linha `// Linha única` antes de um console.log.
-2.  Use `console.log` para depurar: em um loop for de 1 a 5, imprima o valor de i a cada iteração.
-3.  Comente partes de código: escreva um if com erro intencional, comente e depure com log da condição.
-4.  Depure uma soma errada: `let a = "2"; let b = 3; console.log(a + b);` – adicione logs para ver tipos.
-5.  Use comentários para explicar: `// Calcula média let soma = 10 + 20; let media = soma / 2;`.
-6.  Depure com múltiplos logs: em uma função que multiplica dois números, logue parâmetros e retorno.
-7.  Comente um bloco inteiro de um loop while e execute para ver o efeito.
-8.  Depure conversão: prompt um número, logue o tipo antes e depois de Number(), e some.
-9.  Adicione comentários JSDoc-like: `/** Função que soma dois números */ function soma(x, y) { ... }`.
-10.  Simule depuração: crie código com variável undefined, use console.log em pontos chave para identificar o erro.
+1. Calcule a largura do border-box.
+2. Calcule a altura do border-box.
+3. Reescreva as quatro espessuras usando apenas `border-width` (atalho de 4 valores).
 
-### Tópico 11: Loops – while and for (Loops while e for)
-1.  Crie um loop `while` que inicialize uma variável `i` com 0 e imprima os valores de `i` enquanto `i < 3`. Incremente `i` em cada iteração. Verifique no console se imprime 0, 1, 2.
+#### Exercício 7 — Margin externa não pinta o fundo
 
-2.  Converta o loop `while` anterior em um loop `for`, com inicialização `let i = 0`, condição `i < 3` e incremento `i++`. Teste e compare a saída.
+**Objetivo:** Distinguir visualmente margin (espaço transparente fora da borda) de padding (espaço interno com fundo).
 
-3.  Use um loop `while` para somar os números de 0 a 9 em uma variável `sum` (inicialize como 0). Imprima o resultado final (deve ser 45).
+Crie dois elementos iguais, um abaixo do outro, cada um com fundo `#bbf7d0`.
 
-4.  Reescreva a soma de 0 a 9 usando um loop `for`. Inicialize `sum = 0` fora do loop e acumule dentro. Confirme o valor 45.
+**Código inicial:**
 
-5.  Crie um loop `for` que imprima números de 5 a 1 (regressivo), usando `let i = 5; i > 0; i--`. Observe a sequência 5, 4, 3, 2, 1.
+```css
+.caixa {
+  width: 200px;
+  height: 60px;
+  background: #bbf7d0;
+  padding: 10px;
+  border: 2px solid #166534;
+  margin: 24px;
+}
+```
 
-6.  Em um loop `for` de 0 a 9, use `break` quando `i === 3` para parar a iteração. Imprima apenas 0, 1, 2.
+**Tarefas:**
 
-7.  Use um loop `while` com `true` como condição infinita, mas adicione `break` após imprimir 0, 1, 2 (com `i++`). Teste para evitar loop eterno.
+1. O fundo verde deve cobrir conteúdo + padding, parar na borda e não avançar pela margin.
+2. Calcule a largura total ocupada por UMA caixa (incluindo as margens horizontais: esquerda e direita).
+3. Meça no inspetor a distância entre a borda da primeira caixa e a borda da segunda. Anote o valor. Você vai usar essa medida no exercício 20.
 
-8.  Peça um número ao usuário com `prompt` e use um loop `for` para imprimir de 0 até esse número. Teste com 4.
+**Dica:** Não se preocupe ainda se a distância vertical não for `24+24`. Isso é *margin collapse* — aparece na faixa média.
 
-9.  Crie um loop `while` que some números pares de 0 a 10 (pule ímpares com uma condição). Imprima a soma (30).
+#### Exercício 8 — Atalho margin
 
-10.  Compare `while` e `for`: escreva ambos para imprimir "Olá" 5 vezes. Note qual é mais limpo para iterações conhecidas.
+**Objetivo:** Ler e escrever o atalho de `margin` com 1 a 4 valores.
 
-11.  Use `prompt` para um limite, então um `for` para somar de 1 ao limite. Se o input for inválido (não número), use `break` após o primeiro.
+Escreva os quatro lados equivalentes e, quando pedido, o espaço horizontal ocupado além do border-box.
 
-### Tópico 12: Loops – for...in and for...of (Loops for...in e for...of)
-1.  Crie um objeto `user = { name: "John", age: 30 };` e use `for...in` para imprimir as chaves ("name", "age").
+**Código inicial:**
 
-2.  No mesmo objeto `user`, use `for...in` para imprimir os valores acessando `user[key]` (deve imprimir "John", 30).
+```css
+A) margin: 0;
+B) margin: 12px 0;
+C) margin: 8px 16px 24px;
+D) margin: 5px 10px 15px 20px;
+```
 
-3.  Crie um array `fruits = ["Apple", "Orange"];` e use `for...in` nele. Imprima as chaves (0, 1) e os valores `arr[key]`.
+**Tarefas:**
 
-4.  No array `fruits`, use `for...of` para imprimir apenas os valores ("Apple", "Orange"). Note a diferença com `for...in`.
+1. Traduza A–D para `margin-top`, `right`, `bottom` e `left`.
+2. Em D, quanto a margem acrescenta à largura total ocupada (`left + right`)?
+3. Em B, as margens esquerda e direita são zero. A caixa encosta nas laterais do pai?
 
-5.  Crie uma string "hello" e use `for...of` para imprimir cada letra (h, e, l, l, o).
+#### Exercício 9 — Cálculo completo da largura ocupada
 
-6.  Em um objeto `sizes = { width: 100, height: 200 };`, use `for...in` para somar os valores numéricos (300).
+**Objetivo:** Somar as sete parcelas horizontais do modelo de caixa.
 
-7.  Crie um array de números `[1, 2, 3]` e use `for...of` para calcular a média somando e dividindo pelo comprimento.
+Dado o CSS abaixo (`content-box`), calcule sem abrir o navegador. Depois confira.
 
-8.  Use `for...in` em um array para listar índices, depois filtre apenas índices pares imprimindo o valor do array.
+**Código inicial:**
 
-9.  Crie um objeto com propriedades não numéricas e use `for...in` para listar apenas propriedades "próprias" com `hasOwnProperty`.
+```css
+.caixa {
+  width: 300px;
+  padding: 16px 24px;
+  border: 4px solid black;
+  margin: 10px 30px;
+}
+```
 
-10.  Compare `for...of` em uma string vs. array: imprima comprimento e elementos de ambos.
+**Tarefas:**
 
-11.  Use `for...of` em um array de strings para concatenar todas em uma frase com espaços.
+1. Calcule a largura do conteúdo.
+2. Calcule a largura do padding-box.
+3. Calcule a largura do border-box.
+4. Calcule a largura total ocupada (margin-box).
 
-12.  Crie um objeto e um array; use o loop apropriado (`for...in` para obj, `for...of` para arr) para imprimir "Chave: valor" ou "Elemento: x".
+#### Exercício 10 — Cálculo completo da altura (elemento isolado)
 
-### Tópico 13: Controlling Loop Flow – break and continue (Controle de Fluxo em Loops – break e continue)
-1.  Em um `for` de 0 a 9, use `break` quando `i === 3` para imprimir apenas 0, 1, 2.
+**Objetivo:** Somar as sete parcelas verticais quando não há outro elemento para colapsar margem.
 
-2.  No mesmo loop, substitua `break` por `continue` quando `i % 2 === 0` para pular evens e imprimir apenas ímpares (1,3,5,7,9).
+Considere um único filho dentro de um pai com padding e border, para as margens do filho não colapsarem com o pai.
 
-3.  Crie um `while` de 0 a 5; use `continue` para pular múltiplos de 3 e imprimir o resto (0,1,2,4,5).
+**Código inicial:**
 
-4.  Em um `for...of` em `[1,2,3,4,5]`, use `break` no primeiro par para parar após 2.
+```css
+.pai {
+  padding: 1px;
+  border: 1px solid #999;
+}
+.filho {
+  height: 80px;
+  padding: 10px 0 20px;
+  border-top: 3px solid black;
+  border-bottom: 5px solid black;
+  margin: 12px 0 18px;
+}
+```
 
-5.  Aninhe dois `for` (outer 0-2, inner 0-2); use `break` no inner quando `j === 1` para imprimir apenas primeiras linhas completas.
+**Tarefas:**
 
-6.  No loop aninhado anterior, use `continue` no inner para pular `j === 1`, imprimindo todas exceto essa iteração.
+1. Calcule a altura do border-box do filho.
+2. Calcule a altura total ocupada pelo filho dentro do pai (incluindo as margens verticais do filho).
+3. Explique por que o padding/border de `1px` no pai importa neste exercício.
 
-7.  Crie um loop `for` de 1 a 10; use `continue` para somar apenas ímpares (soma = 25).
+**Dica:** O `1px` no pai existe só para impedir o colapso pai–filho. A faixa média explica o fenômeno.
 
-8.  Em um `while` infinito (`true`), use `break` após somar 1+2+3 (com contador).
+#### Exercício 11 — Fundo, padding e conteúdo deslocado
 
-9.  Aninhe loops e use rótulo `outer:` para `break outer` quando `i === 1 && j === 1`, imprimindo apenas 0-0 a 0-2 e 1-0.
+**Objetivo:** Usar padding assimétrico para afastar o conteúdo sem mudar `width`.
 
-10.  No rótulo anterior, use `continue outer` para pular o inner quando `j % 2 === 0`, mas continue o outer.
+Há um título de uma linha dentro de `.card`. A largura do conteúdo deve permanecer `280px`.
 
-11.  Some números de um array até encontrar negativo com `break` em `for...of`.
+**Código inicial:**
 
-12.  Filtre evens de 1-10 com `continue` em um `for`, coletando ímpares em um array.
+```css
+.card {
+  width: 280px;
+  height: 100px;
+  background: #1e3a5f;
+  color: white;
+}
+```
 
-13.  Em `for...in` de objeto, use `continue` se chave não for "name" ou "age".
+**Tarefas:**
 
-### Tópico 14: The switch Statement (Instrução switch)
-1.  Crie um `switch` para `a = 4`; cases 3:"Pequeno", 4:"Exato", 5:"Grande", default:"Desconhecido". Imprima "Exato".
+1. Aplique `padding-left: 32px` e `padding-top: 24px`, sem padding nos outros lados.
+2. A largura computada do conteúdo deve continuar `280px`.
+3. Calcule a nova largura do padding-box.
+4. O texto deve começar `32px` à direita da borda esquerda da área azul.
 
-2.  No `switch` anterior, remova `break` do case 3 para fall-through e teste com `a=3` (deve imprimir "Pequeno" e "Exato").
+#### Exercício 12 — Border só em alguns lados
 
-3.  Use `switch` para um dia (1:"Segunda", 2:"Terça", default:"Fim de semana?"). Teste com 1.
+**Objetivo:** Compreender que lados sem borda não adicionam pixels àquele eixo.
 
-4.  Crie fall-through para cases 1,2,3:"Pequeno" sem `break` entre eles, default:"Grande". Teste com 2.
+Crie uma barra de destaque com borda apenas à esquerda.
 
-5.  Converta um if-else para nota (90+: "A", 80-89:"B", else:"C") em `switch` com fall-through para ranges (note limitação).
+**Código inicial:**
 
-6.  Use `switch` em string "verde": cases "verde":"Go", "amarelo":"Wait", default:"Stop".
+```css
+.aviso {
+  width: 360px;
+  padding: 12px 16px;
+  background: #fff7ed;
+  border-left: 6px solid #ea580c;
+}
+```
 
-7.  Adicione `default` a um `switch` de números e teste com valor fora dos cases.
+**Tarefas:**
 
-8.  Crie `switch` para prompt de número; cases 1-3 fall-through para "Baixo", else "Alto".
+1. Calcule a largura do border-box.
+2. Calcule a altura extra adicionada pela borda (não pelo padding).
+3. Acrescente `border-bottom: 2px dashed #ea580c` e diga o que muda na altura do border-box.
 
-9.  Compare `switch` vs if-else: reescreva um if para dia da semana em switch e note legibilidade.
+#### Exercício 13 — Margin horizontal para afastar da borda do pai
 
-10.  Use `switch` com expressão `2 + 2` para case 4:"Correto".
+**Objetivo:** Usar `margin-left` e `margin-right` positivas para criar folga externa.
 
-11.  Em `switch`, use fall-through intencional para agrupar "Seg" e "Sex" como "Dia útil".
+O pai tem largura conhecida de `500px` (`width: 500px`) e nenhum padding/borda. O filho deve ter `width: 400px`.
 
-12.  Teste strict equality: `switch("2")` com case 2 (não match) vs case "2".
+**Código inicial:**
 
-13.  Crie um `switch` para classificação de idade: <18:"Menor", 18-65:"Adulto", >65:"Idoso", com default.
+```css
+.pai { width: 500px; background: #e5e7eb; }
+.filho {
+  width: 400px;
+  height: 40px;
+  background: #2563eb;
+}
+```
 
-14.  Modifique um `switch` para não usar `break` em um case para executar dois blocos.
+**Tarefas:**
 
-### Tópico 15: Functions (Funções)
-1.  Declare uma função `showMessage` sem parâmetros que imprima "Olá!" com `alert`. Chame-a.
+1. Aplique `margin-left: 50px` no filho.
+2. Quanto espaço sobra à direita entre o filho e o pai, se `margin-right` for `0`?
+3. Ajuste `margin-left` e `margin-right` para `50px` cada. O filho de `400px` cabe exatamente?
+4. Mude `margin-left` para `80px` e `margin-right` para `20px`. Ainda cabe? Qual é a largura total ocupada pelo filho?
 
-2.  Crie uma função `showMessage(from, text)` que alerte `from + ": " + text`. Chame com "Ann", "Hi!".
+#### Exercício 14 — Centralizar um bloco com margin horizontal auto
 
-3.  Na função anterior, chame com apenas um argumento e observe o undefined para o segundo.
+**Objetivo:** Usar `margin-left: auto` e `margin-right: auto` em um bloco com largura definida.
 
-4.  Crie uma função `sum(a, b)` que retorne `a + b`. Atribua o retorno a uma variável e imprima (sum(1,2) = 3).
+O pai ocupa a largura que você definir (por exemplo `600px`). O filho tem largura fixa e deve ficar no centro horizontal do pai. Não use `text-align`, flexbox nem `position`.
 
-5.  Use o objeto `arguments` em uma função `showName` para alertar `arguments[0] + " " + arguments[1]`. Chame com dois nomes.
+**Código inicial:**
 
-6.  Crie uma função que some três números usando `arguments.length` para validar e retornar soma ou erro.
+```css
+.pai { width: 600px; background: #f3f4f6; }
+.filho {
+  width: 240px;
+  height: 50px;
+  background: #7c3aed;
+}
+```
 
-7.  Declare uma função aninhada dentro de outra: a outer chama a inner para imprimir "Interna".
+**Tarefas:**
 
-8.  Crie uma função `ask(question, yes, no)` que use `confirm` para chamar yes() ou no().
+1. Aplique `margin-left: auto; margin-right: auto` no filho (ou o atalho `margin: 0 auto`).
+2. Confira visualmente o centramento.
+3. Calcule quanto cada margem automática vale: `(largura do pai − largura do filho) / 2`.
+4. Mude `width` do filho para `300px` e recálcule as margens automáticas.
 
-9.  Passe funções nomeadas como callbacks para `ask`: yes alerta "Sim", no "Não". Chame ask.
+**Dica:** `auto` na margem horizontal distribui o espaço sobrante. Isso só funciona se o elemento tiver `width` menor que o pai.
 
-10.  Reescreva os callbacks de ask como funções anônimas inline.
+#### Exercício 15 — Preencher uma ficha de medidas
 
-11.  Modifique ask para passar um parâmetro (nome) aos callbacks e usá-lo no alerta.
+**Objetivo:** Ler um CSS e preencher conteúdo, padding-box, border-box e margin-box.
 
-12.  Crie uma função que retorne outra função: outer recebe n, retorna função que multiplica por n.
+Sem alterar o CSS, complete a tabela de medidas do elemento abaixo.
 
-13.  Use prompt para dois números, chame sum e alerte o resultado.
+**Código inicial:**
 
-14.  Crie uma função que verifique se argumentos são números antes de somar, senão retorne NaN.
+```css
+.ficha {
+  width: 180px;
+  height: 70px;
+  padding: 12px 8px 4px 20px;
+  border-width: 1px 7px 3px 5px;
+  border-style: solid;
+  margin: 6px 15px 10px 9px;
+}
+```
 
-15.  Compare declaração vs expressão: chame uma função antes de declará-la (funciona), mas não com let = function.
+**Tarefas:**
 
-### Tópico 16: Function expressions (Expressões de Função)
-1.  Crie uma expressão de função anônima atribuída a `sayHi` que alerte "Hello". Chame `sayHi()`.
+1. Largura do conteúdo e altura do conteúdo.
+2. Largura e altura do padding-box.
+3. Largura e altura do border-box.
+4. Largura e altura do margin-box (elemento isolado, sem colapso).
 
-2.  Defina uma expressão de função nomeada `greet(name)` que alerte "Olá, [name]". Chame com "John".
+---
 
-3.  Crie uma expressão de função `multiply(a, b)` que retorne a * b. Atribua a `calc` e chame `calc(2,3)`.
+### Médio (exercícios 16 a 25)
 
-4.  Atribua uma expressão de função a uma variável `func` e imprima `func` (sem parênteses) para ver o código fonte.
+Combinações: `box-sizing`, porcentagens e o início do *margin collapse*.
 
-5.  Copie uma expressão de função `logMsg` para `copyFunc` e chame ambas para confirmar que funcionam independentemente.
+#### Exercício 16 — content-box versus border-box
 
-6.  Escreva uma expressão de função sem ponto e vírgula no final da atribuição e observe o erro de sintaxe.
+**Objetivo:** Ver que a mesma trinca `width + padding + border` produz tamanhos finais diferentes conforme `box-sizing`.
 
-7.  Tente chamar uma expressão de função `sayBye` antes de sua atribuição `let sayBye = function() {...}`. Corrija movendo a chamada.
+Crie duas caixas irmãs com o mesmo `width`, o mesmo `padding` e a mesma `border`. Só muda `box-sizing`.
 
-8.  Converta a expressão anterior em declaração de função e chame antes da definição para ver hoisting funcionar.
+**Código inicial:**
 
-9.  Declare uma função dentro de um bloco `if (false)` e tente chamá-la fora; observe o erro de escopo.
+```css
+.a, .b {
+  width: 200px;
+  padding: 20px;
+  border: 10px solid #111;
+}
+.a { box-sizing: content-box; background: #93c5fd; }
+.b { box-sizing: border-box;  background: #fca5a5; }
+```
 
-10.  Corrija o escopo anterior atribuindo expressões de função a uma variável `welcome` fora do if, com base na condição.
+**Tarefas:**
 
-11.  Use operador ternário para atribuir uma expressão de função a `msgFunc` baseada em idade >18 (alerta "Adulto" ou "Criança").
+1. Calcule a largura do border-box de `.a`.
+2. Calcule a largura do border-box de `.b`.
+3. Calcule a largura da área de conteúdo de `.b` (o que sobra depois de descontar padding e border).
+4. Qual das duas cabe em um pai de exatamente `200px` de largura interna, sem estourar?
 
-12.  Crie uma função `ask` que receba question, yes e no como callbacks. Passe expressões de função nomeadas.
+#### Exercício 17 — Converter um tamanho de content-box para border-box
 
-13.  Reescreva os callbacks de `ask` como expressões anônimas inline para encurtar o código.
+**Objetivo:** Manter o mesmo border-box visual ao trocar o modelo de caixa.
 
-14.  Modifique os callbacks para receberem um parâmetro (ex.: nome) e usá-lo; passe o parâmetro na chamada de yes/no.
+A caixa atual é `content-box` e ocupa `260px` de border-box. Você quer passar para `border-box` sem mudar o tamanho visível nem o padding/borda.
 
-15.  Crie uma expressão de função que retorne outra expressão de função (ex.: multiplicador que retorna dobrador).
+**Código inicial:**
 
-16.  Combine conceitos: use ternário para atribuir callback condicional em `ask`, testando com confirm.
+```css
+.caixa {
+  box-sizing: content-box;
+  width: 200px;
+  padding: 20px;
+  border: 10px solid #333;
+}
+```
 
-### Tópico 17: Arrow functions, the basics (Funções Arrow, os básicos)
-1.  Crie uma arrow function `sum = (a, b) => a + b`. Chame com 1,2 e imprima 3.
+**Tarefas:**
 
-2.  Converta uma função regular `function add(x, y) { return x + y; }` em arrow de uma linha.
+1. Confirme a largura atual do border-box.
+2. Altere para `box-sizing: border-box` e ajuste somente `width` para que o border-box continue com o mesmo valor.
+3. A área de conteúdo deve permanecer `200px`.
 
-3.  Crie uma arrow com parâmetro único `double = n => n * 2` (sem parênteses). Teste com 5 (10).
+#### Exercício 18 — width: 100% + padding no content-box estoura o pai
 
-4.  Defina uma arrow sem parâmetros `sayHi = () => alert("Hello!")`. Chame e observe o alerta.
+**Objetivo:** Entender o estouro clássico: `100%` refere-se à largura de conteúdo do pai; padding e border somam além disso.
 
-5.  Use ternário para atribuir arrow condicional baseada em idade: <18 alerta "Hello!", senão "Greetings!".
+O pai tem `width: 400px; padding: 0; border: 0`. O filho deve “tentar” ocupar a largura do pai.
 
-6.  Crie uma arrow multilinha `sum = (a, b) => { let res = a + b; return res; }`. Teste retorno.
+**Código inicial:**
 
-7.  Em um objeto `{ method: () => this.name }`, defina `this.name = "Arrow"` e chame; note que `this` é undefined (herda do escopo).
+```css
+.pai { width: 400px; background: #e5e7eb; }
+.filho {
+  width: 100%;
+  padding: 20px;
+  border: 5px solid #111;
+  background: #fca5a5;
+}
+```
 
-8.  Tente acessar `arguments` em uma arrow function com múltiplos args; observe undefined e use rest parameters como alternativa.
+**Tarefas:**
 
-9.  Corrija uma arrow sem parênteses vazios: mude `greet = () => alert("Hi")` de `greet = alert("Hi")` (erro de sintaxe).
+1. Calcule a largura do border-box do filho com o CSS acima (`content-box`).
+2. O filho estoura o pai? Por quantos pixels?
+3. Corrija de duas formas independentes: (1) mudando só `box-sizing` do filho; (2) mantendo `content-box` e trocando `width: 100%` por um valor em `px` que faça o border-box valer `400px`.
 
-10.  Em uma arrow multilinha sem `return`, adicione-o para retornar soma; teste antes/depois (undefined vs valor).
+#### Exercício 19 — Porcentagem em padding é relativa à largura do pai
 
-11.  Reescreva um método de objeto como arrow; observe falha em `this` e volte para função regular.
+**Objetivo:** Descobrir que `padding-top` e `padding-bottom` em `%` usam a **largura** do bloco contendo, não a altura.
 
-12.  Use prompt para idade e atribua arrow dinâmica via ternário, chamando para alerta personalizado.
+O pai tem `width: 400px` e `height: 200px`. O filho não tem `width`/`height` explícitos neste exercício; foque no padding.
 
-13.  Converta o exemplo de `ask` com callbacks em arrows anônimas de uma linha.
+**Código inicial:**
 
-14.  Crie uma arrow multilinha para calcular fatorial (loop de 1 a n, retornando produto).
+```css
+.pai { width: 400px; height: 200px; background: #e5e7eb; }
+.filho {
+  padding: 10%;
+  background: #86efac;
+}
+```
 
-15.  Forneça array `[1,2,3]`; use arrow como callback em `forEach` para dobrar e imprimir cada (2,4,6).
+**Tarefas:**
 
-16.  Tente usar arrow como construtor com `new ArrowFunc()`; observe erro e explique por quê.
+1. Quanto vale `10%` em pixels? Relativo a qual medida do pai?
+2. Calcule o `padding-top` do filho em `px`.
+3. Calcule o `padding-left` do filho em `px`.
+4. Os dois valores são iguais ou diferentes? Por quê?
+5. Mude o `height` do pai para `500px` sem mudar o `width`. O `padding-top` do filho muda?
 
-17.  Refatore uma arrow multilinha complexa (ex.: soma com validação) para função regular; note quando a legibilidade melhora.
+#### Exercício 20 — Colapso entre irmãos (adjacent siblings)
 
-## Exercícios 2
+**Objetivo:** Ver que duas margens verticais vizinhas não se somam: prevalece a de maior valor absoluto.
 
-### Teóricos
+Dois blocos empilhados, sem padding nem borda entre eles.
 
-1. **Múltipla escolha:** Qual é a forma mais comum de inserir JavaScript em uma página HTML?  
-   a) Dentro de uma tag `<script>`.  
-   b) Em um arquivo CSS.  
-   c) Diretamente no atributo `src` de uma imagem.
-   d) Em uma tag `<link>`.
+**Código inicial:**
 
-2. **Verdadeiro/Falso:** É possível inserir JavaScript inline diretamente em um elemento HTML usando o atributo `onclick`. Verdadeiro ou Falso?
+```css
+.a {
+  height: 40px;
+  background: #93c5fd;
+  margin-bottom: 30px;
+}
+.b {
+  height: 40px;
+  background: #fcd34d;
+  margin-top: 20px;
+}
+```
 
-3. **Completamento de código:** Complete o código para linkar um arquivo externo de JavaScript chamado `script.js` no final do `<body>`:  
-   `<script ______________="script.js"></script>`
+**Tarefas:**
 
-4. **Análise de código:** No código `<script src="external.js"></script>`, onde deve ser colocado para evitar atrasos na renderização da página?  
-   a) No `<head>`.  
-   b) No final do `<body>`.  
-   c) Antes do `</html>`.  
-   d) Dentro de um `<div>`.
+1. Qual seria a distância entre os border-boxes se as margens se somassem?
+2. Qual é a distância real após o colapso?
+3. Troque `margin-top` de `.b` para `30px`. A distância muda?
+4. Troque `margin-top` de `.b` para `50px`. Qual é a nova distância?
+5. As margens esquerda/direita de dois blocos lado a lado (se você as colocasse com `width` menor) colapsariam? Responda só com o conhecimento da regra — sem usar float/flex.
 
-5. **Múltipla escolha:** Qual tag deve ser usada para inserir JavaScript inline no HTML?  
-   a) `<js>`.  
-   b) `<script>`.  
-   c) `<code>`.  
-   d) `<style>`.
+**Dica:** Entre irmãos, a margem vertical resultante é o máximo dos dois valores positivos.
 
-6. **Verdadeiro/Falso:** O atributo `defer` em uma tag `<script>` faz com que o JavaScript seja executado imediatamente após o download. Verdadeiro ou Falso?
+#### Exercício 21 — Colapso com valores iguais e com zero
 
-7. **Completamento de código:** Escreva a tag HTML para inserir JavaScript no `<head>` com o atributo `async`:  
-   `<script ______________ src="meu-script.js"></script>`
+**Objetivo:** Consolidar o máximo e o caso em que uma das margens é `0`.
 
-8. **Análise de código:** Qual é o problema de colocar `<script>` no `<head>` sem `defer` ou `async`?  
-   (Resposta curta: Ele pode bloquear o carregamento da página.)
+Três pares para calcular a distância entre border-boxes.
 
-9. **Múltipla escolha:** Qual é a sintaxe correta para declarar uma variável em JavaScript?  
-   a) `var nome = "João";`  
-   b) `variable nome = "João";`  
-   c) `let nome = "João";` (todas as anteriores)  
-   d) Apenas a e c.
+**Código inicial:**
 
-10. **Verdadeiro/Falso:** O operador `===` compara valores e tipos em JavaScript. Verdadeiro ou Falso?
+```text
+Par 1: margin-bottom: 24px  e  margin-top: 24px
+Par 2: margin-bottom: 24px  e  margin-top: 0
+Par 3: margin-bottom: 0     e  margin-top: 0
+```
 
-11. **Completamento de código:** Complete a declaração de uma constante com o valor 42:  
-    `const numero = _____;`
+**Tarefas:**
 
-12. **Análise de código:** No código `let x = 5; x += 3; console.log(x);`, qual é o resultado?  
-    a) 5  
-    b) 8  
-    c) 15  
-    d) Erro.
+1. Para cada par, declare a distância colapsada.
+2. Implemente os três pares (três grupos de dois `div`s) e confira no inspetor.
+3. Em uma frase, enuncie a regra para duas margens verticais positivas de irmãos.
 
-13. **Múltipla escolha:** Qual operador é usado para concatenar strings em JavaScript?  
-    a) +  
-    b) -  
-    c) *  
-    d) / 
+#### Exercício 22 — Colapso pai–filho (margin collapsing through parent)
 
-14. **Verdadeiro/Falso:** Variáveis declaradas com `var` têm escopo global por padrão. Verdadeiro ou Falso?
+**Objetivo:** Ver a margem superior do primeiro filho “sair” do pai quando o pai não tem `padding-top` nem `border-top`.
 
-15. **Completamento de código:** Escreva a operação para verificar se 10 é maior ou igual a 5:  
-    `10 _____ 5` (use o operador apropriado).
+O pai tem fundo cinza. O filho tem fundo azul e `margin-top: 40px`. Ninguém tem padding nem border.
 
-16. **Análise de código:** O que acontece com `let y; console.log(y);`?  
-    (Resposta curta: Retorna `undefined`.)
+**Código inicial:**
 
-17. **Múltipla escolha:** Qual é o resultado de `true && false`?  
-    a) true  
-    b) false  
-    c) 1  
-    d) 0
+```css
+.pai {
+  background: #d1d5db;
+  /* sem padding, sem border, sem height */
+}
+.filho {
+  height: 50px;
+  background: #3b82f6;
+  margin-top: 40px;
+}
+```
 
-18. **Verdadeiro/Falso:** O operador `%` retorna o resto da divisão. Verdadeiro ou Falso?
+**Tarefas:**
 
-19. **Múltipla escolha:** Qual é um tipo de dado primitivo em JavaScript?  
-    a) Array  
-    b) Object  
-    c) String  
-    d) Function
+1. Antes de abrir o navegador: a faixa cinza do pai deve começar no mesmo Y que a faixa azul do filho, ou `40px` acima?
+2. Confira. A margem do filho colapsou com a do pai e “escapou” para fora.
+3. Meça: existe algum pedaço de fundo cinza acima do filho?
 
-20. **Verdadeiro/Falso:** O tipo `null` é considerado um tipo primitivo e representa "valor ausente". Verdadeiro ou Falso?
+#### Exercício 23 — Como impedir o colapso pai–filho
 
-21. **Completamento de código:** Identifique o tipo de `typeof 3.14`:  
-    `_____` (string)
+**Objetivo:** Usar padding ou border no pai como “separador” que bloqueia o colapso.
 
-22. **Análise de código:** Qual é o tipo de `'hello'`?  
-    a) Number  
-    b) String  
-    c) Boolean  
-    d) Undefined
+Parta do CSS do exercício 22.
 
-23. **Múltipla escolha:** Quantos tipos de dados primitivos existem em JavaScript?  
-    a) 5  
-    b) 6  
-    c) 7  
-    d) 8
+**Código inicial:**
 
-24. **Múltipla escolha:** Qual é a sintaxe básica de um `if`?  
-    a) `if (condição) { código }`  
-    b) `if condicao { código }`  
-    c) `if: condição { código }`  
-    d) Nenhuma das anteriores.
+```css
+/* comece exatamente com o CSS do exercício 22 */
+```
 
-25. **Verdadeiro/Falso:** O `else if` pode ser usado múltiplas vezes em uma cadeia condicional. Verdadeiro ou Falso?
+**Tarefas:**
 
-26. **Completamento de código:** Complete o `if` para verificar se uma idade é maior que 18:  
-    `if (idade > 18) { console.log("Adulto"); } _____ { console.log("Menor"); }`
+1. Solução A: acrescente `padding-top: 1px` no pai. O fundo cinza deve aparecer acima do filho. Qual é agora a distância entre o topo do border-box do pai e o topo do border-box do filho?
+2. Desfaça A. Solução B: acrescente `border-top: 1px solid transparent` no pai. O colapso também deve cessar.
+3. Desfaça B. Solução C: use `padding-top: 40px` no pai e `margin-top: 0` no filho, de modo que o espaço interno de `40px` fique pintado com o fundo do pai.
+4. Explique, em uma frase, por que padding ou border no pai impedem o colapso.
 
-27. **Análise de código:** No código:  
-    ```js:disable-run
-    let dia = 3;
-    switch (dia) {
-        case 1: console.log("Segunda"); break;
-        case 3: console.log("Quarta"); break;
-    }
-    ```  
-    Qual é a saída?  
-    a) Segunda  
-    b) Quarta  
-    c) Nada  
-    d) Erro.
+**Dica:** Há outros bloqueadores (`overflow` diferente de `visible`, por exemplo), mas eles saem do recorte deste material. Fique em padding e border.
 
-28. **Múltipla escolha:** O que acontece se não usar `break` em um `switch`?  
-    a) Erro de sintaxe.  
-    b) Fall-through para o próximo case.  
-    c) Ignora o case.  
-    d) Para a execução.
+#### Exercício 24 — Porcentagem em margin também usa a largura do pai
 
-29. **Verdadeiro/Falso:** `if (0) { ... }` sempre executa o bloco, pois 0 é verdadeiro. Verdadeiro ou Falso?
+**Objetivo:** Aplicar a mesma referência de porcentagem às margens, inclusive às verticais.
 
-30. **Completamento de código:** Escreva um `switch` para o valor 2 que imprima "Dois":  
-    `switch (valor) { case 2: console.log("Dois"); _____ default: console.log("Outro"); }`
+Pai com `width: 500px; height: 300px`. Filho com `width: 200px; height: 40px`.
 
-31. **Análise de código:** Qual é o resultado de `if ("") { console.log("Verdadeiro"); } else { console.log("Falso"); }`?  
-    (Resposta curta: Falso)
+**Código inicial:**
 
-32. **Múltipla escolha:** Em um `switch`, qual palavra-chave é usada para o caso padrão?  
-    a) else  
-    b) default  
-    c) catch  
-    d) finally
+```css
+.pai { width: 500px; height: 300px; background: #e5e7eb; }
+.filho {
+  width: 200px;
+  height: 40px;
+  background: #f472b6;
+  margin: 10%;
+}
+```
 
-33. **Verdadeiro/Falso:** O operador ternário `condição ? valor1 : valor2` é equivalente a um `if-else` simples. Verdadeiro ou Falso?
+**Tarefas:**
 
-34. **Múltipla escolha:** Qual é a sintaxe de um loop `for`?  
-    a) `for (init; condição; incremento) { código }`  
-    b) `for init to condição { código }`  
-    c) `for (condição) { código }`  
-    d) Nenhuma das anteriores.
+1. Quanto vale `margin: 10%` em pixels neste contexto?
+2. Calcule a largura total ocupada pelo filho (margin-box horizontal).
+3. A margem superior de `10%` é `10%` de `300px` ou de `500px`?
+4. Se o `width` do pai passar para `200px`, o que acontece com a `margin-top` do filho?
 
-35. **Verdadeiro/Falso:** Um `while` executa o código enquanto a condição for verdadeira. Verdadeiro ou Falso?
+#### Exercício 25 — Montar um cartão que caiba exatamente no pai
 
-36. **Completamento de código:** Complete o `for` para imprimir de 0 a 4:  
-    `for (let i = 0; i < 5; _____ ) { console.log(i); }`
+**Objetivo:** Combinar `width`, `padding`, `border` e `margin` para o margin-box horizontal igualar a largura interna do pai.
 
-37. **Análise de código:** No código:  
-    ```js
-    let i = 0;
-    while (i < 3) {
-        console.log(i);
-        i++;
-    }
-    ```  
-    Qual é a saída?  
-    a) 0 1 2  
-    b) 1 2 3  
-    c) 0 1  
-    d) Loop infinito.
+Pai: `width: 480px; padding: 0; border: 0`. O cartão precisa de padding interno de `24px` em todos os lados, borda de `2px` e uma folga externa de `16px` à esquerda e à direita. Use `content-box`.
 
-38. **Múltipla escolha:** Qual loop é mais adequado para iterar um número conhecido de vezes?  
-    a) while  
-    b) for  
-    c) do-while  
-    d) for...of
+**Código inicial:**
 
-39. **Verdadeiro/Falso:** `do { código } while (condição);` executa pelo menos uma vez, mesmo se a condição for falsa. Verdadeiro ou Falso?
+```css
+.pai { width: 480px; background: #e5e7eb; }
+.cartao {
+  box-sizing: content-box;
+  padding: 24px;
+  border: 2px solid #111;
+  margin: 0 16px;
+  background: white;
+}
+```
 
-40. **Completamento de código:** Escreva um `while` que some números de 1 a 5:  
-    `let soma = 0; let j = 1; while (j <= 5) { soma += j; _____ }`
+**Tarefas:**
 
-41. **Análise de código:** O que acontece em `for (let i = 0; i < -1; i++) { console.log(i); }`?  
-    (Resposta curta: Nada é executado.)
+1. Calcule o `width` (área de conteúdo) que faz o cartão caber exatamente: `16 + 2 + 24 + width + 24 + 2 + 16 = 480`.
+2. Aplique esse `width`.
+3. Refaça o mesmo cartão com `box-sizing: border-box`. Qual `width` você declara agora?
+4. Nos dois casos o border-box deve medir o mesmo valor. Qual é esse valor?
 
-42. **Múltipla escolha:** Qual é o incremento em `for (let i = 5; i > 0; i--) { ... }`?  
-    a) i++  
-    b) i--  
-    c) i += 1  
-    d) i = i + 1
+---
 
-43. **Verdadeiro/Falso:** Loops `for` e `while` podem ser aninhados em JavaScript. Verdadeiro ou Falso?
+### Difícil (exercícios 26 a 30)
 
-44. **Múltipla escolha:** Qual é a sintaxe para declarar uma função?  
-    a) `function nome() { ... }`  
-    b) `def nome() { ... }`  
-    c) `fun nome { ... }`  
-    d) `function: nome { ... }`
+Colapso encadeado, elemento vazio, porcentagens + `border-box` e previsão de altura de um empilhamento.
 
-45. **Verdadeiro/Falsso:** Funções em JavaScript podem ser chamadas antes de serem declaradas (hoisting). Verdadeiro ou Falso? (Apenas para declarações `function`.)
+#### Exercício 26 — Cadeia de três irmãos com margens diferentes
 
-46. **Completamento de código:** Complete a função que retorna o dobro de um número:  
-    `function dobro(n) { return n * 2; } _____ (5);` (chamada)
+**Objetivo:** Prever cada intervalo colapsado em uma pilha de três blocos.
 
-47. **Análise de código:** No código:  
-    ```js
-    function soma(a, b) {
-        return a + b;
-    }
-    console.log(soma(2, 3));
-    ```  
-    Qual é a saída?  
-    a) 5  
-    b) "23"  
-    c) Erro  
-    d) undefined
+Três blocos empilhados. Cada um tem `height: 30px`, `padding: 0`, `border: 1px solid #111`. As únicas variáveis são as margens verticais.
 
-48. **Múltipla escolha:** O que é um parâmetro padrão em funções?  
-    a) `function teste(a = 10) { ... }`  
-    b) Parâmetro obrigatório.  
-    c) Sempre `null`.  
-    d) Não existe em JS.
+**Código inicial:**
 
-49. **Verdadeiro/Falso:** Uma função sem `return` retorna `undefined`. Verdadeiro ou Falso?
+```css
+.a { margin-top: 10px; margin-bottom: 40px; }
+.b { margin-top: 25px; margin-bottom: 25px; }
+.c { margin-top: 60px; margin-bottom: 5px;  }
+```
 
-50. **Completamento de código:** Escreva uma função anônima atribuída a uma variável que imprima "Olá":  
-    `const ola = function() { console.log("Olá"); }; _____();`
+**Tarefas:**
 
-<details>
-    <summary>Gabarito</summary>
-    <ol>
-        <li>a) Dentro de uma tag &lt;script&gt;.</li>
-        <li>Verdadeiro.</li>
-        <li>&lt;script src="script.js"&gt;&lt;/script&gt;.</li>
-        <li>b) No final do &lt;body&gt;.</li>
-        <li>b) &lt;script&gt;.</li>
-        <li>Falso (o defer adia a execução até o HTML ser parseado).</li>
-        <li>&lt;script async src="meu-script.js"&gt;&lt;/script&gt;.</li>
-        <li>Bloqueia o carregamento e renderização da página.</li>
-        <li>d) Apenas a e c (var e let; note que const também é válida, mas a opção foca em var e let).</li>
-        <li>Verdadeiro.</li>
-        <li>const numero = 42;.</li>
-        <li>b) 8.</li>
-        <li>a) +.</li>
-        <li>Verdadeiro.</li>
-        <li>10 >= 5.</li>
-        <li>Retorna undefined.</li>
-        <li>b) false.</li>
-        <li>Verdadeiro.</li>
-        <li>c) String.</li>
-        <li>Verdadeiro.</li>
-        <li>"number".</li>
-        <li>b) String.</li>
-        <li>c) 7 (undefined, null, boolean, number, bigint, string, symbol).</li>
-        <li>a) if (condição) { código }.</li>
-        <li>Verdadeiro.</li>
-        <li>else.</li>
-        <li>b) Quarta.</li>
-        <li>b) Fall-through para o próximo case.</li>
-        <li>Falso (0 é falsy, não executa).</li>
-        <li>break;.</li>
-        <li>Falso (string vazia é falsy).</li>
-        <li>b) default.</li>
-        <li>Verdadeiro.</li>
-        <li>a) for (init; condição; incremento) { código }.</li>
-        <li>Verdadeiro.</li>
-        <li>i++.</li>
-        <li>a) 0 1 2.</li>
-        <li>b) for.</li>
-        <li>Verdadeiro.</li>
-        <li>j++;.</li>
-        <li>Nada é executado (condição falsa desde o início).</li>
-        <li>b) i--.</li>
-        <li>Verdadeiro.</li>
-        <li>a) function nome() { ... }.</li>
-        <li>Verdadeiro (para declarações de função, não arrow functions).</li>
-        <li>console.log(dobro(5));.</li>
-        <li>a) 5.</li>
-        <li>a) function teste(a = 10) { ... }.</li>
-        <li>Verdadeiro.</li>
-        <li>ola();.</li>
-    </ol>
-</details>
+1. Calcule a distância entre o border-box de `.a` e o de `.b`.
+2. Calcule a distância entre o border-box de `.b` e o de `.c`.
+3. Calcule a margem “externa” acima de `.a` e abaixo de `.c` (ainda sem um pai com padding).
+4. Desenhe um esquema: `[10] [A] [?] [B] [?] [C] [5]` e preencha os pontos de interrogação.
 
-### Práticos
+#### Exercício 27 — Colapso encadeado avô–pai–filho
 
-#### Básico
+**Objetivo:** Entender que, sem padding/borda/height no meio, as margens de topo de vários níveis se fundem numa só.
 
-1. Crie um arquivo HTML simples com uma tag `<script>` inline que imprima "Olá, Mundo!" no console. Insira o script no final do `<body>`. Abra no navegador e verifique o console.
-2. Linke um arquivo externo `meu-script.js` em um HTML, colocando-o no `<head>` com `defer`. No JS, defina uma variável global e acesse-a no console do navegador.
-3. Declare três variáveis com `let`: uma string "JavaScript", um número 10 e um booleano true. Use o operador `+` para concatenar a string com o número e imprima no console.
-4. Atribua um valor a uma variável com `const`, tente reatribuir e observe o erro no console. Depois, use `let` para demonstrar reatribuição.
-5. Use `typeof` em uma string, um número e `null`. Imprima cada um no console para confirmar os tipos primitivos.
-6. Crie uma variável `valor` com `undefined`. Use `typeof` e compare com `null` usando `!==`. Explique por que são diferentes tipos primitivos.
-7. Escreva um `if-else` que verifique se uma nota (80) é maior ou igual a 70: imprima "Aprovado" ou "Reprovado".
-8. Crie um `if-else if-else` para classificar uma idade: <13 "Criança", 13-19 "Adolescente", >=20 "Adulto". Teste com idade 15.
-9. Verifique se uma string é vazia ou não usando `if (!str)`. Imprima "Vazia" ou "Não vazia".
-10. Combine `if` com operadores: se (x > 5 && y < 10), incremente uma variável; else, decremente. Teste valores.
-11. Use um `for` para imprimir números de 1 a 5 no console.
-12. Aninhe um `for` dentro de outro: imprima uma tabuada de 1 a 3 (ex: 1x1=1, 1x2=2... 3x3=9).
-13. Use `while` para contar regressivamente de 10 a 1, parando se encontrar 5 (use `break`).
-14. Declare uma função `saudacao` que receba um nome e imprima "Olá, [nome]!". Chame com "João".
-15. Escreva uma função anônima atribuída a `calcular` que some dois parâmetros e retorne o resultado. Chame e imprima.
-16. Crie um HTML com um botão que, ao clicar, execute uma função JavaScript inline via `onclick` para alterar o texto do botão para "Clicado!". Use apenas JavaScript inline, sem arquivo externo.
-17. Crie uma variável `idade` com valor 25. Use operadores lógicos (`&&` e `||`) para verificar se é maior que 18 E par (idade % 2 === 0). Imprima o resultado.
-18. Converta o número 42 para string usando `String(42)`, concatene com " é um número" e imprima. Verifique o tipo final com `typeof`.
-19. Use `switch` para um dia da semana (3 = Quarta). Imprima o nome do dia; inclua um `default` para "Dia inválido".
-20. Com `while`, some números de 1 a 10 e imprima a soma final.
-21. Crie uma função `multiplica` com parâmetro padrão (2) que multiplique um número por ele. Teste sem e com argumento.
-22. Crie um HTML que carregue dois scripts: um com `async` e outro sem. Observe a ordem de execução no console (use `console.log` em cada).
-23. Calcule a área de um círculo (raio = 5) usando `Math.PI` e operadores aritméticos. Use `===` para comparar o resultado com 78.54 e imprima se é igual.
-24. Use o operador ternário para verificar se um número é positivo, negativo ou zero. Imprima.
-25. Use `do-while` para pedir input (simule com prompt) até o usuário digitar "sair". Imprima cada entrada.
-26. Insira JS em um HTML para adicionar um evento `onload` à janela que alerte o tempo de carregamento da página (use `performance.now()`).
-27. Crie uma expressão que some dois números, multiplique por 2 e verifique se é maior que 10 usando `>`. Use *template literals* para imprimir: `O resultado é ${resultado}`.
-28. Em um `switch`, sem `break` intencionalmente, faça *fall-through* para que case 1 e 2 imprimam "Baixo", e case 3 "Alto". Teste com 2.
-29. Com `for`, encontre e imprima apenas números ímpares de 1 a 20 usando `%`.
-30. Crie uma função que use `if` dentro para retornar "Par" ou "Ímpar" baseado em um número. Use hoisting chamando antes da declaração.
+Três níveis aninhados. Somente o neto tem conteúdo visível.
+
+**Código inicial:**
+
+```css
+.avo {
+  background: #fee2e2;
+  margin-top: 30px;
+}
+.pai {
+  background: #fef3c7;
+  margin-top: 50px;
+}
+.neto {
+  height: 40px;
+  background: #bfdbfe;
+  margin-top: 20px;
+}
+```
+
+**Tarefas:**
+
+1. As três margens de topo (`30`, `50` e `20`) colapsam. Qual valor vence?
+2. Quantos pixels de fundo vermelho (`.avo`) aparecem acima do fundo amarelo (`.pai`)?
+3. Quantos pixels de fundo amarelo aparecem acima do neto azul?
+4. Agora coloque `padding-top: 1px` só em `.pai`. Recalcule: quais margens ainda colapsam entre si? Onde aparece o espaço de `50px`?
+
+**Dica:** Se o pai não cria um “obstáculo” (padding, border ou altura que contenha a margem), a margem do filho atravessa e participa do colapso com o avô.
+
+#### Exercício 28 — Elemento vazio cujas margens atravessam o próprio bloco
+
+**Objetivo:** Ver o colapso através de um bloco sem conteúdo, sem padding, sem border e sem `height`.
+
+Entre dois blocos visíveis existe um `div` vazio que só declara margens.
+
+**Código inicial:**
+
+```css
+.acima, .abaixo {
+  height: 40px;
+  background: #a7f3d0;
+}
+.acima  { margin-bottom: 10px; }
+.vazio  { margin-top: 30px; margin-bottom: 40px; }
+.abaixo { margin-top: 20px; }
+```
+
+**Tarefas:**
+
+1. Liste todas as margens verticais que participam do mesmo colapso.
+2. Qual é a distância resultante entre o border-box de `.acima` e o de `.abaixo`?
+3. Aplique `height: 1px` em `.vazio` (ainda sem padding/border). O colapso se parte em dois. Calcule as duas novas distâncias: acima↔vazio e vazio↔abaixo.
+4. Em vez de `height`, aplique `padding-top: 1px` no vazio (`height` volta a `0`). O colapso também se parte? Por quê?
+
+#### Exercício 29 — Conta completa com border-box e porcentagens
+
+**Objetivo:** Resolver *used values* quando `width`, `padding` e `margin` misturam `%` e `px`, com `box-sizing: border-box`.
+
+O bloco contendo (`.pai`) tem `width: 800px; padding: 0; border: 0`. Use exatamente o CSS abaixo.
+
+**Código inicial:**
+
+```css
+.pai { width: 800px; }
+.item {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100px;
+  padding: 10%;
+  border: 10px solid #111;
+  margin: 20px 5%;
+}
+```
+
+**Tarefas:**
+
+1. Calcule `width` usado (`50%` de quê?). Esse valor é o border-box.
+2. Calcule padding em `px` (`10%` de quê?). Lembre: os quatro lados usam a mesma base.
+3. Calcule a largura da área de conteúdo do `.item`.
+4. Calcule `margin-left` e `margin-right` em `px`.
+5. Calcule a largura do margin-box do `.item`.
+6. Calcule a altura do border-box e a altura da área de conteúdo (`height: 100px` é border-box).
+7. A altura do `padding-top` cabe dentro de `100px` junto com o `padding-bottom` e as bordas? O que acontece com o conteúdo?
+
+**Dica:** Com `border-box`, `width`/`height` incluem padding e border. Se padding + border superam o `height` declarado, a área de conteúdo pode chegar a zero e o elemento cresce para acomodar o mínimo necessário em alguns eixos — calcule primeiro no papel e depois confira o *used height* nas DevTools.
+
+#### Exercício 30 — Altura de um pai com filhos, paddings e colapsos mistos
+
+**Objetivo:** Prever a altura do border-box do pai em um cenário em que alguns colapsos acontecem e outros não.
+
+Leia o CSS com atenção: o pai tem padding horizontal e border, mas o padding vertical é zero. Há dois filhos.
+
+**Código inicial:**
+
+```css
+.pai {
+  width: 400px;
+  padding: 0 16px;      /* só horizontal */
+  border: 4px solid #111;
+  background: #e5e7eb;
+}
+.um {
+  height: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background: #60a5fa;
+}
+.dois {
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  background: #f59e0b;
+}
+```
+
+**Tarefas:**
+
+1. A margem superior de `.um` colapsa com a do pai e escapa para fora, ou fica presa dentro? Justifique com o que há (ou não há) no topo do pai.
+2. Entre `.um` e `.dois`, qual é a distância colapsada?
+3. A margem inferior de `.dois` colapsa para fora do pai ou permanece dentro? Justifique com o que há na base do pai.
+4. Calcule a altura da área de conteúdo do pai.
+5. Calcule a altura do border-box do pai.
+6. Calcule a altura do margin-box do pai, considerando a margem que escapou no topo (`30px`) e a que escapou na base (`25px`).
+7. Acrescente `padding-top: 8px` e `padding-bottom: 8px` no pai. Recalcule a altura do border-box do pai e diga o que aconteceu com as margens que escapavam.

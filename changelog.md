@@ -38,3 +38,8 @@
       - Adição de exemplos relacionados ao conteúdo dessa aula.
     - Exclusão da pasta `imagens/`.
     - Atualização do arquivo `aula05.md`.
+- 2026.2.6
+  - `AULAS/06`
+    - Adicionada pasta `exemplos/`.
+    - Adicionada pasta `imagens/`.
+    - Atualização do arquivo `aula06.md`.
