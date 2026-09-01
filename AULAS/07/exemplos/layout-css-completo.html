@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratório de Layout CSS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  /* ============================================================
+     TOKENS
+     ============================================================ */
+  :root{
+    --paper: #f5f3ec;
+    --paper-line: #ddd7c4;
+    --ink: #20242b;
+    --ink-soft: #565c66;
+    --blueprint: #2c4e7c;
+    --blueprint-soft: #cdd9e8;
+    --pencil: #b8460e;
+    --pencil-soft: #f3ddcf;
+    --ok: #3f6b4c;
+    --white: #ffffff;
+    --mono: "IBM Plex Mono", "Courier New", monospace;
+    --sans: "IBM Plex Sans", -apple-system, sans-serif;
+    --radius: 3px;
+  }
+
+  *,*::before,*::after{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background:
+      linear-gradient(var(--paper-line) 1px, transparent 1px) 0 0 / 100% 32px,
+      var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+  }
+
+  h1,h2,h3{ font-family: var(--sans); font-weight: 700; margin: 0; }
+  code, .tag, .k{ font-family: var(--mono); }
+
+  .wrap{ max-width: 920px; margin: 0 auto; padding: 0 28px; }
+
+  /* ============================================================
+     NAV — usa position: sticky (case do módulo de Position)
+     ============================================================ */
+  .topnav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--ink);
+    border-bottom: 3px solid var(--pencil);
+  }
+  .topnav ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    list-style: none;
+    margin: 0; padding: 0;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  .topnav a{
+    display: block;
+    padding: 14px 16px;
+    color: #e9e6db;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: .02em;
+    border-bottom: 3px solid transparent;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .topnav a:hover, .topnav a:focus-visible{
+    color: #fff;
+    border-color: var(--blueprint-soft);
+  }
+
+  header.intro{ padding: 64px 0 40px; }
+  header.intro .kicker{
+    font-family: var(--mono);
+    color: var(--pencil);
+    font-size: 13px;
+    margin: 0 0 10px;
+  }
+  header.intro h1{ font-size: 38px; letter-spacing: -.01em; max-width: 14ch; }
+  header.intro p{ max-width: 58ch; color: var(--ink-soft); font-size: 16px; margin-top: 14px; }
+
+  /* ============================================================
+     ESTRUTURA DE SEÇÃO
+     ============================================================ */
+  section.module{ padding: 56px 0; border-top: 1px solid var(--paper-line); }
+  .module-head{ display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .module-head .num{ font-family: var(--mono); color: var(--pencil); font-size: 14px; }
+  .module-head h2{ font-size: 24px; }
+  .module-desc{ color: var(--ink-soft); max-width: 62ch; margin: 6px 0 28px; font-size: 15px; }
+
+  .case{ margin-bottom: 34px; }
+  .case:last-child{ margin-bottom: 0; }
+  .case-title{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--blueprint);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .case-title::before{
+    content: "";
+    width: 8px; height: 8px;
+    background: var(--blueprint);
+    display: inline-block;
+  }
+
+  .stage{
+    background: var(--white);
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius);
+    padding: 20px;
+    position: relative;
+  }
+
+  pre.code{
+    background: var(--ink);
+    color: #d7e3f0;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 10px 0 0;
+  }
+  pre.code .c1{ color: #8fb8e0; }
+  pre.code .c2{ color: #e8b17a; }
+
+  /* genérico p/ caixas de demonstração */
+  .box{
+    background: var(--blueprint-soft);
+    border: 1px solid var(--blueprint);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+  }
+  .box.b2{ background: var(--pencil-soft); border-color: var(--pencil); }
+  .box.b3{ background: #dceadf; }
+
+  /* ============================================================
+     1. FLUXO NORMAL
+     ============================================================ */
+  .flow-block{
+    background: var(--blueprint-soft);
+    border: 1px solid var(--blueprint);
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .flow-inline{
+    background: var(--pencil-soft);
+    border: 1px solid var(--pencil);
+    padding: 2px 8px;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .flow-inline-block{
+    display: inline-block;
+    width: 90px;
+    background: #dfe9d7;
+    border: 1px solid var(--ok);
+    padding: 8px;
+    margin: 0 4px 4px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    vertical-align: top;
+  }
+
+  /* ============================================================
+     2. FLOATS
+     ============================================================ */
+  .float-demo p{ margin: 0 0 10px; font-size: 14.5px; color: var(--ink-soft); }
+  .float-img{
+    float: left;
+    width: 120px;
+    height: 120px;
+    margin: 0 16px 8px 0;
+    background: repeating-linear-gradient(45deg, var(--blueprint), var(--blueprint) 8px, var(--blueprint-soft) 8px, var(--blueprint-soft) 16px);
+    border: 1px solid var(--blueprint);
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 6px;
+  }
+
+  .float-cols::after{ content: ""; display: table; clear: both; }
+  .float-col{
+    float: left;
+    width: 33.333%;
+    padding: 12px;
+    border: 1px solid var(--paper-line);
+    font-family: var(--mono);
+    font-size: 12.5px;
+  }
+  .float-col + .float-col{ border-left: none; }
+
+  .clearfix::after{ content: ""; display: table; clear: both; }
+  .no-clear::after{ content: none; }
+
+  /* ============================================================
+     3. POSITION
+     ============================================================ */
+  .pos-stage{
+    height: 220px;
+    overflow: auto;
+    position: relative;
+    background:
+      linear-gradient(var(--paper-line) 1px, transparent 1px) 0 0/100% 20px,
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px) 0 0/20px 100%,
+      #fbfaf6;
+  }
+  .pos-static, .pos-relative, .pos-absolute-wrap, .pos-fixed, .pos-sticky-el{
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 8px 10px;
+    border-radius: var(--radius);
+  }
+  .pos-static{ background: var(--blueprint-soft); border: 1px solid var(--blueprint); display: inline-block; }
+  .pos-relative{
+    position: relative;
+    top: 10px; left: 20px;
+    background: var(--pencil-soft); border: 1px solid var(--pencil);
+    display: inline-block;
+  }
+  .pos-absolute-wrap{
+    position: relative;
+    border: 1px dashed var(--ink-soft);
+    height: 100px;
+    margin-top: 12px;
+    color: var(--ink-soft);
+  }
+  .pos-absolute{
+    position: absolute;
+    top: 10px; right: 10px;
+    background: #dfe9d7; border: 1px solid var(--ok);
+    font-family: var(--mono); font-size: 12px;
+    padding: 8px 10px; border-radius: var(--radius);
+  }
+  .pos-sticky-el{
+    position: sticky;
+    top: 8px;
+    background: var(--ink);
+    color: #fff;
+    z-index: 5;
+    width: fit-content;
+  }
+  .pos-filler{
+    height: 90px;
+    margin-top: 10px;
+    border-top: 1px dashed var(--paper-line);
+    color: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 12px;
+    padding-top: 8px;
+  }
+
+  /* ============================================================
+     4. FLEXBOX
+     ============================================================ */
+  .flex-demo{
+    display: flex;
+    gap: 10px;
+    background: #fbfaf6;
+    border: 1px dashed var(--paper-line);
+    padding: 14px;
+  }
+  .flex-demo .box{ flex: none; }
+
+  .flex-justify{ justify-content: space-between; }
+  .flex-align{ align-items: center; min-height: 90px; }
+  .flex-align .box:nth-child(2){ padding-top: 24px; padding-bottom: 24px; }
+
+  .flex-wrap{ flex-wrap: wrap; }
+  .flex-wrap .box{ width: 140px; }
+
+  .flex-grow .g1{ flex-grow: 1; }
+  .flex-grow .g2{ flex-grow: 2; }
+  .flex-grow .g0{ flex-grow: 0; }
+
+  .flex-order .o-first{ order: -1; }
+  .flex-order .o-last{ order: 5; }
+
+  /* ============================================================
+     5. GRID
+     ============================================================ */
+  .grid-basic{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .grid-tracks{
+    display: grid;
+    grid-template-columns: 120px 1fr 2fr;
+    gap: 10px;
+  }
+
+  .grid-areas{
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "sidebar header header"
+      "sidebar main    aside"
+      "sidebar footer  footer";
+    gap: 8px;
+    min-height: 220px;
+  }
+  .ga-sidebar{ grid-area: sidebar; }
+  .ga-header{ grid-area: header; }
+  .ga-main{ grid-area: main; }
+  .ga-aside{ grid-area: aside; }
+  .ga-footer{ grid-area: footer; }
+
+  .grid-span{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 60px;
+    gap: 8px;
+  }
+  .gs-wide{ grid-column: span 2; }
+  .gs-tall{ grid-row: span 2; }
+  .gs-big{ grid-column: span 2; grid-row: span 2; }
+
+  .grid-autofit{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 8px;
+  }
+
+  footer.end{
+    padding: 48px 0 80px;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    border-top: 1px solid var(--paper-line);
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 640px){
+    header.intro h1{ font-size: 30px; }
+    .grid-tracks{ grid-template-columns: 1fr; }
+    .grid-areas{
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "sidebar"
+        "main"
+        "aside"
+        "footer";
+    }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="topnav">
+    <ul>
+      <li><a href="#flow">01 · Fluxo normal</a></li>
+      <li><a href="#floats">02 · Floats</a></li>
+      <li><a href="#position">03 · Position</a></li>
+      <li><a href="#flex">04 · Flexbox</a></li>
+      <li><a href="#grid">05 · Grid</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrap">
+
+    <header class="intro">
+      <p class="kicker">// referência prática de layout CSS</p>
+      <h1>Cinco sistemas, um documento</h1>
+      <p>
+        Este arquivo é autocontido: um único HTML com CSS embutido demonstrando
+        os cinco mecanismos de layout do CSS — fluxo normal, floats, position,
+        flexbox e grid — cada um com os casos de uso mais comuns. Abra o código
+        para ver exatamente qual propriedade produz qual efeito.
+      </p>
+    </header>
+
+    <!-- ============================================================
+         1. FLUXO NORMAL
+    ============================================================ -->
+    <section class="module" id="flow">
+      <div class="module-head"><span class="num">01</span><h2>Fluxo normal (Normal Flow)</h2></div>
+      <p class="module-desc">
+        É o comportamento padrão: elementos <code class="tag">block</code> empilham
+        verticalmente ocupando toda a largura disponível; elementos
+        <code class="tag">inline</code> fluem horizontalmente dentro do texto;
+        <code class="tag">inline-block</code> flui como inline mas aceita
+        largura, altura e margens verticais.
+      </p>
+
+      <div class="case">
+        <div class="case-title">display: block</div>
+        <div class="stage">
+          <div class="flow-block">bloco 1 — ocupa 100% da largura</div>
+          <div class="flow-block">bloco 2 — quebra de linha automática</div>
+          <div class="flow-block">bloco 3 — empilhado verticalmente</div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">display: inline</div>
+        <div class="stage">
+          Este parágrafo contém <span class="flow-inline">um trecho inline</span>
+          que flui <span class="flow-inline">junto com o texto</span> normalmente,
+          sem provocar quebra de linha — largura e altura não têm efeito aqui.
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">display: inline-block</div>
+        <div class="stage">
+          <span class="flow-inline-block">card A</span><span class="flow-inline-block">card B</span><span class="flow-inline-block">card C</span><span class="flow-inline-block">card D — largura fixa, quebra ao faltar espaço</span>
+        </div>
+      </div>
+
+      <pre class="code"><span class="c1">.block</span>       { display: block; }
+<span class="c1">.inline</span>      { display: inline; }
+<span class="c1">.inline-block</span>{ display: inline-block; width: 90px; }</pre>
+    </section>
+
+    <!-- ============================================================
+         2. FLOATS
+    ============================================================ -->
+    <section class="module" id="floats">
+      <div class="module-head"><span class="num">02</span><h2>Floats</h2></div>
+      <p class="module-desc">
+        Originalmente pensado para envolver texto ao redor de imagens; também
+        foi usado (antes do flexbox/grid) para construir colunas. Elementos
+        flutuantes saem do fluxo normal e exigem <em>clearfix</em> para não
+        "vazar" sobre o conteúdo seguinte.
+      </p>
+
+      <div class="case">
+        <div class="case-title">float: left — texto envolvendo uma imagem</div>
+        <div class="stage float-demo">
+          <div class="float-img">figura.png</div>
+          <p>
+            Quando um elemento recebe <code>float: left</code>, ele é retirado do
+            fluxo normal e empurrado para a esquerda; o conteúdo em fluxo normal
+            que vem depois — como este parágrafo — flui ao redor dele, preenchendo
+            o espaço restante à direita, exatamente como em uma diagramação de
+            jornal ou revista impressa.
+          </p>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">float: left — colunas (técnica legada) + clearfix</div>
+        <div class="stage">
+          <div class="float-cols">
+            <div class="float-col">Coluna 1<br>float: left; width: 33.33%</div>
+            <div class="float-col">Coluna 2<br>float: left; width: 33.33%</div>
+            <div class="float-col">Coluna 3<br>float: left; width: 33.33%</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--ink-soft);margin-top:8px">
+          O container pai usa <code>::after { clear: both }</code> — sem isso,
+          sua altura colapsaria para zero, pois os floats não contam para a
+          altura do pai.
+        </p>
+      </div>
+
+      <pre class="code"><span class="c1">.float-img</span>  { float: left; width: 120px; margin-right: 16px; }
+<span class="c1">.float-col</span>  { float: left; width: 33.333%; }
+<span class="c1">.clearfix::after</span> { content: ""; display: table; clear: both; }</pre>
+    </section>
+
+    <!-- ============================================================
+         3. POSITION
+    ============================================================ -->
+    <section class="module" id="position">
+      <div class="module-head"><span class="num">03</span><h2>Position</h2></div>
+      <p class="module-desc">
+        Controla como um elemento é posicionado em relação ao fluxo normal, a um
+        ancestral posicionado, à janela de visualização ou ao seu próprio
+        contêiner de rolagem.
+      </p>
+
+      <div class="case">
+        <div class="case-title">static (padrão) vs. relative (deslocado do próprio lugar)</div>
+        <div class="stage">
+          <div class="pos-static">static — posição normal</div>
+          <div class="pos-relative">relative — top:10px; left:20px</div>
+          <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px">
+            O relative desloca visualmente o elemento, mas o espaço original que
+            ele ocuparia no fluxo continua reservado.
+          </p>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">absolute — posicionado em relação ao ancestral relative</div>
+        <div class="stage">
+          <div class="pos-absolute-wrap">
+            contêiner pai (position: relative)
+            <div class="pos-absolute">absolute<br>top:10px; right:10px</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">sticky — gruda ao rolar dentro do contêiner</div>
+        <div class="stage pos-stage">
+          <div class="pos-sticky-el">sticky — top: 8px (role esta caixa)</div>
+          <div class="pos-filler">conteúdo de rolagem acima do sticky…</div>
+          <div class="pos-filler">continue rolando — o rótulo acima gruda no topo…</div>
+          <div class="pos-filler">…até o contêiner acabar.</div>
+          <div class="pos-filler">mais conteúdo para forçar a rolagem interna do stage.</div>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink-soft)">
+        <strong>fixed</strong> não aparece isolado no stage porque seu efeito só
+        faz sentido em relação à janela inteira — é o mesmo mecanismo usado no
+        menu do topo desta página, que usa <code>position: sticky</code> para
+        permanecer visível durante a rolagem.
+      </p>
+
+      <pre class="code"><span class="c1">.pos-relative</span>  { position: relative; top: 10px; left: 20px; }
+<span class="c1">.pos-absolute-wrap</span> { position: relative; }
+<span class="c1">.pos-absolute</span>  { position: absolute; top: 10px; right: 10px; }
+<span class="c1">.pos-sticky-el</span> { position: sticky; top: 8px; }
+<span class="c1">.topnav</span>        { position: sticky; top: 0; } <span class="c2">/* fixed seria: position: fixed; top: 0; */</span></pre>
+    </section>
+
+    <!-- ============================================================
+         4. FLEXBOX
+    ============================================================ -->
+    <section class="module" id="flex">
+      <div class="module-head"><span class="num">04</span><h2>Flexbox</h2></div>
+      <p class="module-desc">
+        Layout unidimensional: distribui itens ao longo de um eixo principal
+        (main axis) e os alinha em um eixo transversal (cross axis). Ideal para
+        barras de navegação, cartões em linha e centralização.
+      </p>
+
+      <div class="case">
+        <div class="case-title">justify-content: space-between (eixo principal)</div>
+        <div class="stage flex-demo flex-justify">
+          <div class="box">item 1</div>
+          <div class="box">item 2</div>
+          <div class="box">item 3</div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">align-items: center (eixo transversal)</div>
+        <div class="stage flex-demo flex-align">
+          <div class="box">baixo</div>
+          <div class="box b2">alto</div>
+          <div class="box">baixo</div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">flex-wrap: wrap — quebra para nova linha</div>
+        <div class="stage flex-demo flex-wrap">
+          <div class="box">140px</div>
+          <div class="box b2">140px</div>
+          <div class="box">140px</div>
+          <div class="box b2">140px</div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">flex-grow — distribuição de espaço sobrando</div>
+        <div class="stage flex-demo flex-grow">
+          <div class="box g0">grow: 0</div>
+          <div class="box g1">grow: 1</div>
+          <div class="box b2 g2">grow: 2 (recebe o dobro)</div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">order — reordena visualmente sem tocar o HTML</div>
+        <div class="stage flex-demo">
+          <div class="box">1º no HTML</div>
+          <div class="box b2 o-last">2º no HTML (order:5 → vai por último)</div>
+          <div class="box o-first">3º no HTML (order:-1 → vai primeiro)</div>
+        </div>
+      </div>
+
+      <pre class="code"><span class="c1">.flex-demo</span>  { display: flex; gap: 10px; }
+<span class="c1">.flex-justify</span> { justify-content: space-between; }
+<span class="c1">.flex-align</span>   { align-items: center; }
+<span class="c1">.flex-wrap</span>    { flex-wrap: wrap; }
+<span class="c1">.g1</span> { flex-grow: 1; } <span class="c1">.g2</span> { flex-grow: 2; }
+<span class="c1">.o-first</span> { order: -1; } <span class="c1">.o-last</span> { order: 5; }</pre>
+    </section>
+
+    <!-- ============================================================
+         5. GRID
+    ============================================================ -->
+    <section class="module" id="grid">
+      <div class="module-head"><span class="num">05</span><h2>Grid</h2></div>
+      <p class="module-desc">
+        Layout bidimensional: define linhas e colunas simultaneamente. Ideal
+        para estruturas de página inteiras, galerias e qualquer layout que
+        precise alinhar conteúdo em duas dimensões ao mesmo tempo.
+      </p>
+
+      <div class="case">
+        <div class="case-title">grid-template-columns: repeat(3, 1fr) — colunas iguais</div>
+        <div class="stage grid-basic">
+          <div class="box">1</div><div class="box b2">2</div><div class="box">3</div>
+          <div class="box b2">4</div><div class="box">5</div><div class="box b2">6</div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">trilhas mistas: 120px 1fr 2fr</div>
+        <div class="stage grid-tracks">
+          <div class="box">120px fixo</div>
+          <div class="box b2">1fr</div>
+          <div class="box">2fr (o dobro)</div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">grid-template-areas — layout de página nomeado</div>
+        <div class="stage grid-areas">
+          <div class="box ga-sidebar">sidebar</div>
+          <div class="box b2 ga-header">header</div>
+          <div class="box ga-main">main</div>
+          <div class="box b2 ga-aside">aside</div>
+          <div class="box ga-footer">footer</div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">grid-column / grid-row: span — itens ocupando múltiplas células</div>
+        <div class="stage grid-span">
+          <div class="box gs-wide">span 2 colunas</div>
+          <div class="box b2">1×1</div>
+          <div class="box gs-tall">span 2 linhas</div>
+          <div class="box b2 gs-big">span 2×2</div>
+          <div class="box">1×1</div>
+          <div class="box b2">1×1</div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-title">repeat(auto-fit, minmax(110px, 1fr)) — grade responsiva sem media query</div>
+        <div class="stage grid-autofit">
+          <div class="box">card</div><div class="box b2">card</div><div class="box">card</div>
+          <div class="box b2">card</div><div class="box">card</div>
+        </div>
+        <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px">
+          Redimensione a janela: as colunas se ajustam automaticamente sem
+          nenhuma <code>@media</code>.
+        </p>
+      </div>
+
+      <pre class="code"><span class="c1">.grid-basic</span>  { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+<span class="c1">.grid-tracks</span> { grid-template-columns: 120px 1fr 2fr; }
+<span class="c1">.grid-areas</span>  {
+  grid-template-columns: 140px 1fr 1fr;
+  grid-template-areas:
+    "sidebar header header"
+    "sidebar main    aside"
+    "sidebar footer  footer";
+}
+<span class="c1">.gs-big</span>      { grid-column: span 2; grid-row: span 2; }
+<span class="c1">.grid-autofit</span>{ grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }</pre>
+    </section>
+
+    <footer class="end">
+      fluxo normal · floats · position · flexbox · grid — cinco sistemas, um único documento.
+    </footer>
+
+  </div>
+
+</body>
+</html>

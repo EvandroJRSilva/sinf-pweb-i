@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+            width: 500px;
+            margin: 0 auto;
+            }
+
+            p {
+            background: rgb(255 84 104 / 30%);
+            border: 2px solid rgb(255 84 104);
+            padding: 10px;
+            margin: 10px;
+            }
+
+            span {
+            background: white;
+            border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Fluxo de documento básico</h1>
+
+        <p>
+        Eu sou um elemento de nível de bloco básico. Os elementos de nível de bloco 
+        adjacentes a mim estão nas linhas abaixo.
+        </p>
+
+        <p>
+        Por padrão, ocupamos 100% da largura do elemento pai e temos a mesma altura
+        que o conteúdo do elemento filho. Nossa largura e altura totais são o conteúdo 
+        (<i>content</i>) + preenchimento (<i>padding</i>) + largura/altura da borda.
+        </p>
+
+        <p>
+        Somos separados por nossas margens  (<i>margins</i>). Devido ao <i>margin collapsing</i>
+        somos separados pelo tamanho de uma de nossas margens, mas não de ambas.
+        </p>
+
+        <p>
+        Elementos <i>inline</i>, <span>como esse</span> e <span>esse aqui</span>, ficam
+        na mesma linha junto com outros elementos de texto adjacentes se houver espaço na
+        mesma linha. Os elementos <i>inline</i> que ultrapassarem os limites serão
+        <span>quebrados em uma nova linha se possível (como este aqui)</span>, ou
+        simplesmente serão levados para a linha seguinte, mais ou menos como a imagem
+        a seguir:
+        <img
+            src="https://mdn.github.io/shared-assets/images/examples/long.jpg"
+            alt="snippet of cloth" />
+        </p>
+    </body>
+</html>

@@ -43,3 +43,9 @@
     - Adicionada pasta `exemplos/`.
     - Adicionada pasta `imagens/`.
     - Atualização do arquivo `aula06.md`.
+- 2026.2.7
+  - `AULAS/07`
+    - Adicionadas as pastas `exemplos/` e `imagens/`, com seus respectivos arquivos.
+    - Excluída a pasta `exercícios/`.
+    - Excluídos os arquivos `dom_tree.jpg`, `exemplo1.html`, `exemplo2.html` e `exemplo3.html`.
+    - Arquivo `aula07.md` atualizado.
