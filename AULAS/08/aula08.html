@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 08</title>
+    <link rel="stylesheet" href="../aula.css">
+    <link rel="stylesheet" href="exemplo-comprimento.css">
+    <link rel="stylesheet" href="exemplo-cor.css">
+    <body>
+        <header>
+            <h1>Aula 08</h1>
+        </header>
+        <nav class="toc">
+            <span class="toc-title">Sumário</span>
+            <ol>
+                <li><a href="#1">Unidades</a>
+                    <ol>
+                        <li><a href="#1.1">Números, comprimentos e porcentagens</a>
+                            <ol>
+                                <li><a href="#1.1.1">Comprimentos</a></li>
+                                <li><a href="#1.1.2">Outros</a></li>
+                            </ol>
+                        </li>
+                        <li><a href="#1.2">Cores</a>
+                            <ol>
+                                <li><a href="#1.2.1">Palavras-chave</a></li>
+                                <li><a href="#1.2.2">Hexadecimal</a></li>
+                                <li><a href="#1.2.3">RGB</a></li>
+                                <li><a href="#1.2.4">Outros</a></li>
+                            </ol>
+                        </li>
+                        <li><a href="#1.3">Outros</a></li>
+                    </ol>
+                </li>
+                <li><a href="#2">Web design responsivo</a></li>
+            </ol>
+        </nav>
+        <section class="section" id="1">
+            <h1>1. Unidades</h1>
+            <section class="section">
+                <h2 id="1.1">1.1 Números, comprimentos e porcentagens</h2>
+                <p>Existem vários tipos de valores numéricos. Por exemplo:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo de dado</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;integer&gt;</code></td>
+                            <td>Um valor inteiro. Ex.: 10, -20, 542.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;number&gt;</code></td>
+                            <td>Um valor decimal. Ex.: 1.2, 10, 0.25.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;dimension&gt;</code></td>
+                            <td>Consiste em um <code>&lt;number&gt;</code> com uma unidade de medida. Ex.: <code>45deg</code>, <code>10px</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;percentage&gt;</code></td>
+                            <td>Representa uma fração de outro valor. Ex.: <code>50%</code>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <section class="section" id="1.1.1">
+                    <h3>1.1.1 Comprimentos</h3>
+                    <p>É o tipo numérico <code>&lt;length&gt;</code>. Existem dois tipos: <b>absoluto</b> e <b>relativo</b>.</p>
+                    <section class="section">
+                        <h4>Unidades de comprimento absoluto</h4>
+                        <p>São unidades de medida que não são relativas a nenhuma outra, e são geralmente consideradas serem sempre do mesmo tamanho.</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Unidade</th>
+                                    <th>Nome</th>
+                                    <th>Equivalência</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>cm</code></td>
+                                    <td>Centímetros</td>
+                                    <td>1cm = 37.8px = 25.2/64in</td>
+                                </tr>
+                                <tr>
+                                    <td><code>mm</code></td>
+                                    <td>Milímetros</td>
+                                    <td>1mm = 1/10 * 1cm</td>
+                                </tr>
+                                <tr>
+                                    <td><code>Q</code></td>
+                                    <td>Quartos de milímeros</td>
+                                    <td>1Q = 1/40 * 1cm</td>
+                                </tr>
+                                <tr>
+                                    <td><code>in</code></td>
+                                    <td>Inches (Polegadas)</td>
+                                    <td>1in = 2.54cm = 96px</td>
+                                </tr>
+                                <tr>
+                                    <td><code>pc</code></td>
+                                    <td>Picas</td>
+                                    <td>1pc = 1/6 * 1in</td>
+                                </tr>
+                                <tr>
+                                    <td><code>pt</code></td>
+                                    <td>Pontos</td>
+                                    <td>1pt = 1/72 * 1in</td>
+                                </tr>
+                                <tr>
+                                    <td><code>px</code></td>
+                                    <td>Pixels</td>
+                                    <td>1px = 1/96 * 1in</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section class="section">
+                        <h4>Unidades de comprimento relativo</h4>
+                        <p>São sempre relativos a alguma coisa. Por exemplo:</p>
+                        <ul>
+                            <li><code>em</code> é relativo ao tamanho da fonte do elemento em questão, ou em relação ao seu pai.</li>
+                            <li><code>rem</code> é relativo ao tamanho da fonte do elemento raiz (<code>&lt;html&gt;</code>).</li>
+                            <li><code>vh</code> e <code>vw</code> são relativos à altura (<i>heigt</i>) e largura (<i>width</i>) do <i>viewport</i>, respectivamente.</li>
+                        </ul>
+                        <p>A vantagem de se usar unidades relativas é que o tamanho dos elementos são escalados automaticamente. Uma lista completa das unidades disponíveis pode ser encontrado em <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length">&lt;length&gt;</a>.</p>
+                        <p><b>Exemplo:</b></p>
+                        <div class="wrapper">
+                            <div class="box px">Eu tenho 200px de comprimento</div>
+                            <div class="box vw">Em tenho 10vw de comprimento</div>
+                            <div class="box em">Eu tenho 10em de comprimento</div>
+                        </div>
+                    </section>
+                </section>
+                <section class="section" id="1.1.2">
+                    <h3>1.1.2 Outros</h3>
+                    <p>Visite <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units#numbers_lengths_and_percentages">esta página</a> do MDN para ver outras unidades e exemplos com números e porcentagens.</p>
+                </section>
+            </section>
+            <section class="section" id="1.2">
+                <h2>1.2 Cores</h2>
+                <p>O sistema de cores padrão atual nos computadores modernos suporta cores de 24bits, o que permite a exibição de cerca de 16,7 milhões de cores, através da combinação de três canais (<span style="color: red;">red</span>, <span style="color: green;">green</span> e <span style="color: blue;">blue</span>) de 256 cores (256 x 256 x 256 = 16.777.216). </p>
+                <p>As formas mais comuns de se especificar as cores com CSS são: palavras-chave, hexadecimal e <code>rgb()</code>.</p>
+                <section class="section" id="1.2.1">
+                    <h3>1.2.1 Palavras-chave</h3>
+                    <p>Essas palavras-chave são nomes que foram dados a determinadas cores. Exemplo:</p>
+                    <div class="wrapper">
+                        <div class="colorbox one">antiquewhite</div>
+                        <div class="colorbox two">blueviolet</div>
+                        <div class="colorbox three">greenyellow</div>
+                    </div>
+                </section>
+                <section class="section" id="1.2.2">
+                    <h3>1.2.2 Hexadecimal</h3>
+                    <div class="wrapper">
+                        <div class="colorbox four">#02798b</div>
+                        <div class="colorbox five">#c55da1</div>
+                        <div class="colorbox six">#128a7d</div>
+                    </div>
+                </section>
+                <section class="section" id="1.2.3">
+                    <h3>1.2.3 RGB</h3>
+                    <div class="wrapper">
+                        <div class="colorbox seven">rgb(2 121 139)</div>
+                        <div class="colorbox eight">rgb(197 93 161)</div>
+                        <div class="colorbox nine">rgb(18 138 125)</div>
+                    </div>
+                </section>
+                <section class="section" id="1.2.4">
+                    <h3>1.2.4 Outros</h3>
+                    <p>Visite <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units#color">esta página</a> para ver outros valores e exemplos relacionados a cor.</p>
+                </section>
+            </section>
+            <section class="section" id="1.3">
+                <h2>1.3 Outros</h2>
+                <p>A quantidade de valores e unidades a serem utilizadas em variados elementos é extensa, e impraticável a ser mostrada em sala de aula. Por causa disso, visite os seguintes links para ver mais sobre:</p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units#images">Imagens</a>;</li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units#position">Posição</a>;</li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units#strings_and_identifiers">Strings e identificadores;</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units#functions">Funções</a>.</li>
+                </ul>
+            </section>
+        </section>
+        <section class="section" id="2">
+            <h1>2. Web design responsivo</h1>
+            <p>Ou <i>Responsive web design</i> (RWD) é uma abordagem de design web para fazer páginas web renderizarem bem em todos os tamanhos e resoluções de tela, ao mesmo tempo em que garante uma boa usabilidade.</p>
+            <p>Por padrão o HTML já é responsivo, pois vai procurar acomodar os conteúdos de acordo com o <i>viewport</i>. Entretanto, supondo o caso de um longo trecho de texto, este pode ficar difícil de ser lido. Com o uso de CSS esse problema pode ser resolvido ao se diminuir o tamanho das colunas de texto. Porém, essa solução pode acabar criando novos problemas, dessa vez para usuários que estejam acessando ao conteúdo a partir de dispositivos móveis, de forma que as colunas fiquem muito finas, atrapalhando a leitura.</p>
+            <p>O RWD vem como uma solução para problemas dessa tipo, ao permitir adaptação automática da tela. Ele consiste em uma abordagem, ou seja, <b>um conjunto de boas práticas</b> para a criação de layouts que possam <i>responder</i> a qualquer dispositivo que esteja sendo usado.</p>
+            <p>O termo <i>responsive design</i> foi <a href="https://alistapart.com/article/responsive-web-design/">cunhado por Ethan Marcotte em 2010</a>, descrito usando grades e imagens fluidas, e consultas de mídia (<i>media queries</i>) para a criação de conteúdo responsivo.</p>
+            <p>Os métodos de layout modernos do CSS são inerentemente responsivos e, desde a publicação do artigo do Ethan Marcotte, várias funcionalidades foram adicionadas para facilitar a construção de sites responsivos. Exemplos:</p>
+            <ul>
+                <li><i><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design#media_queries">Media Queries</a></i>;</li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design#responsive_layout_technologies">Tecnologias de layout responsivas</a>;</li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design#responsive_imagesmedia">Imagens/mídia responsivas</a>;</li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design#responsive_typography">Tipografia responsiva</a>;</li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design#the_viewport_meta_tag">A meta tag <code>viewport</code></a>.</li>
+            </ul>
+        </section>
+        <section class="section" id="3">
+            <h1>3. Tarefa de sala de aula</h1>
+            <ul>
+                <li>A turma deve se dividir em 5 grupos.</li>
+                <li>Cada grupo receberá um dos temas relacionados ao RWD da lista da seção anterior.
+                    <ul>
+                        <li>Cada grupo vai criar um exemplo simples de uma página web com e sem sua respectiva tecnologia responsiva.</li>
+                        <li>O grupo deverá fazer uma apresentação breve sobre sua tecnologia, e então apresentar o exemplo criado.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </body>
+</html>

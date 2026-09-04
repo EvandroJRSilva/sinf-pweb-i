@@ -49,3 +49,11 @@
     - Excluída a pasta `exercícios/`.
     - Excluídos os arquivos `dom_tree.jpg`, `exemplo1.html`, `exemplo2.html` e `exemplo3.html`.
     - Arquivo `aula07.md` atualizado.
+- 2026.2.8
+  - Adicionado arquivo `aula.css`.
+  - `AULAS/08`
+    - Excluída a pasta `imagens/` e seus arquivos.
+    - Excluídos todos os demais arquivos.
+    - Adicionados os arquivo `aula08.html`, `exemplo-comprimento.css` e `exemplo-cor.css`.
+  - Excluída a pasta `Projeto/` e seus arquivos.
+  - Excluído o arquivo `calendario.css`.

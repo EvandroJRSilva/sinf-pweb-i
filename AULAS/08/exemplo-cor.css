@@ -1,0 +1,40 @@
+.colorbox {
+  padding: 10px;
+  margin: 0.5em 0;
+  border-radius: 0.5em;
+}
+.one {
+  background-color: antiquewhite;
+}
+
+.two {
+  background-color: blueviolet;
+}
+
+.three {
+  background-color: greenyellow;
+}
+
+.four {
+  background-color: #02798b;
+}
+
+.five {
+  background-color: #c55da1;
+}
+
+.six {
+  background-color: #128a7d;
+}
+
+.seven {
+  background-color: rgb(2 121 139);
+}
+
+.eight {
+  background-color: rgb(197 93 161);
+}
+
+.nine {
+  background-color: rgb(18 138 125);
+}
