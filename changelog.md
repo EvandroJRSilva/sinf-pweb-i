@@ -57,3 +57,5 @@
     - Adicionados os arquivo `aula08.html`, `exemplo-comprimento.css` e `exemplo-cor.css`.
   - Excluída a pasta `Projeto/` e seus arquivos.
   - Excluído o arquivo `calendario.css`.
+- 2026.2.8.1
+  - Exclusão das pastas `AULAS/09` a `AULAS/14/` para evitar que os alunos confundam quais conteúdos são do semestre em curso.
