@@ -59,3 +59,6 @@
   - Excluído o arquivo `calendario.css`.
 - 2026.2.8.1
   - Exclusão das pastas `AULAS/09` a `AULAS/14/` para evitar que os alunos confundam quais conteúdos são do semestre em curso.
+- 2026.2.9
+  - `AULAS/09`
+    - Inclusão dos arquivos `aula09.md` e `aula09.css`.
