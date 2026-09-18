@@ -62,3 +62,6 @@
 - 2026.2.9
   - `AULAS/09`
     - Inclusão dos arquivos `aula09.md` e `aula09.css`.
+- 2026.2.10
+  - `AULAS/10`
+    - Inclusão do arquivo `aula10.md`.
