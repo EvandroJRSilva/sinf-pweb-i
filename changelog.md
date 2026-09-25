@@ -68,3 +68,6 @@
 - 2026.2.11
   - `AULAS/11`
     - Inclusão do arquivo `aula11.md`.
+- 2026.2.12
+  - `AULAS/12`
+    - Inclusão do arquivo `aula12.md`.
