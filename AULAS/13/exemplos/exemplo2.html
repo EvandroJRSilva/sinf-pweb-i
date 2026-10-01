@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .container {
+                display: flex;
+                gap: 0.5rem;
+                flex-direction: column;
+            }
+
+            button {
+                width: 100px;
+            }
+
+            div.parent {
+                border: 1px solid black;
+                padding: 5px;
+                width: 100px;
+                height: 100px;
+            }
+
+            div.child {
+                border: 1px solid red;
+                margin: 10px;
+                padding: 5px;
+                width: 80px;
+                height: 60px;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="parent">Pai</div>
+            <button id="add-child" type="button">Adicionar um filho</button>
+            <button id="remove-child" type="button">Remover um filho</button>
+        </div>
+
+        <script>
+            const parent = document.body.querySelector(".parent");
+
+            const addChild = document.body.querySelector("#add-child");
+            addChild.addEventListener("click", () => {
+                // Só adiciona um filho se não existir ainda
+                if (parent.childNodes.length > 1) {
+                    return;
+                }
+                
+                const child = document.createElement("div");
+                child.classList.add("child");
+                child.textContent = "filho";
+                parent.appendChild(child);
+            });
+
+            const removeChild = document.body.querySelector("#remove-child");
+            removeChild.addEventListener("click", () => {
+                const child = document.body.querySelector(".child");
+                parent.removeChild(child);
+            });
+        </script>
+    </body>
+</html>

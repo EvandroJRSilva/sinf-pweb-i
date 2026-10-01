@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .container {
+                display: flex;
+                gap: 0.5rem;
+                flex-direction: column;
+            }
+
+            button {
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <textarea class="story"></textarea>
+            <button id="set-text" type="button">Inserir texto</button>
+            <button id="clear-text" type="button">Apagar o texto</button>
+        </div>
+
+        <script>
+            const story = document.body.querySelector(".story");
+
+            const setText = document.body.querySelector("#set-text");
+            setText.addEventListener("click", () => {
+                story.textContent = "Era uma vez, numa noite escura e tempestuosa...";
+            });
+
+            const clearText = document.body.querySelector("#clear-text");
+            clearText.addEventListener("click", () => {
+                story.textContent = "";
+            });
+        </script>
+    </body>
+</html>

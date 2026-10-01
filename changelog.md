@@ -71,3 +71,8 @@
 - 2026.2.12
   - `AULAS/12`
     - Inclusão do arquivo `aula12.md`.
+- 2026.2.13
+  - `AULAS/13`
+    - Conteúdo da antiga `aula07.md` (*branch* `2026.1`) trazido para o arquivo `aula13.md`.
+    - Exemplos antigos trazidos para a pasta `exemplos/`.
+    - Imagem ilustrativa trazida para a pasta `imagens/`.
