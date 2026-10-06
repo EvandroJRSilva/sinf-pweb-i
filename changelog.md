@@ -76,3 +76,6 @@
     - Conteúdo da antiga `aula07.md` (*branch* `2026.1`) trazido para o arquivo `aula13.md`.
     - Exemplos antigos trazidos para a pasta `exemplos/`.
     - Imagem ilustrativa trazida para a pasta `imagens/`.
+- 2026.2.14
+  - `AULAS/14`
+    - Inclusão do arquivo `aula14.md`.
