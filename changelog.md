@@ -79,3 +79,7 @@
 - 2026.2.14
   - `AULAS/14`
     - Inclusão do arquivo `aula14.md`.
+- 2026.2.15
+  - `AULAS/15`
+    - Inclusão da pasta `exemplos/` com os arquivos `cookies.html`, `localStorage.html` e `sessionStorage.html`.
+    - Inclusão do arquivo `aula15.md`.

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemplo localStorage</title>
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+    </style>
+  </head>
+  <body>
+    <h2>localStorage</h2>
+    <button onclick="fundoClaro()">Fundo claro</button>
+    <button onclick="fundoEscuro()">Fundo escuro</button>
+
+    <script>
+        var fundoCor = localStorage.getItem("fundo");
+        const claro = "#f5f5f5";
+        const escuro = "#a9a9a9" ;
+        
+        if (fundoCor == "claro" || fundoCor == null){
+            mudaFundo(claro);
+        }
+        if (fundoCor == "escuro"){
+            mudaFundo(escuro);
+        }
+        
+        function fundoClaro() {
+            localStorage.setItem("fundo", "claro");
+            mudaFundo(claro);
+        }
+        function fundoEscuro() {
+            localStorage.setItem("fundo", "escuro");
+            mudaFundo(escuro);
+        }
+
+        function mudaFundo(cor){
+            document.body.style.backgroundColor = cor;
+        }
+    </script>
+  </body>
+</html>
