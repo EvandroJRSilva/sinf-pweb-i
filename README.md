@@ -273,10 +273,10 @@ O documento deve ser enviado para o e-mail <a href="mailto:evandro.silva@ufpi.ed
 | 21 | 04/11/26 | Quarta | Segunda Avaliação |
 | 22 | 06/11/26 | Sexta  | Comunicação cliente-servidor |
 | 23 | 11/11/26 | Quarta | Programação Assíncrona: Fetch API  |
-| 24 | 13/11/26 | Sexta  | Modularização do JavaScript |
-| 25 | 18/11/26 | Quarta | Ferramentas modernas do frontend |
+| 24 | 13/11/26 | Sexta  | Modularização do JavaScript <br> Ferramentas modernas do frontend |
+| 25 | 18/11/26 | Quarta | Introdução a Frameworks Frontend |
 |    | 20/11/26 | Sexta  | Feriado: Dia da Consciência Negra |
-| 26 | 25/11/26 | Quarta | Introdução a Frameworks Frontend |
+| 26 | 25/11/26 | Quarta | Projeto integrador (Livre) |
 | 27 | 27/11/26 | Sexta  | Projeto integrador (Livre) |
 | 28 | 02/12/26 | Quarta | Projeto integrador (Livre) |
 | 29 | 04/12/26 | Sexta  | Terceira Avaliação |
