@@ -90,3 +90,5 @@
     - Criação da pasta `imagens/`
       - Inclusão dos arquivos `figura01.png` e `figura02.png`.
     - Inclusão do arquivo `aula16.md`.
+- 2026.2.16.1
+  - Atualização do arquivo `README.md`.

@@ -266,20 +266,20 @@ O documento deve ser enviado para o e-mail <a href="mailto:evandro.silva@ufpi.ed
 | 17 | 09/10/26 | Sexta  | Manipulação dinâmica de páginas |
 | 18 | 14/10/26 | Quarta | Armazenamento no navegador |
 | 19 | 16/10/26 | Sexta  | Projeto integrador (Livre) |
-|    | 21/10/26 | Quarta | BRACIS |
-|    | 23/10/26 | Sexta  | Projeto integrador (Livre) |
+| 20 | 21/10/26 | Quarta | Projeto integrador (Livre) |
+| 21 | 23/10/26 | Sexta  | Projeto integrador (Livre) |
 |    | 28/10/26 | Quarta | Feriado: Dia do Servidor Público |
-| 20 | 30/10/26 | Sexta  | Segunda Avaliação |
-| 21 | 04/11/26 | Quarta | Segunda Avaliação |
-| 22 | 06/11/26 | Sexta  | Comunicação cliente-servidor |
-| 23 | 11/11/26 | Quarta | Programação Assíncrona: Fetch API  |
-| 24 | 13/11/26 | Sexta  | Modularização do JavaScript <br> Ferramentas modernas do frontend |
-| 25 | 18/11/26 | Quarta | Introdução a Frameworks Frontend |
+| 22 | 30/10/26 | Sexta  | Segunda Avaliação |
+| 23 | 04/11/26 | Quarta | Segunda Avaliação |
+| 24 | 06/11/26 | Sexta  | Comunicação cliente-servidor |
+| 25 | 11/11/26 | Quarta | Programação Assíncrona: Fetch API  |
+| 26 | 13/11/26 | Sexta  | Modularização do JavaScript <br> Ferramentas modernas do frontend |
+| 26 | 18/11/26 | Quarta | Projeto integrador (Livre) |
 |    | 20/11/26 | Sexta  | Feriado: Dia da Consciência Negra |
-| 26 | 25/11/26 | Quarta | Projeto integrador (Livre) |
-| 27 | 27/11/26 | Sexta  | Projeto integrador (Livre) |
-| 28 | 02/12/26 | Quarta | Projeto integrador (Livre) |
-| 29 | 04/12/26 | Sexta  | Terceira Avaliação |
-| 30 | 09/12/26 | Quarta | Terceira Avaliação |
-|    | 11/12/26 | Sexta  | Avaliação Final |
+| 27 | 25/11/26 | Quarta | Projeto integrador (Livre) |
+| 28 | 27/11/26 | Sexta  | Projeto integrador (Livre) |
+| 29 | 02/12/26 | Quarta | Terceira Avaliação |
+| 30 | 04/12/26 | Sexta  | Terceira Avaliação |
+| 31 | 09/12/26 | Quarta | Avaliação Final |
+|    | 11/12/26 | Sexta  |  |
 |    | 16/12/26 | Quarta | |
